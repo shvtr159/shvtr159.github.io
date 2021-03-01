@@ -1,7 +1,7 @@
 var store = [{
         "title": "asdf",
-        "excerpt":"asdfasdasdasf  ","categories": [],
+        "excerpt":"asdfasd asdasf ㅁㄴㅇ  ","categories": ["논문"],
         "tags": [],
-        "url": "/asdf/",
+        "url": "/%EB%85%BC%EB%AC%B8/asdf/",
         "teaser": null
       }]

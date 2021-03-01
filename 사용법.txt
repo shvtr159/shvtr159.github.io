@@ -1,0 +1,2 @@
+bundle instsall
+jekyll serve
