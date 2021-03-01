@@ -15,18 +15,18 @@
 minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
-locale                   : "en-US"
-title                    : "Site Title"
-title_separator          : "-"
+locale                   : "ko-KR"
+title                    : "Study Blog"
+title_separator          : "&#124;"
 subtitle                 : # site tagline that appears below site title in masthead
-name                     : "Your Name"
-description              : "An amazing website."
-url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+name                     : "KYG"
+description              : "for study"
+url                      : "https://shvtr159.github.io" # the base hostname & protocol for your site e.g. 
 baseurl                  : # the subpath of your site, e.g. "/blog"
-repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
-teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
-masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
+repository               : "shvtr159/shvtr159.github.io" # GitHub username/repo-name e.g. 
+teaser                   : # 홈페이지 기본 teaser image, e.g. "/assets/images/500x300.png"
+logo                     : # 타이틀 옆에 작게 들어갈 이미지, e.g. "/assets/images/88x88.png"
+masthead_title           : "공부하는 Blog" # 홈페이지 최 상단에 들어갈 타이틀, use " " for no title
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
 comments:
@@ -94,10 +94,10 @@ analytics:
 
 # Site Author
 author:
-  name             : "Your Name"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an **amazing** person."
-  location         : "Somewhere"
+  name             : "KYG"
+  avatar           : # 프로필 image, e.g. "/assets/images/bio-photo.jpg"
+  bio              : "."
+  location         : "Republic of Korea"
   email            :
   links:
     - label: "Email"

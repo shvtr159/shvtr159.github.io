@@ -1,1 +1,1 @@
-Sitemap: /sitemap.xml
+Sitemap: https://shvtr159.github.io/sitemap.xml
