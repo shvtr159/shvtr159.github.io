@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Harris corner detector | Study Blog</title>
-<meta name="description" content="이미지에서 코너는 edge 등에 비해 noise와 같은 문제에도 안정적으로 descriptor의 역할을 할 수 있다.  이 때 corner를 찾기 위해서 사용하는 알고리즘 중 harris corner detector에 대해서 알아본다.">
+<meta name="description" content="이미지에서 코너는 edge 등에 비해 noise와 같은 문제에도 안정적으로 descriptor의 역할을 할 수 있습니다.  이 때 corner를 찾기 위해서 사용하는 알고리즘 중 harris corner detector에 대해서 알아봅니다.">
 
 
   <meta name="author" content="KYG">
@@ -26,7 +26,7 @@
 <meta property="og:url" content="https://shvtr159.github.io/computervision/harris/">
 
 
-  <meta property="og:description" content="이미지에서 코너는 edge 등에 비해 noise와 같은 문제에도 안정적으로 descriptor의 역할을 할 수 있다.  이 때 corner를 찾기 위해서 사용하는 알고리즘 중 harris corner detector에 대해서 알아본다.">
+  <meta property="og:description" content="이미지에서 코너는 edge 등에 비해 noise와 같은 문제에도 안정적으로 descriptor의 역할을 할 수 있습니다.  이 때 corner를 찾기 위해서 사용하는 알고리즘 중 harris corner detector에 대해서 알아봅니다.">
 
 
 
@@ -100,6 +100,11 @@
 <![endif]-->
 
 
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
 
 
   <script type="text/x-mathjax-config">
@@ -126,37 +131,6 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
-    <!-- start custom head snippets -->
-
-<!-- insert favicons. use https://realfavicongenerator.net/ -->
-
-<!-- end custom head snippets -->
-
-    
-       <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    TeX: {
-      equationNumbers: {
-        autoNumber: "AMS"
-      }
-    },
-    tex2jax: {
-    inlineMath: [ ['$', '$'] ],
-    displayMath: [ ['$$', '$$'] ],
-    processEscapes: true,
-  }
-});
-MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
-	  alert("Math Processing Error: "+message[1]);
-	});
-MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
-	  alert("Math Processing Error: "+message[1]);
-	});
-</script>
-<script type="text/javascript" async
-  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-    
   </head>
 
   <body class="layout--single">
@@ -319,7 +293,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Harris corner detector">
-    <meta itemprop="description" content="이미지에서 코너는 edge 등에 비해 noise와 같은 문제에도 안정적으로 descriptor의 역할을 할 수 있다. 이 때 corner를 찾기 위해서 사용하는 알고리즘 중 harris corner detector에 대해서 알아본다.">
+    <meta itemprop="description" content="이미지에서 코너는 edge 등에 비해 noise와 같은 문제에도 안정적으로 descriptor의 역할을 할 수 있습니다. 이 때 corner를 찾기 위해서 사용하는 알고리즘 중 harris corner detector에 대해서 알아봅니다.">
     <meta itemprop="datePublished" content="2021-03-02T00:00:00+09:00">
     
 
@@ -343,7 +317,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          최대 1 분 소요
+          2 분 소요
         
       </span>
     
@@ -357,34 +331,74 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
         <section class="page__content" itemprop="text">
           
-          <p>이미지에서 코너는 edge 등에 비해 noise와 같은 문제에도 안정적으로 descriptor의 역할을 할 수 있다. 
-이 때 corner를 찾기 위해서 사용하는 알고리즘 중 harris corner detector에 대해서 알아본다.</p>
+          <p>이미지에서 코너는 edge 등에 비해 noise와 같은 문제에도 안정적으로 descriptor의 역할을 할 수 있습니다. 
+이 때 corner를 찾기 위해서 사용하는 알고리즘 중 harris corner detector에 대해서 알아봅니다.</p>
 
 <h2 id="1-basic-idea">1. Basic idea</h2>
 <ul>
-  <li>flat :  지역에서는 모든 방향으로 변화가 없다</li>
-  <li>edge : 영역에서는 edge 방향으로는 변화가 없으나 이에 수직한 방향으로는 변화가 있다.</li>
-  <li>corner : 대부분의 뱡향으로 변화가 있다.<br />
+  <li>flat :  지역에서는 모든 방향으로 변화가 없음</li>
+  <li>edge : 영역에서는 edge 방향으로는 변화가 없으나 이에 수직한 방향으로는 변화가 있음.</li>
+  <li>corner : 대부분의 뱡향으로 변화가 있음.<br />
 <img src="https://user-images.githubusercontent.com/79836443/109519097-426a4d00-7aee-11eb-929c-12effbe45adc.png" alt="change" /></li>
 </ul>
 
-<p>이 변화를 측정하기 위해 작은 윈도우(window)를 설정하고 이 윈도우를 x축 방향으로 u, y축 방향으로 v 만큼 이동시킨다.
-이때 수식은 다음과 같다.</p>
+<p>이 변화를 측정하기 위해 작은 윈도우(window)를 설정하고 이 윈도우를 x축 방향으로 u, y축 방향으로 v 만큼 이동시킵니다.
+이때 수식은 다음과 같습니다.</p>
 
-<p>$\sum_{x,y} w(x,y)[I(x+u,y+v)-I(x,y)]^{2}$</p>
+\[\sum_{x,y} w(x,y)[I(x+u,y+v)-I(x,y)]^{2}\]
 
-<p>x축, y축 방향 모두에 대해 변화가 크다면 이 값도 커질것이고, 이 값이 크면 corner로 본다.
-이 식은 Taylor series로 인해 다음과 같이 근사할 수 있다.</p>
+<p>x축, y축 방향 모두에 대해 변화가 크다면 이 값도 커지므로, 이 값이 크면 corner로 봅니다. 이때 $w(x, y)$는 window function으로 필요에 따라 uniform이나 Gaussian 등을 사용할 수 있습니다.
+이 식은 Taylor series로 인해 다음과 같이 근사할 수 있습니다.</p>
 
-<p>$\approx \sum_{} [I(x,y)+uI_{x}+vI_{y}-I(x,y)]^{2}$</p>
+<p>\(\approx \sum_{} [I(x,y)+uI_{x}+vI_{y}-I(x,y)]^{2}\)
+\(= \sum_{} u^{2}I_{x}^{2}+2uvI_{x}I_{y}+v^{2}I^{2}\)</p>
 
-<p>$= \sum_{} u^{2}I_{x}^{2}+2uvI_{x}I_{y}+v^{2}I^{2}$</p>
+<p>그리고 이를 행렬로 나타내면 다음과 같이 됩니다.</p>
 
-<p>그리고 이를 행렬로 나타내면 다음과 같이 된다.</p>
+\[= \begin{bmatrix} u&amp;v \end{bmatrix}\sum_{}\left ( \begin{bmatrix} I_{x}^{2} &amp; I_{x}I_{y}\\ I_{x}I_{y} &amp; I_{y}^{2} \end{bmatrix}\right )\begin{bmatrix} u\\ v \end{bmatrix}\]
 
-<p>[= \begin{bmatrix} u&amp;v \end{bmatrix}\sum_{}\left ( \begin{bmatrix} I_{x}^{2} &amp; I_{x}I_{y}\ I_{x}I_{y} &amp; I_{y}^{2} \end{bmatrix}\right )\begin{bmatrix} u\ v \end{bmatrix}]</p>
+<p>이때, 가운데 2x2 행렬을 Harris Matrix라고 부르며, corner 외에도 사용이 가능합니다.</p>
 
-<p>이때, 가운데 2x2 행렬을 Harris Matrix라고 부르며, corner 외에도 사용이 가능하다.</p>
+<h2 id="2-corner-판단">2. Corner 판단</h2>
+<p>위 Harris Matrix를 <strong>고유값 분해</strong> 하면 2개의 고유값(eigen value)와 고유벡터(eigen vector)들을 얻을 수 있습니다. 여기서 고유값이 크다는 의미는 이 고유값에 대응하는 고유벡터의 방향으로 변화가 크다는 것을 의미합니다. <strong>즉 corner는 대부분의 방향으로 변화가 있다고 했기때문에 고유값 분해로 얻어지는 2개의 고유값 모두 크다면 그 위치가 corner임을 알 수 있습니다.</strong> 이에 반해 하나의 고유값만이 크다면 한쪽 방향으로 변화가 생기는 부분이므로 edge, 고유값이 모두 작다면 변화가 크지 않은 위치이므로 flat한 영역임을 알 수 있습니다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/79836443/109627618-2665ba80-7b85-11eb-8506-9f9592eaaa85.jpg" alt="eigenvalue" class="align-center" width="50%" height="50%" /></p>
+
+<p>그러나 매번 고유값과 고유벡터를 계산하는것은 쉽지 않기때문에 다음 식을 이용해 판단합니다.</p>
+
+\[R = det(M) - k(trace(M))^{2}      (k = 0.04 - 0.06)\]
+
+\[det(M) = \lambda_{1}\lambda_{2}\]
+
+\[trace(M) = \lambda_{1} + \lambda_{2}\]
+
+<p>이 식을 통해 R이 계산되기 때문에 두 고유값의 변화에 따라 R은 다음과 같은 결과를 얻게 됩니다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/79836443/109629591-51510e00-7b87-11eb-9ab6-aa594c3a1358.jpg" alt="R" class="align-center" width="50%" height="50%" /></p>
+
+<p>결국 R값이 0보다 충분히 큰 부분을 찾게되면 그 부분을 코너로 판단할 수 있는것입니다.</p>
+<h2 id="3-3d-harris-detector">3. 3D Harris detector</h2>
+<p>이 방식은 x, y, z 좌표를 사용하는 3차원 좌표계에서도 사용할 수 있습니다.
+point cloud를 이용하는 Point Cloud Library의 HarrisKeypoint3D라는 함수의 정의 부분을 보면</p>
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">float</span> <span class="n">trace</span> <span class="o">=</span> <span class="n">covar</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">covar</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">+</span> <span class="n">covar</span> <span class="p">[</span><span class="mi">7</span><span class="p">];</span>
+       <span class="k">if</span> <span class="p">(</span><span class="n">trace</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+       <span class="p">{</span>
+         <span class="kt">float</span> <span class="n">det</span> <span class="o">=</span> <span class="n">covar</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">covar</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">*</span> <span class="n">covar</span> <span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">+</span> <span class="mf">2.0</span><span class="n">f</span> <span class="o">*</span> <span class="n">covar</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">covar</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">covar</span> <span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+                   <span class="o">-</span> <span class="n">covar</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">covar</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">covar</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+                   <span class="o">-</span> <span class="n">covar</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">covar</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">covar</span> <span class="p">[</span><span class="mi">7</span><span class="p">]</span>
+                   <span class="o">-</span> <span class="n">covar</span> <span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">*</span> <span class="n">covar</span> <span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">*</span> <span class="n">covar</span> <span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+  
+         <span class="n">output</span> <span class="p">[</span><span class="n">pIdx</span><span class="p">].</span><span class="n">intensity</span> <span class="o">=</span> <span class="mf">0.04</span><span class="n">f</span> <span class="o">+</span> <span class="n">det</span> <span class="o">-</span> <span class="mf">0.04</span><span class="n">f</span> <span class="o">*</span> <span class="n">trace</span> <span class="o">*</span> <span class="n">trace</span><span class="p">;</span>
+       <span class="p">}</span>
+</code></pre></div></div>
+<p>와 같은 부분이 있습니다다. covar 배열은
+\(\begin{pmatrix} xx(0) &amp; xy(1) &amp; xz(2)\\ yx(1) &amp; yy(5) &amp; yz(6)\\ zx(2) &amp; zy(6) &amp; zz(7) \end{pmatrix}\)
+의 행렬을 나타내는 배열로, 대각식(trace)를 계산한 뒤
+아래의  방법을 사용하여 행렬식(det)을 계산하였습니다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/79836443/109632291-3502a080-7b8a-11eb-9d8c-593650f22312.png" alt="determinant" class="align-center" width="50%" height="50%" /></p>
+
+<p>이후 output[pInx].intensity = 에서 2차원에서 R과 다르게 k가 det에도 곱해져있지만 전체적으로는 유사한 방법으로 R을 계산하여 3차원 공간 상의 corner를 찾아낼 수 있었습니다.</p>
 
           
         </section>
@@ -500,6 +514,28 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 
 
-
+    <script type="text/javascript">
+    window.MathJax = {
+    tex: {
+    packages: ['base', 'ams']
+    },
+    loader: {
+    load: ['ui/menu', '[tex]/ams']
+    },
+    startup: {
+    ready() {
+    MathJax.startup.defaultReady();
+    const Macro = MathJax._.input.tex.Symbol.Macro;
+    const MapHandler = MathJax._.input.tex.MapHandler.MapHandler;
+    const Array = MathJax._.input.tex.ams.AmsMethods.default.Array;
+    const env = new Macro('psmallmatrix', Array, [null, '(', ')', 'c', '.333em', '.2em', 'S', 1]);
+    MapHandler.getMap('AMSmath-environment').add('psmallmatrix', env);
+    }
+    }
+    };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
   </body>
 </html>
