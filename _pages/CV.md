@@ -1,8 +1,8 @@
-title: "CV"
-permalink: /categories/CV/
+title: "컴퓨터 비전"
+permalink: /categories/ComputerVision/
 layout: category
 author_profile: true
-taxonomy: CV
+taxonomy: ComputerVision
 ---
 
 Computer Vision

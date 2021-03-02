@@ -1,1 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://shvtr159.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shvtr159.github.io/" rel="alternate" type="text/html" /><updated>2021-03-01T22:49:20+09:00</updated><id>https://shvtr159.github.io/feed.xml</id><title type="html">Study Blog</title><subtitle>for study</subtitle><author><name>KYG</name></author></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://shvtr159.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shvtr159.github.io/" rel="alternate" type="text/html" /><updated>2021-03-02T16:22:04+09:00</updated><id>https://shvtr159.github.io/feed.xml</id><title type="html">Study Blog</title><subtitle>for study</subtitle><author><name>KYG</name></author><entry><title type="html">Harris corner detector</title><link href="https://shvtr159.github.io/computervision/harris/" rel="alternate" type="text/html" title="Harris corner detector" /><published>2021-03-02T00:00:00+09:00</published><updated>2021-03-02T00:00:00+09:00</updated><id>https://shvtr159.github.io/computervision/harris</id><content type="html" xml:base="https://shvtr159.github.io/computervision/harris/">&lt;p&gt;이미지에서 코너는 edge 등에 비해 noise와 같은 문제에도 안정적으로 descriptor의 역할을 할 수 있다. 
+이 때 corner를 찾기 위해서 사용하는 알고리즘 중 harris corner detector에 대해서 알아본다.&lt;/p&gt;
+
+&lt;h2 id=&quot;1-basic-idea&quot;&gt;1. Basic idea&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;flat :  지역에서는 모든 방향으로 변화가 없다&lt;/li&gt;
+  &lt;li&gt;edge : 영역에서는 edge 방향으로는 변화가 없으나 이에 수직한 방향으로는 변화가 있다.&lt;/li&gt;
+  &lt;li&gt;corner : 대부분의 뱡향으로 변화가 있다.&lt;br /&gt;
+&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/109519097-426a4d00-7aee-11eb-929c-12effbe45adc.png&quot; alt=&quot;change&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;이 변화를 측정하기 위해 작은 윈도우(window)를 설정하고 이 윈도우를 x축 방향으로 u, y축 방향으로 v 만큼 이동시킨다.
+이때 수식은 다음과 같다.&lt;/p&gt;
+
+&lt;p&gt;$\sum_{x,y} w(x,y)[I(x+u,y+v)-I(x,y)]^{2}$&lt;/p&gt;
+
+&lt;p&gt;x축, y축 방향 모두에 대해 변화가 크다면 이 값도 커질것이고, 이 값이 크면 corner로 본다.
+이 식은 Taylor series로 인해 다음과 같이 근사할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;$\approx \sum_{} [I(x,y)+uI_{x}+vI_{y}-I(x,y)]^{2}$&lt;/p&gt;
+
+&lt;p&gt;$= \sum_{} u^{2}I_{x}^{2}+2uvI_{x}I_{y}+v^{2}I^{2}$&lt;/p&gt;
+
+&lt;p&gt;그리고 이를 행렬로 나타내면 다음과 같이 된다.&lt;/p&gt;
+
+&lt;p&gt;[= \begin{bmatrix} u&amp;amp;v \end{bmatrix}\sum_{}\left ( \begin{bmatrix} I_{x}^{2} &amp;amp; I_{x}I_{y}\ I_{x}I_{y} &amp;amp; I_{y}^{2} \end{bmatrix}\right )\begin{bmatrix} u\ v \end{bmatrix}]&lt;/p&gt;
+
+&lt;p&gt;이때, 가운데 2x2 행렬을 Harris Matrix라고 부르며, corner 외에도 사용이 가능하다.&lt;/p&gt;</content><author><name>KYG</name></author><category term="ComputerVision" /><summary type="html">이미지에서 코너는 edge 등에 비해 noise와 같은 문제에도 안정적으로 descriptor의 역할을 할 수 있다. 이 때 corner를 찾기 위해서 사용하는 알고리즘 중 harris corner detector에 대해서 알아본다.</summary></entry></feed>
