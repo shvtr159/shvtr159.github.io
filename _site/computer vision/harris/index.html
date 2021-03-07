@@ -23,7 +23,7 @@
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="Study Blog">
 <meta property="og:title" content="Harris corner detector">
-<meta property="og:url" content="https://shvtr159.github.io/computervision/harris/">
+<meta property="og:url" content="https://shvtr159.github.io/computer%20vision/harris/">
 
 
   <meta property="og:description" content="이미지에서 코너는 edge 등에 비해 noise와 같은 문제에도 안정적으로 descriptor의 역할을 할 수 있습니다.  이 때 corner를 찾기 위해서 사용하는 알고리즘 중 harris corner detector에 대해서 알아봅니다.">
@@ -45,7 +45,7 @@
   
 
 
-<link rel="canonical" href="https://shvtr159.github.io/computervision/harris/">
+<link rel="canonical" href="https://shvtr159.github.io/computer%20vision/harris/">
 
 
 
@@ -362,9 +362,12 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 <h2 id="2-corner-판단">2. Corner 판단</h2>
 <p>위 Harris Matrix를 <strong>고유값 분해</strong> 하면 2개의 고유값(eigen value)와 고유벡터(eigen vector)들을 얻을 수 있습니다. 여기서 고유값이 크다는 의미는 이 고유값에 대응하는 고유벡터의 방향으로 변화가 크다는 것을 의미합니다. <strong>즉 corner는 대부분의 방향으로 변화가 있다고 했기때문에 고유값 분해로 얻어지는 2개의 고유값 모두 크다면 그 위치가 corner임을 알 수 있습니다.</strong> 이에 반해 하나의 고유값만이 크다면 한쪽 방향으로 변화가 생기는 부분이므로 edge, 고유값이 모두 작다면 변화가 크지 않은 위치이므로 flat한 영역임을 알 수 있습니다.</p>
 
+<p>그렇다면 어떻게 Harris Matrix의 고유값과 고유벡터가 이미지의 변화와 관련이 있는 것일까요?
+이는 선형대수의 Rank와 관련이 있습니다.  ~~flat는 rank가 0, 1, 2.~이렇게 됨. 고유값은 다를수 있으나 고유벡터 방향은 일치~</p>
+
 <p><img src="https://user-images.githubusercontent.com/79836443/109627618-2665ba80-7b85-11eb-8506-9f9592eaaa85.jpg" alt="eigenvalue" class="align-center" width="50%" height="50%" /></p>
 
-<p>그러나 매번 고유값과 고유벡터를 계산하는것은 쉽지 않기때문에 다음 식을 이용해 판단합니다.</p>
+<p>그러나 매번 고유값과 고유벡터를 계산하는것은 계산해야할것이 많기때문에 다음 식을 이용해 더 간단히 판단합니다.</p>
 
 \[R = det(M) - k(trace(M))^{2}      (k = 0.04 - 0.06)\]
 
@@ -372,7 +375,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 \[trace(M) = \lambda_{1} + \lambda_{2}\]
 
-<p>이 식을 통해 R이 계산되기 때문에 두 고유값의 변화에 따라 R은 다음과 같은 결과를 얻게 됩니다.</p>
+<p>이 식을 통해 R이 계산되어 두 고유값의 변화에 따라 R은 다음과 같은 결과를 얻게 됩니다.</p>
 
 <p><img src="https://user-images.githubusercontent.com/79836443/109629591-51510e00-7b87-11eb-9ab6-aa594c3a1358.jpg" alt="R" class="align-center" width="50%" height="50%" /></p>
 
@@ -394,7 +397,7 @@ point cloud를 이용하는 Point Cloud Library의 HarrisKeypoint3D라는 함수
 <p>와 같은 부분이 있습니다다. covar 배열은
 \(\begin{pmatrix} xx(0) &amp; xy(1) &amp; xz(2)\\ yx(1) &amp; yy(5) &amp; yz(6)\\ zx(2) &amp; zy(6) &amp; zz(7) \end{pmatrix}\)
 의 행렬을 나타내는 배열로, 대각식(trace)를 계산한 뒤
-아래의  방법을 사용하여 행렬식(det)을 계산하였습니다.</p>
+아래 사루스 법칙을 사용하여 행렬식(det)을 계산하였습니다.</p>
 
 <p><img src="https://user-images.githubusercontent.com/79836443/109632291-3502a080-7b8a-11eb-9d8c-593650f22312.png" alt="determinant" class="align-center" width="50%" height="50%" /></p>
 
@@ -417,7 +420,7 @@ point cloud를 이용하는 Point Cloud Library의 HarrisKeypoint3D라는 함수
     <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
     <span itemprop="keywords">
     
-      <a href="/categories/#computervision" class="page__taxonomy-item" rel="tag">ComputerVision</a>
+      <a href="/categories/#computer-vision" class="page__taxonomy-item" rel="tag">Computer Vision</a>
     
     </span>
   </p>
@@ -434,15 +437,25 @@ point cloud를 이용하는 Point Cloud Library의 HarrisKeypoint3D라는 함수
     <h4 class="page__share-title">공유하기</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Harris+corner+detector%20https%3A%2F%2Fshvtr159.github.io%2Fcomputervision%2Fharris%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Harris+corner+detector%20https%3A%2F%2Fshvtr159.github.io%2Fcomputer%2520vision%2Fharris%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshvtr159.github.io%2Fcomputervision%2Fharris%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshvtr159.github.io%2Fcomputer%2520vision%2Fharris%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fshvtr159.github.io%2Fcomputervision%2Fharris%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fshvtr159.github.io%2Fcomputer%2520vision%2Fharris%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
         
+  <nav class="pagination">
+    
+      <a href="#" class="pagination--pager disabled">이전</a>
+    
+    
+      <a href="/%EB%85%BC%EB%AC%B8/paper_3dmatch/" class="pagination--pager" title="3DMatch: Learning the Matching of Local 3D Geometry in Range Scans - 요약
+">다음</a>
+    
+  </nav>
+
       </div>
 
       
@@ -455,9 +468,55 @@ point cloud를 이용하는 Point Cloud Library의 HarrisKeypoint3D라는 함수
                 <div class="grid__wrapper">
                     
                     
+
+
+
+<div class="grid__item">
+    <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+        
+        <h2 class="archive__item-title no_toc" itemprop="headline">
+            
+            <a href="/%EB%85%BC%EB%AC%B8/paper_3dmatch/" rel="permalink">3DMatch: Learning the Matching of Local 3D Geometry in Range Scans - 요약
+</a>
+            
+        </h2>
+        <!--
+        
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        -->
+        
+        <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 03 2021</p>
+        
+
+        <p class="archive__item-excerpt" itemprop="description">3. Geometric Representation
+geometric matching의 목표는 3D geometry의 ‘fragments’간 robust한 대응관계를 만드는 것이다.
+</p>
+    </article>
+</div>
+
                     
                 </div>
             </div>
+            
             
 </div>
 
