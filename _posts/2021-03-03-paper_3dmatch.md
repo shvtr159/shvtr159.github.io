@@ -36,3 +36,7 @@ t-Stochastic Neighbor Embedding (t-SNE) : vector visualization을 위하여 자�
 스토캐스틱 gradient descent를 이용. 식의 yi 는 binary label(O or X), input xi 와 yihat 은 softmax layer의 output으로 나온 확률 estimate
 
 ### 5.2. Feature Visualization
+
+
+### References
+paper : Andy Zeng, Shuran Song, Matthias Nießner, Matthew Fisher, Jianxiong Xiao. 3DMatch: Learning the Matching of Local 3D Geometry in Range Scans. IEEE Conference on Computer Vision and Pattern Recognition (CVPR) 2017.
