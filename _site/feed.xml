@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://shvtr159.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shvtr159.github.io/" rel="alternate" type="text/html" /><updated>2021-04-08T23:11:46+09:00</updated><id>https://shvtr159.github.io/feed.xml</id><title type="html">Study Blog</title><subtitle>for study</subtitle><author><name>KYG</name></author><entry><title type="html">[Computer Graphics] Lec6 viewing</title><link href="https://shvtr159.github.io/graphics/computer-graphics-lec6-viewing/" rel="alternate" type="text/html" title="[Computer Graphics] Lec6 viewing" /><published>2021-04-08T00:00:00+09:00</published><updated>2021-04-08T00:00:00+09:00</updated><id>https://shvtr159.github.io/graphics/computer-graphics-lec6-viewing</id><content type="html" xml:base="https://shvtr159.github.io/graphics/computer-graphics-lec6-viewing/">&lt;h2 id=&quot;normalization&quot;&gt;Normalization&lt;/h2&gt;
-&lt;p&gt;통일성을 주기 위해 각각 다른 projection 종류에 맞는 projection matrix를 system에서 모두 수행하기 보다 projection은 항상 orthogonal projection을 하도록 만든다. 이 orthogonal projection을 했을 때 원하는 projection의 모습을 나타낼 수 있도록 data의 형태를 바꿔준다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://shvtr159.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shvtr159.github.io/" rel="alternate" type="text/html" /><updated>2021-04-09T03:06:18+09:00</updated><id>https://shvtr159.github.io/feed.xml</id><title type="html">Study Blog</title><subtitle>for study</subtitle><author><name>KYG</name></author><entry><title type="html">[Computer Graphics #5] Viewing - Orthogonal Projection</title><link href="https://shvtr159.github.io/graphics/computer-graphics-lec6-viewing/" rel="alternate" type="text/html" title="[Computer Graphics #5] Viewing - Orthogonal Projection" /><published>2021-04-08T00:00:00+09:00</published><updated>2021-04-08T00:00:00+09:00</updated><id>https://shvtr159.github.io/graphics/computer-graphics-lec6-viewing</id><content type="html" xml:base="https://shvtr159.github.io/graphics/computer-graphics-lec6-viewing/">&lt;h2 id=&quot;normalization&quot;&gt;Normalization&lt;/h2&gt;
+&lt;p&gt;통일성을 주기 위해 각각 다른 projection 종류에 맞는 projection matrix를 system에서 모두 수행하기보다 projection은 항상 orthogonal projection을 하도록 만든다. 이 orthogonal projection을 했을 때 원하는 projection의 모습을 나타낼 수 있도록 data의 형태를 바꿔준다.&lt;/p&gt;
 &lt;h4 id=&quot;pipeline-view&quot;&gt;Pipeline View&lt;/h4&gt;
 &lt;ol&gt;
   &lt;li&gt;modelview transformation&lt;/li&gt;
@@ -12,14 +12,14 @@
 &lt;p&gt;이 5단계 중 앞의 1~3단계에서 각각의 projection 종류에 맞는 view가 될 수 있도록  data를 바꿔서 나타내고 5단계에서 항상 orthogonal projection을 수행하도록 한다.&lt;/p&gt;
 
 &lt;h4 id=&quot;orthogonal-normalization&quot;&gt;Orthogonal Normalization&lt;/h4&gt;
-&lt;p&gt;이를 위해 4D homogeneous coordinate를 사용해야 한다. 우리는 Normalization을 통해 clip 영역은 항상 단순한 육면체 형태로만 나타내면 된다. glOrtho(left,right,bottom,top,near,far) 와 같이 정해진 영역을 모두 clipping 하지 않고 이를 가로, 세로, 높이 1의 정육면체에 맞게 scaling하여 이 작은 정육면체의 공간만 projection 한다.&lt;/p&gt;
+&lt;p&gt;이를 위해 4D homogeneous coordinate를 사용해야 한다. 우리는 Normalization을 통해 clip 영역은 항상 단순한 육면체 형태로만 나타내면 된다. OpenGL의 함수 glOrtho(left,right,bottom,top,near,far) 와 같이 정해진 영역을 모두 clipping 하지 않고 이를 가로, 세로, 높이 1의 정육면체에 맞게 scaling하여 이 작은 정육면체의 공간만 projection 한다.&lt;/p&gt;
 
-&lt;p&gt;이 scaling을 수행하기 위해 다음 2단계를 수행한다.&lt;/p&gt;
+&lt;p&gt;이 scaling을 수행하기 위해 다음 두단계를 수행한다.&lt;/p&gt;
 &lt;ol&gt;
-  &lt;li&gt;입력된 영역의 중점을 원점으로 이동한다. 
+  &lt;li&gt;입력된 영역의 중점을 원점으로 이동한다.&lt;br /&gt;
 \(T(-\frac{left+right}{2}, -\frac{bottom+top}{2}, -\frac{near+far}{2})\)&lt;/li&gt;
   &lt;li&gt;2의 길이를 가지도록 scaling 한다.&lt;br /&gt;
-$S(\frac{2}{left+right}, -\frac{2}{bottom+top}, -\frac{2}{near+far})$$&lt;/li&gt;
+\(S(\frac{2}{left+right}, -\frac{2}{bottom+top}, -\frac{2}{near+far})\)&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;이 2 단계는 다음과 같은 matrix로 표현된다.
@@ -30,78 +30,94 @@ $S(\frac{2}{left+right}, -\frac{2}{bottom+top}, -\frac{2}{near+far})$$&lt;/li&gt
 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 1
 \end{bmatrix}\)&lt;/p&gt;
 
-&lt;p&gt;camera의 center가 z=0에 있다는 가정 하에 \(M_{orth}=\begin{bmatrix}
+&lt;p&gt;camera의 center가 z=0에 있다는 가정하에 \(M_{orth}=\begin{bmatrix}
 1 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0\\ 
 0 &amp;amp; 1 &amp;amp; 0 &amp;amp; 0\\ 
 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0\\ 
 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 1
-\end{bmatrix}\)인 orthogonal projection matrix를 이용하여 최종 projection matrix는 $P=M_{orth}ST$의 matrix로  표현된다. 이 matrix를 수행하면 orthogonal matrix이므로 한 평면 위에 점들이 존재하게 된다.&lt;/p&gt;
+\end{bmatrix}\)인 orthogonal projection matrix를 이용하여 최종 projection matrix는 $P=M_{orth}ST$ 의 matrix로  표현된다. 이 matrix를 수행하면 orthogonal matrix이므로 한 평면 위에 점들이 존재하게 된다.&lt;/p&gt;
 
 &lt;h4 id=&quot;oblique-projection&quot;&gt;Oblique Projection&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/114040814-f36ac100-98be-11eb-8178-526dad4a8858.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/114040814-f36ac100-98be-11eb-8178-526dad4a8858.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;위와 같은 형태로 cube를 보기 위해 Oblique Projection을 수행하기 위해서는 Shear + Orthogonal projection을 수행해야 한다. 일반적인 cube는 위의 모양처럼 projection 될 수 없기 때문에 위와 같은 모양을 나타내기 위해서는 x방향과 y방향으로 shearing을 수행한다.&lt;/p&gt;</content><author><name>KYG</name></author><category term="Graphics" /><summary type="html">Normalization 통일성을 주기 위해 각각 다른 projection 종류에 맞는 projection matrix를 system에서 모두 수행하기 보다 projection은 항상 orthogonal projection을 하도록 만든다. 이 orthogonal projection을 했을 때 원하는 projection의 모습을 나타낼 수 있도록 data의 형태를 바꿔준다. Pipeline View modelview transformation projection transformation perspective division clipping projection</summary></entry><entry><title type="html">[Computer Graphics] Lec2 Camera model</title><link href="https://shvtr159.github.io/graphics/computer-graphics-lec-2-camera-model/" rel="alternate" type="text/html" title="[Computer Graphics] Lec2 Camera model" /><published>2021-04-01T00:00:00+09:00</published><updated>2021-04-01T00:00:00+09:00</updated><id>https://shvtr159.github.io/graphics/computer-graphics-lec-2-camera-model</id><content type="html" xml:base="https://shvtr159.github.io/graphics/computer-graphics-lec-2-camera-model/">&lt;h2 id=&quot;transformation&quot;&gt;Transformation&lt;/h2&gt;
-&lt;p&gt;transform 작업은 이 변환들이 같은 &lt;strong&gt;수학적 group&lt;/strong&gt;이라는 것을 알게되면 여러 작업을 한번에 수행하는데 큰 장점을 얻을 수 있습니다.
+&lt;p&gt;위와 같은 형태로 cube를 보기 위해 Oblique Projection을 수행하기 위해서는 Shear + Orthogonal projection을 수행해야 한다. 일반적인 cube는 위의 모양처럼 projection 될 수 없어서 위와 같은 모양을 나타내기 위해서는 x방향과 y방향으로 shearing을 수행한다. 이 shearing matrix를 $H(\Theta ,\Phi )$라 한다면 Projection matrix는 $P=M_{orth}H(\Theta ,\Phi )$로 나타나고 General case, 즉 shearing 한 후 orthogonal normalize projection까지 수행하는 matrix는 \(P=M_{orth}STH(\Theta ,\Phi )\)로 나타낼 수 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;perspective&quot;&gt;Perspective&lt;/h2&gt;
+&lt;h4 id=&quot;clipping&quot;&gt;clipping&lt;/h4&gt;
+&lt;p&gt;원하는 perspective의 영역만을 보기 위해 clipping을 수행한다. 그러나 clipping을 하기 전에 orthogonal projection을 위한 translation, scaling 등을 한다면 원하는 모양을 맞추기 어려워진다. 즉 실제로는 transformation을 수행한 뒤 clipping을 수행하는 것이 더 일반적이다.&lt;/p&gt;
+&lt;h4 id=&quot;simple-perspective&quot;&gt;Simple Perspective&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/114056780-f8367180-98cc-11eb-926b-0609c82c53a9.png&quot; alt=&quot;simple perspective&quot; class=&quot;align-center&quot; width=&quot;60%&quot; height=&quot;60%&quot; /&gt;
+위와 같이 perspective를 하려는 영역의 frustum이 있을 때, 가까이 있는 물체의 크기는 크고 멀리 있는 물체의 크기는 작게 보인다. 이를 orthogonal projection에 맞게 하기 위해서는 실제 물체의 크기를 변형해야만 한다. 또, frustum은 정육면체 모양으로 평행한 모양이 아니기 때문에 이 영역 또한 정육면체 모양으로 변형시켜야 한다. 그 결과 위에서 봤을 때 실제로 정사각형이었던 object는 사다리꼴의 모양으로 변형되게 된다.&lt;/p&gt;
+&lt;h2 id=&quot;hidden-surface-removal&quot;&gt;Hidden-Surface Removal&lt;/h2&gt;
+&lt;p&gt;rendering을 하는 과정에서 보이지 않는 부분의 정보는 필요하지 않다. 또, 만약 이 보이지 않는 부분의 data가 보이는 부분의 data보다 먼저 rendering 된다면 보이지 않아야 할 부분의 data가 덮어씌워 지게 되면서 처음 원했던 형태와 다른 형태로 rendering 될 수 있다. 이를 위해 depth test를 해서 가까운 부분에 있는 data만을 rendering 하기도 한다. 그러나 이 방법을 사용하지 않고 만약 data 안에서 보이지 않는 부분의 data를 없애준다면 계산량을 크게 줄일 수 있다. 이 이점을 얻기 위해 hidden-surface removal을 수행한다. 카메라의 시점이 결정되는 순간 가려질 것으로 예상되는 data를 잘라내고 보이는 부분의 data만을 redering  하는 것이다.&lt;/p&gt;
+
+&lt;p&gt;그러나 normalization을 하는 과정에서 이를 조심해야 하는 부분이 있다. normalization을 거치면서 hidden surface가 더 이상 hidden surface가 아니게 되는 경우도 있기 때문이다. 그렇기 때문에 상황에 따라서는 transform을 수행한 이후에 hidden-surface removal을 수행해야 한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;opengl&quot;&gt;OpenGL&lt;/h2&gt;
+&lt;p&gt;이전에 있던 gluPerspective같은 경우는 x, y, z의 field of view를 주기 때문에 symmetric하다. 하지만 glFrustum은 min, max값을 설정하기 때문에 unsymmetric할 수 있다. 이 unsymmetric한 경우는 normalize 하면서 왜곡이 된 상태로 orthogonal projection이 된다.&lt;/p&gt;
+
+&lt;p&gt;그러므로 gluPerspective, glFrustum 큰 차이가 없어 보이지만 위와 같이 왜곡이 필요한 경우에는 glFrustum을 사용해야만 한다.&lt;/p&gt;</content><author><name>KYG</name></author><category term="Graphics" /><summary type="html">Normalization 통일성을 주기 위해 각각 다른 projection 종류에 맞는 projection matrix를 system에서 모두 수행하기보다 projection은 항상 orthogonal projection을 하도록 만든다. 이 orthogonal projection을 했을 때 원하는 projection의 모습을 나타낼 수 있도록 data의 형태를 바꿔준다. Pipeline View modelview transformation projection transformation perspective division clipping projection</summary></entry><entry><title type="html">[Computer Graphics #3] Geometric Objects</title><link href="https://shvtr159.github.io/geometric-objects/" rel="alternate" type="text/html" title="[Computer Graphics #3] Geometric Objects" /><published>2021-04-02T00:00:00+09:00</published><updated>2021-04-02T00:00:00+09:00</updated><id>https://shvtr159.github.io/geometric-objects</id><content type="html" xml:base="https://shvtr159.github.io/geometric-objects/"></content><author><name>KYG</name></author><summary type="html"></summary></entry><entry><title type="html">[Computer Graphics #2] Camera model</title><link href="https://shvtr159.github.io/graphics/computer-graphics-lec-2-camera-model/" rel="alternate" type="text/html" title="[Computer Graphics #2] Camera model" /><published>2021-04-01T00:00:00+09:00</published><updated>2021-04-01T00:00:00+09:00</updated><id>https://shvtr159.github.io/graphics/computer-graphics-lec-2-camera-model</id><content type="html" xml:base="https://shvtr159.github.io/graphics/computer-graphics-lec-2-camera-model/">&lt;h2 id=&quot;transformation&quot;&gt;Transformation&lt;/h2&gt;
+&lt;p&gt;transform 작업은 이 변환들이 같은 &lt;strong&gt;수학적 group&lt;/strong&gt;이라는 것을 알게 되면 여러 작업을 한 번에 수행할 수 있다는 큰 장점을 얻을 수 있다.
 group이 되기 위한 조건으로는&lt;/p&gt;
 &lt;ol&gt;
-  &lt;li&gt;이 집합은 어떤 operator에 대해 닫혀있어야 합니다.
+  &lt;li&gt;이 집합은 어떤 operator에 대해 닫혀있어야 한다.
 \(A \in G\,and\,B \in G \rightarrow A*B \in G\)&lt;/li&gt;
-  &lt;li&gt;다음을 만족하는 identity element I가 존재해야합니다.&lt;br /&gt;
+  &lt;li&gt;다음을 만족하는 identity element I가 존재해야 한다.&lt;br /&gt;
 \(A*I=I*A=A\)&lt;/li&gt;
-  &lt;li&gt;element $A$는 다음을 만족하는 inverse $A^{-1}$이 존재해야합니다.
+  &lt;li&gt;element $A$는 다음을 만족하는 inverse $A^{-1}$이 존재해야 한다.
 \(A^{-1}*A = A*A^{-1}=I\)&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;translation은 matrix로 나타나고 matrix의 곱셈은 닫혀있습니다. 2번과 3번조건 또한 I 행렬과 역행렬을 이용해 증명할 수 있습니다. 이렇게 이 수학적 group인것을 이용하면 다음과 같은 장점을 얻을 수 있습니다.&lt;/p&gt;
+&lt;p&gt;translation은 matrix로 나타나고 matrix의 곱셈은 닫혀있다. 2번과 3번 조건 또한 I 행렬과 역행렬을 이용해 증명할 수 있다. 이렇게 이 수학적 group인것을 이용하면 다음과 같은 장점을 얻을 수 있다.&lt;/p&gt;
 
-&lt;p&gt;어떤 점들을 회전시킨 뒤 d만큼 이동시켰습니다. 다시 이 점들을 원래상태로 되돌리기 위해서는 -d만큼 이동한 뒤 다시 반대로 회전시켜야만 합니다. 그러나 이 group을 이용하면 회전을 $T_{1}$, 이동을 $T_{2}$라고 했을 때, 다시 원상태로 돌아가기 위해 $T_{1}^{-1} * T_{2}^{-1}$ 를 한번만 수행해주면 됩니다.&lt;/p&gt;
+&lt;p&gt;어떤 점들을 회전시킨 뒤 d만큼 이동시켰다. 다시 이 점들을 원래상태로 되돌리기 위해서는 -d만큼 이동한 뒤 다시 반대로 회전시켜야만 한다. 그러나 회전을 $T_{1}$, 이동을 $T_{2}$라고 했을 때 이 group을 이용하면, 다시 원상태로 돌아가기 위해 $T_{1}^{-1} * T_{2}^{-1}$ 를 한번만 수행해주면 된다.&lt;/p&gt;
 
 &lt;h2 id=&quot;2d-planar-transtormation의-종류&quot;&gt;2D planar Transtormation의 종류&lt;/h2&gt;
 &lt;h4 id=&quot;translation&quot;&gt;Translation&lt;/h4&gt;
-&lt;p&gt;물체들 이동시킵니다.&lt;/p&gt;</content><author><name>KYG</name></author><category term="Graphics" /><summary type="html">Transformation transform 작업은 이 변환들이 같은 수학적 group이라는 것을 알게되면 여러 작업을 한번에 수행하는데 큰 장점을 얻을 수 있습니다. group이 되기 위한 조건으로는 이 집합은 어떤 operator에 대해 닫혀있어야 합니다. \(A \in G\,and\,B \in G \rightarrow A*B \in G\) 다음을 만족하는 identity element I가 존재해야합니다. \(A*I=I*A=A\) element $A$는 다음을 만족하는 inverse $A^{-1}$이 존재해야합니다. \(A^{-1}*A = A*A^{-1}=I\)</summary></entry><entry><title type="html">[Computer Graphics] Lec1 빛과 색</title><link href="https://shvtr159.github.io/graphics/computer-graphics-geometric-objects/" rel="alternate" type="text/html" title="[Computer Graphics] Lec1 빛과 색" /><published>2021-03-24T00:00:00+09:00</published><updated>2021-03-24T00:00:00+09:00</updated><id>https://shvtr159.github.io/graphics/computer-graphics-geometric-objects</id><content type="html" xml:base="https://shvtr159.github.io/graphics/computer-graphics-geometric-objects/">&lt;p&gt;그래픽을 만들어내기 위해서는 빛에 대한 내용을 알고 있어야 합니다.&lt;/p&gt;
+&lt;p&gt;물체들 이동시킵니다.&lt;/p&gt;</content><author><name>KYG</name></author><category term="Graphics" /><summary type="html">Transformation transform 작업은 이 변환들이 같은 수학적 group이라는 것을 알게 되면 여러 작업을 한 번에 수행할 수 있다는 큰 장점을 얻을 수 있다. group이 되기 위한 조건으로는 이 집합은 어떤 operator에 대해 닫혀있어야 한다. \(A \in G\,and\,B \in G \rightarrow A*B \in G\) 다음을 만족하는 identity element I가 존재해야 한다. \(A*I=I*A=A\) element $A$는 다음을 만족하는 inverse $A^{-1}$이 존재해야 한다. \(A^{-1}*A = A*A^{-1}=I\)</summary></entry><entry><title type="html">[Computer Graphics #1] 빛과 색</title><link href="https://shvtr159.github.io/graphics/computer-graphics-geometric-objects/" rel="alternate" type="text/html" title="[Computer Graphics #1] 빛과 색" /><published>2021-03-24T00:00:00+09:00</published><updated>2021-03-24T00:00:00+09:00</updated><id>https://shvtr159.github.io/graphics/computer-graphics-geometric-objects</id><content type="html" xml:base="https://shvtr159.github.io/graphics/computer-graphics-geometric-objects/">&lt;p&gt;그래픽을 만들어내기 위해서는 빛에 대한 내용 또한 알고 있어야 한다.&lt;/p&gt;
 
 &lt;h2 id=&quot;light&quot;&gt;Light&lt;/h2&gt;
-&lt;p&gt;태양과 형광등과 같은 일반적인 광원은 가시광선의 거의 모든 영역을 포함하고있기 때문에 모든 색을 표현할 수 있습니다. 그러나 광원에서 나오는 빛의 색이 한정되어있는 경우도 있기때문에 광원에서 나온 빛이 물체에 반사되어 카메라로 들어올 때의 모습을 표현하기 위해 빛의 특징 또한 알고있어야 합니다.&lt;/p&gt;
+&lt;p&gt;태양과 형광등과 같은 일반적인 광원은 가시광선의 거의 모든 영역을 포함하고 있기 때문에 모든 색을 표현할 수 있다. 그러나 광원에서 나오는 빛의 색이 한정되어있는 경우도 있기 때문에 광원에서 나온 빛이 물체에 반사되어 카메라로 들어올 때의 모습을 표현하기 위해 빛의 특징 또한 알고 있어야 한다.&lt;/p&gt;
 
 &lt;h4 id=&quot;전자기파&quot;&gt;전자기파&lt;/h4&gt;
-&lt;p&gt;빛은 전자기파로 이루어져있는데 그중 우리가 볼 수 있는 400nm ~ 700nm 의 파장을 가지는 전자기파를 &lt;strong&gt;가시광선(Visible spectrum)&lt;/strong&gt;이라고 부릅니다. 이 외에도 400nm보다 파장이 짧은 쪽에 자외선(Ultra Violet), 700nm보다 파장이 긴쪽에 적외선(Infra Red)이 있습니다. 그래픽스에는 주로 눈에 보이는 부분을 다루기 때문에 가시광선 부분을 주로 사용합니다. 
+&lt;p&gt;빛은 전자기파로 이루어져 있는데 그중 우리가 볼 수 있는 400nm ~ 700nm 의 파장을 가지는 전자기파를 &lt;strong&gt;가시광선(Visible spectrum)&lt;/strong&gt;이라고 부른다. 이 외에도 400nm보다 파장이 짧은 쪽에 자외선(Ultra Violet), 700nm보다 파장이 긴쪽에 적외선(Infra Red)이 있다. 그래픽스에는 주로 눈에 보이는 부분을 다루기 때문에 가시광선 부분을 주로 사용한다. 
 &lt;img src=&quot;https://user-images.githubusercontent.com/79836443/113173311-35bf4d00-9284-11eb-9498-480fd7f31e41.jpg&quot; alt=&quot;SL_EMspectrum&quot; class=&quot;align-center&quot; width=&quot;70%&quot; height=&quot;70%&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;빛의 3원색은 &lt;strong&gt;Red, Green, Blue&lt;/strong&gt;로 빛은 합쳐질수록 흰색에 가까워지기에 태양과 형광등과 같이 가시광선의 모든 영역을 포함하고 있는 빛은 흰색으로 나타나게 됩니다. 만약 이 흰색의 태양빛이 물체에 닿으면 물체의 특성에 따라 일부 색은 흡수되고 일부 색은 반사됩니다.&lt;/p&gt;
+&lt;p&gt;빛의 3원색은 &lt;strong&gt;Red, Green, Blue&lt;/strong&gt;로 빛은 합쳐질수록 흰색에 가까워지기에 태양, 형광등과 같이 가시광선의 모든 영역을 포함하고 있는 빛은 흰색으로 나타나게 된다. 만약 이 흰색의 태양 빛이 물체에 닿으면 물체의 특성에 따라 일부 색은 흡수되고 일부 색은 반사된다.&lt;/p&gt;
 
-&lt;p&gt;우리가 물체를 볼 때, 물체의 색은 흡수된 색이 아닌 반사된 색이 눈에 들어와 물체의 색을 보게 됩니다. 그렇기때문에 모든 빛을 반사하는 물체는 흰색으로 보이고 모든 빛을 흡수한 물체는 검은색으로 보이게 됩니다.
-이 반사되는 빛은 빛과 반사율에 의해 결정됩니다. 아래의 그림과 같이 빛의 세기가 더 세더라도 반사율에 따라 실제로 반사되는 빛의 세기가 달라지게 됩니다.&lt;/p&gt;
+&lt;p&gt;우리가 물체를 볼 때, 물체의 색은 물체에서 반사된 색의 빛이 눈에 들어와 물체의 색으로 인식하게 된다. 그렇기 때문에 모든 빛을 반사하는 물체는 흰색으로 보이고 모든 빛을 흡수한 물체는 검은색으로 보이게 된다.
+이 반사되는 빛은 빛과 반사율에 의해 결정된다. 아래의 그림과 같이 빛의 세기가 더 세더라도 반사율에 따라 실제로 반사되는 빛의 세기가 달라진다.&lt;/p&gt;
 
-&lt;p&gt;반사된 빛은 $R(\lambda)=r(\lambda)E(\lambda)=(1-a(\lambda))E(\lambda)$ 식과 같이 물체의 Reflectance X 빛의 세기의 형태로 반사되어 우리 눈에 들어오게 됩니다.&lt;/p&gt;
+&lt;p&gt;반사된 빛은 $R(\lambda)=r(\lambda)E(\lambda)=(1-a(\lambda))E(\lambda)$ 식과 같이 물체의 Reflectance X 빛의 세기의 형태로 반사되어 우리 눈에 들어오게 된다.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/113188907-9440f700-9295-11eb-8a0a-fbe5275c0e98.jpg&quot; alt=&quot;Ref Abs&quot; class=&quot;align-center&quot; width=&quot;80%&quot; height=&quot;80%&quot; /&gt;&lt;/p&gt;
 &lt;h4 id=&quot;sensor&quot;&gt;Sensor&lt;/h4&gt;
-&lt;p&gt;이 반사된 빛을 저장하기 위해서 카메라는 sensor를 이용합니다. 카메라에 들어온 빛은 센서의 Photodiode에 도착하고 &lt;strong&gt;광전자 효과(Photoelectric Effect)&lt;/strong&gt;에 의해 전기신호로 변환됩니다. 이 센서도 역시 R, G, B를 따로따로 받아들입니다. 초당 빛의 에너지를 저장합니다. 따로 받아들이기 때문에 실제로 그 위치가 서로 다른데 이 문제는 해상도를 높여 해결합니다.&lt;/p&gt;
+&lt;p&gt;이 반사된 빛을 저장하기 위해서 카메라는 sensor를 이용한다. 카메라에 들어온 빛은 센서의 Photodiode에 도착하고 &lt;strong&gt;광전자 효과(Photoelectric Effect)&lt;/strong&gt;에 의해 전기신호로 변환된다. 이 센서도 역시 R, G, B를 따로따로 받아들이며 초당 빛의 에너지를 밝기값으로 저장하게 된다. 같은 빛의 R, G, B를 따로 받아들이기 때문에 실제로 그 위치가 서로 다른데 이 문제는 해상도를 높여 해결한다.&lt;/p&gt;
 
-&lt;p&gt;이 때 R, G, B 센서의 배열을 보면 2x2 사각형 안에 R 센서 1개, B 센서 1개, G 센서 2개로 센서가 구성되게 되는데, 이는 Green값이 밝기값에 더 민감한 정보이기때문에 2개를 사용하여 구성합니다. 이처럼 사람의 시각과 같이 R, G, B 3가지 색상을 기본으로 설정하기로 한 이론을 &lt;strong&gt;Trichromatic Theory&lt;/strong&gt;라고 하며, 이미지나 프린터 등에서 이 3가지의 색을 이용해 여러가지 색을 나타내게 됩니다.&lt;/p&gt;
+&lt;p&gt;이 때 R, G, B 센서의 배열을 보면 2x2 사각형 안에 R 센서 1개, B 센서 1개, G 센서 2개로 센서가 구성되게 되는데, 그 이유는 Green값이 밝기값에 더 민감한 정보이기때문이다. 이처럼 사람의 시각과 같이 R, G, B 3가지 색상을 기본으로 설정하기로 한 이론을 &lt;strong&gt;Trichromatic Theory&lt;/strong&gt;라고 하며, 이미지나 프린터 등에서 이 3가지의 색을 이용해 여러 가지 색을 나타내게 된다.&lt;/p&gt;
 
 &lt;h4 id=&quot;brightness-luminace&quot;&gt;Brightness (Luminace)&lt;/h4&gt;
-&lt;p&gt;사람의 눈은 color정보보다 밝기정보에 더 민감합니다. 그러나 real world는 높은 Dynamic Range를 가지는데 반해 카메라는 Dynamic Range가 크지 않아 아래와 같이 밝기를 조절하는데 어려움이 있습니다.&lt;/p&gt;
+&lt;p&gt;사람의 눈은 color정보보다 밝기정보에 더 민감하다. 그러나 real world는 높은 Dynamic Range를 가지는 데 반해 카메라는 Dynamic Range가 크지 않아 아래와 같이 밝기를 조절하는 데 어려움이 있다.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/113318829-d0cf2a00-934b-11eb-810c-d208828ace17.jpg&quot; alt=&quot;camera range&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;이 문제를 해결하기 위해 &lt;strong&gt;tone mapping&lt;/strong&gt;을 사용합니다.  tone mapping은 여러 Dynamic Range를 가진 사진을 합쳐 하나의 사진으로 만들어 높은 Dynamic range를 가질 수 있게 합니다. 그 예시로 아래 사진은 같은 장면을 여러 Dynamic Range를 가진 이미지로 나타낸 것으로 이 이미지들을 tone mapping 하여 새로운 이미지를 만들어 냅니다.&lt;/p&gt;
+&lt;p&gt;이 문제를 해결하기 위해 &lt;strong&gt;tone mapping&lt;/strong&gt;을 사용한다.  tone mapping은 여러 Dynamic Range를 가진 사진을 하나의 사진으로 합쳐 높은 Dynamic range를 가질 수 있도록 해준다. 그 예시로 아래 사진은 같은 장면을 여러 Dynamic Range를 가진 이미지로 나타낸 것으로 이 이미지들을 tone mapping 하여 새로운 이미지를 만들어 낸다.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/113319529-7c787a00-934c-11eb-966c-51a83ab229aa.jpg&quot; alt=&quot;Dynamic range&quot; /&gt;
 &lt;img src=&quot;https://user-images.githubusercontent.com/79836443/113319775-c4979c80-934c-11eb-9583-fdb418f750c3.jpg&quot; alt=&quot;tone mapping&quot; class=&quot;align-center&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;색-공간-color-space&quot;&gt;색 공간 (Color space)&lt;/h4&gt;
-&lt;p&gt;1.&lt;strong&gt;YUV&lt;/strong&gt; : Luminance와 chrominance를 분리해서 표현이 가능합니다. 밝기를 나타내는 유일한 채널 Y와 2가지 색 채널  U, V로 구성됩니다. RGB와의 관계는 다음과 같습니다.&lt;/p&gt;
+&lt;p&gt;1.&lt;strong&gt;YUV&lt;/strong&gt; : Luminance와 chrominance를 분리해서 표현이 가능하다. 밝기를 나타내는 유일한 채널 Y와 2가지 색 채널  U, V로 구성된다. RGB와의 관계는 다음과 같다.&lt;/p&gt;
 
 \[\begin{bmatrix} Y\\ U\\ V \end{bmatrix} = \begin{bmatrix} .299 &amp;amp; .587 &amp;amp; .114\\ -.14713 &amp;amp; -.28886 &amp;amp; .436\\ .615 &amp;amp; -.51499 &amp;amp; -.10001 \end{bmatrix}\begin{bmatrix} R\\ G\\ B \end{bmatrix}\]
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/113321317-708db780-934e-11eb-8283-d483481d38ac.jpg&quot; alt=&quot;YUV&quot; class=&quot;align-center&quot; width=&quot;80%&quot; height=&quot;80%&quot; /&gt;&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;RGB&lt;/strong&gt; : 가장 편하게 사용하는 좌표계입니다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;HSV&lt;/strong&gt; : 사람이 이해하기 가장 쉬운 색 좌표계입니다. H는 Hue로 색의 종류, S는 Saturation로 채도를 나타냅니다. V는 Value로 밝기를 나타내게됩니다.
+  &lt;li&gt;&lt;strong&gt;RGB&lt;/strong&gt; : 가장 편하게 사용하는 좌표계.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;HSV&lt;/strong&gt; : 사람이 이해하기 가장 쉬운 색 좌표계로, H(Hue)는 색의 종류, S(Saturation)는 채도를 나타낸다. V는 Value로 밝기를 나타낸다.
 &lt;img src=&quot;https://user-images.githubusercontent.com/79836443/113321763-e09c3d80-934e-11eb-9df9-92899dde28cf.jpg&quot; alt=&quot;HSV&quot; class=&quot;align-center&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>KYG</name></author><category term="Graphics" /><summary type="html">그래픽을 만들어내기 위해서는 빛에 대한 내용을 알고 있어야 합니다.</summary></entry><entry><title type="html">3DMatch: Learning the Matching of Local 3D Geometry in Range Scans - 요약</title><link href="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/paper_3dmatch/" rel="alternate" type="text/html" title="3DMatch: Learning the Matching of Local 3D Geometry in Range Scans - 요약" /><published>2021-03-03T00:00:00+09:00</published><updated>2021-03-03T00:00:00+09:00</updated><id>https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/paper_3dmatch</id><content type="html" xml:base="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/paper_3dmatch/">&lt;h2 id=&quot;3-geometric-representation&quot;&gt;3. Geometric Representation&lt;/h2&gt;
+&lt;/ol&gt;</content><author><name>KYG</name></author><category term="Graphics" /><summary type="html">그래픽을 만들어내기 위해서는 빛에 대한 내용 또한 알고 있어야 한다.</summary></entry><entry><title type="html">3DMatch: Learning the Matching of Local 3D Geometry in Range Scans - 요약</title><link href="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/paper_3dmatch/" rel="alternate" type="text/html" title="3DMatch: Learning the Matching of Local 3D Geometry in Range Scans - 요약" /><published>2021-03-03T00:00:00+09:00</published><updated>2021-03-03T00:00:00+09:00</updated><id>https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/paper_3dmatch</id><content type="html" xml:base="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/paper_3dmatch/">&lt;h2 id=&quot;3-geometric-representation&quot;&gt;3. Geometric Representation&lt;/h2&gt;
 &lt;p&gt;geometric matching의 목표는 3D geometry의 ‘fragments’간 robust한 대응관계를 만드는 것이다.&lt;/p&gt;
 
 &lt;h2 id=&quot;5-geometric-matching-network&quot;&gt;5. Geometric Matching Network&lt;/h2&gt;
