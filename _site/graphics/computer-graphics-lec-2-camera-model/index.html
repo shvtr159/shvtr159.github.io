@@ -9,28 +9,32 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Study Blog</title>
-<meta name="description" content="for study">
+<!-- begin _includes/seo.html --><title>[Computer Graphics] Lec2 Camera model | Study Blog</title>
+<meta name="description" content="Transformation transform 작업은 이 변환들이 같은 수학적 group이라는 것을 알게되면 여러 작업을 한번에 수행하는데 큰 장점을 얻을 수 있습니다. group이 되기 위한 조건으로는    이 집합은 어떤 operator에 대해 닫혀있어야 합니다. \(A \in G\,and\,B \in G \rightarrow A*B \in G\)   다음을 만족하는 identity element I가 존재해야합니다. \(A*I=I*A=A\)   element $A$는 다음을 만족하는 inverse $A^{-1}$이 존재해야합니다. \(A^{-1}*A = A*A^{-1}=I\)">
 
 
   <meta name="author" content="KYG">
   
+  <meta property="article:author" content="KYG">
+  
 
 
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="Study Blog">
-<meta property="og:title" content="Study Blog">
-<meta property="og:url" content="https://shvtr159.github.io/">
+<meta property="og:title" content="[Computer Graphics] Lec2 Camera model">
+<meta property="og:url" content="https://shvtr159.github.io/graphics/computer-graphics-lec-2-camera-model/">
 
 
-  <meta property="og:description" content="for study">
-
-
-
+  <meta property="og:description" content="Transformation transform 작업은 이 변환들이 같은 수학적 group이라는 것을 알게되면 여러 작업을 한번에 수행하는데 큰 장점을 얻을 수 있습니다. group이 되기 위한 조건으로는    이 집합은 어떤 operator에 대해 닫혀있어야 합니다. \(A \in G\,and\,B \in G \rightarrow A*B \in G\)   다음을 만족하는 identity element I가 존재해야합니다. \(A*I=I*A=A\)   element $A$는 다음을 만족하는 inverse $A^{-1}$이 존재해야합니다. \(A^{-1}*A = A*A^{-1}=I\)">
 
 
 
+
+
+
+
+  <meta property="article:published_time" content="2021-04-01T00:00:00+09:00">
 
 
 
@@ -41,7 +45,7 @@
   
 
 
-<link rel="canonical" href="https://shvtr159.github.io/">
+<link rel="canonical" href="https://shvtr159.github.io/graphics/computer-graphics-lec-2-camera-model/">
 
 
 
@@ -103,9 +107,33 @@
 <!-- end custom head snippets -->
 
 
+  <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
   </head>
 
-  <body class="layout--home">
+  <body class="layout--single">
     <nav class="skip-links">
   <h2 class="screen-reader-text">Skip links</h2>
   <ul>
@@ -263,24 +291,136 @@
 
 
 
-  <div class="archive">
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Computer Graphics] Lec2 Camera model">
+    <meta itemprop="description" content="Transformationtransform 작업은 이 변환들이 같은 수학적 group이라는 것을 알게되면 여러 작업을 한번에 수행하는데 큰 장점을 얻을 수 있습니다.group이 되기 위한 조건으로는  이 집합은 어떤 operator에 대해 닫혀있어야 합니다.\(A \in G\,and\,B \in G \rightarrow A*B \in G\)  다음을 만족하는 identity element I가 존재해야합니다.\(A*I=I*A=A\)  element $A$는 다음을 만족하는 inverse $A^{-1}$이 존재해야합니다.\(A^{-1}*A = A*A^{-1}=I\)">
+    <meta itemprop="datePublished" content="2021-04-01T00:00:00+09:00">
     
-      <h1 id="page-title" class="page__title"></h1>
+
+    <div class="page__inner-wrap">
+      
+        <header>
+            <h1 id="page-title" class="page__title" itemprop="headline">[Computer Graphics] Lec2 Camera model
+</h1>
+        <!--
+            
+
+  <p class="page__meta">
     
+
     
 
-<h3 class="archive__subtitle">최근 포스트</h3>
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          최대 1 분 소요
+        
+      </span>
+    
+  </p>
 
 
+        -->
+            <p class="page__date"><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트: <time datetime="2021-04-01T00:00:00+09:00">April 01, 2021</time></p>
+        </header>
+        
+
+        <section class="page__content" itemprop="text">
+          
+          <h2 id="transformation">Transformation</h2>
+<p>transform 작업은 이 변환들이 같은 <strong>수학적 group</strong>이라는 것을 알게되면 여러 작업을 한번에 수행하는데 큰 장점을 얻을 수 있습니다.
+group이 되기 위한 조건으로는</p>
+<ol>
+  <li>이 집합은 어떤 operator에 대해 닫혀있어야 합니다.
+\(A \in G\,and\,B \in G \rightarrow A*B \in G\)</li>
+  <li>다음을 만족하는 identity element I가 존재해야합니다.<br />
+\(A*I=I*A=A\)</li>
+  <li>element $A$는 다음을 만족하는 inverse $A^{-1}$이 존재해야합니다.
+\(A^{-1}*A = A*A^{-1}=I\)</li>
+</ol>
+
+<p>translation은 matrix로 나타나고 matrix의 곱셈은 닫혀있습니다. 2번과 3번조건 또한 I 행렬과 역행렬을 이용해 증명할 수 있습니다. 이렇게 이 수학적 group인것을 이용하면 다음과 같은 장점을 얻을 수 있습니다.</p>
+
+<p>어떤 점들을 회전시킨 뒤 d만큼 이동시켰습니다. 다시 이 점들을 원래상태로 되돌리기 위해서는 -d만큼 이동한 뒤 다시 반대로 회전시켜야만 합니다. 그러나 이 group을 이용하면 회전을 $T_{1}$, 이동을 $T_{2}$라고 했을 때, 다시 원상태로 돌아가기 위해 $T_{1}^{-1} * T_{2}^{-1}$ 를 한번만 수행해주면 됩니다.</p>
+
+<h2 id="2d-planar-transtormation의-종류">2D planar Transtormation의 종류</h2>
+<h4 id="translation">Translation</h4>
+<p>물체들 이동시킵니다.</p>
+
+          
+        </section>
+
+        <footer class="page__meta">
+          
+          
 
 
-<div class="entries-list">
   
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
     
+      <a href="/categories/#graphics" class="page__taxonomy-item" rel="tag">Graphics</a>
+    
+    </span>
+  </p>
+
+
+          
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2021-04-01T00:00:00+09:00">April 1, 2021</time></p>
+
+
+        </footer>
+
+        <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BComputer+Graphics%5D+Lec2+Camera+model%20https%3A%2F%2Fshvtr159.github.io%2Fgraphics%2Fcomputer-graphics-lec-2-camera-model%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshvtr159.github.io%2Fgraphics%2Fcomputer-graphics-lec-2-camera-model%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fshvtr159.github.io%2Fgraphics%2Fcomputer-graphics-lec-2-camera-model%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+        
+  <nav class="pagination">
+    
+      <a href="/graphics/computer-graphics-geometric-objects/" class="pagination--pager" title="[Computer Graphics] Lec1 빛과 색
+">이전</a>
+    
+    
+      <a href="/graphics/computer-graphics-lec6-viewing/" class="pagination--pager" title="[Computer Graphics] Lec6 viewing
+">다음</a>
+    
+  </nav>
+
+      </div>
+
+      
+    </article>
+
+    
+            
+            <div class="page__related">
+                <h4 class="page__related-title">참고</h4>
+                <div class="grid__wrapper">
+                    
+                    
 
 
 
-<div class="list__item">
+<div class="grid__item">
     <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
         
         <h2 class="archive__item-title no_toc" itemprop="headline">
@@ -321,62 +461,12 @@
     </article>
 </div>
 
-  
-    
+                    
+                    
 
 
 
-<div class="list__item">
-    <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-        
-        <h2 class="archive__item-title no_toc" itemprop="headline">
-            
-            <a href="/graphics/computer-graphics-lec-2-camera-model/" rel="permalink">[Computer Graphics] Lec2 Camera model
-</a>
-            
-        </h2>
-        <!--
-        
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          최대 1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-        -->
-        
-        <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 01 2021</p>
-        
-
-        <p class="archive__item-excerpt" itemprop="description">Transformation
-transform 작업은 이 변환들이 같은 수학적 group이라는 것을 알게되면 여러 작업을 한번에 수행하는데 큰 장점을 얻을 수 있습니다.
-group이 되기 위한 조건으로는
-
-  이 집합은 어떤 operator에 대해 닫혀있어야 합니다.
-\(A \in ...</p>
-    </article>
-</div>
-
-  
-    
-
-
-
-<div class="list__item">
+<div class="grid__item">
     <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
         
         <h2 class="archive__item-title no_toc" itemprop="headline">
@@ -417,12 +507,12 @@ group이 되기 위한 조건으로는
     </article>
 </div>
 
-  
-    
+                    
+                    
 
 
 
-<div class="list__item">
+<div class="grid__item">
     <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
         
         <h2 class="archive__item-title no_toc" itemprop="headline">
@@ -464,12 +554,12 @@ geometric matching의 목표는 3D geometry의 ‘fragments’간 robust한 대�
     </article>
 </div>
 
-  
-    
+                    
+                    
 
 
 
-<div class="list__item">
+<div class="grid__item">
     <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
         
         <h2 class="archive__item-title no_toc" itemprop="headline">
@@ -511,14 +601,13 @@ geometric matching의 목표는 3D geometry의 ‘fragments’간 robust한 대�
     </article>
 </div>
 
-  
+                    
+                </div>
+            </div>
+            
+            
 </div>
 
-
-
-
-  </div>
-</div>
     </div>
 
     

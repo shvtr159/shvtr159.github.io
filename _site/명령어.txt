@@ -1,4 +1,0 @@
-bundle instsall
-
-cd C:\Users\admin\gitblog
-jekyll serve
