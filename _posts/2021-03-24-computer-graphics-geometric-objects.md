@@ -1,5 +1,5 @@
 ---
-title: "[Computer Graphics] Lec1 빛과 색"
+title: "[Computer Graphics #1] 빛과 색"
 use_math: true
 categories:
 - Graphics
@@ -12,7 +12,7 @@ categories:
 
 #### 전자기파
 빛은 전자기파로 이루어져있는데 그중 우리가 볼 수 있는 400nm ~ 700nm 의 파장을 가지는 전자기파를 **가시광선(Visible spectrum)**이라고 부릅니다. 이 외에도 400nm보다 파장이 짧은 쪽에 자외선(Ultra Violet), 700nm보다 파장이 긴쪽에 적외선(Infra Red)이 있습니다. 그래픽스에는 주로 눈에 보이는 부분을 다루기 때문에 가시광선 부분을 주로 사용합니다. 
-![SL_EMspectrum](https://user-images.githubusercontent.com/79836443/113173311-35bf4d00-9284-11eb-9498-480fd7f31e41.jpg){: .align-center}{: width="70%" height="70%"}
+![SL_EMspectrum](https://user-images.githubusercontent.com/79836443/113173311-35bf4d00-9284-11eb-9498-480fd7f31e41.jpg){:.align-center}{: width="70%" height="70%"}
 
 빛의 3원색은 **Red, Green, Blue**로 빛은 합쳐질수록 흰색에 가까워지기에 태양과 형광등과 같이 가시광선의 모든 영역을 포함하고 있는 빛은 흰색으로 나타나게 됩니다. 만약 이 흰색의 태양빛이 물체에 닿으면 물체의 특성에 따라 일부 색은 흡수되고 일부 색은 반사됩니다.
 

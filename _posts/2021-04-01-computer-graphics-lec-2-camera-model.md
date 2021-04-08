@@ -1,5 +1,5 @@
 ---
-title: "[Computer Graphics] Lec2 Camera model"
+title: "[Computer Graphics #2] Camera model"
 categories:
 - Graphics
 use_math: true
