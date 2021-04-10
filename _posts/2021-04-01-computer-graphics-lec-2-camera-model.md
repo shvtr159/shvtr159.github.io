@@ -27,6 +27,7 @@ translation은 matrix로 나타나고 matrix의 곱셈은 닫혀있다. 2번과 
 물체의 회전, 크기, 형태를 변형하지 않고 이동시킨다.
 
 - equation : 
+
 $$x' = x + t_{x}\qquad\qquad y' = y+t_{y}$$
 - matrix form :
 $$\begin{bmatrix}
