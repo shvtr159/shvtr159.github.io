@@ -21,13 +21,13 @@ translation은 matrix로 나타나고 matrix의 곱셈은 닫혀있다. 2번과 
 
 ## 2D planar Transtormation의 종류
 ![image](https://user-images.githubusercontent.com/79836443/114275830-01574800-9a5f-11eb-95c5-822f00bd6633.png)
-    Basic set of 2D planar transformations (from R.Szeliski)
+>Basic set of 2D planar transformations (from R.Szeliski)
 	
 #### Translation
 물체의 회전, 크기, 형태를 변형하지 않고 이동시킨다.
 
 - equation :
-$$\qquad x' = x + t_{x}\qquad\qquad y' = y+t_{y}$$
+$$\quad x' = x + t_{x}\qquad\qquad y' = y+t_{y}$$
 - matrix form :
 
 
@@ -49,7 +49,7 @@ y\\
 물체의 크기를 변경시킨다.
 
 - equation : 
-$$\qquad x' = sx\qquad\qquad y' = sy$$
+$$\quad x' = sx\qquad\qquad y' = sy$$
 - matrix form :
 
 
@@ -71,7 +71,7 @@ y\\
 $\theta$도 만큼 회전한다.
 
 - equation : 
-$$\qquad x' = x\cos\theta-y\sin\theta\qquad\qquad y' = x\sin\theta+y\cos\theta$$
+$$\quad x' = x\cos\theta-y\sin\theta\qquad\qquad y' = x\sin\theta+y\cos\theta$$
 - matrix form :
 
 
@@ -93,7 +93,7 @@ y\\
 Rotation과 translation을 모두 수행한다. 모양의 변화 없이 위치 변화만 나타난다.
 
 - equation : 
-$$\qquad x' = x\cos\theta-y\sin\theta+t_{x}\qquad\qquad y' = x\sin\theta+y\cos\theta+t_{y}$$
+$$\quad x' = x\cos\theta-y\sin\theta+t_{x}\qquad\qquad y' = x\sin\theta+y\cos\theta+t_{y}$$
 - matrix form :
 
 
@@ -111,15 +111,17 @@ y\\
 1
 \end{bmatrix}$$
 
+
 >이 이후부터는 아래와 같이 $3\times3$ matrix중 일부를 matrix로 치환하여 간단히 나타내도록 한다.
-![image](https://user-images.githubusercontent.com/79836443/114277029-5ea1c800-9a64-11eb-9f97-64a70b7096ac.png){:.align-center}{: height="50%" width="50%"}
+![image](https://user-images.githubusercontent.com/79836443/114277029-5ea1c800-9a64-11eb-9f97-64a70b7096ac.png){:.align-center}{: height="60%" width="60%"}
+
 
 
 #### Similarity (scaled Eudlidean)
 Euclidean transform에 scaling 또한 수행한다.
 
 - equation : 
-$$\qquad p' = sRp+t$$
+$$\quad p' = sRp+t$$
 - matrix form :
 
 
@@ -137,7 +139,7 @@ p\\
 Similarity에 물체가 기울어지는것과 같은 변형이 생긴다.
 
 - equation : 
-$$\qquad p' = A+t$$
+$$\quad p' = A+t$$
 - matrix form :
 
 
@@ -156,7 +158,7 @@ p\\
 $c^{T}$의 값에 따라 어느 방향으로 projection 되는 모양으로 변형된다.
 
 - equation : 
-$$\qquad p' = \frac{Ap+b}{c^{T}p+1}$$
+$$\quad p' = \frac{Ap+b}{c^{T}p+1}$$
 - matrix form :
 
 
@@ -169,5 +171,3 @@ c^{T} & 1
 p\\ 
 1
 \end{bmatrix}$$
-
-A와 b는 Similarity와 달리 matrix의 변수가 다양할 수 있다.
