@@ -27,7 +27,7 @@ translation은 matrix로 나타나고 matrix의 곱셈은 닫혀있다. 2번과 
 물체의 회전, 크기, 형태를 변형하지 않고 이동시킨다.
 
 - equation :
-$$x' = x + t_{x}\qquad\qquad y' = y+t_{y}$$
+$$/qquad x' = x + t_{x}\qquad\qquad y' = y+t_{y}$$
 - matrix form :
 
 
@@ -49,8 +49,10 @@ y\\
 물체의 크기를 변경시킨다.
 
 - equation : 
-$$x' = sx\qquad\qquad y' = sy$$
+$$/qquad x' = sx\qquad\qquad y' = sy$$
 - matrix form :
+
+
 $$\begin{bmatrix}
 x'\\ 
 y'\\ 
@@ -69,8 +71,10 @@ y\\
 $\theta$도 만큼 회전한다.
 
 - equation : 
-$$x' = x\cos\theta-y\sin\theta\qquad\qquad y' = x\sin\theta+y\cos\theta$$
+$$/qquad x' = x\cos\theta-y\sin\theta\qquad\qquad y' = x\sin\theta+y\cos\theta$$
 - matrix form :
+
+
 $$\begin{bmatrix}
 x'\\ 
 y'\\ 
@@ -89,8 +93,10 @@ y\\
 Rotation과 translation을 모두 수행한다. 모양의 변화 없이 위치 변화만 나타난다.
 
 - equation : 
-$$x' = x\cos\theta-y\sin\theta+t_{x}\qquad\qquad y' = x\sin\theta+y\cos\theta+t_{y}$$
+$$/qquad x' = x\cos\theta-y\sin\theta+t_{x}\qquad\qquad y' = x\sin\theta+y\cos\theta+t_{y}$$
 - matrix form :
+
+
 $$\begin{bmatrix}
 x'\\ 
 y'\\ 
@@ -113,8 +119,10 @@ y\\
 Euclidean transform에 scaling 또한 수행한다.
 
 - equation : 
-$$p' = sRp+t$$
+$$/qquad p' = sRp+t$$
 - matrix form :
+
+
 $$\begin{bmatrix}
 p'\\ 
 1 \end{bmatrix}=\begin{bmatrix}
@@ -129,8 +137,10 @@ p\\
 Similarity에 물체가 기울어지는것과 같은 변형이 생긴다.
 
 - equation : 
-$$p' = A+t$$
+$$/qquad p' = A+t$$
 - matrix form :
+
+
 $$\begin{bmatrix}
 p'\\ 
 1 \end{bmatrix}=\begin{bmatrix}
@@ -146,8 +156,10 @@ p\\
 $c^{T}$의 값에 따라 어느 방향으로 projection 되는 모양으로 변형된다.
 
 - equation : 
-$$p' = \frac{Ap+b}{c^{T}p+1}$$
+$$/qquad p' = \frac{Ap+b}{c^{T}p+1}$$
 - matrix form :
+
+
 $$\begin{bmatrix}
 p'\\ 
 1 \end{bmatrix}\sim\begin{bmatrix}
