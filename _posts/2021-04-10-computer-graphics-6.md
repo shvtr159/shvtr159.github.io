@@ -1,5 +1,5 @@
 ---
-title: "[Computer Graphics #6] Meshing and Geometry -OpenGL"
+title: "[Computer Graphics #6] Meshing and Geometry - OpenGL"
 categories:
 - Graphics
 ---
