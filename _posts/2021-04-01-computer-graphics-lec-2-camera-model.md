@@ -21,16 +21,14 @@ translation은 matrix로 나타나고 matrix의 곱셈은 닫혀있다. 2번과 
 
 ## 2D planar Transtormation의 종류
 ![image](https://user-images.githubusercontent.com/79836443/114275830-01574800-9a5f-11eb-95c5-822f00bd6633.png)
->Basic set of 2D planar transformations (from R.Szeliski)
+  Basic set of 2D planar transformations (from R.Szeliski)
 	
 #### Translation
 물체의 회전, 크기, 형태를 변형하지 않고 이동시킨다.
 
-- equation : 
-
+- equation :  
 $$x' = x + t_{x}\qquad\qquad y' = y+t_{y}$$
-- matrix form :
-
+- matrix form :  
 $$\begin{bmatrix}
 x'\\ 
 y'\\ 
