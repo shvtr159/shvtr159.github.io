@@ -83,6 +83,7 @@ x\\
 y\\ 
 1
 \end{bmatrix}$$
+
 #### Euclidean (Rigid)
 Rotation과 translation을 모두 수행한다. 모양의 변화 없이 위치 변화만 나타난다.
 
