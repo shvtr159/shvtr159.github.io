@@ -139,7 +139,7 @@ p\\
 Similarity에 물체가 기울어지는것과 같은 변형이 생긴다.
 
 - equation : 
-$$\quad p' = A+t$$
+$$\quad p' = Ap+b$$
 - matrix form :
 
 
