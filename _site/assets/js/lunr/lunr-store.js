@@ -34,4 +34,22 @@ var store = [{
         "tags": [],
         "url": "/graphics/computer-graphics-lec6-viewing/",
         "teaser": null
+      },{
+        "title": "[Computer Graphics #6-1] Meshing and Geometry - OpenGL",
+        "excerpt":"0차원(점), 1차원(선), 2차원(면)을 이용해 가상의 3차원(공간)에 물체를 표현할 때, 가상의 물체의 면을 Mesh라고 하고, 이 표현으로 생성된 물체를 Geometry라 한다.이번 챕터에서는 3차원의 물체를 표현하기 위해 mesh를 생성하는 방법과 mesh와 vertex를 이용해 어떻게 geometry를 나타낼 것인지를 알아본다. 이번 글에서는 OpenGL을 이용한 Vertex, Line, Mesh 생성 방법을 먼저 알아본다. Point, Line Point...","categories": ["Graphics"],
+        "tags": [],
+        "url": "/graphics/computer-graphics-6/",
+        "teaser": null
+      },{
+        "title": "[Computer Graphics #6-2] Meshing and Geometry",
+        "excerpt":"이번 내용은 적절한 mesh를 생성하기위한 방법과 생성된 Mesh와 vertex들을 이용해 적절한 Geometry를 생성하기 위한 방법에 대해서 이야기 한다. Delaunay triangulation (들로네 삼각분할) 저번 글에서 OpenGL을 이용해 Vertex와 Line, Mesh를 위한 triangle을 만드는 방법 등에 대해 알아보았다. triangle을 생성하는 함수에서 간단히 이야기했듯이 모델과 상황에 따라 적절한 triangle의 모습은 다르지만 대체로 정삼각형에...","categories": [],
+        "tags": [],
+        "url": "/computer-graphics-6-2-geometry1/",
+        "teaser": null
+      },{
+        "title": "[Computer Graphics #7] Meshing and Geometry 2",
+        "excerpt":"Meshing and Geometry 1 에서는 기본적인 geometry를 위한 triangle을 만드는 것에 대해서 배워보았다. 이번 geometry2 에서는 post-processing을 해서라도 좀 더 다양한 shape를 만드는 방법에 대한 geometry를 알아본다.   Point  ","categories": [],
+        "tags": [],
+        "url": "/computer-graphics-7-meshing-and-geometry-2/",
+        "teaser": null
       }]

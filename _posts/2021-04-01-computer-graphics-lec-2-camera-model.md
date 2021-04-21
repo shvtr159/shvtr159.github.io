@@ -5,7 +5,7 @@ categories:
 use_math: true
 ---
 
-# Transformation
+## Transformation
 transform 작업은 이 변환들이 같은 **수학적 group**이라는 것을 알게 되면 여러 작업을 한 번에 수행할 수 있다는 큰 장점을 얻을 수 있다.
 group이 되기 위한 조건으로는
 1. 이 집합은 어떤 operator에 대해 닫혀있어야 한다.
@@ -19,7 +19,7 @@ translation은 matrix로 나타나고 matrix의 곱셈은 닫혀있다. 2번과 
 
 어떤 점들을 회전시킨 뒤 d만큼 이동시켰다. 다시 이 점들을 원래 상태로 되돌리기 위해서는 -d만큼 이동한 뒤 다시 반대로 회전시켜야만 한다. 그러나 회전을 $T_{1}$, 이동을 $T_{2}$라고 했을 때 이 group을 이용하면, 다시 원상태로 돌아가기 위해 $T_{1}^{-1} * T_{2}^{-1}$ 를 한 번만 수행해주면 된다.
 
-# 2D planar Transtormation의 종류
+## 2D planar Transtormation의 종류
 3차원에서 카메라의 위치에 따라 시점이 달라지거나 물체의 위치가 변하는 경우 다양한 변환을 수행해주어야 한다. 3차원 변환에 앞서 간단하게 2차원 변환으로 다양한 변환을 어떻게 표현하는지 알아본다.
 ![image](https://user-images.githubusercontent.com/79836443/114275830-01574800-9a5f-11eb-95c5-822f00bd6633.png)
 >Basic set of 2D planar transformations (from R.Szeliski)

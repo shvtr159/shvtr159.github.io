@@ -333,7 +333,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
           
           <h2 id="normalization">Normalization</h2>
 <p>통일성을 주기 위해 각각 다른 projection 종류에 맞는 projection matrix를 system에서 모두 수행하기보다 projection은 항상 orthogonal projection을 하도록 만든다. 이 orthogonal projection을 했을 때 원하는 projection의 모습을 나타낼 수 있도록 data의 형태를 바꿔준다.</p>
-<h4 id="pipeline-view">Pipeline View</h4>
+<h3 id="pipeline-view">Pipeline View</h3>
 <ol>
   <li>modelview transformation</li>
   <li>projection transformation</li>
@@ -344,7 +344,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 <p>이 5단계 중 앞의 1~3단계에서 각각의 projection 종류에 맞는 view가 될 수 있도록  data를 바꿔서 나타내고 5단계에서 항상 orthogonal projection을 수행하도록 한다.</p>
 
-<h4 id="orthogonal-normalization">Orthogonal Normalization</h4>
+<h3 id="orthogonal-normalization">Orthogonal Normalization</h3>
 <p>이를 위해 4D homogeneous coordinate를 사용해야 한다. 우리는 Normalization을 통해 clip 영역은 항상 단순한 육면체 형태로만 나타내면 된다. OpenGL의 함수 glOrtho(left,right,bottom,top,near,far) 와 같이 정해진 영역을 모두 clipping 하지 않고 이를 가로, 세로, 높이 1의 정육면체에 맞게 scaling하여 이 작은 정육면체의 공간만 projection 한다.</p>
 
 <p>이 scaling을 수행하기 위해 다음 두단계를 수행한다.</p>
@@ -370,15 +370,15 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 0 &amp; 0 &amp; 0 &amp; 1
 \end{bmatrix}\)인 orthogonal projection matrix를 이용하여 최종 projection matrix는 $P=M_{orth}ST$ 의 matrix로  표현된다. 이 matrix를 수행하면 orthogonal matrix이므로 한 평면 위에 점들이 존재하게 된다.</p>
 
-<h4 id="oblique-projection">Oblique Projection</h4>
+<h3 id="oblique-projection">Oblique Projection</h3>
 <p><img src="https://user-images.githubusercontent.com/79836443/114040814-f36ac100-98be-11eb-8178-526dad4a8858.png" alt="image" class="align-center" /></p>
 
 <p>위와 같은 형태로 cube를 보기 위해 Oblique Projection을 수행하기 위해서는 Shear + Orthogonal projection을 수행해야 한다. 일반적인 cube는 위의 모양처럼 projection 될 수 없어서 위와 같은 모양을 나타내기 위해서는 x방향과 y방향으로 shearing을 수행한다. 이 shearing matrix를 $H(\Theta ,\Phi )$라 한다면 Projection matrix는 $P=M_{orth}H(\Theta ,\Phi )$로 나타나고 General case, 즉 shearing 한 후 orthogonal normalize projection까지 수행하는 matrix는 \(P=M_{orth}STH(\Theta ,\Phi )\)로 나타낼 수 있다.</p>
 
 <h2 id="perspective">Perspective</h2>
-<h4 id="clipping">clipping</h4>
+<h3 id="clipping">clipping</h3>
 <p>원하는 perspective의 영역만을 보기 위해 clipping을 수행한다. 그러나 clipping을 하기 전에 orthogonal projection을 위한 translation, scaling 등을 한다면 원하는 모양을 맞추기 어려워진다. 즉 실제로는 transformation을 수행한 뒤 clipping을 수행하는 것이 더 일반적이다.</p>
-<h4 id="simple-perspective">Simple Perspective</h4>
+<h3 id="simple-perspective">Simple Perspective</h3>
 <p><img src="https://user-images.githubusercontent.com/79836443/114056780-f8367180-98cc-11eb-926b-0609c82c53a9.png" alt="simple perspective" class="align-center" width="60%" height="60%" />
 위와 같이 perspective를 하려는 영역의 frustum이 있을 때, 가까이 있는 물체의 크기는 크고 멀리 있는 물체의 크기는 작게 보인다. 이를 orthogonal projection에 맞게 하기 위해서는 실제 물체의 크기를 변형해야만 한다. 또, frustum은 정육면체 모양으로 평행한 모양이 아니기 때문에 이 영역 또한 정육면체 모양으로 변형시켜야 한다. 그 결과 위에서 봤을 때 실제로 정사각형이었던 object는 사다리꼴의 모양으로 변형되게 된다.</p>
 <h2 id="hidden-surface-removal">Hidden-Surface Removal</h2>
@@ -440,7 +440,8 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 ">이전</a>
     
     
-      <a href="#" class="pagination--pager disabled">다음</a>
+      <a href="/graphics/computer-graphics-6/" class="pagination--pager" title="[Computer Graphics #6-1] Meshing and Geometry - OpenGL
+">다음</a>
     
   </nav>
 
@@ -454,6 +455,143 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
             <div class="page__related">
                 <h4 class="page__related-title">참고</h4>
                 <div class="grid__wrapper">
+                    
+                    
+
+
+
+<div class="grid__item">
+    <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+        
+        <h2 class="archive__item-title no_toc" itemprop="headline">
+            
+            <a href="/computer-graphics-7-meshing-and-geometry-2/" rel="permalink">[Computer Graphics #7] Meshing and Geometry 2
+</a>
+            
+        </h2>
+        <!--
+        
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          최대 1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        -->
+        
+        <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 21 2021</p>
+        
+
+        <p class="archive__item-excerpt" itemprop="description">Meshing and Geometry 1 에서는 기본적인 geometry를 위한 triangle을 만드는 것에 대해서 배워보았다. 이번 geometry2 에서는 post-processing을 해서라도 좀 더 다양한 shape를 만드는 방법에 대한 geometry를 알아본다.
+</p>
+    </article>
+</div>
+
+                    
+                    
+
+
+
+<div class="grid__item">
+    <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+        
+        <h2 class="archive__item-title no_toc" itemprop="headline">
+            
+            <a href="/computer-graphics-6-2-geometry1/" rel="permalink">[Computer Graphics #6-2] Meshing and Geometry
+</a>
+            
+        </h2>
+        <!--
+        
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        -->
+        
+        <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 18 2021</p>
+        
+
+        <p class="archive__item-excerpt" itemprop="description">이번 내용은 적절한 mesh를 생성하기위한 방법과 생성된 Mesh와 vertex들을 이용해 적절한 Geometry를 생성하기 위한 방법에 대해서 이야기 한다.
+</p>
+    </article>
+</div>
+
+                    
+                    
+
+
+
+<div class="grid__item">
+    <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+        
+        <h2 class="archive__item-title no_toc" itemprop="headline">
+            
+            <a href="/graphics/computer-graphics-6/" rel="permalink">[Computer Graphics #6-1] Meshing and Geometry - OpenGL
+</a>
+            
+        </h2>
+        <!--
+        
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        -->
+        
+        <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 10 2021</p>
+        
+
+        <p class="archive__item-excerpt" itemprop="description">0차원(점), 1차원(선), 2차원(면)을 이용해 가상의 3차원(공간)에 물체를 표현할 때, 가상의 물체의 면을 Mesh라고 하고, 이 표현으로 생성된 물체를 Geometry라 한다.이번 챕터에서는 3차원의 물체를 표현하기 위해 mesh를 생성하는 방법과 mesh와 vertex를 ...</p>
+    </article>
+</div>
+
                     
                     
 
@@ -496,149 +634,6 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
         
 
         <p class="archive__item-excerpt" itemprop="description">
-</p>
-    </article>
-</div>
-
-                    
-                    
-
-
-
-<div class="grid__item">
-    <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-        
-        <h2 class="archive__item-title no_toc" itemprop="headline">
-            
-            <a href="/graphics/computer-graphics-lec-2-camera-model/" rel="permalink">[Computer Graphics #2] Camera model
-</a>
-            
-        </h2>
-        <!--
-        
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          최대 1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-        -->
-        
-        <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 01 2021</p>
-        
-
-        <p class="archive__item-excerpt" itemprop="description">Transformation
-transform 작업은 이 변환들이 같은 수학적 group이라는 것을 알게 되면 여러 작업을 한 번에 수행할 수 있다는 큰 장점을 얻을 수 있다.
-group이 되기 위한 조건으로는
-
-  이 집합은 어떤 operator에 대해 닫혀있어야 한다.
-\(A \...</p>
-    </article>
-</div>
-
-                    
-                    
-
-
-
-<div class="grid__item">
-    <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-        
-        <h2 class="archive__item-title no_toc" itemprop="headline">
-            
-            <a href="/graphics/computer-graphics-geometric-objects/" rel="permalink">[Computer Graphics #1] 빛과 색
-</a>
-            
-        </h2>
-        <!--
-        
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          2 분 소요
-        
-      </span>
-    
-  </p>
-
-
-        -->
-        
-        <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 24 2021</p>
-        
-
-        <p class="archive__item-excerpt" itemprop="description">그래픽을 만들어내기 위해서는 빛에 대한 내용 또한 알고 있어야 한다.
-</p>
-    </article>
-</div>
-
-                    
-                    
-
-
-
-<div class="grid__item">
-    <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-        
-        <h2 class="archive__item-title no_toc" itemprop="headline">
-            
-            <a href="/%EB%85%BC%EB%AC%B8/paper_3dmatch/" rel="permalink">3DMatch: Learning the Matching of Local 3D Geometry in Range Scans - 요약
-</a>
-            
-        </h2>
-        <!--
-        
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-        -->
-        
-        <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 03 2021</p>
-        
-
-        <p class="archive__item-excerpt" itemprop="description">3. Geometric Representation
-geometric matching의 목표는 3D geometry의 ‘fragments’간 robust한 대응관계를 만드는 것이다.
 </p>
     </article>
 </div>

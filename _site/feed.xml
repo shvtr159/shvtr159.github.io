@@ -1,6 +1,248 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://shvtr159.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shvtr159.github.io/" rel="alternate" type="text/html" /><updated>2021-04-09T03:06:18+09:00</updated><id>https://shvtr159.github.io/feed.xml</id><title type="html">Study Blog</title><subtitle>for study</subtitle><author><name>KYG</name></author><entry><title type="html">[Computer Graphics #5] Viewing - Orthogonal Projection</title><link href="https://shvtr159.github.io/graphics/computer-graphics-lec6-viewing/" rel="alternate" type="text/html" title="[Computer Graphics #5] Viewing - Orthogonal Projection" /><published>2021-04-08T00:00:00+09:00</published><updated>2021-04-08T00:00:00+09:00</updated><id>https://shvtr159.github.io/graphics/computer-graphics-lec6-viewing</id><content type="html" xml:base="https://shvtr159.github.io/graphics/computer-graphics-lec6-viewing/">&lt;h2 id=&quot;normalization&quot;&gt;Normalization&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://shvtr159.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shvtr159.github.io/" rel="alternate" type="text/html" /><updated>2021-04-21T20:56:50+09:00</updated><id>https://shvtr159.github.io/feed.xml</id><title type="html">Study Blog</title><subtitle>for study</subtitle><author><name>KYG</name></author><entry><title type="html">[Computer Graphics #7] Meshing and Geometry 2</title><link href="https://shvtr159.github.io/computer-graphics-7-meshing-and-geometry-2/" rel="alternate" type="text/html" title="[Computer Graphics #7] Meshing and Geometry 2" /><published>2021-04-21T00:00:00+09:00</published><updated>2021-04-21T00:00:00+09:00</updated><id>https://shvtr159.github.io/computer-graphics-7-meshing-and-geometry-2</id><content type="html" xml:base="https://shvtr159.github.io/computer-graphics-7-meshing-and-geometry-2/">&lt;p&gt;Meshing and Geometry 1 에서는 기본적인 geometry를 위한 triangle을 만드는 것에 대해서 배워보았다. 이번 geometry2 에서는 post-processing을 해서라도 좀 더 다양한 shape를 만드는 방법에 대한 geometry를 알아본다.&lt;/p&gt;
+
+&lt;h2 id=&quot;point&quot;&gt;Point&lt;/h2&gt;</content><author><name>KYG</name></author><summary type="html">Meshing and Geometry 1 에서는 기본적인 geometry를 위한 triangle을 만드는 것에 대해서 배워보았다. 이번 geometry2 에서는 post-processing을 해서라도 좀 더 다양한 shape를 만드는 방법에 대한 geometry를 알아본다.</summary></entry><entry><title type="html">[Computer Graphics #6-2] Meshing and Geometry</title><link href="https://shvtr159.github.io/computer-graphics-6-2-geometry1/" rel="alternate" type="text/html" title="[Computer Graphics #6-2] Meshing and Geometry" /><published>2021-04-18T00:00:00+09:00</published><updated>2021-04-18T00:00:00+09:00</updated><id>https://shvtr159.github.io/computer-graphics-6-2-geometry1</id><content type="html" xml:base="https://shvtr159.github.io/computer-graphics-6-2-geometry1/">&lt;p&gt;이번 내용은 적절한 mesh를 생성하기위한 방법과 생성된 Mesh와 vertex들을 이용해 적절한 Geometry를 생성하기 위한 방법에 대해서 이야기 한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;delaunay-triangulation-들로네-삼각분할&quot;&gt;Delaunay triangulation (들로네 삼각분할)&lt;/h2&gt;
+&lt;p&gt;저번 글에서 OpenGL을 이용해 Vertex와  Line, Mesh를 위한 triangle을 만드는 방법 등에 대해 알아보았다. triangle을 생성하는 함수에서 간단히 이야기했듯이 모델과 상황에 따라 적절한 triangle의 모습은 다르지만 대체로 &lt;strong&gt;정삼각형&lt;/strong&gt;에 가까운 형태가 가장 좋은 형태로 여겨진다.&lt;/p&gt;
+
+&lt;p&gt;이러한 좋은 triangle을 만들기 위해 적절한 vetrex 3개를 선택해야만 하는데 이때 Delaunay triangulation을 사용하게 된다. 들로네 삼각분할의 가장 큰 특징은 &lt;strong&gt;“세 점으로 외접원을 그렸을 때 그 원 내부에 다른 점은 존재하지 않는다.”&lt;/strong&gt; 이다. 삼각형이 정삼각형에서 멀어질수록(삼각형의 최소 내각이 작아질수록) 삼각형의 외접원은 점점 커지기 때문에 원 내부에 다른 점을 포함하게 될 수 있다. 그러므로  이 특징을 만족시키며 만든 삼각형들은 삼각형의 최소내각을 최대화 하는 방향으로 이루어지며 이는 작은 원을 만드는 것으로 연결되어 좋은 triangle을 만들게 된다.&lt;/p&gt;
+
+&lt;p&gt;이 과정은 순차적으로 삼각형으로 만들어 간 뒤 남은 vertex로 자연스럽게 만들어지는 triangle들의 상태를 판단하며 여러번에 걸쳐 global optima를 찾아가기 때문에 시간이 조금 걸리게 된다.&lt;/p&gt;
+
+&lt;p&gt;또한, 이를 3차원에서 수행할 경우 noise나 물체의 모양에 따라 물체 내부로 평면이 생기는 등의 문제가 발생할 수 있다. 이 때는 같이 Mesh를 만들고자 하는 local 영역의 vertex들을 2차원 평면에 투영시켜 삼각분할을 수행한 뒤 그 topology를 3차원에 적용시키는 방법을 사용한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;mesh-construction---subdivision&quot;&gt;Mesh Construction - Subdivision&lt;/h2&gt;
+&lt;p&gt;모델을 자세하게 만들기 위해서는 수많은 vertex, edge들이 필요하다. 그러나 이 수많은 vertex들을 수작업으로 만드는것은 매우 힘들기 때문에 자동으로 새로운 vertex들을 생성하고 위치시키는 방법을 사용하게 된다. 그 절차는 다음과 같다.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;저해상도의 model을 직접 만든다.&lt;/li&gt;
+  &lt;li&gt;automatic한 방법/알고리즘으로 그 mesh를 refine 한다.&lt;/li&gt;
+  &lt;li&gt;refine한 mesh를 semi-automatic한 방법/알고리즘으로 수정한다.&lt;/li&gt;
+  &lt;li&gt;이를 반복하며 더 좋은 model을 생성해나간다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;subdivision&quot;&gt;Subdivision&lt;/h3&gt;
+&lt;p&gt;mesh construction을 위한 방법으로 수작업으로 만든 rough한 model에 vertex를 추가하여 더 매끄러운 model로 만든다. 이 때 전제조건은 model의 global한 shape은 다 표현되어있다는 것이다. subdivision을 이용해서는 없던 뿔을 만드는 것처럼 새로운 것을 자동으로 추가할 수 없다. 즉 subdivision이 수행하는 과정은 다음과 같다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/115521177-e047f000-a2c5-11eb-9b76-3994cf63d7ff.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;90%&quot; height=&quot;90%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;기존의 vertex 사이에 새로운 vertex를 추가한다. 그 새롭게 추가된 vertex는 기존의 vertex 사이에 존재하게 되는데 기존의 점을 잇는 직선상에 존재한다면 새로운 vertex가 추가되더라도 형태 변화에 의미가 없다. 이에 curve를 표현하기 위해 새로 추가된 vertex는 곡률이 유지되도록 약간 바깥쪽으로 생성된다. 이 작업을 반복하면 가장 왼쪽의 모습에서 가장 오른쪽의 모습으로 둥글게 변하게 된다.&lt;/p&gt;
+
+&lt;p&gt;이렇게 새로운 vertex를 추가할 때에는 vertex의 위치를 결정하기 위한 rule이 필요하다. 이 rule은 &lt;strong&gt;Continuity&lt;/strong&gt;로 연속성이 유지되는 형태로 subdivisioni을 수행한다. Continuity의 종류에는 C0, C1, C2 등이 있고 숫자는 derivative를 의미하게 된다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;C0 :  point-wise의 continuous로 curve는 단지 vertex의 연결만을 보장하도록 생성된다.&lt;/li&gt;
+  &lt;li&gt;C1 : 1차 미분의 연속성으로 vertex가 연결될 때, 그 기울기가 연속되도록 생성된다.&lt;/li&gt;
+  &lt;li&gt;C2 : 2차 미분의 연속성으로 vertex가 연결될 때, 2차 미분값, 즉 기울기의 변화량(곡률)이 유지될 수 있도록 생성된다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;subdivision---vertex의-이동&quot;&gt;Subdivision - Vertex의 이동&lt;/h3&gt;
+&lt;p&gt;기존의 vertex들은 이동시키지 않고 새로운 vertex만을 이동시킨다고 했지만 실제로 만들다 보면 기존의 vertex들도 조금씩 이동하면 더 좋은 형태의 model을 만들 수 있는 경우도 있다. 결국 새로 vertex를 생성하고 이동하면서 새로운 triangle들을 만드는 작업을 먼저 수행하고, 이후에 기존의 vertex도 이동시켜주는 작업을 수행하게 된다. 이 때 새로운 vertex와 기존의 vertex를 이동하는데 고려하는 방법은 다음과 같다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/115542791-9a962200-a2db-11eb-885c-c056028eef03.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위 사진에서 보는것과 같이 &lt;strong&gt;새로 생긴 vertex&lt;/strong&gt;에 연결된 2 점만 사용하는것보다 그 주변의 점도 같이 사용하면 더 좋다. 이에 따라 그 주위의 vertex에 가중치를 다르게 주어 그 위치를 결정핟다.&lt;br /&gt;
+&lt;strong&gt;original 점&lt;/strong&gt; 또한 원래 존재하며 연결된 vertex들에 준 가중치를 기준으로 이동하게 된다. 이 때, 그 가까운 정도와 직접 연결됐는지 등에 따라 그 가중치를 다르게 준게 된다.&lt;/p&gt;
+
+&lt;h4 id=&quot;subdivision-후-vertex의-종류에-따른-위치-변화&quot;&gt;subdivision 후 vertex의 종류에 따른 위치 변화&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;새롭게 생긴 vertex
+&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/115544613-c61a0c00-a2dd-11eb-9f5d-4082e23f92af.gif&quot; alt=&quot;subdivision_new&quot; class=&quot;align-center&quot; width=&quot;70%&quot; height=&quot;70%&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;기존에 존재하던 vertex
+&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/115544618-c74b3900-a2dd-11eb-94bb-321386ae11f2.gif&quot; alt=&quot;subdivision_origin&quot; class=&quot;align-center&quot; width=&quot;70%&quot; height=&quot;70%&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;기존에 존재하던 extraordinary vertex
+&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/115544620-c7e3cf80-a2dd-11eb-9c50-cc0d2f8869dd.gif&quot; alt=&quot;subdivision_extra&quot; class=&quot;align-center&quot; width=&quot;90%&quot; height=&quot;90%&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;subdivision-진행-과정과-결과&quot;&gt;subdivision 진행 과정과 결과&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/115544092-2197ca00-a2dd-11eb-8d78-8d9a249d27d7.gif&quot; alt=&quot;subdivision&quot; class=&quot;align-center&quot; width=&quot;90%&quot; height=&quot;90%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;suvdivision을 수행하며 model은 점점 매끄러워지지만 그만큼 튀어나온 부분은 사라지게 된다.&lt;/p&gt;</content><author><name>KYG</name></author><summary type="html">이번 내용은 적절한 mesh를 생성하기위한 방법과 생성된 Mesh와 vertex들을 이용해 적절한 Geometry를 생성하기 위한 방법에 대해서 이야기 한다.</summary></entry><entry><title type="html">[Computer Graphics #6-1] Meshing and Geometry - OpenGL</title><link href="https://shvtr159.github.io/graphics/computer-graphics-6/" rel="alternate" type="text/html" title="[Computer Graphics #6-1] Meshing and Geometry - OpenGL" /><published>2021-04-10T00:00:00+09:00</published><updated>2021-04-10T00:00:00+09:00</updated><id>https://shvtr159.github.io/graphics/computer-graphics-6</id><content type="html" xml:base="https://shvtr159.github.io/graphics/computer-graphics-6/">&lt;p&gt;0차원(점), 1차원(선), 2차원(면)을 이용해 가상의 3차원(공간)에 물체를 표현할 때, &lt;strong&gt;가상의 물체의 면을 Mesh&lt;/strong&gt;라고 하고, 이 표현으로 생성된 물체를 Geometry라 한다.이번 챕터에서는 3차원의 물체를 표현하기 위해 mesh를 생성하는 방법과 mesh와 vertex를 이용해 어떻게 geometry를 나타낼 것인지를 알아본다. 이번 글에서는 OpenGL을 이용한 Vertex, Line, Mesh 생성 방법을 먼저 알아본다.&lt;/p&gt;
+
+&lt;h2 id=&quot;point-line&quot;&gt;Point, Line&lt;/h2&gt;
+&lt;h3 id=&quot;point&quot;&gt;Point&lt;/h3&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;glBegin(GL_POINTS);
+	glVertex2fv(p0);
+	glVertex2fv(p1);
+	glVertex2fv(p2);
+	glVertex2fv(p3);
+	glVertex2fv(p4);
+	glVertex2fv(p5);
+	glVertex2fv(p6);
+	glVertex2fv(p7);
+glEnd();
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/114263733-41e4a080-9a22-11eb-8034-26327c99b934.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;30%&quot; height=&quot;30%&quot; /&gt;
+가상의 크기를 가지는 point를 생성한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;line-segments&quot;&gt;Line Segments&lt;/h3&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;glBegin(GL_LINES);
+	glVertex2fv(p0);
+	glVertex2fv(p1);
+	glVertex2fv(p2);
+	glVertex2fv(p3);
+	glVertex2fv(p4);
+	glVertex2fv(p5);
+	glVertex2fv(p6);
+	glVertex2fv(p7);
+glEnd();
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/114263578-67bd7580-9a21-11eb-8598-962bdd3adf1d.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;30%&quot; height=&quot;30%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;두 point씩 짝을 지어 line을 생성한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;polylines---line--strip&quot;&gt;Polylines - Line  Strip&lt;/h3&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;glBegin(GL_LINE_STRIP);
+	glVertex2fv(p0);
+	glVertex2fv(p1);
+	glVertex2fv(p2);
+	glVertex2fv(p3);
+	glVertex2fv(p4);
+	glVertex2fv(p5);
+	glVertex2fv(p6);
+	glVertex2fv(p7);
+glEnd();
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/114263748-5032bc80-9a22-11eb-9d85-6655068cd794.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;30%&quot; height=&quot;30%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;point들을 모두 순서대로 연결해서 끈 형태의 line을 생성한다.&lt;/p&gt;
+&lt;h3 id=&quot;polylines---line--loop&quot;&gt;Polylines - Line  Loop&lt;/h3&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;glBegin(GL_LINE_LOOP);
+	glVertex2fv(p0);
+	glVertex2fv(p1);
+	glVertex2fv(p2);
+	glVertex2fv(p3);
+	glVertex2fv(p4);
+	glVertex2fv(p5);
+	glVertex2fv(p6);
+	glVertex2fv(p7);
+glEnd();
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/114263755-5c1e7e80-9a22-11eb-96f4-adec75cea4a8.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;30%&quot; height=&quot;30%&quot; /&gt;
+point들을 모두 순서대로 연결한 뒤 처음 point와 끝 point도 연결해 닫힌 Loop를 생성한다. point의 순서가 바뀌면 바뀐 순서대로 연결된다.&lt;/p&gt;
+
+&lt;h2 id=&quot;polygons&quot;&gt;Polygons&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Polygon : close된 loop로 만들어지면서 그 내부가 채워져 있는 개체&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;polygon은 polygon을 이루는 edge가 다른 polygon과 겹쳐짐의 유무에 따라 겹쳐지지 않는 simple polygon과 겹쳐지는 nonsimple polygon으로 나누어진다&lt;/p&gt;
+
+&lt;p&gt;어떤 polygon을 사용하는 것이 더 좋을 ㅁ것인지 고민한 결과 polygon의 quality를 나누는 기준을 정하게 되었다. 그 기준은 &lt;strong&gt;convexity&lt;/strong&gt;로 polygon 내부의 임의의 두 점을 선택해 두 점을 연결하는 선을 그렸을 때, 그 선 위에 있는 모든 점이 polygon 내부에 존재할 때 그 polygon은 convex하다고 말할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;### Polygon&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;glBegin(GL_POLYGON);
+	glVertex2fv(p0);
+	glVertex2fv(p1);
+	glVertex2fv(p2);
+	glVertex2fv(p3);
+	glVertex2fv(p4);
+	glVertex2fv(p5);
+	glVertex2fv(p6);
+	glVertex2fv(p7);
+glEnd();
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/114264175-53c74300-9a24-11eb-8c49-7eda77b93dad.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;30%&quot; height=&quot;30%&quot; /&gt;
+LINE_LOOP와 같이 point들을 모두 연결하여 closed loop를 만든 뒤 polygon이 될 수 있도록 내부를 point가 가지는 vertex color값으로 채운다. color가 달라질 경우 interpolation한 색으로 결정된다.&lt;/p&gt;
+
+&lt;h3 id=&quot;quadrilaterals&quot;&gt;Quadrilaterals&lt;/h3&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;glBegin(GL_QUADS);
+	glVertex2fv(p0);
+	glVertex2fv(p1);
+	glVertex2fv(p2);
+	glVertex2fv(p3);
+	glVertex2fv(p4);
+	glVertex2fv(p5);
+	glVertex2fv(p6);
+	glVertex2fv(p7);
+glEnd();
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/114264541-79554c00-9a26-11eb-8cb4-90a116a9d477.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;30%&quot; height=&quot;30%&quot; /&gt;
+4개의 점을 가지는 면, 즉 point 4개를 이용해 사각형을 생성한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;quadstrip&quot;&gt;Quadstrip&lt;/h3&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;glBegin(GL_QUAD_STRIP);
+	glVertex2fv(p1);
+	glVertex2fv(p2);
+	glVertex2fv(p3);
+	glVertex2fv(p0);
+	glVertex2fv(p7);
+	glVertex2fv(p4);
+	glVertex2fv(p5);
+	glVertex2fv(p6);
+glEnd();
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/114264544-7e1a0000-9a26-11eb-9714-abc55d310ed7.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;30%&quot; height=&quot;30%&quot; /&gt;
+Quadrilaterals와 같이 4개의 point를 이용해 사각형을 생성하지만, 빈 부분 없이 polygon을 생성하기 위해 마지막 2개의 point로 생성되는 line을 공유하도록 한다. 위 코드를 예시로 1, 2, 3, 0과 3, 0, 4, 5 사각형은 3, 0 piont로 생성되는 line을 공유하도록 생성된다.&lt;/p&gt;
+
+&lt;h3 id=&quot;triangles&quot;&gt;Triangles&lt;/h3&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;glBegin(GL_TRIANGLES);
+	glVertex2fv(p0);
+	glVertex2fv(p1);
+	glVertex2fv(p2);
+	glVertex2fv(p3);
+	glVertex2fv(p4);
+	glVertex2fv(p5);
+	glVertex2fv(p6);
+	glVertex2fv(p7);
+glEnd();
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/114264533-6c385d00-9a26-11eb-99a9-5ad8423c61a7.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;30%&quot; height=&quot;30%&quot; /&gt;
+일반적으로 삼각형을 사용하는 것이 모델을 만들 때 더 detail한 shape를 표현할 수 있는 등 장점이 많기 때문에 삼각형을 기본적인 단위로 사용한다. 위의 방법으로 삼각형을 생성하는데 순서대로 삼각형을 생성하고, 3개의 점이 결정되지 않는 경우 생성하지 않는다. 위의 코드에서는 p6과 p7이 point 2개로 끝이 나기 때문에 두 point는 사용하지 않고 2개의 삼각형이 생성됐다.&lt;/p&gt;
+
+&lt;h3 id=&quot;triangle-strip&quot;&gt;Triangle Strip&lt;/h3&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;glBegin(GL_TRIANGLE_STRIP);
+	glVertex2fv(p0); 
+	glVertex2fv(p7); 
+	glVertex2fv(p1); 
+	glVertex2fv(p6); 
+	glVertex2fv(p2); 
+	glVertex2fv(p5); 
+	glVertex2fv(p3);
+	glVertex2fv(p4);
+glEnd();
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/114264519-617dc800-9a26-11eb-841b-2407fe695428.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;30%&quot; height=&quot;30%&quot; /&gt;
+Quardstrip과 마찬가지로 point 내부를 모두 polygon으로 생성하기 위해 같은 방법을 사용한다. 마지막 2개의 point로 생성되는 line을 공유하도록 삼각형을 연속해서 생성한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;triangle-fan&quot;&gt;Triangle Fan&lt;/h3&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;glBegin(GL_TRIANGLES);
+	glVertex2fv(p0);
+	glVertex2fv(p1);
+	glVertex2fv(p2);
+	glVertex2fv(p3);
+	glVertex2fv(p4);
+	glVertex2fv(p5);
+	glVertex2fv(p6);
+	glVertex2fv(p7);
+glEnd();
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/114264451-051aa880-9a26-11eb-9a37-0f822cd07da3.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;30%&quot; height=&quot;30%&quot; /&gt;
+첫 번째 point를 항상 포함하는 삼각형들을 생성한다. Strip의 경우 접히거나 곡면의 상황을 표현하기에 적합하지 않지만 Fan을 사용할 경우 더 자연스러운 결과를 얻을 수 있다. 이처럼 같은 삼각형들을 생성하더라도 그 topology에 따라 모델과 상황에 따른 적합한 삼각형의 구성이 달라진다.&lt;/p&gt;
+
+&lt;h2 id=&quot;polygon을-생성하면서-나타날-수-있는-문제&quot;&gt;Polygon을 생성하면서 나타날 수 있는 문제&lt;/h2&gt;
+&lt;p&gt;정사면체를 rendering할 때 오른쪽의 그림이 제대로 rendering 된 정사면체이고, 왼쪽의 그림이 잘못 rendering된 정사면체이다. 왼쪽의 정사면체는 뒤쪽에 있어야 할 면이 rendering 과정에서 앞쪽의 면들을 덮어버렸다. 이는 앞에서부터 순서대로 polygon을 만들기 때문에 나타나는 문제로 앞쪽이 먼저 만들어진 뒤 뒤쪽이 만들어진다면 이미 rendering된 앞쪽을 뒤쪽 면이 덮게 된다.
+&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/114264746-a9e9b580-9a27-11eb-981b-924d4206d8d0.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;문제는 올바른 point의 순서(polygon이 생성되는 순서)는 시점에 따라 매번 변하기 때문에 시점이 변할 때마다 depth를 계산하여 처리하거나 하는 일이 필요하다. 이 기능 중 하나가 이전 글에서 이야기한 Hidden-Surface Removal 방식이다.&lt;/p&gt;
+
+&lt;p&gt;그러나 Hidden-Surface Removal이 매번 잘 동작한다는 보장이 없기 때문에 이러한 기능을 구현하기위해 rendering할때 &lt;strong&gt;z(depth)-buffer&lt;/strong&gt;를 이용한 depth test를 수행한다.&lt;/p&gt;
+&lt;h3 id=&quot;opengl&quot;&gt;OpenGL&lt;/h3&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH)
+
+glEnable(GL_DEPTH_TEST)
+
+glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>KYG</name></author><category term="Graphics" /><summary type="html">0차원(점), 1차원(선), 2차원(면)을 이용해 가상의 3차원(공간)에 물체를 표현할 때, 가상의 물체의 면을 Mesh라고 하고, 이 표현으로 생성된 물체를 Geometry라 한다.이번 챕터에서는 3차원의 물체를 표현하기 위해 mesh를 생성하는 방법과 mesh와 vertex를 이용해 어떻게 geometry를 나타낼 것인지를 알아본다. 이번 글에서는 OpenGL을 이용한 Vertex, Line, Mesh 생성 방법을 먼저 알아본다.</summary></entry><entry><title type="html">[Computer Graphics #5] Viewing - Orthogonal Projection</title><link href="https://shvtr159.github.io/graphics/computer-graphics-lec6-viewing/" rel="alternate" type="text/html" title="[Computer Graphics #5] Viewing - Orthogonal Projection" /><published>2021-04-08T00:00:00+09:00</published><updated>2021-04-08T00:00:00+09:00</updated><id>https://shvtr159.github.io/graphics/computer-graphics-lec6-viewing</id><content type="html" xml:base="https://shvtr159.github.io/graphics/computer-graphics-lec6-viewing/">&lt;h2 id=&quot;normalization&quot;&gt;Normalization&lt;/h2&gt;
 &lt;p&gt;통일성을 주기 위해 각각 다른 projection 종류에 맞는 projection matrix를 system에서 모두 수행하기보다 projection은 항상 orthogonal projection을 하도록 만든다. 이 orthogonal projection을 했을 때 원하는 projection의 모습을 나타낼 수 있도록 data의 형태를 바꿔준다.&lt;/p&gt;
-&lt;h4 id=&quot;pipeline-view&quot;&gt;Pipeline View&lt;/h4&gt;
+&lt;h3 id=&quot;pipeline-view&quot;&gt;Pipeline View&lt;/h3&gt;
 &lt;ol&gt;
   &lt;li&gt;modelview transformation&lt;/li&gt;
   &lt;li&gt;projection transformation&lt;/li&gt;
@@ -11,7 +253,7 @@
 
 &lt;p&gt;이 5단계 중 앞의 1~3단계에서 각각의 projection 종류에 맞는 view가 될 수 있도록  data를 바꿔서 나타내고 5단계에서 항상 orthogonal projection을 수행하도록 한다.&lt;/p&gt;
 
-&lt;h4 id=&quot;orthogonal-normalization&quot;&gt;Orthogonal Normalization&lt;/h4&gt;
+&lt;h3 id=&quot;orthogonal-normalization&quot;&gt;Orthogonal Normalization&lt;/h3&gt;
 &lt;p&gt;이를 위해 4D homogeneous coordinate를 사용해야 한다. 우리는 Normalization을 통해 clip 영역은 항상 단순한 육면체 형태로만 나타내면 된다. OpenGL의 함수 glOrtho(left,right,bottom,top,near,far) 와 같이 정해진 영역을 모두 clipping 하지 않고 이를 가로, 세로, 높이 1의 정육면체에 맞게 scaling하여 이 작은 정육면체의 공간만 projection 한다.&lt;/p&gt;
 
 &lt;p&gt;이 scaling을 수행하기 위해 다음 두단계를 수행한다.&lt;/p&gt;
@@ -37,15 +279,15 @@
 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 1
 \end{bmatrix}\)인 orthogonal projection matrix를 이용하여 최종 projection matrix는 $P=M_{orth}ST$ 의 matrix로  표현된다. 이 matrix를 수행하면 orthogonal matrix이므로 한 평면 위에 점들이 존재하게 된다.&lt;/p&gt;
 
-&lt;h4 id=&quot;oblique-projection&quot;&gt;Oblique Projection&lt;/h4&gt;
+&lt;h3 id=&quot;oblique-projection&quot;&gt;Oblique Projection&lt;/h3&gt;
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/114040814-f36ac100-98be-11eb-8178-526dad4a8858.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;위와 같은 형태로 cube를 보기 위해 Oblique Projection을 수행하기 위해서는 Shear + Orthogonal projection을 수행해야 한다. 일반적인 cube는 위의 모양처럼 projection 될 수 없어서 위와 같은 모양을 나타내기 위해서는 x방향과 y방향으로 shearing을 수행한다. 이 shearing matrix를 $H(\Theta ,\Phi )$라 한다면 Projection matrix는 $P=M_{orth}H(\Theta ,\Phi )$로 나타나고 General case, 즉 shearing 한 후 orthogonal normalize projection까지 수행하는 matrix는 \(P=M_{orth}STH(\Theta ,\Phi )\)로 나타낼 수 있다.&lt;/p&gt;
 
 &lt;h2 id=&quot;perspective&quot;&gt;Perspective&lt;/h2&gt;
-&lt;h4 id=&quot;clipping&quot;&gt;clipping&lt;/h4&gt;
+&lt;h3 id=&quot;clipping&quot;&gt;clipping&lt;/h3&gt;
 &lt;p&gt;원하는 perspective의 영역만을 보기 위해 clipping을 수행한다. 그러나 clipping을 하기 전에 orthogonal projection을 위한 translation, scaling 등을 한다면 원하는 모양을 맞추기 어려워진다. 즉 실제로는 transformation을 수행한 뒤 clipping을 수행하는 것이 더 일반적이다.&lt;/p&gt;
-&lt;h4 id=&quot;simple-perspective&quot;&gt;Simple Perspective&lt;/h4&gt;
+&lt;h3 id=&quot;simple-perspective&quot;&gt;Simple Perspective&lt;/h3&gt;
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/114056780-f8367180-98cc-11eb-926b-0609c82c53a9.png&quot; alt=&quot;simple perspective&quot; class=&quot;align-center&quot; width=&quot;60%&quot; height=&quot;60%&quot; /&gt;
 위와 같이 perspective를 하려는 영역의 frustum이 있을 때, 가까이 있는 물체의 크기는 크고 멀리 있는 물체의 크기는 작게 보인다. 이를 orthogonal projection에 맞게 하기 위해서는 실제 물체의 크기를 변형해야만 한다. 또, frustum은 정육면체 모양으로 평행한 모양이 아니기 때문에 이 영역 또한 정육면체 모양으로 변형시켜야 한다. 그 결과 위에서 봤을 때 실제로 정사각형이었던 object는 사다리꼴의 모양으로 변형되게 된다.&lt;/p&gt;
 &lt;h2 id=&quot;hidden-surface-removal&quot;&gt;Hidden-Surface Removal&lt;/h2&gt;
@@ -68,18 +310,176 @@ group이 되기 위한 조건으로는&lt;/p&gt;
 \(A^{-1}*A = A*A^{-1}=I\)&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;translation은 matrix로 나타나고 matrix의 곱셈은 닫혀있다. 2번과 3번 조건 또한 I 행렬과 역행렬을 이용해 증명할 수 있다. 이렇게 이 수학적 group인것을 이용하면 다음과 같은 장점을 얻을 수 있다.&lt;/p&gt;
+&lt;p&gt;translation은 matrix로 나타나고 matrix의 곱셈은 닫혀있다. 2번과 3번 조건 또한 I 행렬과 역행렬을 이용해 증명할 수 있다. 이렇게 이 수학적 group인 것을 이용하면 다음과 같은 장점을 얻을 수 있다.&lt;/p&gt;
 
-&lt;p&gt;어떤 점들을 회전시킨 뒤 d만큼 이동시켰다. 다시 이 점들을 원래상태로 되돌리기 위해서는 -d만큼 이동한 뒤 다시 반대로 회전시켜야만 한다. 그러나 회전을 $T_{1}$, 이동을 $T_{2}$라고 했을 때 이 group을 이용하면, 다시 원상태로 돌아가기 위해 $T_{1}^{-1} * T_{2}^{-1}$ 를 한번만 수행해주면 된다.&lt;/p&gt;
+&lt;p&gt;어떤 점들을 회전시킨 뒤 d만큼 이동시켰다. 다시 이 점들을 원래 상태로 되돌리기 위해서는 -d만큼 이동한 뒤 다시 반대로 회전시켜야만 한다. 그러나 회전을 $T_{1}$, 이동을 $T_{2}$라고 했을 때 이 group을 이용하면, 다시 원상태로 돌아가기 위해 $T_{1}^{-1} * T_{2}^{-1}$ 를 한 번만 수행해주면 된다.&lt;/p&gt;
 
 &lt;h2 id=&quot;2d-planar-transtormation의-종류&quot;&gt;2D planar Transtormation의 종류&lt;/h2&gt;
-&lt;h4 id=&quot;translation&quot;&gt;Translation&lt;/h4&gt;
-&lt;p&gt;물체들 이동시킵니다.&lt;/p&gt;</content><author><name>KYG</name></author><category term="Graphics" /><summary type="html">Transformation transform 작업은 이 변환들이 같은 수학적 group이라는 것을 알게 되면 여러 작업을 한 번에 수행할 수 있다는 큰 장점을 얻을 수 있다. group이 되기 위한 조건으로는 이 집합은 어떤 operator에 대해 닫혀있어야 한다. \(A \in G\,and\,B \in G \rightarrow A*B \in G\) 다음을 만족하는 identity element I가 존재해야 한다. \(A*I=I*A=A\) element $A$는 다음을 만족하는 inverse $A^{-1}$이 존재해야 한다. \(A^{-1}*A = A*A^{-1}=I\)</summary></entry><entry><title type="html">[Computer Graphics #1] 빛과 색</title><link href="https://shvtr159.github.io/graphics/computer-graphics-geometric-objects/" rel="alternate" type="text/html" title="[Computer Graphics #1] 빛과 색" /><published>2021-03-24T00:00:00+09:00</published><updated>2021-03-24T00:00:00+09:00</updated><id>https://shvtr159.github.io/graphics/computer-graphics-geometric-objects</id><content type="html" xml:base="https://shvtr159.github.io/graphics/computer-graphics-geometric-objects/">&lt;p&gt;그래픽을 만들어내기 위해서는 빛에 대한 내용 또한 알고 있어야 한다.&lt;/p&gt;
+&lt;p&gt;3차원에서 카메라의 위치에 따라 시점이 달라지거나 물체의 위치가 변하는 경우 다양한 변환을 수행해주어야 한다. 3차원 변환에 앞서 간단하게 2차원 변환으로 다양한 변환을 어떻게 표현하는지 알아본다.
+&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/114275830-01574800-9a5f-11eb-95c5-822f00bd6633.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Basic set of 2D planar transformations (from R.Szeliski)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;translation&quot;&gt;Translation&lt;/h2&gt;
+&lt;p&gt;물체의 회전, 크기, 형태를 변형하지 않고 이동시킨다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;equation :
+\(\quad x' = x + t_{x}\qquad\qquad y' = y+t_{y}\)&lt;/li&gt;
+  &lt;li&gt;matrix form :&lt;/li&gt;
+&lt;/ul&gt;
+
+\[\begin{bmatrix}
+x'\\ 
+y'\\ 
+1
+\end{bmatrix}=\begin{bmatrix}
+1 &amp;amp; 0 &amp;amp; t_{x}\\ 
+0 &amp;amp; 1 &amp;amp; t_{y}\\ 
+0 &amp;amp; 0 &amp;amp; 1
+\end{bmatrix}\begin{bmatrix}
+x\\ 
+y\\ 
+1
+\end{bmatrix}\]
+
+&lt;h2 id=&quot;scale&quot;&gt;Scale&lt;/h2&gt;
+&lt;p&gt;물체의 크기를 변경시킨다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;equation : 
+\(\quad x' = sx\qquad\qquad y' = sy\)&lt;/li&gt;
+  &lt;li&gt;matrix form :&lt;/li&gt;
+&lt;/ul&gt;
+
+\[\begin{bmatrix}
+x'\\ 
+y'\\ 
+1
+\end{bmatrix}=\begin{bmatrix}
+s &amp;amp; 0 &amp;amp; t_{x}\\ 
+0 &amp;amp; s &amp;amp; t_{y}\\ 
+0 &amp;amp; 0 &amp;amp; 1
+\end{bmatrix}\begin{bmatrix}
+x\\ 
+y\\ 
+1
+\end{bmatrix}\]
+
+&lt;h2 id=&quot;rotation&quot;&gt;Rotation&lt;/h2&gt;
+&lt;p&gt;$\theta$도 만큼 회전한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;equation : 
+\(\quad x' = x\cos\theta-y\sin\theta\qquad\qquad y' = x\sin\theta+y\cos\theta\)&lt;/li&gt;
+  &lt;li&gt;matrix form :&lt;/li&gt;
+&lt;/ul&gt;
+
+\[\begin{bmatrix}
+x'\\ 
+y'\\ 
+1
+\end{bmatrix}=\begin{bmatrix}
+\cos\theta &amp;amp; -\sin\theta &amp;amp; 0\\ 
+\sin\theta &amp;amp; \cos\theta &amp;amp; 0\\ 
+0 &amp;amp; 0 &amp;amp; 1
+\end{bmatrix}\begin{bmatrix}
+x\\ 
+y\\ 
+1
+\end{bmatrix}\]
+
+&lt;h2 id=&quot;euclidean-rigid&quot;&gt;Euclidean (Rigid)&lt;/h2&gt;
+&lt;p&gt;Rotation과 translation을 모두 수행한다. 모양의 변화 없이 위치 변화만 나타난다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;equation : 
+\(\quad x' = x\cos\theta-y\sin\theta+t_{x}\qquad\qquad y' = x\sin\theta+y\cos\theta+t_{y}\)&lt;/li&gt;
+  &lt;li&gt;matrix form :&lt;/li&gt;
+&lt;/ul&gt;
+
+\[\begin{bmatrix}
+x'\\ 
+y'\\ 
+1
+\end{bmatrix}=\begin{bmatrix}
+\cos\theta &amp;amp; -\sin\theta &amp;amp; t_{x}\\ 
+\sin\theta &amp;amp; \cos\theta &amp;amp; t_{y}\\ 
+0 &amp;amp; 0 &amp;amp; 1
+\end{bmatrix}\begin{bmatrix}
+x\\ 
+y\\ 
+1
+\end{bmatrix}\]
+
+&lt;blockquote&gt;
+  &lt;p&gt;이 이후부터는 아래와 같이 $3\times3$ matrix중 일부를 matrix로 치환하여 간단히 나타내도록 한다.
+&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/114277029-5ea1c800-9a64-11eb-9f97-64a70b7096ac.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; height=&quot;60%&quot; width=&quot;60%&quot; /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;similarity-scaled-eudlidean&quot;&gt;Similarity (scaled Eudlidean)&lt;/h2&gt;
+&lt;p&gt;Euclidean transform에 scaling 또한 수행한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;equation : 
+\(\quad p' = sRp+t\)&lt;/li&gt;
+  &lt;li&gt;matrix form :&lt;/li&gt;
+&lt;/ul&gt;
+
+\[\begin{bmatrix}
+p'\\ 
+1 \end{bmatrix}=\begin{bmatrix}
+sR &amp;amp; t\\ 
+0 &amp;amp; 1
+\end{bmatrix}\begin{bmatrix}
+p\\ 
+1
+\end{bmatrix}\]
+
+&lt;h2 id=&quot;affine&quot;&gt;Affine&lt;/h2&gt;
+&lt;p&gt;Similarity에 물체가 기울어지는것과 같은 변형이 생긴다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;equation : 
+\(\quad p' = Ap+b\)&lt;/li&gt;
+  &lt;li&gt;matrix form :&lt;/li&gt;
+&lt;/ul&gt;
+
+\[\begin{bmatrix}
+p'\\ 
+1 \end{bmatrix}=\begin{bmatrix}
+A &amp;amp; b\\ 
+0 &amp;amp; 1
+\end{bmatrix}\begin{bmatrix}
+p\\ 
+1
+\end{bmatrix}\]
+
+&lt;p&gt;&lt;em&gt;A와 b는 Similarity와 달리 matrix의 변수가 다양할 수 있다.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&quot;projective&quot;&gt;Projective&lt;/h2&gt;
+&lt;p&gt;$c^{T}$의 값에 따라 어느 방향으로 projection 되는 모양으로 변형된다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;equation : 
+\(\quad p' = \frac{Ap+b}{c^{T}p+1}\)&lt;/li&gt;
+  &lt;li&gt;matrix form :&lt;/li&gt;
+&lt;/ul&gt;
+
+\[\begin{bmatrix}
+p'\\ 
+1 \end{bmatrix}\sim\begin{bmatrix}
+A &amp;amp; b\\ 
+c^{T} &amp;amp; 1
+\end{bmatrix}\begin{bmatrix}
+p\\ 
+1
+\end{bmatrix}\]</content><author><name>KYG</name></author><category term="Graphics" /><summary type="html">Transformation transform 작업은 이 변환들이 같은 수학적 group이라는 것을 알게 되면 여러 작업을 한 번에 수행할 수 있다는 큰 장점을 얻을 수 있다. group이 되기 위한 조건으로는 이 집합은 어떤 operator에 대해 닫혀있어야 한다. \(A \in G\,and\,B \in G \rightarrow A*B \in G\) 다음을 만족하는 identity element I가 존재해야 한다. \(A*I=I*A=A\) element $A$는 다음을 만족하는 inverse $A^{-1}$이 존재해야 한다. \(A^{-1}*A = A*A^{-1}=I\)</summary></entry><entry><title type="html">[Computer Graphics #1] 빛과 색</title><link href="https://shvtr159.github.io/graphics/computer-graphics-geometric-objects/" rel="alternate" type="text/html" title="[Computer Graphics #1] 빛과 색" /><published>2021-03-24T00:00:00+09:00</published><updated>2021-03-24T00:00:00+09:00</updated><id>https://shvtr159.github.io/graphics/computer-graphics-geometric-objects</id><content type="html" xml:base="https://shvtr159.github.io/graphics/computer-graphics-geometric-objects/">&lt;p&gt;그래픽을 만들어내기 위해서는 빛에 대한 내용 또한 알고 있어야 한다.&lt;/p&gt;
 
 &lt;h2 id=&quot;light&quot;&gt;Light&lt;/h2&gt;
 &lt;p&gt;태양과 형광등과 같은 일반적인 광원은 가시광선의 거의 모든 영역을 포함하고 있기 때문에 모든 색을 표현할 수 있다. 그러나 광원에서 나오는 빛의 색이 한정되어있는 경우도 있기 때문에 광원에서 나온 빛이 물체에 반사되어 카메라로 들어올 때의 모습을 표현하기 위해 빛의 특징 또한 알고 있어야 한다.&lt;/p&gt;
 
-&lt;h4 id=&quot;전자기파&quot;&gt;전자기파&lt;/h4&gt;
+&lt;h3 id=&quot;전자기파&quot;&gt;전자기파&lt;/h3&gt;
 &lt;p&gt;빛은 전자기파로 이루어져 있는데 그중 우리가 볼 수 있는 400nm ~ 700nm 의 파장을 가지는 전자기파를 &lt;strong&gt;가시광선(Visible spectrum)&lt;/strong&gt;이라고 부른다. 이 외에도 400nm보다 파장이 짧은 쪽에 자외선(Ultra Violet), 700nm보다 파장이 긴쪽에 적외선(Infra Red)이 있다. 그래픽스에는 주로 눈에 보이는 부분을 다루기 때문에 가시광선 부분을 주로 사용한다. 
 &lt;img src=&quot;https://user-images.githubusercontent.com/79836443/113173311-35bf4d00-9284-11eb-9498-480fd7f31e41.jpg&quot; alt=&quot;SL_EMspectrum&quot; class=&quot;align-center&quot; width=&quot;70%&quot; height=&quot;70%&quot; /&gt;&lt;/p&gt;
 
@@ -91,12 +491,12 @@ group이 되기 위한 조건으로는&lt;/p&gt;
 &lt;p&gt;반사된 빛은 $R(\lambda)=r(\lambda)E(\lambda)=(1-a(\lambda))E(\lambda)$ 식과 같이 물체의 Reflectance X 빛의 세기의 형태로 반사되어 우리 눈에 들어오게 된다.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/113188907-9440f700-9295-11eb-8a0a-fbe5275c0e98.jpg&quot; alt=&quot;Ref Abs&quot; class=&quot;align-center&quot; width=&quot;80%&quot; height=&quot;80%&quot; /&gt;&lt;/p&gt;
-&lt;h4 id=&quot;sensor&quot;&gt;Sensor&lt;/h4&gt;
+&lt;h3 id=&quot;sensor&quot;&gt;Sensor&lt;/h3&gt;
 &lt;p&gt;이 반사된 빛을 저장하기 위해서 카메라는 sensor를 이용한다. 카메라에 들어온 빛은 센서의 Photodiode에 도착하고 &lt;strong&gt;광전자 효과(Photoelectric Effect)&lt;/strong&gt;에 의해 전기신호로 변환된다. 이 센서도 역시 R, G, B를 따로따로 받아들이며 초당 빛의 에너지를 밝기값으로 저장하게 된다. 같은 빛의 R, G, B를 따로 받아들이기 때문에 실제로 그 위치가 서로 다른데 이 문제는 해상도를 높여 해결한다.&lt;/p&gt;
 
 &lt;p&gt;이 때 R, G, B 센서의 배열을 보면 2x2 사각형 안에 R 센서 1개, B 센서 1개, G 센서 2개로 센서가 구성되게 되는데, 그 이유는 Green값이 밝기값에 더 민감한 정보이기때문이다. 이처럼 사람의 시각과 같이 R, G, B 3가지 색상을 기본으로 설정하기로 한 이론을 &lt;strong&gt;Trichromatic Theory&lt;/strong&gt;라고 하며, 이미지나 프린터 등에서 이 3가지의 색을 이용해 여러 가지 색을 나타내게 된다.&lt;/p&gt;
 
-&lt;h4 id=&quot;brightness-luminace&quot;&gt;Brightness (Luminace)&lt;/h4&gt;
+&lt;h3 id=&quot;brightness-luminace&quot;&gt;Brightness (Luminace)&lt;/h3&gt;
 &lt;p&gt;사람의 눈은 color정보보다 밝기정보에 더 민감하다. 그러나 real world는 높은 Dynamic Range를 가지는 데 반해 카메라는 Dynamic Range가 크지 않아 아래와 같이 밝기를 조절하는 데 어려움이 있다.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/113318829-d0cf2a00-934b-11eb-810c-d208828ace17.jpg&quot; alt=&quot;camera range&quot; /&gt;&lt;/p&gt;
@@ -106,7 +506,7 @@ group이 되기 위한 조건으로는&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/113319529-7c787a00-934c-11eb-966c-51a83ab229aa.jpg&quot; alt=&quot;Dynamic range&quot; /&gt;
 &lt;img src=&quot;https://user-images.githubusercontent.com/79836443/113319775-c4979c80-934c-11eb-9583-fdb418f750c3.jpg&quot; alt=&quot;tone mapping&quot; class=&quot;align-center&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;&lt;/p&gt;
 
-&lt;h4 id=&quot;색-공간-color-space&quot;&gt;색 공간 (Color space)&lt;/h4&gt;
+&lt;h3 id=&quot;색-공간-color-space&quot;&gt;색 공간 (Color space)&lt;/h3&gt;
 &lt;p&gt;1.&lt;strong&gt;YUV&lt;/strong&gt; : Luminance와 chrominance를 분리해서 표현이 가능하다. 밝기를 나타내는 유일한 채널 Y와 2가지 색 채널  U, V로 구성된다. RGB와의 관계는 다음과 같다.&lt;/p&gt;
 
 \[\begin{bmatrix} Y\\ U\\ V \end{bmatrix} = \begin{bmatrix} .299 &amp;amp; .587 &amp;amp; .114\\ -.14713 &amp;amp; -.28886 &amp;amp; .436\\ .615 &amp;amp; -.51499 &amp;amp; -.10001 \end{bmatrix}\begin{bmatrix} R\\ G\\ B \end{bmatrix}\]
