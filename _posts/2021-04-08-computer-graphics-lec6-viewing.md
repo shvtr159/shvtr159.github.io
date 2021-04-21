@@ -41,7 +41,7 @@ camera의 center가 z=0에 있다는 가정하에 $$M_{orth}=\begin{bmatrix}
 \end{bmatrix}$$인 orthogonal projection matrix를 이용하여 최종 projection matrix는 $P=M_{orth}ST$ 의 matrix로  표현된다. 이 matrix를 수행하면 orthogonal matrix이므로 한 평면 위에 점들이 존재하게 된다.
 
 ### Oblique Projection
-![image](https://user-images.githubusercontent.com/79836443/114040814-f36ac100-98be-11eb-8178-526dad4a8858.png){: .align-center}
+![image](https://user-images.githubusercontent.com/79836443/114040814-f36ac100-98be-11eb-8178-526dad4a8858.png){: .align-center}{: .image-caption}
 
 위와 같은 형태로 cube를 보기 위해 Oblique Projection을 수행하기 위해서는 Shear + Orthogonal projection을 수행해야 한다. 일반적인 cube는 위의 모양처럼 projection 될 수 없어서 위와 같은 모양을 나타내기 위해서는 x방향과 y방향으로 shearing을 수행한다. 이 shearing matrix를 $H(\Theta ,\Phi )$라 한다면 Projection matrix는 $P=M_{orth}H(\Theta ,\Phi )$로 나타나고 General case, 즉 shearing 한 후 orthogonal normalize projection까지 수행하는 matrix는 $$P=M_{orth}STH(\Theta ,\Phi )$$로 나타낼 수 있다.
 
