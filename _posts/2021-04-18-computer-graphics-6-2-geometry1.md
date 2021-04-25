@@ -1,5 +1,7 @@
 ---
 title: "[Computer Graphics #6-2] Meshing and Geometry"
+categories:
+- Graphics
 ---
 
 이번 내용은 적절한 mesh를 생성하기 위한 방법과 생성된 Mesh와 vertex들을 이용해 적절한 Geometry를 생성하기 위한 방법에 관해서 이야기 한다.

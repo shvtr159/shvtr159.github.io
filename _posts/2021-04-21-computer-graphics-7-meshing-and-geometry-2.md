@@ -1,6 +1,8 @@
 ---
 title: "[Computer Graphics #7] Meshing and Geometry 2"
 use_math: true
+categories:
+- Graphics
 ---
 
 Meshing and Geometry 1 에서는 기본적인 geometry를 위한 triangle을 만드는 것에 대해서 배워보았다. 이번 geometry2 에서는 post-processing을 해서라도 좀 더 다양한 shape를 만드는 방법에 대한 geometry를 알아본다.
@@ -35,16 +37,18 @@ spline 방법 중 하나로 control point를 사용하여 모양을 변화시킨
 
 이때, 0차를 convolution하여 1차를 만들고, 1차를 convolution하여 2차를 만드는 방식으로 차수가 높아질수록 더 smooth한 curve가 된다. 보통 2차나 3차를 이용하여 만든다.
 그러면 B-spline function은 다음과 같이 정의된다.
->$$C(u) = \sum_{i=0}^{n}N_{i,p}(u)P_{i}$$
->P는 2D/3D 상에서의 control point
->$n+1 = m - p$ 은 간격 m의 수와 차수 p에 기반해 얼마나 많은 control point가 필요한지 결정해 준다.
+>$$C(u) = \sum_{i=0}^{n}N_{i,p}(u)P_{i}$$  
+>- P는 2D/3D 상에서의 control point
+>- $n+1 = m - p$ 식을 통해 간격 m의 수와 차수 p에 기반해 얼마나 많은 control point가 필요한지 결정해 준다.
 
 이제 위의 function을 이용해 curve를 만든다. B-spline에는 line 지나야 하는 vertex인 **knot**와 지나지 않고 curve의 모양을 결정해주는 **control point**가 있다. knot들을 n차 basis function을 이용하여 연결해 주는데 C0, C1 등을 고려하며 자연스럽게 연결할 수 있다. 그러나 그림과 같이 function은 symmetric하기 때문에 단순히 연결만 하게 된다면 부자연스러울 수 있다. 이때 control point를 이용하게 되는데 control point에 의해 knot 사이의 값들의 가중치가 달라지며 curve의 모양이 변하게 된다. 
 
 #### NURBS (Non-Uniform Rational B-Spline)
 B-spline에 weight가 추가되어 curve의 모양을 결정한다. NURBS curve는 다음과 같은 식으로 정의된다.
 
-> $$C(u) = \frac{\sum_{i=0}^{n}N_{i,p}(u)w_{i}P_{i}}{ \sum_{i=0}^{n}N_{i,p}(u)w_{i}}$$  
+> $$
+C(u) = \frac{\sum_{i=0}^{n}N_{i,p}(u)w_{i}P_{i}}{ \sum_{i=0}^{n}N_{i,p}(u)w_{i}}
+$$  
 > - N은 B-spline의 basis function, P는 control point, w는 P의 weight를 의미한다.  
 > - w, 즉 control point의 가중치가 커지면 curve가 이 control point에 더 가까워지고, 작아지면 더 멀어진다.
 
@@ -57,7 +61,7 @@ B-spline에 weight가 추가되어 curve의 모양을 결정한다. NURBS curve�
 
 ### Constructive Solid Geometry (CSG)
 복잡한 모양을 표현할 때 모양이 규칙성을 가지고, 일정한 모양의 object들의 합, 차로 만들 수 있다면 기본 component를 이용해서 만들어 낸다. 복잡한 객체의 모양을 기본 component의 mesh의 합, 차, 교집합을 이용해 만들기 때문에 복잡한 객체의 triangle 등을 모두 가질 필요가 없다. 주로 자연의 객체가 아니라 사람이 만든 객체들을 표현하기에 좋다.
-![image](https://user-images.githubusercontent.com/79836443/115751485-32773700-a3d4-11eb-8a9c-5fb529b5db76.png){:.align-center}
+[![image](https://user-images.githubusercontent.com/79836443/115756390-204bc780-a3d9-11eb-973a-2ec172b98ff9.png "https://en.wikipedia.org/wiki/Constructive_solid_geometry")](https://en.wikipedia.org/wiki/Constructive_solid_geometry){:.align-center}
 
 위와 같이 Union, Difference, Intersection의 연산으로 생성되며 CSG object는 binary tree에 의해 표현되며 implicit surface에 쉽게 적용된다.
 
