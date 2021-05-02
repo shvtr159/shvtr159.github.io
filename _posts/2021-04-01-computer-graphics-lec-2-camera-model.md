@@ -119,7 +119,7 @@ y\\
 
 
 ## Similarity (scaled Eudlidean)
-Euclidean transform에 scaling 또한 수행한다.
+Euclidean transform에 scaling 도 수행한다.
 
 - equation : 
 $$\quad p' = sRp+t$$
@@ -156,7 +156,7 @@ p\\
 
 *A와 b는 Similarity와 달리 matrix의 변수가 다양할 수 있다.*
 ## Projective
-$c^{T}$의 값에 따라 어느 방향으로 projection 되는 모양으로 변형된다.
+$c^{T}$의 값에 따라 특정 방향으로 projection 되는 모양으로 변형된다.
 
 - equation : 
 $$\quad p' = \frac{Ap+b}{c^{T}p+1}$$
