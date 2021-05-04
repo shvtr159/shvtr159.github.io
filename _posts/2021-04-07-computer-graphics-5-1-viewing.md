@@ -1,5 +1,7 @@
 ---
 title: "[Computer Graphics #5-1] Viewing"
+categories:
+- Graphics
 ---
 
 vertex, line 등을 이용해서 model을 만들고 나면 그 model을 어떻게 바라보는지 알아야 그 시점에 맞게 rendering 할 수 있다.
