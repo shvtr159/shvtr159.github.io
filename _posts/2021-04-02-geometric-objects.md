@@ -64,7 +64,8 @@ line의 정의와 vector의 operation을 이용하면 벡터 d 는 point R과 Q�
 ### convexity
 어떠한 면, 물체가 공과 같이 볼록하게 생긴 정도를 convexity라고 한다. 이 convexity는 나중에 rendering을 할 때 convexity가 유지되느냐 안되느냐에 따라서 occlusion을 판별하는 등 여러 상황에 중요하게 쓰인다. 정의를 보면 convex는 두 점을 연결하는 선분 위에 있는 모든 점 또한 객체 내부에 있을 때를 의미한다. 이를 Affine sum을 이용해서 나타내면 위에서 본 $$P = \alpha_{1}R + \alpha_{2}Q$$ 식과 같이 나타낼 수 있다.
 
-** 이를 2차원으로 확장시키면 어떤 물체 내부의 모든 점 P를 모서리의 점들로 나타낼 수 있다면  convex하다고 할 수 있다.** 이 식도 Affine sum으로 나타내면 다음과 같다.
+**이를 2차원으로 확장시키면 어떤 물체 내부의 모든 점 P를 모서리의 점들로 나타낼 수 있다면  convex하다고 할 수 있다.** 이 식도 Affine sum으로 나타내면 다음과 같다.
+
 ![image](https://user-images.githubusercontent.com/79836443/116810639-db195980-ab7f-11eb-816a-489bebd3106e.png){:.align-center}
 
 이는 3차원으로 확장시켜서도 동일하게 사용할 수 있다.
@@ -98,6 +99,7 @@ line의 정의와 vector의 operation을 이용하면 벡터 d 는 point R과 Q�
 - $$T(\alpha, \beta) = P + \beta (1-\alpha)(Q-P) + (1-\beta)(R-P)$$
 
 즉, $\alpha, \beta$값의 변화에 따라 점 S, T가 움직이며 삼각형 내부의 모든 점을 표현할 수 있다. 식을 한번 더 정리하면, Q-P와 R-P는 서로 다른 vector u, v로 나타낼 수 있으므로 다음과 같이 표현된다.
+
 $$T(\alpha, \beta) = P_{0} + \alpha u+ \beta v \quad(0\leq \alpha, \beta \leq 1)$$
 
 평면은 기준점에서부터 나가는 2개의 vector를 이용해 저 점들이 정의되고, 이 점들이 정의되면 평면을 나타낼 수 있게 되는 것이다. 이렇게 만들어지는 triangle들은 나중에 다 모아져 3D model을 구성하게 된다.

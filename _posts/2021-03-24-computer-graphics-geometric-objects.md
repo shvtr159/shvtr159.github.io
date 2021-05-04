@@ -16,10 +16,9 @@ categories:
 
 빛의 3원색은 **Red, Green, Blue**로 빛은 합쳐질수록 흰색에 가까워지기에 태양, 형광등과 같이 가시광선의 모든 영역을 포함하고 있는 빛은 흰색으로 나타나게 된다. 만약 이 흰색의 태양 빛이 물체에 닿으면 물체의 특성에 따라 일부 색은 흡수되고 일부 색은 반사된다.
 
-우리가 물체를 볼 때, 물체의 색은 물체에서 반사된 색의 빛이 눈에 들어와 물체의 색으로 인식하게 된다. 그렇기 때문에 모든 빛을 반사하는 물체는 흰색으로 보이고 모든 빛을 흡수한 물체는 검은색으로 보이게 된다.
-이 반사되는 빛은 빛과 반사율에 의해 결정된다. 아래의 그림과 같이 빛의 세기가 더 세더라도 반사율에 따라 실제로 반사되는 빛의 세기가 달라진다.
+우리가 물체를 볼 때, 물체의 색은 물체에서 반사된 색의 빛이 눈에 들어와 물체의 색으로 인식하게 된다. 그렇기 때문에 모든 빛을 반사하는 물체는 흰색으로 보이고 모든 빛을 흡수한 물체는 검은색으로 보이게 된다. **이 반사되는 빛은 빛과 반사율에 의해 결정된다.** 아래의 그림과 같이 빛의 세기가 더 세더라도 반사율에 따라 실제로 반사되는 빛의 세기가 달라진다.
 
-반사된 빛은 $R(\lambda)=r(\lambda)E(\lambda)=(1-a(\lambda))E(\lambda)$ 식과 같이 물체의 Reflectance X 빛의 세기의 형태로 반사되어 우리 눈에 들어오게 된다.
+반사된 빛은 $R(\lambda)=r(\lambda)E(\lambda)=(1-a(\lambda))E(\lambda)$ 식과 같이 물체의 Reflectance $\times$  빛의 세기의 형태로 반사되어 우리 눈에 들어오게 된다.
 
 ![Ref Abs](https://user-images.githubusercontent.com/79836443/113188907-9440f700-9295-11eb-8a0a-fbe5275c0e98.jpg){: .align-center}{: width="80%" height="80%"}
 ### Sensor
@@ -38,12 +37,12 @@ categories:
 ![tone mapping](https://user-images.githubusercontent.com/79836443/113319775-c4979c80-934c-11eb-9583-fdb418f750c3.jpg){: .align-center}{: width="50%" height="50%"}
 
 ### 색 공간 (Color space)
-1.**YUV** : Luminance와 chrominance를 분리해서 표현이 가능하다. 밝기를 나타내는 유일한 채널 Y와 2가지 색 채널  U, V로 구성된다. RGB와의 관계는 다음과 같다.
+- **YUV** : Luminance와 chrominance를 분리해서 표현이 가능하다. 밝기를 나타내는 유일한 채널 Y와 2가지 색 채널  U, V로 구성된다. RGB와의 관계는 다음과 같다.
 
 $$\begin{bmatrix} Y\\ U\\ V \end{bmatrix} = \begin{bmatrix} .299 & .587 & .114\\ -.14713 & -.28886 & .436\\ .615 & -.51499 & -.10001 \end{bmatrix}\begin{bmatrix} R\\ G\\ B \end{bmatrix}$$
 
 ![YUV](https://user-images.githubusercontent.com/79836443/113321317-708db780-934e-11eb-8283-d483481d38ac.jpg){: .align-center}{: width="80%" height="80%"}
 
-2. **RGB** : 가장 편하게 사용하는 좌표계.
-3. **HSV** : 사람이 이해하기 가장 쉬운 색 좌표계로, H(Hue)는 색의 종류, S(Saturation)는 채도를 나타낸다. V는 Value로 밝기를 나타낸다.
+- **RGB** : 가장 편하게 사용하는 좌표계.
+- **HSV** : 사람이 이해하기 가장 쉬운 색 좌표계로, H(Hue)는 색의 종류, S(Saturation)는 채도를 나타낸다. V는 Value로 밝기를 나타낸다.
 ![HSV](https://user-images.githubusercontent.com/79836443/113321763-e09c3d80-934e-11eb-9df9-92899dde28cf.jpg){: .align-center}{: width="50%" height="50%"}

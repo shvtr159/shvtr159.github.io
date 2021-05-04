@@ -12,17 +12,17 @@ group이 되기 위한 조건으로는
 $$A \in G\,and\,B \in G \rightarrow A*B \in G$$
 2. 다음을 만족하는 identity element I가 존재해야 한다.  
 $$A*I=I*A=A$$
-3. element $A$는 다음을 만족하는 inverse $A^{-1}$이 존재해야 한다.
+3. element A는 다음을 만족하는 inverse A가 존재해야 한다.
 $$A^{-1}*A = A*A^{-1}=I$$
 
 translation은 matrix로 나타나고 matrix의 곱셈은 닫혀있다. 2번과 3번 조건 또한 I 행렬과 역행렬을 이용해 증명할 수 있다. 이렇게 이 수학적 group인 것을 이용하면 다음과 같은 장점을 얻을 수 있다.
 
-어떤 점들을 회전시킨 뒤 d만큼 이동시켰다. 다시 이 점들을 원래 상태로 되돌리기 위해서는 -d만큼 이동한 뒤 다시 반대로 회전시켜야만 한다. 그러나 회전을 $T_{1}$, 이동을 $T_{2}$라고 했을 때 이 group을 이용하면, 다시 원상태로 돌아가기 위해 $T_{1}^{-1} * T_{2}^{-1}$ 를 한 번만 수행해주면 된다.
+어떤 점들을 회전시킨 뒤 d만큼 이동시켰다. 다시 이 점들을 원래 상태로 되돌리기 위해서는 -d만큼 이동한 뒤 다시 반대로 회전시켜야만 한다. 그러나 회전을 $T_{1}$ , 이동을 $T_{2}$ 라고 했을 때 이 group을 이용하면, 다시 원상태로 돌아가기 위해 $T_{1}^{-1} * T_{2}^{-1}$ 를 한 번만 수행해주면 된다.
 
 ## 2D planar Transtormation의 종류
 3차원에서 카메라의 위치에 따라 시점이 달라지거나 물체의 위치가 변하는 경우 다양한 변환을 수행해주어야 한다. 3차원 변환에 앞서 간단하게 2차원 변환으로 다양한 변환을 어떻게 표현하는지 알아본다.
 ![image](https://user-images.githubusercontent.com/79836443/114275830-01574800-9a5f-11eb-95c5-822f00bd6633.png)
->Basic set of 2D planar transformations (from R.Szeliski)
+<center><span style="color:rgb(150, 150, 150)">Basic set of 2D planar transformations (from R.Szeliski)</span></center><br>
 	
 ## Translation
 물체의 회전, 크기, 형태를 변형하지 않고 이동시킨다.
@@ -59,8 +59,8 @@ x'\\
 y'\\ 
 1
 \end{bmatrix}=\begin{bmatrix}
-s & 0 & t_{x}\\ 
-0 & s & t_{y}\\ 
+s & 0 & 0\\ 
+0 & s & 0\\ 
 0 & 0 & 1
 \end{bmatrix}\begin{bmatrix}
 x\\ 
@@ -69,7 +69,7 @@ y\\
 \end{bmatrix}$$
 
 ## Rotation
-$\theta$도 만큼 회전한다.
+$\theta$ 만큼 회전한다.
 
 - equation : 
 $$\quad x' = x\cos\theta-y\sin\theta\qquad\qquad y' = x\sin\theta+y\cos\theta$$

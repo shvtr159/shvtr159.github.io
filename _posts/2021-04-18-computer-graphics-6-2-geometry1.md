@@ -16,7 +16,7 @@ categories:
 
 이 과정은 순차적으로 삼각형으로 만들어 간 뒤 남은 vertex로 자연스럽게 만들어지는 triangle들의 상태를 판단하며 여러 번에 걸쳐 global optima를 찾아가기 때문에 시간이 더 걸리게 된다. 
 
-또한, 이를 3차원에서 수행할 경우 noise나 물체의 모양에 따라 물체 내부로 평면이 생기는 등의 문제가 발생할 수 있다. 이때는 같이 Mesh를 만들고자 하는 local 영역의 vertex들을 2차원 평면에 투영 시켜 삼각분할을 수행한 뒤 그 topology를 3차원에 적용하는 방법을 사용한다.
+또한, 이를 3차원에서 수행할 경우 noise나 물체의 모양에 따라 물체 내부로 평면이 생기는 등의 문제가 발생할 수 있다. 이때는 Mesh를 만들고자 하는 local 영역의 vertex들을 2차원 평면에 투영 시켜 삼각분할을 수행한 뒤 그 topology를 3차원에 적용하는 방법을 사용한다.
 
 ## Mesh Construction - Subdivision
 모델을 자세하게 만들기 위해서는 수많은 vertex, edge들이 필요하다. 그러나 이 수많은 vertex들을 수작업으로 만드는 것은 매우 힘들기 때문에 자동으로 새로운 vertex들을 생성하고 위치시키는 방법을 사용하게 된다. 그 절차는 다음과 같다.
@@ -26,7 +26,7 @@ categories:
 4. 이를 반복하며 더 좋은 model을 생성해나간다.
 
 ### Subdivision
-mesh construction을 위한 방법으로 수작업으로 만든 rough한 model에 vertex를 추가하여 더 매끄러운 model로 만든다. 이때 전제조건은 model의 global한 shape은 다 표현되어있다는 것이다. subdivision을 이용해서는 없던 뿔을 만드는 것처럼 새로운 것을 자동으로 추가할 수 없다. 즉 subdivision이 수행하는 과정은 다음과 같다.
+mesh construction을 위한 방법으로 수작업으로 만든 rough한 model에 vertex를 추가하여 더 매끄러운 model로 만든다. 이때 전제조건은 model의 global한 shape은 다 표현되어있다는 것이다. 그러나 **subdivision을 이용해서는 없던 뿔을 만드는 것처럼 새로운 것을 자동으로 추가할 수 없다.** subdivision이 수행하는 과정은 다음과 같다.
 
 ![image](https://user-images.githubusercontent.com/79836443/115521177-e047f000-a2c5-11eb-9b76-3994cf63d7ff.png){:.align-center}{: width="90%" height="90%"}
 

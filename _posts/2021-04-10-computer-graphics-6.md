@@ -78,7 +78,7 @@ point들을 모두 순서대로 연결한 뒤 처음 point와 끝 point도 연�
 
 polygon은 polygon을 이루는 edge가 다른 polygon과 겹쳐짐의 유무에 따라 겹쳐지지 않는 simple polygon과 겹쳐지는 nonsimple polygon으로 나누어진다
  
- 어떤 polygon을 사용하는 것이 더 좋을 ㅁ것인지 고민한 결과 polygon의 quality를 나누는 기준을 정하게 되었다. 그 기준은 **convexity**로 polygon 내부의 임의의 두 점을 선택해 두 점을 연결하는 선을 그렸을 때, 그 선 위에 있는 모든 점이 polygon 내부에 존재할 때 그 polygon은 convex하다고 말할 수 있다.
+ 어떤 polygon을 사용하는 것이 더 좋을 것인지 고민한 결과 polygon의 quality를 나누는 기준을 정하게 되었다. 그 기준은 **convexity**로 polygon 내부의 임의의 두 점을 선택해 두 점을 연결하는 선을 그렸을 때, 그 선 위에 있는 모든 점이 polygon 내부에 존재할 때 그 polygon은 convex하다고 말할 수 있다.
  
  ### Polygon
  ```
