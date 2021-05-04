@@ -1,5 +1,5 @@
 ---
-title: "[Computer Graphics #5] Viewing - Orthogonal Projection"
+title: "[Computer Graphics #5-2] Viewing - Orthogonal Projection"
 use_math: true
 categories:
 - Graphics

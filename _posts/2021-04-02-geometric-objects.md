@@ -1,5 +1,5 @@
 ---
-title: "[Computer Graphics #3] Geometric Objects"
+title: "[Computer Graphics #3-1] Geometric Objects"
 categories:
 - Graphics
 use_math: true
@@ -29,8 +29,8 @@ use_math: true
 
 ### Operations
 - magnitude
-	- vector의 크기 : real number. $\left | v \right |$
-	- vector와 scalar의 곱 $\left | \alpha v \right | = \left | \alpha \right |\left | v \right |$
+- vector의 크기 : real number. $\| v\|$
+	- vector와 scalar의 곱 $\| \alpha v \| = \| \alpha \|\| v \|$
 	- zero magnitude : 0 vector
 
 ![image](https://user-images.githubusercontent.com/79836443/116809731-81626080-ab7a-11eb-9c04-e858a643b916.png){:.align-center}
@@ -40,7 +40,7 @@ use_math: true
 	- $v=P-Q$
 - point에 vector를 더하기
 	- 해당 point에서 vector만큼 이동하면 나오는 point가 된다.
-	- %P = v + Q%
+	- $P = v + Q$
 - vector-vector 합
 	- 두 vector의 합으로 새로운 vector가 정의
 
@@ -73,16 +73,16 @@ line의 정의와 vector의 operation을 이용하면 벡터 d 는 point R과 Q�
 #### Dot Product (Inner product, 내적)
 <center>$u\cdot v$</center>
 - 두 vector가 수직할 때 : $u\cdot v=0$
-- vector의 크기 : $\left | u \right |^{2} = u\cdot u$
-- 두 vector가 이루는 각 : $\cos\theta = \frac{u\cdot v}{\left | u \right |\left | v \right |}$
-- 정사영(orthogonal projection) : $\left | v \right |\cos\theta = \frac{u\cdot v}{\left | u \right |}$
+- vector의 크기 : $\| u \|^{2} = u\cdot u$
+- 두 vector가 이루는 각 : $\cos\theta = \frac{u\cdot v}{\| u \|\| v \|}$
+- 정사영(orthogonal projection) : $\| v \|\cos\theta = \frac{u\cdot v}{\| u \|}$
 
 #### Cross Product (Outer product, 외적)
 <center>$u\times v = n$</center>
 ![image](https://user-images.githubusercontent.com/79836443/116811745-dbb4ee80-ab85-11eb-90de-a57d0207ee19.png){:.align-center}
 
 두 vector에 모두 수직한 vector를 만들어 낸다.
-- vector의 크기 : \left | \sin\theta \right | = \frac{\left | u\times v\right | }{\left | u \right |\left | v \right |}
+- vector의 크기 : $\| \sin\theta \| = \frac{\| u\times v\| }{\| u \|\| v \|}$
 
 이 모두 right-handed coordinates system에서 표현한다. 이는 오른손의 엄지손가락을 z의 방향으로 표시한다.
 ![image](https://user-images.githubusercontent.com/79836443/116811854-672e7f80-ab86-11eb-937f-59377d7d578d.png){:.align-center}
@@ -98,7 +98,7 @@ line의 정의와 vector의 operation을 이용하면 벡터 d 는 point R과 Q�
 - $$T(\alpha, \beta) = P + \beta (1-\alpha)(Q-P) + (1-\beta)(R-P)$$
 
 즉, $\alpha, \beta$값의 변화에 따라 점 S, T가 움직이며 삼각형 내부의 모든 점을 표현할 수 있다. 식을 한번 더 정리하면, Q-P와 R-P는 서로 다른 vector u, v로 나타낼 수 있으므로 다음과 같이 표현된다.
-T(\alpha, \beta) = P_{0} + \alpha u+ \beta v \quad(0\leq \alpha, \beta \leq 1)
+$$T(\alpha, \beta) = P_{0} + \alpha u+ \beta v \quad(0\leq \alpha, \beta \leq 1)$$
 
 평면은 기준점에서부터 나가는 2개의 vector를 이용해 저 점들이 정의되고, 이 점들이 정의되면 평면을 나타낼 수 있게 되는 것이다. 이렇게 만들어지는 triangle들은 나중에 다 모아져 3D model을 구성하게 된다.
 
@@ -158,7 +158,7 @@ $u_{3} = \gamma_{31}\nu_{1} +\gamma_{32}\nu_{2}+\gamma_{33}\nu_{3}$
 
 Basis가 변하는 경우는 다음과 같이 2가지 경우로 나눌 수 있다.
 1. Origin이 변하지 않는 경우
-	- ex) rotaion이나 scaling 같은 경우
+	- ex) rotation이나 scaling 같은 경우
 2. Origin이 변하는 경우
 	- ex) 원점도 같이 translation이 되는 경우
 만약 translation이 일어나 Origin이 변하더라도 vector라면 그 방향과 크기가 바뀌지 않기때문에 문제가 없다. 지금까지 본 경우가 vector의 변환이기 때문에 Homogeneous coordinate를 사용하지 않아도 문제가 없었다. 그러나 Point를 표현하기 위해서는 Homogeneous coordinate를 사용해야만 한다.  이번에는 Origin까지 $P_{0}$에서 $Q_{0}$로 변경할 때를 확인해보자.
