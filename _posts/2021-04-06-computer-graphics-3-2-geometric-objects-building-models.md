@@ -1,5 +1,7 @@
 ---
 title: "[Computer Graphics #3-2] Geometric Objects - Building Models"
+categories:
+- Graphics
 ---
 
 우리가 만들어야 할 3D model의 기본은 vertex에서 시작한다. 모든 것을 vertex로 표현할 수도 있지만 이는 계산량이 너무 많다. 때문에 우리는 vertex를 정의하고 그 vertex를 이어 triangle을 만들어 model을 표현한다. 이번 page에서는 model을 만들기 위한 간단한 data structure, representatiaon 등을 알아본다.
