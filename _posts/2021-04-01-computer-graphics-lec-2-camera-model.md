@@ -1,5 +1,5 @@
 ---
-title: "[Computer Graphics #2] Camera model"
+title: "[Computer Graphics #2] Transformation"
 categories:
 - Graphics
 use_math: true

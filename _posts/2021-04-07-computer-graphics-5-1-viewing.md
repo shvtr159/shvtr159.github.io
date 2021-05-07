@@ -2,6 +2,7 @@
 title: "[Computer Graphics #5-1] Viewing"
 categories:
 - Graphics
+use_math: true
 ---
 
 vertex, line 등을 이용해서 model을 만들고 나면 그 model을 어떻게 바라보는지 알아야 그 시점에 맞게 rendering 할 수 있다.
@@ -44,3 +45,74 @@ vertex, line 등을 이용해서 model을 만들고 나면 그 model을 어떻�
 ![image](https://user-images.githubusercontent.com/79836443/116819717-2fd2c980-abac-11eb-8c96-cf477efdc141.png){:.align-center}
 
 이때, 3차원이기 때문에 3개까지 있을 수 있지만 1개나 2개밖에 없는 경우는 나머지 point들을 만드는 방향이 parallel해서 무한하기 때문에 확인할 수 없다. 이 차이는 물체의 특징이 아닌 내가 보는 위치에 따라 달라지는 특징으로  내 시점에 따라 물체의 모양이 결정된다.
+
+## Camera view - OpenGL
+### Positioning of the camera
+카메라 위치의 위치를 평행이동 합니다. 
+```
+glTranslatef(0.0, 0.0, -d);
+```
+![image](https://user-images.githubusercontent.com/79836443/117022489-40617c00-ad33-11eb-8dd0-05ac9922cc2a.png){:.align-center}
+
+카메라를 회전 시켜 이동합니다. 아래 코드에서는 평행이동 후 y축을 기준으로 90도 회전합니다.
+```
+glMatrixMode(GL_MODELVIEW); 
+glLoadIdentity( ); 
+glTranslatef(0.0, 0.0, -d);
+glRotatef(-90.0, 0.0, 1.0, 0.0);
+```
+
+### Look-At Function
+카메라의 위치(eye), 어느 방향으로 볼 것인지(at), 어디가 위쪽 방향인지(up) 설정해서 모델을 볼 수 있도록 합니다.
+'''
+gluLookAt(eyex, eyey, eyez, atx, aty, atz, upx, upy, upz);
+'''
+![image](https://user-images.githubusercontent.com/79836443/117023047-b534b600-ad33-11eb-96bb-282c301b3c4e.png){:.align-center}
+
+이 외에도 다른 보는 방식으로
+- **Roll, pitch, yaw**
+![image](https://user-images.githubusercontent.com/79836443/117023983-8ec34a80-ad34-11eb-8fe0-f00d2af5d04d.png){:.align-center}
+
+- **Elevation and azimuth** : 얼마나 돌리고 얼마나 올리는지. ex) 하늘의 별의 위치
+
+등이 있다.
+
+### Projection
+- Simple Perspective Projection : Perspective projection으로 x, y와 z와의 관계가 나타난다. 
+- Simple Orthogonal Projection : z값을 parallel하게 내려 그냥 0으로 만든다.
+
+OpenGL에는 조건을 주는 2가지 방식이 있다.
+
+- **Angle of view** : 카메라에서 주어진 angle에 들어온 대상을 보인다
+```
+glMatrixMode(GL_PROJECTION); 
+glLoadIdentity( );
+gluPerspective(fovy, aspect, near, far);
+```
+![image](https://user-images.githubusercontent.com/79836443/117026299-a0a5ed00-ad36-11eb-9e22-7eaca4ca0832.png){:.align-center}
+
+  - fovy : 위(y)방향의 angle을 결정한다.
+  - aspect ratio : 종횡비. 높이와 넓이의 비율
+  - near, far : 앞뒤로 표시할 범위를 설정
+<br><br>
+
+- **View volume** : volume을 정해 그 volume 내의 대상을 보인다.
+
+**Specification of a frustum**
+```
+glMatrixMode(GL_PROJECTION); 
+glLoadIdentity( );
+glFrustum(xmin, xmax, ymin, ymax, near, far);
+```
+![image](https://user-images.githubusercontent.com/79836443/117025681-152c5c00-ad36-11eb-8c31-21f5a0711542.png){:.align-center}
+
+-far과 -near를 $z_{max}, z_{min}$으로 설정하여 해당 범위 내를 보여준다.
+
+**Orthographic viewing**  
+z는 평행하게 들어와 직육면체 모양의 view volume을 설정한다.
+```
+glMatrixMode(GL_PROJECTION); 
+glLoadIdentity( );
+glOrtho(xmin, xmax, ymin, ymax, near, far);
+```
+![image](https://user-images.githubusercontent.com/79836443/117025942-4dcc3580-ad36-11eb-8699-712dadb6a2e0.png){:.align-center}
