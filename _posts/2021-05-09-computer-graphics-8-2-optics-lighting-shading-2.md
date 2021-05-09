@@ -86,12 +86,12 @@ diffuse material이라도 광원의 위치에 따라 specular 처럼 보일 수 
 BRDF에도 들어오고 diffuse되고 한 결과에 ambient light에 의해 반사되는 빛을 표현해주기 위한 term이 있다. 이는 사용될 빛에다 상수를 곱해서 표현된다. 이는 간단하게 $L_{o}=k_{a} \hat{I}_{i}$로 표현되며 k는 각  object에 대한 ambient reflectivity이다.
 
 또한, R,G,B에 따라 다른 incoming ambient light를 사용하고 그에 따른 각각의 k도 존재하므로 다음과 같이 정리된다.
-<center>$$(L_{o,R},L_{o,G},L_{o,B})=(k_{a,R}\hat{I}_{i,R}, k_{a,G}\hat{I}_{i,G}, k_{a,B}\hat{I}_{i,B})$$</center>
+<center>$$(L_{o,R},\,L_{o,G},\,L_{o,B})=(k_{a,R}\hat{I}_{i,R}, \,k_{a,G}\hat{I}_{i,G}, \,k_{a,B}\hat{I}_{i,B})$$</center>
 
 ambient light에 대해 이야기 했으므로 일반적인 Light Type을 다시 한번 정리해보자.
 - **Ambient light** : 방향성이 없고 전체 균일하게 나타난다.
 - **Directional light** : daylight처럼 parallel하게 들어오는 light. 때문에 daylight는 point light만으로는 표현하기 힘들 수 있다.
-- **Point light****
+- **Point light**
 - **Spoit light**
 - **Area light** : point가 아닌 면적에서 나오는 빛으로 point를 모아서 표현하거나 한다.
 
@@ -106,11 +106,11 @@ ambient light에 대해 이야기 했으므로 일반적인 Light Type을 다시
 
 결과적으로 나가는 빛은 각 term에 해당하는 coefficient를 곱하고 모두 더해주는 형태로 나타난다. 
 
-diffuse term은 들어오는 빛(I)에만 영향을 받기 때문에 I, 그리고 들어오는 빛과의 각도를 알아야 하기 때문에 normal 방향(n)이 영향을 주고, 
+**diffuse term**은 들어오는 빛(I)에만 영향을 받기 때문에 I, 그리고 들어오는 빛과의 각도를 알아야 하기 때문에 normal 방향(n)이 영향을 주고, 
 
-specular term은 어디로 나가는지(r) 중요하고, 이 주로 나가는 r에서 어떻게 떨어진 곳에서 보는지(v)에 따라 결정해줘야 하기 때문에 이 둘이 중요하고, 
+**specular term**은 어디로 나가는지(r) 중요하고, 이 주로 나가는 r에서 어떻게 떨어진 곳에서 보는지(v)에 따라 결정해줘야 하기 때문에 이 둘이 중요하고, 
 
-ambient는 전체적인 빛의 크기를 생각해주면 된다.
+**ambient**는 전체적인 빛의 크기를 생각해주면 된다.
 
 ![image](https://user-images.githubusercontent.com/79836443/117576999-e261d980-b122-11eb-93f0-93d896521817.png){:.align-center}
 
