@@ -77,8 +77,8 @@ $L_{o\;\mathrm{due\;to}\;i}(\omega_{i}, \omega_{o}) = BRDF(\omega_{i}, \omega_{o
 BRDF는 물체의 반사 특성을 나타내는 만큼 Surface의 특징에 관한 term 또한 가지고 있다.
 ### Diffuse Materials
 이전에 보았듯이 Diffuse Material은 입사한 빛을 모든 방향으로 같은 양을 반사시킨다. 때문에 diffuse materials는 빛이 들어오는 각도만 중요하다. 그 이유는 들어오는 각도에 따라 광량이 달라지기 때문이고, diffuse materials는 빛이 항상 모든 방향으로 일정하게 나가기 때문이다. 이러한 이유로 diffuse materials일 경우 BRDF가 중요하지 않아 상수로 대체된다. 그래서 실제로 완벽한 diffuse materials는 없지만, 벽과 같은 비슷한 surface들은 다음과 같이 근사할 수 있다.
-<center>$$BRDF(\omega_{i}, \omega_{o}) = k_{d}
-L_{o} = BRDF(\omega_{i}, \omega_{o})\hat{I}_{i}\cos\theta_{i} = k_{d}\hat{I}_{i}\cos\theta_{i}\qquad(=k_{d}\hat{I}_{i}\max(0,-\omega_{i}\cdot \hat{N})$$</center>
+<center>$$BRDF(\omega_{i}, \omega_{o}) = k_{d}</center>
+<center>L_{o} = BRDF(\omega_{i}, \omega_{o})\hat{I}_{i}\cos\theta_{i} = k_{d}\hat{I}_{i}\cos\theta_{i}\qquad(=k_{d}\hat{I}_{i}\max(0,-\omega_{i}\cdot \hat{N})$$</center>
 
 diffuse material이라도 광원의 위치에 따라 specular 처럼 보일 수 있다. 그러나 이는 그림자가 져서 그런 것으로 들어온 빛의 위치 때문이지 물체의 특성이 아니다.
 
