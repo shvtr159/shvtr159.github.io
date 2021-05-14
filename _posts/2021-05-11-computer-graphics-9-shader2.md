@@ -1,5 +1,6 @@
 ---
 title: "[Computer Graphics #9] Shaders 2"
+use_math: true
 categories:
 - Graphics
 ---
