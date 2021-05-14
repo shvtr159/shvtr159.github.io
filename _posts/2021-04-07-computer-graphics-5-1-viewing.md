@@ -49,22 +49,22 @@ vertex, line 등을 이용해서 model을 만들고 나면 그 model을 어떻�
 ## Camera view - OpenGL
 ### Positioning of the camera
 카메라 위치의 위치를 평행이동 합니다. 
-```
+```cpp
 glTranslatef(0.0, 0.0, -d);
 ```
 ![image](https://user-images.githubusercontent.com/79836443/117022489-40617c00-ad33-11eb-8dd0-05ac9922cc2a.png){:.align-center}
 
 카메라를 회전 시켜 이동합니다. 아래 코드에서는 평행이동 후 y축을 기준으로 90도 회전합니다.
-```
+```cpp
 glMatrixMode(GL_MODELVIEW); 
-glLoadIdentity( ); 
+glLoadIdentity(); 
 glTranslatef(0.0, 0.0, -d);
 glRotatef(-90.0, 0.0, 1.0, 0.0);
 ```
 
 ### Look-At Function
 카메라의 위치(eye), 어느 방향으로 볼 것인지(at), 어디가 위쪽 방향인지(up) 설정해서 모델을 볼 수 있도록 합니다.
-'''
+'''cpp
 gluLookAt(eyex, eyey, eyez, atx, aty, atz, upx, upy, upz);
 '''
 ![image](https://user-images.githubusercontent.com/79836443/117023047-b534b600-ad33-11eb-96bb-282c301b3c4e.png){:.align-center}
@@ -84,9 +84,9 @@ gluLookAt(eyex, eyey, eyez, atx, aty, atz, upx, upy, upz);
 OpenGL에는 조건을 주는 2가지 방식이 있다.
 
 - **Angle of view** : 카메라에서 주어진 angle에 들어온 대상을 보인다
-```
+```cpp
 glMatrixMode(GL_PROJECTION); 
-glLoadIdentity( );
+glLoadIdentity();
 gluPerspective(fovy, aspect, near, far);
 ```
 ![image](https://user-images.githubusercontent.com/79836443/117026299-a0a5ed00-ad36-11eb-9e22-7eaca4ca0832.png){:.align-center}
@@ -99,9 +99,9 @@ gluPerspective(fovy, aspect, near, far);
 - **View volume** : volume을 정해 그 volume 내의 대상을 보인다.
 
 **Specification of a frustum**
-```
+```cpp
 glMatrixMode(GL_PROJECTION); 
-glLoadIdentity( );
+glLoadIdentity();
 glFrustum(xmin, xmax, ymin, ymax, near, far);
 ```
 ![image](https://user-images.githubusercontent.com/79836443/117025681-152c5c00-ad36-11eb-8c31-21f5a0711542.png){:.align-center}
@@ -110,9 +110,9 @@ glFrustum(xmin, xmax, ymin, ymax, near, far);
 
 **Orthographic viewing**  
 z는 평행하게 들어와 직육면체 모양의 view volume을 설정한다.
-```
+```cpp
 glMatrixMode(GL_PROJECTION); 
-glLoadIdentity( );
+glLoadIdentity();
 glOrtho(xmin, xmax, ymin, ymax, near, far);
 ```
 ![image](https://user-images.githubusercontent.com/79836443/117025942-4dcc3580-ad36-11eb-8699-712dadb6a2e0.png){:.align-center}

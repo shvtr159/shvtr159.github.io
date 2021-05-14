@@ -1,5 +1,5 @@
 ---
-title: "[Computer Graphics #8-2] Optics & Lighting - Shading 2"
+title: "[Computer Graphics #8-2] Optics & Lighting - Shaders"
 categories:
 - Graphics
 use_math: true
