@@ -1,3 +1,4 @@
 이미지 가운데 정렬, 크기변경 : {:.align-center}{: width="90%" height="90%"}
 이미지 포인팅시 글 : (~~.jpg "글")
-주석 : <center><span style="color:rgb(150, 150, 150)">regression & interpolation</span></center><br>
+주석 : <center><span style="color:rgb(150, 150, 150)">주석 내용</span></center><br>
+LaTex 수식 공백 : \,(1칸), \;(2칸), \quad(4칸), \qquad(8칸)

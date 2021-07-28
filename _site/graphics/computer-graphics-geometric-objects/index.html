@@ -155,7 +155,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
       <nav id="site-nav" class="greedy-nav">
         
         <a class="site-title" href="/">
-          공부하는 Blog
+          자습 Blog
           
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
@@ -342,10 +342,9 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 <p>빛의 3원색은 <strong>Red, Green, Blue</strong>로 빛은 합쳐질수록 흰색에 가까워지기에 태양, 형광등과 같이 가시광선의 모든 영역을 포함하고 있는 빛은 흰색으로 나타나게 된다. 만약 이 흰색의 태양 빛이 물체에 닿으면 물체의 특성에 따라 일부 색은 흡수되고 일부 색은 반사된다.</p>
 
-<p>우리가 물체를 볼 때, 물체의 색은 물체에서 반사된 색의 빛이 눈에 들어와 물체의 색으로 인식하게 된다. 그렇기 때문에 모든 빛을 반사하는 물체는 흰색으로 보이고 모든 빛을 흡수한 물체는 검은색으로 보이게 된다.
-이 반사되는 빛은 빛과 반사율에 의해 결정된다. 아래의 그림과 같이 빛의 세기가 더 세더라도 반사율에 따라 실제로 반사되는 빛의 세기가 달라진다.</p>
+<p>우리가 물체를 볼 때, 물체의 색은 물체에서 반사된 색의 빛이 눈에 들어와 물체의 색으로 인식하게 된다. 그렇기 때문에 모든 빛을 반사하는 물체는 흰색으로 보이고 모든 빛을 흡수한 물체는 검은색으로 보이게 된다. <strong>이 반사되는 빛은 빛과 반사율에 의해 결정된다.</strong> 아래의 그림과 같이 빛의 세기가 더 세더라도 반사율에 따라 실제로 반사되는 빛의 세기가 달라진다.</p>
 
-<p>반사된 빛은 $R(\lambda)=r(\lambda)E(\lambda)=(1-a(\lambda))E(\lambda)$ 식과 같이 물체의 Reflectance X 빛의 세기의 형태로 반사되어 우리 눈에 들어오게 된다.</p>
+<p>반사된 빛은 $R(\lambda)=r(\lambda)E(\lambda)=(1-a(\lambda))E(\lambda)$ 식과 같이 물체의 Reflectance $\times$  빛의 세기의 형태로 반사되어 우리 눈에 들어오게 된다.</p>
 
 <p><img src="https://user-images.githubusercontent.com/79836443/113188907-9440f700-9295-11eb-8a0a-fbe5275c0e98.jpg" alt="Ref Abs" class="align-center" width="80%" height="80%" /></p>
 <h3 id="sensor">Sensor</h3>
@@ -364,17 +363,19 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 <img src="https://user-images.githubusercontent.com/79836443/113319775-c4979c80-934c-11eb-9583-fdb418f750c3.jpg" alt="tone mapping" class="align-center" width="50%" height="50%" /></p>
 
 <h3 id="색-공간-color-space">색 공간 (Color space)</h3>
-<p>1.<strong>YUV</strong> : Luminance와 chrominance를 분리해서 표현이 가능하다. 밝기를 나타내는 유일한 채널 Y와 2가지 색 채널  U, V로 구성된다. RGB와의 관계는 다음과 같다.</p>
+<ul>
+  <li><strong>YUV</strong> : Luminance와 chrominance를 분리해서 표현이 가능하다. 밝기를 나타내는 유일한 채널 Y와 2가지 색 채널  U, V로 구성된다. RGB와의 관계는 다음과 같다.</li>
+</ul>
 
 \[\begin{bmatrix} Y\\ U\\ V \end{bmatrix} = \begin{bmatrix} .299 &amp; .587 &amp; .114\\ -.14713 &amp; -.28886 &amp; .436\\ .615 &amp; -.51499 &amp; -.10001 \end{bmatrix}\begin{bmatrix} R\\ G\\ B \end{bmatrix}\]
 
 <p><img src="https://user-images.githubusercontent.com/79836443/113321317-708db780-934e-11eb-8283-d483481d38ac.jpg" alt="YUV" class="align-center" width="80%" height="80%" /></p>
 
-<ol>
+<ul>
   <li><strong>RGB</strong> : 가장 편하게 사용하는 좌표계.</li>
   <li><strong>HSV</strong> : 사람이 이해하기 가장 쉬운 색 좌표계로, H(Hue)는 색의 종류, S(Saturation)는 채도를 나타낸다. V는 Value로 밝기를 나타낸다.
 <img src="https://user-images.githubusercontent.com/79836443/113321763-e09c3d80-934e-11eb-9df9-92899dde28cf.jpg" alt="HSV" class="align-center" width="50%" height="50%" /></li>
-</ol>
+</ul>
 
           
         </section>
@@ -425,7 +426,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 ">이전</a>
     
     
-      <a href="/graphics/computer-graphics-lec-2-camera-model/" class="pagination--pager" title="[Computer Graphics #2] Camera model
+      <a href="/graphics/computer-graphics-lec-2-camera-model/" class="pagination--pager" title="[Computer Graphics #2] Transformation
 ">다음</a>
     
   </nav>
@@ -450,7 +451,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
         
         <h2 class="archive__item-title no_toc" itemprop="headline">
             
-            <a href="/computer-graphics-7-meshing-and-geometry-2/" rel="permalink">[Computer Graphics #7] Meshing and Geometry 2
+            <a href="/point-cloud-feature/" rel="permalink">point cloud feature 논문에서 나오는 용어
 </a>
             
         </h2>
@@ -478,11 +479,11 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
         -->
         
-        <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 21 2021</p>
+        <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> July 28 2021</p>
         
 
-        <p class="archive__item-excerpt" itemprop="description">Meshing and Geometry 1 에서는 기본적인 geometry를 위한 triangle을 만드는 것에 대해서 배워보았다. 이번 geometry2 에서는 post-processing을 해서라도 좀 더 다양한 shape를 만드는 방법에 대한 geometry를 알아본다.
-</p>
+        <p class="archive__item-excerpt" itemprop="description">feature detector vs feature descriptor
+featrue detector : interest point (key point, salient point) detector는 어떤 criterion에 따라 point를 선택하는 알고리즘이다. 일반적으로 inte...</p>
     </article>
 </div>
 
@@ -496,7 +497,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
         
         <h2 class="archive__item-title no_toc" itemprop="headline">
             
-            <a href="/computer-graphics-6-2-geometry1/" rel="permalink">[Computer Graphics #6-2] Meshing and Geometry
+            <a href="/computer-graphics-11-acceleration-structures/" rel="permalink">[Computer Graphics #11] Acceleration Structures
 </a>
             
         </h2>
@@ -515,7 +516,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          2 분 소요
+          최대 1 분 소요
         
       </span>
     
@@ -524,10 +525,10 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
         -->
         
-        <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 18 2021</p>
+        <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 05 2021</p>
         
 
-        <p class="archive__item-excerpt" itemprop="description">이번 내용은 적절한 mesh를 생성하기위한 방법과 생성된 Mesh와 vertex들을 이용해 적절한 Geometry를 생성하기 위한 방법에 대해서 이야기 한다.
+        <p class="archive__item-excerpt" itemprop="description">
 </p>
     </article>
 </div>
@@ -542,7 +543,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
         
         <h2 class="archive__item-title no_toc" itemprop="headline">
             
-            <a href="/graphics/computer-graphics-6/" rel="permalink">[Computer Graphics #6-1] Meshing and Geometry - OpenGL
+            <a href="/graphics/computer-graphics-10-texture-mapping/" rel="permalink">[Computer Graphics #10] Texture Mapping
 </a>
             
         </h2>
@@ -570,10 +571,11 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
         -->
         
-        <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 10 2021</p>
+        <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 28 2021</p>
         
 
-        <p class="archive__item-excerpt" itemprop="description">0차원(점), 1차원(선), 2차원(면)을 이용해 가상의 3차원(공간)에 물체를 표현할 때, 가상의 물체의 면을 Mesh라고 하고, 이 표현으로 생성된 물체를 Geometry라 한다.이번 챕터에서는 3차원의 물체를 표현하기 위해 mesh를 생성하는 방법과 mesh와 vertex를 ...</p>
+        <p class="archive__item-excerpt" itemprop="description">실제로 모델을 만들 때는 vertex의 색으로 칠하는 것으로는 완벽하지 않다. 때문에 이에 맞는 texture를 모델에 입히는 과정이 필요하다. 각  geometry의 surface에 일치하는 real object의 부분의 polygon을 입혀준다.
+</p>
     </article>
 </div>
 
@@ -587,7 +589,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
         
         <h2 class="archive__item-title no_toc" itemprop="headline">
             
-            <a href="/graphics/computer-graphics-lec6-viewing/" rel="permalink">[Computer Graphics #5] Viewing - Orthogonal Projection
+            <a href="/graphics/computer-graphics-9-shader2/" rel="permalink">[Computer Graphics #9] Shaders 2
 </a>
             
         </h2>
@@ -606,7 +608,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          2 분 소요
+          3 분 소요
         
       </span>
     
@@ -615,11 +617,10 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
         -->
         
-        <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 08 2021</p>
+        <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 11 2021</p>
         
 
-        <p class="archive__item-excerpt" itemprop="description">Normalization
-통일성을 주기 위해 각각 다른 projection 종류에 맞는 projection matrix를 system에서 모두 수행하기보다 projection은 항상 orthogonal projection을 하도록 만든다. 이 orthogonal projection...</p>
+        <p class="archive__item-excerpt" itemprop="description">vertex를 연결해서 polygon을 만들고 그 polygon 위에 색을 줄 때 물체의 표면이 가지는 특징을 BRDF로 표현할 수 있었다. 색이라는 것은 사실 표면과 light source와의 상호작용에 의해 결정되기 때문에 정의 가능한 light source 또한 알아보았다. ...</p>
     </article>
 </div>
 
