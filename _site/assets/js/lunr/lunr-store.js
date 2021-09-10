@@ -101,9 +101,15 @@ var store = [{
         "url": "/point-cloud-feature/",
         "teaser": null
       },{
-        "title": "PU-Net review",
+        "title": "PU-Net: Point Cloud Upsampling Network",
         "excerpt":"Abstract Key point : point당 multi-level feature들을 학습하고 multi-branch convolution unit을 통해 feature space에 implicit하게 point set을 확장한다. 이후 확장된 feature는 multitude of feature들로 분할한 뒤 upsampling된 point set로 재구성한다. 이 Network는 patch-level에서 적용되고, upsampling된 point들이 surface에 균일한 분포로 underlying할 수 있도록 하는 joint loss function를 가진다. some baseline 방법들과...","categories": ["논문"],
         "tags": [],
         "url": "/%EB%85%BC%EB%AC%B8/pu-net-review/",
+        "teaser": null
+      },{
+        "title": "PU-GAN: A Point Cloud Upsampling Adversarial Network",
+        "excerpt":"Abstract  ","categories": ["논문"],
+        "tags": [],
+        "url": "/%EB%85%BC%EB%AC%B8/pu-gan/",
         "teaser": null
       }]

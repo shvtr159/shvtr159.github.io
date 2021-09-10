@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://shvtr159.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shvtr159.github.io/" rel="alternate" type="text/html" /><updated>2021-09-10T15:53:22+09:00</updated><id>https://shvtr159.github.io/feed.xml</id><title type="html">Study Blog</title><subtitle>for study</subtitle><author><name>KYG</name></author><entry><title type="html">PU-Net review</title><link href="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pu-net-review/" rel="alternate" type="text/html" title="PU-Net review" /><published>2021-09-09T00:00:00+09:00</published><updated>2021-09-09T00:00:00+09:00</updated><id>https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pu-net-review</id><content type="html" xml:base="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pu-net-review/">&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://shvtr159.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shvtr159.github.io/" rel="alternate" type="text/html" /><updated>2021-09-10T17:46:19+09:00</updated><id>https://shvtr159.github.io/feed.xml</id><title type="html">Study Blog</title><subtitle>for study</subtitle><author><name>KYG</name></author><entry><title type="html">PU-GAN: A Point Cloud Upsampling Adversarial Network</title><link href="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pu-gan/" rel="alternate" type="text/html" title="PU-GAN: A Point Cloud Upsampling Adversarial Network" /><published>2021-09-10T00:00:00+09:00</published><updated>2021-09-10T00:00:00+09:00</updated><id>https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pu-gan</id><content type="html" xml:base="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pu-gan/">&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;/h2&gt;</content><author><name>KYG</name></author><category term="논문" /><summary type="html">Abstract</summary></entry><entry><title type="html">PU-Net: Point Cloud Upsampling Network</title><link href="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pu-net-review/" rel="alternate" type="text/html" title="PU-Net: Point Cloud Upsampling Network" /><published>2021-09-09T00:00:00+09:00</published><updated>2021-09-09T00:00:00+09:00</updated><id>https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pu-net-review</id><content type="html" xml:base="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pu-net-review/">&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;/h2&gt;
 &lt;p&gt;Key point : point당 multi-level feature들을 학습하고 multi-branch convolution unit을 통해 feature space에 implicit하게 point set을 확장한다. 이후 확장된 feature는 multitude of feature들로 분할한 뒤 upsampling된 point set로 재구성한다. 이 Network는 patch-level에서 적용되고, upsampling된 point들이 surface에 균일한 분포로 underlying할 수 있도록 하는 joint loss function를 가진다. some baseline 방법들과 optimization-based 방법들과 성능을 비교한다.&lt;/p&gt;
 
 &lt;h2 id=&quot;1-introduction&quot;&gt;1. Introduction&lt;/h2&gt;
@@ -62,20 +62,20 @@
 
 &lt;p&gt;Network Architecture는 4개의 component를 가진다.&lt;/p&gt;
 &lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;Patch-Extraction&lt;/strong&gt; : prior 3D model들의 집합으로부터 다양한 scale과 distribution의 point의 patch를 추출한다. – fig1과 같이 다양한 patch를 추출한다.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Patch-Extraction&lt;/strong&gt; : prior 3D model들의 집합으로부터 다양한 scale과 distribution에서 point의 patch를 추출한다. – fig1과 같이 다양한 patch를 추출한다.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Point Feature Embedding&lt;/strong&gt; : 계층적 feature learning과 multi-level feature aggregation(집계)을 통해 raw 3D coordinate를 feature space로 mapping한다.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Feature Expansion&lt;/strong&gt; : feature의 개수를 증가시킨다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Coordinate Reconstruction&lt;/strong&gt; : F.C layer의 series를 통해 output point cloud의 3D coordinate를 reconstruction 한다.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Coordinate Reconstruction&lt;/strong&gt; : F.C layer series를 통해 output point cloud의 3D coordinate를 reconstruction한다.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h4 id=&quot;21-patch-extraction&quot;&gt;2.1 Patch Extraction&lt;/h4&gt;
-&lt;p&gt;다양한 모양의 3D object들을 training을 위한 prior information으로 수집한다. 기본적으로 network가 upsampling 하려면 object로부터 local geometry pattern들을 학습해야 한다. 이것이 patch 기반 접근법을 선택한 motive이다.&lt;/p&gt;
+&lt;p&gt;Training을 위한 prior information으로 다양한 모양의 3D object들을 수집한다. 기본적으로 network가 upsampling 하기 위해서는 object로부터 local geometry pattern들을 학습해야 한다. 이것이 patch 기반 접근법을 선택한 motive이다.&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;&lt;span style=&quot;color:rgb(150, 150, 150)&quot;&gt;In detail, we randomly select M points on the surface of these objects. From each selected point, we grow a surface patch on the object, such that any point on the patch is within a certain geodesic distance (d) from the selected point over the surface. Then, we use Poisson disk sampling to randomly generate N_hat points on each patch as the referenced ground truth point distribution on the patch. In our upsampling task, both local and global context contribute to a smooth and uniform output. Hence, we set d with varying sizes, so that we can extract patches of points on the prior objects with varying scale and density.&lt;/span&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;Detail. object의 surface에서 random하게 M개의 point를 선택한다. 각각의 선택된 point에서 object 표면에서의 patch 크기를 키우면서, patch 위의 모든 점이 선택된 point로부터의 certain geodesic distance (d) 내에 있도록 한다. 그리고 나서 ground truth의 patch에서의 point 분포를 기준으로 Poisson disk sampling를 이용해 각 patch에 $\hat{N}$개의 point를 생성한다. Upsampling task에서 local 및 global context 모두 output이 smooth하고 uniform하도록 기여한다. 우리는 d를 다양한 크기로 설정하여 다양한 scale과 density로 prior object에 point들의 patch들을 추출할 수 있도록 하였다.&lt;/p&gt;
+&lt;p&gt;Detail. object의 surface에서 random하게 $M$개의 point를 선택한다. 각각의 선택된 point의 object 표면에서의 patch는, patch 내의 모든 점이 선택된 point로부터 certain geodesic distance $(d)$ 내에 있도록 생성한다. 그리고 나서 ground truth의 patch 내 point 분포를 기준으로 하여 Poisson disk sampling를 이용해 각 patch에 $\hat{N}$개의 point를 생성한다. 이 Upsampling task에서 local 및 global context 모두 output이 smooth하고 uniform하도록 기여한다. 우리는 $d$를 다양한 크기로 설정하여 prior object에서 다양한 scale과 density로 point들의 patches를 추출할 수 있도록 하였다.&lt;/p&gt;
 
 &lt;h4 id=&quot;22-point-feature-embedding&quot;&gt;2.2	Point Feature Embedding&lt;/h4&gt;
 &lt;p&gt;patch로부터 Local 및 global geometry context를 학습하기 위해 다음 두 feature learning 전략을 사용하였으며, 그 이점들로 서로 보완한다.&lt;/p&gt;
@@ -88,11 +88,11 @@
   &lt;p&gt;&lt;span style=&quot;color:rgb(150, 150, 150)&quot;&gt;Since the input point set on each patch (see point feature embedding in Fig. 1) is subsampled gradually in hierarchical feature extraction, we concatenate the point features from each level by first restoring the features of all original points from the downsampled point features by the interpolation method in PointNet++&lt;/span&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;각 patch에 설정된 input point는 hierarchical feature extraction에서 점진적으로 subsampling 되므로 PointNet++의 interpolation 방법에 의해 downsampling된 모든 origin point들의 feature를 처음으로 복원하여 각 level에서 point feature들을 concatenate한다. 특히 level $\ell$에 있는 interpolated된 point $x$의 fature는 다음 식에 의해 계산된다 :&lt;/p&gt;
+&lt;p&gt;각 patch에 설정된 input point는 hierarchical feature extraction에서 점진적으로 subsampling 되므로 PointNet++의 interpolation 방법에 의해 downsampling된 모든 original point들의 feature를 처음으로 복원하여 각 level에서 point feature들을 concatenate한다. 특히 level $\ell$에 있는 interpolated된 point $x$의 feature는 다음 식에 의해 계산된다 :&lt;/p&gt;
 
 \[f^{(\ell)}(x)=\frac{\sum_{i=1}^{3}w_{i}(x)f^{(\ell)}(x_{i})}{\sum_{i=1}^{3}w_{i}(x)}\]
 
-&lt;p&gt;w는 inverse distance weight인 $w_{i}(x) = 1/d(x,x_{i})$으로 정의되고, $x_{1}, x_{2}, x_{3}$는 level $\ell$에서 $x$에서 가장 가까운 3개의 point이다. 이후 1X1 convolution을 이용해 서로 다른 level의 interpolated feature을 동일한 차원 $C$로 축소한다. 최종적으로 각 level의 feature들을 embedded point feature $f$로 concatenate 한다.&lt;/p&gt;
+&lt;p&gt;$w$는 inverse distance weight인 $w_{i}(x) = 1/d(x,x_{i})$으로 정의되고, $x_{1}, x_{2}, x_{3}$는 level $\ell$에서 $x$에서 가장 가까운 3개의 point이다. 이후 1X1 convolution을 이용해 서로 다른 level의 interpolated feature을 동일한 차원 $C$로 축소한다. 최종적으로 각 level의 feature들을 embedded point feature $f$로 concatenate 한다.&lt;/p&gt;
 &lt;h4 id=&quot;23-feature-expansion&quot;&gt;2.3	Feature Expansion&lt;/h4&gt;
 &lt;p&gt;Point Feature Embedding 이후 feture space에서 feature의 수를 증가시킨다. &lt;em&gt;point&lt;/em&gt;와 &lt;em&gt;feature&lt;/em&gt;은 서로 &lt;em&gt;interchangeable&lt;/em&gt;하기 때문에  이는 point의 수를 증가시키는것과 같다. $f$의 차원이 $N\times \tilde{C}$일 때, $N$은 input point의 수이고, $\tilde{C}$는 concatenate된 embedded feature의 feature dimension이다.
 feture expansion으로 $rN\times \tilde{C_{2}}$의 차원으로 feature ${f}’$을 출력한다. &lt;br /&gt;
@@ -844,62 +844,4 @@ Quardstrip과 마찬가지로 point 내부를 모두 polygon으로 생성하기 
 &lt;span class=&quot;n&quot;&gt;glEnable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GL_DEPTH_TEST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
 &lt;span class=&quot;n&quot;&gt;glClear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GL_COLOR_BUFFER_BIT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GL_DEPTH_BUFFER_BIT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>KYG</name></author><category term="Graphics" /><summary type="html">0차원(점), 1차원(선), 2차원(면)을 이용해 가상의 3차원(공간)에 물체를 표현할 때, 가상의 물체의 면을 Mesh라고 하고, 이 표현으로 생성된 물체를 Geometry라 한다.이번 챕터에서는 3차원의 물체를 표현하기 위해 mesh를 생성하는 방법과 mesh와 vertex를 이용해 어떻게 geometry를 나타낼 것인지를 알아본다. 이번 글에서는 OpenGL을 이용한 Vertex, Line, Mesh 생성 방법을 먼저 알아본다.</summary></entry><entry><title type="html">[Computer Graphics #5-2] Viewing - Orthogonal Projection</title><link href="https://shvtr159.github.io/graphics/computer-graphics-lec6-viewing/" rel="alternate" type="text/html" title="[Computer Graphics #5-2] Viewing - Orthogonal Projection" /><published>2021-04-08T00:00:00+09:00</published><updated>2021-04-08T00:00:00+09:00</updated><id>https://shvtr159.github.io/graphics/computer-graphics-lec6-viewing</id><content type="html" xml:base="https://shvtr159.github.io/graphics/computer-graphics-lec6-viewing/">&lt;h2 id=&quot;normalization&quot;&gt;Normalization&lt;/h2&gt;
-&lt;p&gt;통일성을 주기 위해 각각 다른 projection 종류에 맞는 projection matrix를 system에서 모두 수행하기보다 projection은 항상 orthogonal projection을 하도록 만든다. 이 orthogonal projection을 했을 때 원하는 projection의 모습을 나타낼 수 있도록 data의 형태를 바꿔준다.&lt;/p&gt;
-&lt;h3 id=&quot;pipeline-view&quot;&gt;Pipeline View&lt;/h3&gt;
-&lt;ol&gt;
-  &lt;li&gt;modelview transformation&lt;/li&gt;
-  &lt;li&gt;projection transformation&lt;/li&gt;
-  &lt;li&gt;perspective division&lt;/li&gt;
-  &lt;li&gt;clipping&lt;/li&gt;
-  &lt;li&gt;projection&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;이 5단계 중 앞의 1~3단계에서 각각의 projection 종류에 맞는 view가 될 수 있도록  data를 바꿔서 나타내고 5단계에서 항상 orthogonal projection을 수행하도록 한다.&lt;/p&gt;
-
-&lt;h3 id=&quot;orthogonal-normalization&quot;&gt;Orthogonal Normalization&lt;/h3&gt;
-&lt;p&gt;이를 위해 4D homogeneous coordinate를 사용해야 한다. 우리는 Normalization을 통해 clip 영역은 항상 단순한 육면체 형태로만 나타내면 된다. OpenGL의 함수 glOrtho(left,right,bottom,top,near,far) 와 같이 정해진 영역을 모두 clipping 하지 않고 이를 가로, 세로, 높이 1의 정육면체에 맞게 scaling하여 이 작은 정육면체의 공간만 projection 한다.&lt;/p&gt;
-
-&lt;p&gt;이 scaling을 수행하기 위해 다음 두단계를 수행한다.&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;입력된 영역의 중점을 원점으로 이동한다.&lt;br /&gt;
-\(T(-\frac{left+right}{2}, -\frac{bottom+top}{2}, -\frac{near+far}{2})\)&lt;/li&gt;
-  &lt;li&gt;2의 길이를 가지도록 scaling 한다.&lt;br /&gt;
-\(S(\frac{2}{left+right}, -\frac{2}{bottom+top}, -\frac{2}{near+far})\)&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;이 2 단계는 다음과 같은 matrix로 표현된다.
-\(P=ST=\begin{bmatrix}
-\frac{2}{right-left} &amp;amp; 0 &amp;amp; 0 &amp;amp; -\frac{right+left}{right-left}\\ 
-0 &amp;amp; \frac{2}{top-bottom} &amp;amp; 0 &amp;amp; -\frac{top+bottom}{top-bottom}\\ 
-0 &amp;amp; 0 &amp;amp; \frac{2}{near-far} &amp;amp; -\frac{far+near}{far-near}\\ 
-0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 1
-\end{bmatrix}\)&lt;/p&gt;
-
-&lt;p&gt;camera의 center가 z=0에 있다는 가정하에 \(M_{orth}=\begin{bmatrix}
-1 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0\\ 
-0 &amp;amp; 1 &amp;amp; 0 &amp;amp; 0\\ 
-0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0\\ 
-0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 1
-\end{bmatrix}\)인 orthogonal projection matrix를 이용하여 최종 projection matrix는 $P=M_{orth}ST$ 의 matrix로  표현된다. 이 matrix를 수행하면 orthogonal matrix이므로 한 평면 위에 점들이 존재하게 된다.&lt;/p&gt;
-
-&lt;h3 id=&quot;oblique-projection&quot;&gt;Oblique Projection&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/114040814-f36ac100-98be-11eb-8178-526dad4a8858.png&quot; alt=&quot;image&quot; class=&quot;align-center image-caption&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;위와 같은 형태로 cube를 보기 위해 Oblique Projection을 수행하기 위해서는 Shear + Orthogonal projection을 수행해야 한다. 일반적인 cube는 위의 모양처럼 projection 될 수 없어서 위와 같은 모양을 나타내기 위해서는 x방향과 y방향으로 shearing을 수행한다. 이 shearing matrix를 $H(\Theta ,\Phi )$라 한다면 Projection matrix는 $P=M_{orth}H(\Theta ,\Phi )$로 나타나고 General case, 즉 shearing 한 후 orthogonal normalize projection까지 수행하는 matrix는 \(P=M_{orth}STH(\Theta ,\Phi )\)로 나타낼 수 있다.&lt;/p&gt;
-
-&lt;h2 id=&quot;perspective&quot;&gt;Perspective&lt;/h2&gt;
-&lt;h3 id=&quot;clipping&quot;&gt;clipping&lt;/h3&gt;
-&lt;p&gt;원하는 perspective의 영역만을 보기 위해 clipping을 수행한다. 그러나 clipping을 하기 전에 orthogonal projection을 위한 translation, scaling 등을 한다면 원하는 모양을 맞추기 어려워진다. 즉 실제로는 transformation을 수행한 뒤 clipping을 수행하는 것이 더 일반적이다.&lt;/p&gt;
-&lt;h3 id=&quot;simple-perspective&quot;&gt;Simple Perspective&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/114056780-f8367180-98cc-11eb-926b-0609c82c53a9.png&quot; alt=&quot;simple perspective&quot; class=&quot;align-center&quot; width=&quot;60%&quot; height=&quot;60%&quot; /&gt;
-위와 같이 perspective를 하려는 영역의 frustum이 있을 때, 가까이 있는 물체의 크기는 크고 멀리 있는 물체의 크기는 작게 보인다. 이를 orthogonal projection에 맞게 하기 위해서는 실제 물체의 크기를 변형해야만 한다. 또, frustum은 정육면체 모양으로 평행한 모양이 아니기 때문에 이 영역 또한 정육면체 모양으로 변형시켜야 한다. 그 결과 위에서 봤을 때 실제로 정사각형이었던 object는 사다리꼴의 모양으로 변형되게 된다.&lt;/p&gt;
-&lt;h2 id=&quot;hidden-surface-removal&quot;&gt;Hidden-Surface Removal&lt;/h2&gt;
-&lt;p&gt;rendering을 하는 과정에서 보이지 않는 부분의 정보는 필요하지 않다. 또, 만약 이 보이지 않는 부분의 data가 보이는 부분의 data보다 먼저 rendering 된다면 보이지 않아야 할 부분의 data가 덮어씌워 지게 되면서 처음 원했던 형태와 다른 형태로 rendering 될 수 있다. 이를 위해 depth test를 해서 가까운 부분에 있는 data만을 rendering 하기도 한다. 그러나 이 방법을 사용하지 않고 만약 data 안에서 보이지 않는 부분의 data를 없애준다면 계산량을 크게 줄일 수 있다. 이 이점을 얻기 위해 hidden-surface removal을 수행한다. 카메라의 시점이 결정되는 순간 가려질 것으로 예상되는 data를 잘라내고 보이는 부분의 data만을 redering  하는 것이다.&lt;/p&gt;
-
-&lt;p&gt;그러나 normalization을 하는 과정에서 이를 조심해야 하는 부분이 있다. normalization을 거치면서 hidden surface가 더 이상 hidden surface가 아니게 되는 경우도 있기 때문이다. 그렇기 때문에 상황에 따라서는 transform을 수행한 이후에 hidden-surface removal을 수행해야 한다.&lt;/p&gt;
-
-&lt;h2 id=&quot;opengl&quot;&gt;OpenGL&lt;/h2&gt;
-&lt;p&gt;이전에 있던 gluPerspective같은 경우는 x, y, z의 field of view를 주기 때문에 symmetric하다. 하지만 glFrustum은 min, max값을 설정하기 때문에 unsymmetric할 수 있다. 이 unsymmetric한 경우는 normalize 하면서 왜곡이 된 상태로 orthogonal projection이 된다.&lt;/p&gt;
-
-&lt;p&gt;그러므로 gluPerspective, glFrustum 큰 차이가 없어 보이지만 위와 같이 왜곡이 필요한 경우에는 glFrustum을 사용해야만 한다.&lt;/p&gt;</content><author><name>KYG</name></author><category term="Graphics" /><summary type="html">Normalization 통일성을 주기 위해 각각 다른 projection 종류에 맞는 projection matrix를 system에서 모두 수행하기보다 projection은 항상 orthogonal projection을 하도록 만든다. 이 orthogonal projection을 했을 때 원하는 projection의 모습을 나타낼 수 있도록 data의 형태를 바꿔준다. Pipeline View modelview transformation projection transformation perspective division clipping projection</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>KYG</name></author><category term="Graphics" /><summary type="html">0차원(점), 1차원(선), 2차원(면)을 이용해 가상의 3차원(공간)에 물체를 표현할 때, 가상의 물체의 면을 Mesh라고 하고, 이 표현으로 생성된 물체를 Geometry라 한다.이번 챕터에서는 3차원의 물체를 표현하기 위해 mesh를 생성하는 방법과 mesh와 vertex를 이용해 어떻게 geometry를 나타낼 것인지를 알아본다. 이번 글에서는 OpenGL을 이용한 Vertex, Line, Mesh 생성 방법을 먼저 알아본다.</summary></entry></feed>

@@ -1,5 +1,5 @@
 ---
-title: PU-Net review
+title: 'PU-Net: Point Cloud Upsampling Network'
 use_math: true
 categories:
 - 논문
@@ -51,17 +51,17 @@ Upsampling된 point set을 정량적으로 평가하고 다양한 실제, 합성
 > <span style="color:rgb(150, 150, 150)">Our network architecture (see Fig. 1) has four components: patch extraction, point feature embedding, feature expansion, and coordinate reconstruction.</span>
 
 Network Architecture는 4개의 component를 가진다. 
-1.	**Patch-Extraction** : prior 3D model들의 집합으로부터 다양한 scale과 distribution의 point의 patch를 추출한다. – fig1과 같이 다양한 patch를 추출한다.
+1.	**Patch-Extraction** : prior 3D model들의 집합으로부터 다양한 scale과 distribution에서 point의 patch를 추출한다. – fig1과 같이 다양한 patch를 추출한다.
 2. **Point Feature Embedding** : 계층적 feature learning과 multi-level feature aggregation(집계)을 통해 raw 3D coordinate를 feature space로 mapping한다.
 3.	**Feature Expansion** : feature의 개수를 증가시킨다.
-4.	**Coordinate Reconstruction** : F.C layer의 series를 통해 output point cloud의 3D coordinate를 reconstruction 한다.
+4.	**Coordinate Reconstruction** : F.C layer series를 통해 output point cloud의 3D coordinate를 reconstruction한다.
 
 #### 2.1 Patch Extraction
-다양한 모양의 3D object들을 training을 위한 prior information으로 수집한다. 기본적으로 network가 upsampling 하려면 object로부터 local geometry pattern들을 학습해야 한다. 이것이 patch 기반 접근법을 선택한 motive이다.
+Training을 위한 prior information으로 다양한 모양의 3D object들을 수집한다. 기본적으로 network가 upsampling 하기 위해서는 object로부터 local geometry pattern들을 학습해야 한다. 이것이 patch 기반 접근법을 선택한 motive이다.
 
 > <span style="color:rgb(150, 150, 150)">In detail, we randomly select M points on the surface of these objects. From each selected point, we grow a surface patch on the object, such that any point on the patch is within a certain geodesic distance (d) from the selected point over the surface. Then, we use Poisson disk sampling to randomly generate N_hat points on each patch as the referenced ground truth point distribution on the patch. In our upsampling task, both local and global context contribute to a smooth and uniform output. Hence, we set d with varying sizes, so that we can extract patches of points on the prior objects with varying scale and density.</span>
 
-Detail. object의 surface에서 random하게 M개의 point를 선택한다. 각각의 선택된 point에서 object 표면에서의 patch 크기를 키우면서, patch 위의 모든 점이 선택된 point로부터의 certain geodesic distance (d) 내에 있도록 한다. 그리고 나서 ground truth의 patch에서의 point 분포를 기준으로 Poisson disk sampling를 이용해 각 patch에 $\hat{N}$개의 point를 생성한다. Upsampling task에서 local 및 global context 모두 output이 smooth하고 uniform하도록 기여한다. 우리는 d를 다양한 크기로 설정하여 다양한 scale과 density로 prior object에 point들의 patch들을 추출할 수 있도록 하였다.
+Detail. object의 surface에서 random하게 $M$개의 point를 선택한다. 각각의 선택된 point의 object 표면에서의 patch는, patch 내의 모든 점이 선택된 point로부터 certain geodesic distance $(d)$ 내에 있도록 생성한다. 그리고 나서 ground truth의 patch 내 point 분포를 기준으로 하여 Poisson disk sampling를 이용해 각 patch에 $\hat{N}$개의 point를 생성한다. 이 Upsampling task에서 local 및 global context 모두 output이 smooth하고 uniform하도록 기여한다. 우리는 $d$를 다양한 크기로 설정하여 prior object에서 다양한 scale과 density로 point들의 patches를 추출할 수 있도록 하였다.
 
 #### 2.2	Point Feature Embedding
 patch로부터 Local 및 global geometry context를 학습하기 위해 다음 두 feature learning 전략을 사용하였으며, 그 이점들로 서로 보완한다.
@@ -72,11 +72,11 @@ patch로부터 Local 및 global geometry context를 학습하기 위해 다음 �
 
 > <span style="color:rgb(150, 150, 150)">Since the input point set on each patch (see point feature embedding in Fig. 1) is subsampled gradually in hierarchical feature extraction, we concatenate the point features from each level by first restoring the features of all original points from the downsampled point features by the interpolation method in PointNet++</span>
 
-각 patch에 설정된 input point는 hierarchical feature extraction에서 점진적으로 subsampling 되므로 PointNet++의 interpolation 방법에 의해 downsampling된 모든 origin point들의 feature를 처음으로 복원하여 각 level에서 point feature들을 concatenate한다. 특히 level $\ell$에 있는 interpolated된 point $x$의 fature는 다음 식에 의해 계산된다 :
+각 patch에 설정된 input point는 hierarchical feature extraction에서 점진적으로 subsampling 되므로 PointNet++의 interpolation 방법에 의해 downsampling된 모든 original point들의 feature를 처음으로 복원하여 각 level에서 point feature들을 concatenate한다. 특히 level $\ell$에 있는 interpolated된 point $x$의 feature는 다음 식에 의해 계산된다 :
 
 $$f^{(\ell)}(x)=\frac{\sum_{i=1}^{3}w_{i}(x)f^{(\ell)}(x_{i})}{\sum_{i=1}^{3}w_{i}(x)}$$
 
-w는 inverse distance weight인 $w_{i}(x) = 1/d(x,x_{i})$으로 정의되고, $x_{1}, x_{2}, x_{3}$는 level $\ell$에서 $x$에서 가장 가까운 3개의 point이다. 이후 1X1 convolution을 이용해 서로 다른 level의 interpolated feature을 동일한 차원 $C$로 축소한다. 최종적으로 각 level의 feature들을 embedded point feature $f$로 concatenate 한다.
+$w$는 inverse distance weight인 $w_{i}(x) = 1/d(x,x_{i})$으로 정의되고, $x_{1}, x_{2}, x_{3}$는 level $\ell$에서 $x$에서 가장 가까운 3개의 point이다. 이후 1X1 convolution을 이용해 서로 다른 level의 interpolated feature을 동일한 차원 $C$로 축소한다. 최종적으로 각 level의 feature들을 embedded point feature $f$로 concatenate 한다.
 #### 2.3	Feature Expansion
 Point Feature Embedding 이후 feture space에서 feature의 수를 증가시킨다. *point*와 *feature*은 서로 *interchangeable*하기 때문에  이는 point의 수를 증가시키는것과 같다. $f$의 차원이 $N\times \tilde{C}$일 때, $N$은 input point의 수이고, $\tilde{C}$는 concatenate된 embedded feature의 feature dimension이다.
 feture expansion으로 $rN\times \tilde{C_{2}}$의 차원으로 feature ${f}'$을 출력한다. <br>
