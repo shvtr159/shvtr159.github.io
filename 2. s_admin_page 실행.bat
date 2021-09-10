@@ -1,2 +1,2 @@
-pushd %ProgramFiles(x86)% \Google\Chrome\Application
+pushd C:\Program Files\Google\Chrome\Application
 chrome http://localhost:4000/admin/posts

@@ -95,15 +95,15 @@ var store = [{
         "url": "/graphics/computer-graphics-10-texture-mapping/",
         "teaser": null
       },{
-        "title": "[Computer Graphics #11] Acceleration Structures",
-        "excerpt":" ","categories": [],
-        "tags": [],
-        "url": "/computer-graphics-11-acceleration-structures/",
-        "teaser": null
-      },{
         "title": "point cloud feature 논문에서 나오는 용어",
         "excerpt":"feature detector vs feature descriptor featrue detector : interest point (key point, salient point) detector는 어떤 criterion에 따라 point를 선택하는 알고리즘이다. 일반적으로 interest point는 “cornerness” metric과 같이 어떤 함수의 local maximum을 의미한다. feature descriptor : descriptor는 interest point의 주변 image patch를 설명하는 value의 vector이다. 이는 raw pixel value처럼 단순하거나, gradient...","categories": [],
         "tags": [],
         "url": "/point-cloud-feature/",
+        "teaser": null
+      },{
+        "title": "PU-Net review",
+        "excerpt":"Abstract Key point : point당 multi-level feature들을 학습하고 multi-branch convolution unit을 통해 feature space에 implicit하게 point set을 확장한다. 이후 확장된 feature는 multitude of feature들로 분할한 뒤 upsampling된 point set로 재구성한다. 이 Network는 patch-level에서 적용되고, upsampling된 point들이 surface에 균일한 분포로 underlying할 수 있도록 하는 joint loss function를 가진다. some baseline 방법들과...","categories": ["논문"],
+        "tags": [],
+        "url": "/%EB%85%BC%EB%AC%B8/pu-net-review/",
         "teaser": null
       }]
