@@ -25,8 +25,8 @@ PU-Net은 3D model로부터 point 기반 patch의 geometry적 의미?를 학습�
 
 Upsampling된 point set을 정량적으로 평가하고 다양한 실제, 합성 data를 이용해 방법을 test하기 위해 Distribution uniformity과 underlying surfaces로부터의 거리 편차라는 두개의 metrics를 formulate했다.
 
-#### Related work
-##### optimization-based methods
+### Related work
+#### optimization-based methods
 - **Alexa et al.** : local 탄젠트 space의 Voronoi 다이어그램의 vertex들을 interpolation한 point를 이용해 point set을 upsampleing한다.
 - **Lipman et al.** : L1 median에 기초한 point resampling과 surface reconstruction을 위한 Locally Optimal Projection(LOP)를 제시.
 - **Huang et al.** : point set density문제를 해결하기 위한 개선된 LOP 제시.
@@ -37,7 +37,7 @@ Upsampling된 point set을 정량적으로 평가하고 다양한 실제, 합성
 
 이 방법들은 data-driven 방법이 아니므로 priors(머신러닝이 아닌 방법. 이미 주어진 지식을 바탕으로 알고리즘 이용 등)에 크게 의존한다.
 
-##### deep-learning-based methods
+#### deep-learning-based methods
 대부분 기존의 work들은 point cloud를 volumetric grid도, geometric graph와 같은 다른 3D 표현으로 변환하여 처리한다. Qi et al. 은 처음으로 point cloud classification, segmentation을 위한 딥러닝 network를 제안했다. 다양한 방법이 있지만, To the best of our knowledge, upsampling에 초점을 둔 것은 없었다.
 
 ## 2. Network Architecture
@@ -56,14 +56,14 @@ Network Architecture는 4개의 component를 가진다.
 3.	**Feature Expansion** : feature의 개수를 증가시킨다.
 4.	**Coordinate Reconstruction** : F.C layer series를 통해 output point cloud의 3D coordinate를 reconstruction한다.
 
-#### 2.1 Patch Extraction
+### 2.1 Patch Extraction
 Training을 위한 prior information으로 다양한 모양의 3D object들을 수집한다. 기본적으로 network가 upsampling 하기 위해서는 object로부터 local geometry pattern들을 학습해야 한다. 이것이 patch 기반 접근법을 선택한 motive이다.
 
 > <span style="color:rgb(150, 150, 150)">In detail, we randomly select M points on the surface of these objects. From each selected point, we grow a surface patch on the object, such that any point on the patch is within a certain geodesic distance (d) from the selected point over the surface. Then, we use Poisson disk sampling to randomly generate N_hat points on each patch as the referenced ground truth point distribution on the patch. In our upsampling task, both local and global context contribute to a smooth and uniform output. Hence, we set d with varying sizes, so that we can extract patches of points on the prior objects with varying scale and density.</span>
 
 Detail. object의 surface에서 random하게 $M$개의 point를 선택한다. 각각의 선택된 point의 object 표면에서의 patch는, patch 내의 모든 점이 선택된 point로부터 certain geodesic distance $(d)$ 내에 있도록 생성한다. 그리고 나서 ground truth의 patch 내 point 분포를 기준으로 하여 Poisson disk sampling를 이용해 각 patch에 $\hat{N}$개의 point를 생성한다. 이 Upsampling task에서 local 및 global context 모두 output이 smooth하고 uniform하도록 기여한다. 우리는 $d$를 다양한 크기로 설정하여 prior object에서 다양한 scale과 density로 point들의 patches를 추출할 수 있도록 하였다.
 
-#### 2.2	Point Feature Embedding
+### 2.2	Point Feature Embedding
 patch로부터 Local 및 global geometry context를 학습하기 위해 다음 두 feature learning 전략을 사용하였으며, 그 이점들로 서로 보완한다.
 
 **Hierarchical feature learning.** PointNet++의 계층적 feature 학습 매커니즘을 네트워크의 가장 frontal한 부분으로 채택한다. 계층적 feature 학습을 채택하기 위해 각 level에서 상대적으로 작은 grouping 반경을 사용한다.
@@ -77,7 +77,7 @@ patch로부터 Local 및 global geometry context를 학습하기 위해 다음 �
 $$f^{(\ell)}(x)=\frac{\sum_{i=1}^{3}w_{i}(x)f^{(\ell)}(x_{i})}{\sum_{i=1}^{3}w_{i}(x)}$$
 
 $w$는 inverse distance weight인 $w_{i}(x) = 1/d(x,x_{i})$으로 정의되고, $x_{1}, x_{2}, x_{3}$는 level $\ell$에서 $x$에서 가장 가까운 3개의 point이다. 이후 1X1 convolution을 이용해 서로 다른 level의 interpolated feature을 동일한 차원 $C$로 축소한다. 최종적으로 각 level의 feature들을 embedded point feature $f$로 concatenate 한다.
-#### 2.3	Feature Expansion
+### 2.3	Feature Expansion
 Point Feature Embedding 이후 feture space에서 feature의 수를 증가시킨다. *point*와 *feature*은 서로 *interchangeable*하기 때문에  이는 point의 수를 증가시키는것과 같다. $f$의 차원이 $N\times \tilde{C}$일 때, $N$은 input point의 수이고, $\tilde{C}$는 concatenate된 embedded feature의 feature dimension이다.
 feture expansion으로 $rN\times \tilde{C_{2}}$의 차원으로 feature ${f}'$을 출력한다. <br>
 여기서 $r$은 upsampling rate이고, $\tilde{C_{2}}$는 새로운 feature dimension이다.
@@ -88,5 +88,9 @@ feture expansion으로 $rN\times \tilde{C_{2}}$의 차원으로 feature ${f}'$�
 $C_{i}^{1}(\cdot), C_{i}^{2}(\cdot)$는 두 set의 분리된 1X1 convolution이고, $\mathcal{RS}(\cdot)$는 $N\times r\tilde{C_{2}}$에서 $rN\times \tilde{C_{2}}$로  reshape하는 operation이다.
 
 각 set의 첫 번째 convolution $C_{i}^{1}(\cdot)$로 생성된 feature set $r$은 높은 correlation을 가지고, 이로 인해 최종적으로 reconstructed된 3D point들이 서로 너무 가깝게 위치한다. 따라서 각 feature set에 대해 또 다른 convolution(별개의 weight를 가진)을 추가한다. 이렇게 $r$개의 feature sets에 대해 $r$개의 서로 다른 convolution이 학습되도록 network를 훈련시키므로, 새로운 feature들이 더 다양한 정보를 포함할 수 있어 correlation을 줄일 수 있다. 이 feature expansion 작업은 그림과 같이 $r$개의 feature set들을 각각 분리된 convolution을 적용하여 구현될 수 있고, 계산적으로 효율적인 그룹화된 convolution을 통해 구현될 수 있다.
-#### 2.4 Cordiante Reconstruction
+### 2.4 Cordiante Reconstruction
 여기서는 $rN\times \tilde{C_{2}}$로 확장된 feature로부터 output point들의  3D coordinate를 재구성한다. 특히, 각 point의 feature를 FC layer들을 통과시켜 3D coordinate를 regression한다. 그 결과 최종적으로  upsampling된 $rN\times 3$의  point 좌표를 출력한다.
+
+처음으로 제안된 입력과 출력이 모두 3D 좌표의 point set인 end-to-end point set upsampling network. 기존에는 related work 부분.
+object로부터 local geometry pattern을 학습하기위해 계층적으로 학습하며 작은 local feature과 큰 local feature들을 다양하게 학습한다. 이후 feature space에서 feature의 수를 증가시켜 upsampling을 수행한다.
+어떤 방식으로 해결햇는지. 그 문제를 왜 얘가 해결했는지

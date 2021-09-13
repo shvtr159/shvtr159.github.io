@@ -108,7 +108,7 @@ var store = [{
         "teaser": null
       },{
         "title": "PU-GAN: A Point Cloud Upsampling Adversarial Network",
-        "excerpt":"Abstract  ","categories": ["논문"],
+        "excerpt":"Introduction PU-Net, EC-Net, MPU 등의 network들은 학습을 통해 point cloud upsampling의 장점을 입증했다. 그러나 이 네트워크들은 sparse하고 non-uniform한 low-quality inputs로부터 좋은 결과를 얻지 못할 수 있다. 그래서 upsampling과 data amendment 능력을 결합한 PU-GAN을 제안한다. 주된 기여는 latent space에서 다양한 point 분포를 생성하도록 generator를 학습시키고, 이 point set에 대해 implicit하게 평하가는...","categories": ["논문"],
         "tags": [],
         "url": "/%EB%85%BC%EB%AC%B8/pu-gan/",
         "teaser": null
