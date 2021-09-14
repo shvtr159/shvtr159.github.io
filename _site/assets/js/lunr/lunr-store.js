@@ -118,4 +118,10 @@ var store = [{
         "tags": [],
         "url": "/%EB%85%BC%EB%AC%B8/pointnet-deep-learning-on-point-sets-for-3d-classification-and-segmentation/",
         "teaser": null
+      },{
+        "title": "ML",
+        "excerpt":" ","categories": [],
+        "tags": [],
+        "url": "/ml/",
+        "teaser": null
       }]
