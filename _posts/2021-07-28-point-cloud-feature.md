@@ -1,5 +1,5 @@
 ---
-title: point cloud feature 논문에서 나오는 용어
+title: 용어
 ---
 
 ## feature detector vs feature descriptor

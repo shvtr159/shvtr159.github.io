@@ -95,7 +95,7 @@ var store = [{
         "url": "/graphics/computer-graphics-10-texture-mapping/",
         "teaser": null
       },{
-        "title": "point cloud feature 논문에서 나오는 용어",
+        "title": "용어",
         "excerpt":"feature detector vs feature descriptor featrue detector : interest point (key point, salient point) detector는 어떤 criterion에 따라 point를 선택하는 알고리즘이다. 일반적으로 interest point는 “cornerness” metric과 같이 어떤 함수의 local maximum을 의미한다. feature descriptor : descriptor는 interest point의 주변 image patch를 설명하는 value의 vector이다. 이는 raw pixel value처럼 단순하거나, gradient...","categories": [],
         "tags": [],
         "url": "/point-cloud-feature/",
@@ -111,5 +111,11 @@ var store = [{
         "excerpt":"Introduction PU-Net, EC-Net, MPU 등의 network들은 학습을 통해 point cloud upsampling의 장점을 입증했다. 그러나 이 네트워크들은 sparse하고 non-uniform한 low-quality inputs로부터 좋은 결과를 얻지 못할 수 있다. 그래서 upsampling과 data amendment 능력을 결합한 PU-GAN을 제안한다. 주된 기여는 latent space에서 다양한 point 분포를 생성하도록 generator를 학습시키고, 이 point set에 대해 implicit하게 평하가는...","categories": ["논문"],
         "tags": [],
         "url": "/%EB%85%BC%EB%AC%B8/pu-gan/",
+        "teaser": null
+      },{
+        "title": "PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation",
+        "excerpt":"Abstract 기존에는 point cloud의 irregular한 형식때문에 regular한 3D voxel grid 또는 collection of images로 바꿔 사용하곤 했지만 이것은 불필요하게 많은 data가 렌더링 되는 문제가 있다. 그래서 여기서는 point cloud를 바로 사용하며 input point들의 permutation invariance1를 잘 고려하는 neural network를 설계하였다. PointNet은 object detection, part segmentation, scene semantic parsing에 이르는 application들을...","categories": ["논문"],
+        "tags": [],
+        "url": "/%EB%85%BC%EB%AC%B8/pointnet-deep-learning-on-point-sets-for-3d-classification-and-segmentation/",
         "teaser": null
       }]
