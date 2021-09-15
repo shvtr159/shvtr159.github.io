@@ -95,8 +95,8 @@ var store = [{
         "url": "/graphics/computer-graphics-10-texture-mapping/",
         "teaser": null
       },{
-        "title": "용어",
-        "excerpt":"feature detector vs feature descriptor featrue detector : interest point (key point, salient point) detector는 어떤 criterion에 따라 point를 선택하는 알고리즘이다. 일반적으로 interest point는 “cornerness” metric과 같이 어떤 함수의 local maximum을 의미한다. feature descriptor : descriptor는 interest point의 주변 image patch를 설명하는 value의 vector이다. 이는 raw pixel value처럼 단순하거나, gradient...","categories": [],
+        "title": "기타 정리",
+        "excerpt":"CNN 연산 3차원의 합성곱 연산에서 3차원 데이터의 모양은 (채널, 높이, 너비) 또는 (높이, 너비, 채널)과 같은 순서로 쓴다. 필터도 마찬가지로 하여 합성곱의 출력은 다음과 같다. 위 이미지에서는 출력 데이터의 채널이 1인데 다수의 채널을 내보내기 위해서는 다음과 같이 여러개의 필터를 사용하면 필터 갯수만큼의 채널이 생성된다. bias는 다음과 같이 대응 채널의 원소에...","categories": [],
         "tags": [],
         "url": "/point-cloud-feature/",
         "teaser": null
@@ -119,8 +119,8 @@ var store = [{
         "url": "/%EB%85%BC%EB%AC%B8/pointnet-deep-learning-on-point-sets-for-3d-classification-and-segmentation/",
         "teaser": null
       },{
-        "title": "ML",
-        "excerpt":" ","categories": [],
+        "title": "머신러닝 시스템의 종류",
+        "excerpt":"핸즈온 머신러닝의 머신러닝 내용 일부를 정리. 머신러닝 시스템의 종류 머신러닝 시스템은 다음과 같이 분류할 수 있지만 서로 배타적이지 않고 원하는 대로 연결 가능하다. 훈련 지도 여부 : 지도 학습, 비지도 학습, 준지도 학습, 강화 학습 실시간 훈련 여부 : 온라인 학습, 배치 학습 훈련 지도 여부 지도 학습 (supervised learning)...","categories": [],
         "tags": [],
         "url": "/ml/",
         "teaser": null

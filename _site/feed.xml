@@ -1,4 +1,48 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://shvtr159.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shvtr159.github.io/" rel="alternate" type="text/html" /><updated>2021-09-14T19:59:32+09:00</updated><id>https://shvtr159.github.io/feed.xml</id><title type="html">Study Blog</title><subtitle>for study</subtitle><author><name>KYG</name></author><entry><title type="html">ML</title><link href="https://shvtr159.github.io/ml/" rel="alternate" type="text/html" title="ML" /><published>2021-09-14T00:00:00+09:00</published><updated>2021-09-14T00:00:00+09:00</updated><id>https://shvtr159.github.io/ml</id><content type="html" xml:base="https://shvtr159.github.io/ml/"></content><author><name>KYG</name></author><summary type="html"></summary></entry><entry><title type="html">PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation</title><link href="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pointnet-deep-learning-on-point-sets-for-3d-classification-and-segmentation/" rel="alternate" type="text/html" title="PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation" /><published>2021-09-13T00:00:00+09:00</published><updated>2021-09-13T00:00:00+09:00</updated><id>https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pointnet-deep-learning-on-point-sets-for-3d-classification-and-segmentation</id><content type="html" xml:base="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pointnet-deep-learning-on-point-sets-for-3d-classification-and-segmentation/">&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://shvtr159.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shvtr159.github.io/" rel="alternate" type="text/html" /><updated>2021-09-15T13:21:06+09:00</updated><id>https://shvtr159.github.io/feed.xml</id><title type="html">Study Blog</title><subtitle>for study</subtitle><author><name>KYG</name></author><entry><title type="html">머신러닝 시스템의 종류</title><link href="https://shvtr159.github.io/ml/" rel="alternate" type="text/html" title="머신러닝 시스템의 종류" /><published>2021-09-14T00:00:00+09:00</published><updated>2021-09-14T00:00:00+09:00</updated><id>https://shvtr159.github.io/ml</id><content type="html" xml:base="https://shvtr159.github.io/ml/">&lt;p&gt;핸즈온 머신러닝의 머신러닝 내용 일부를 정리.&lt;/p&gt;
+&lt;h2 id=&quot;머신러닝-시스템의-종류&quot;&gt;머신러닝 시스템의 종류&lt;/h2&gt;
+&lt;p&gt;머신러닝 시스템은 다음과 같이 분류할 수 있지만 서로 배타적이지 않고 원하는 대로 연결 가능하다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;훈련 지도 여부 : 지도 학습, 비지도 학습, 준지도 학습, 강화 학습&lt;/li&gt;
+  &lt;li&gt;실시간 훈련 여부 : 온라인 학습, 배치 학습&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;훈련-지도-여부&quot;&gt;훈련 지도 여부&lt;/h3&gt;
+&lt;h4 id=&quot;지도-학습-supervised-learning&quot;&gt;지도 학습 (supervised learning)&lt;/h4&gt;
+&lt;p&gt;지도학습에는 훈련 데이터에 label(혹은 target이란 표현도 사용됨) 이라는 답이 포함된다. 지도학습에는 분류(classification), 회귀(regression)이 해당된다. 일부 회귀 알고리즘은 분류에 사용할 수도 있고, 반대의 경우도 있다. 그 예로 로지스틱 회귀는 class에 속할 확률을 출력한다.&lt;/p&gt;
+
+&lt;p&gt;중요한 지도 학습 알고리즘들&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;k-최근접 이웃 (K-Nearest Neightbors)&lt;/li&gt;
+  &lt;li&gt;선형 회귀 (Linear Regression)&lt;/li&gt;
+  &lt;li&gt;로지스틱 회귀 (Logistic Regrassion)&lt;/li&gt;
+  &lt;li&gt;서포트 벡터 머신(Supprot Vector Machines, SVM)&lt;/li&gt;
+  &lt;li&gt;결정 트리(Decision Tree)와 랜덤 포레스트(Random Forests)&lt;/li&gt;
+  &lt;li&gt;신경망 (Neural networks)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;비지도-학습-unsupervised-learning&quot;&gt;비지도 학습 (unsupervised learning)&lt;/h4&gt;
+&lt;p&gt;lable 없는 훈련 데이터를 이용해 시스템 스스로 학습.&lt;/p&gt;
+
+&lt;p&gt;대표적 비지도 학습&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;군집 (clustering)&lt;/li&gt;
+  &lt;li&gt;시각화 (visualization)와 차원 축소 (dimensionality reduction)&lt;/li&gt;
+  &lt;li&gt;이상치 탐지 (anomaly detection)&lt;/li&gt;
+  &lt;li&gt;연관 규칙 학습 (Association rule learning)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;준지도-학습-semisupervised-learning&quot;&gt;준지도 학습 (semisupervised learning)&lt;/h4&gt;
+&lt;p&gt;레이블이 일부만 있는 데이터. 대부분 지도 학습과 비지도 학습의 조합으로 이루어져 있다.&lt;/p&gt;
+
+&lt;h4 id=&quot;강화-학습-reinforcement-learning&quot;&gt;강화 학습 (reinforcement learning)&lt;/h4&gt;
+&lt;p&gt;에이전트(학습 시스템)이 환경을 관찰해서 행동을 실행하고 그 결과로 보상 또는 벌점을 받는다. 시간이 지나면서 가장 큰 보상을 얻기 위해 정책(policy)라고 부르는 최상의 전략을 스스로 학습한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;실시간-훈련-여부&quot;&gt;실시간 훈련 여부&lt;/h3&gt;
+&lt;h4 id=&quot;배치-학습-batch-learning&quot;&gt;배치 학습 (batch learning)&lt;/h4&gt;
+&lt;p&gt;시스템이 가용한 데이터를 모두 사용해 훈련한다. 즉 먼저 시스템을 훈련시키고 더 이상의 학습 없이 제품 시스템에 적용한다. 오프라인 학습(offline learning)이라고 한다. 이는 컴퓨팅 자원이 많이 필요하다는 점을 고려해야 한다.&lt;/p&gt;
+
+&lt;h4 id=&quot;온라인-학습-online-learning&quot;&gt;온라인 학습 (online learning)&lt;/h4&gt;
+&lt;p&gt;데이터를 순차적으로 한 개씩 또는 미니배치(mini-batch) 단위로 훈련한다. 매 학습 단계가 빠르고 비용이 적게 들어 데이터가 도착하는 즉시 학습할 수 있다. 그러나 나쁜 데이터가 주입되었을 때 시스템 성능이 점진적으로 감소하기 때문에 모니터링이 필요하다.&lt;/p&gt;</content><author><name>KYG</name></author><summary type="html">핸즈온 머신러닝의 머신러닝 내용 일부를 정리. 머신러닝 시스템의 종류 머신러닝 시스템은 다음과 같이 분류할 수 있지만 서로 배타적이지 않고 원하는 대로 연결 가능하다. 훈련 지도 여부 : 지도 학습, 비지도 학습, 준지도 학습, 강화 학습 실시간 훈련 여부 : 온라인 학습, 배치 학습</summary></entry><entry><title type="html">PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation</title><link href="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pointnet-deep-learning-on-point-sets-for-3d-classification-and-segmentation/" rel="alternate" type="text/html" title="PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation" /><published>2021-09-13T00:00:00+09:00</published><updated>2021-09-13T00:00:00+09:00</updated><id>https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pointnet-deep-learning-on-point-sets-for-3d-classification-and-segmentation</id><content type="html" xml:base="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pointnet-deep-learning-on-point-sets-for-3d-classification-and-segmentation/">&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;/h2&gt;
 &lt;p&gt;기존에는 point cloud의 irregular한 형식때문에  regular한 3D voxel grid 또는 collection of images로 바꿔 사용하곤 했지만 이것은 불필요하게 많은 data가 렌더링 되는 문제가 있다. 그래서 여기서는 point cloud를 바로 사용하며 input point들의 permutation invariance&lt;sup&gt;&lt;a href=&quot;#footnote_1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;를 잘 고려하는 neural network를 설계하였다. PointNet은 object detection, part segmentation, scene semantic parsing에 이르는 application들을 위한 통일된 구조를 제공한다. 또한, 이론적으로, network가 무엇을 학습했는지와 network가 왜 perturbation(noise와 유사)과 corruption에 robust한지 이해하기 위한 분석을 제공한다.&lt;/p&gt;
 
 &lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
@@ -145,14 +189,33 @@ feture expansion으로 $rN\times \tilde{C_{2}}$의 차원으로 feature ${f}’$
 &lt;p&gt;여기서는 $rN\times \tilde{C_{2}}$로 확장된 feature로부터 output point들의  3D coordinate를 재구성한다. 특히, 각 point의 feature를 FC layer들을 통과시켜 3D coordinate를 regression한다. 그 결과 최종적으로  upsampling된 $rN\times 3$의  point 좌표를 출력한다.&lt;/p&gt;
 
 &lt;p&gt;처음으로 제안된 입력과 출력이 모두 3D 좌표의 point set인 end-to-end point set upsampling network. 기존에는 related work 부분.
-object로부터 local geometry pattern을 학습하기 위해 계층적으로 학습하며 작은 local feature와 큰 local feature들을 다양하게 학습한다. 이후 feature space에서 feature의 수를 증가시켜 upsampling을 수행한다.&lt;/p&gt;</content><author><name>KYG</name></author><category term="논문" /><summary type="html">Abstract Key point : point당 multi-level feature들을 학습하고 multi-branch convolution unit을 통해 feature space에 implicit하게 point set을 확장한다. 이후 확장된 feature는 multitude of feature들로 분할한 뒤 upsampling된 point set로 재구성한다. 이 Network는 patch-level에서 적용되고, upsampling된 point들이 surface에 균일한 분포로 underlying할 수 있도록 하는 joint loss function을 가진다. some baseline 방법들과 optimization-based 방법들과 성능을 비교한다.</summary></entry><entry><title type="html">용어</title><link href="https://shvtr159.github.io/point-cloud-feature/" rel="alternate" type="text/html" title="용어" /><published>2021-07-28T00:00:00+09:00</published><updated>2021-07-28T00:00:00+09:00</updated><id>https://shvtr159.github.io/point-cloud-feature</id><content type="html" xml:base="https://shvtr159.github.io/point-cloud-feature/">&lt;h2 id=&quot;feature-detector-vs-feature-descriptor&quot;&gt;feature detector vs feature descriptor&lt;/h2&gt;
+object로부터 local geometry pattern을 학습하기 위해 계층적으로 학습하며 작은 local feature와 큰 local feature들을 다양하게 학습한다. 이후 feature space에서 feature의 수를 증가시켜 upsampling을 수행한다.&lt;/p&gt;</content><author><name>KYG</name></author><category term="논문" /><summary type="html">Abstract Key point : point당 multi-level feature들을 학습하고 multi-branch convolution unit을 통해 feature space에 implicit하게 point set을 확장한다. 이후 확장된 feature는 multitude of feature들로 분할한 뒤 upsampling된 point set로 재구성한다. 이 Network는 patch-level에서 적용되고, upsampling된 point들이 surface에 균일한 분포로 underlying할 수 있도록 하는 joint loss function을 가진다. some baseline 방법들과 optimization-based 방법들과 성능을 비교한다.</summary></entry><entry><title type="html">기타 정리</title><link href="https://shvtr159.github.io/point-cloud-feature/" rel="alternate" type="text/html" title="기타 정리" /><published>2021-07-28T00:00:00+09:00</published><updated>2021-07-28T00:00:00+09:00</updated><id>https://shvtr159.github.io/point-cloud-feature</id><content type="html" xml:base="https://shvtr159.github.io/point-cloud-feature/">&lt;h2 id=&quot;cnn-연산&quot;&gt;CNN 연산&lt;/h2&gt;
+&lt;p&gt;3차원의 합성곱 연산에서 3차원 데이터의 모양은 (채널, 높이, 너비) 또는 (높이, 너비, 채널)과 같은 순서로 쓴다.  필터도 마찬가지로 하여 합성곱의 출력은 다음과 같다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/133269875-502f2f87-f493-4330-8d20-6b21beb26478.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위 이미지에서는 출력 데이터의 채널이 1인데 다수의 채널을 내보내기 위해서는 다음과 같이 여러개의 필터를 사용하면 &lt;strong&gt;필터 갯수만큼의 채널이 생성&lt;/strong&gt;된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/133270157-b3de61c8-f1fb-4b53-b282-0300cbaaaa14.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;bias는 다음과 같이 대응 채널의 원소에 모두 더해지므로 차원에는 변화가 없다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/133270362-c61205c2-c459-44fe-927d-8147ed63041c.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;배치-처리&quot;&gt;배치 처리&lt;/h3&gt;
+&lt;p&gt;배치 처리를 지원하기 위해 데이터의 차원을 하나 늘려 4차원 데이터로 저장한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/133270577-6679a8ce-ffe9-4819-832d-76f87c564e01.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이렇게 되면 신경망에 4차원 데이터가 하나 흐를 때마다 데이터 N개에 대한 합성곱 연산이 이루어진다. 즉 N회 분의 처리를 한번에 수행한다.&lt;/p&gt;
+&lt;h2 id=&quot;feature-detector-vs-feature-descriptor&quot;&gt;feature detector vs feature descriptor&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;featrue detector&lt;/strong&gt; : interest point (key point, salient point) detector는 어떤 criterion에 따라 point를 선택하는 알고리즘이다. 일반적으로 interest point는 “cornerness” metric과 같이 어떤 함수의 local maximum을 의미한다.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;feature descriptor&lt;/strong&gt; : descriptor는 interest point의 주변 image patch를 설명하는 value의 vector이다. 이는 raw pixel value처럼 단순하거나, gradient orientation의 히스토그램처럼 복잡할 수 있다.&lt;/p&gt;
 
 &lt;p&gt;일반적으로 interest point와 해당 descriptor를 합쳐서 &lt;strong&gt;local feature&lt;/strong&gt;라고 한다. local feature는 registration, 3D reconstruction, object detection/recognition 등에 사용된다.&lt;/p&gt;
 
-&lt;p&gt;즉, Harris, Min Eigen, FAST 등은 interest point detector, 자세히는 corner detector라고 할 수 있다. SIFT는 detector와 descriptor 둘 다 포함하는데, detector는 DoG를 base로 blob-like 구조의 중심을 detect하고,  gradient orientation의 히스토그램을 base로 descriptor의 역할을 수행한다.&lt;/p&gt;</content><author><name>KYG</name></author><summary type="html">feature detector vs feature descriptor featrue detector : interest point (key point, salient point) detector는 어떤 criterion에 따라 point를 선택하는 알고리즘이다. 일반적으로 interest point는 “cornerness” metric과 같이 어떤 함수의 local maximum을 의미한다.</summary></entry><entry><title type="html">[Computer Graphics #10] Texture Mapping</title><link href="https://shvtr159.github.io/graphics/computer-graphics-10-texture-mapping/" rel="alternate" type="text/html" title="[Computer Graphics #10] Texture Mapping" /><published>2021-05-28T00:00:00+09:00</published><updated>2021-05-28T00:00:00+09:00</updated><id>https://shvtr159.github.io/graphics/computer-graphics-10-texture-mapping</id><content type="html" xml:base="https://shvtr159.github.io/graphics/computer-graphics-10-texture-mapping/">&lt;p&gt;실제로 모델을 만들 때는 vertex의 색으로 칠하는 것으로는 완벽하지 않다. 때문에 이에 맞는 texture를 모델에 입히는 과정이 필요하다. 각  geometry의 surface에 일치하는 real object의 부분의 polygon을 입혀준다.&lt;/p&gt;
+&lt;p&gt;즉, Harris, Min Eigen, FAST 등은 interest point detector, 자세히는 corner detector라고 할 수 있다. SIFT는 detector와 descriptor 둘 다 포함하는데, detector는 DoG를 base로 blob-like 구조의 중심을 detect하고,  gradient orientation의 히스토그램을 base로 descriptor의 역할을 수행한다.&lt;/p&gt;</content><author><name>KYG</name></author><summary type="html">CNN 연산 3차원의 합성곱 연산에서 3차원 데이터의 모양은 (채널, 높이, 너비) 또는 (높이, 너비, 채널)과 같은 순서로 쓴다. 필터도 마찬가지로 하여 합성곱의 출력은 다음과 같다.</summary></entry><entry><title type="html">[Computer Graphics #10] Texture Mapping</title><link href="https://shvtr159.github.io/graphics/computer-graphics-10-texture-mapping/" rel="alternate" type="text/html" title="[Computer Graphics #10] Texture Mapping" /><published>2021-05-28T00:00:00+09:00</published><updated>2021-05-28T00:00:00+09:00</updated><id>https://shvtr159.github.io/graphics/computer-graphics-10-texture-mapping</id><content type="html" xml:base="https://shvtr159.github.io/graphics/computer-graphics-10-texture-mapping/">&lt;p&gt;실제로 모델을 만들 때는 vertex의 색으로 칠하는 것으로는 완벽하지 않다. 때문에 이에 맞는 texture를 모델에 입히는 과정이 필요하다. 각  geometry의 surface에 일치하는 real object의 부분의 polygon을 입혀준다.&lt;/p&gt;
 
 &lt;h2 id=&quot;mapping&quot;&gt;Mapping&lt;/h2&gt;
 &lt;p&gt;이때 다음과 같은 u, v의 Texture Coordinates를 사용한다. 

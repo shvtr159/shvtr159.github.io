@@ -1,7 +1,26 @@
 ---
-title: 용어
+title: 기타 정리
 ---
 
+## CNN 연산
+3차원의 합성곱 연산에서 3차원 데이터의 모양은 (채널, 높이, 너비) 또는 (높이, 너비, 채널)과 같은 순서로 쓴다.  필터도 마찬가지로 하여 합성곱의 출력은 다음과 같다.
+
+![image](https://user-images.githubusercontent.com/79836443/133269875-502f2f87-f493-4330-8d20-6b21beb26478.png)
+
+위 이미지에서는 출력 데이터의 채널이 1인데 다수의 채널을 내보내기 위해서는 다음과 같이 여러개의 필터를 사용하면 **필터 갯수만큼의 채널이 생성**된다.
+
+![image](https://user-images.githubusercontent.com/79836443/133270157-b3de61c8-f1fb-4b53-b282-0300cbaaaa14.png)
+
+bias는 다음과 같이 대응 채널의 원소에 모두 더해지므로 차원에는 변화가 없다.
+
+![image](https://user-images.githubusercontent.com/79836443/133270362-c61205c2-c459-44fe-927d-8147ed63041c.png)
+
+### 배치 처리
+배치 처리를 지원하기 위해 데이터의 차원을 하나 늘려 4차원 데이터로 저장한다. 
+
+![image](https://user-images.githubusercontent.com/79836443/133270577-6679a8ce-ffe9-4819-832d-76f87c564e01.png)
+
+이렇게 되면 신경망에 4차원 데이터가 하나 흐를 때마다 데이터 N개에 대한 합성곱 연산이 이루어진다. 즉 N회 분의 처리를 한번에 수행한다.
 ## feature detector vs feature descriptor
 **featrue detector** : interest point (key point, salient point) detector는 어떤 criterion에 따라 point를 선택하는 알고리즘이다. 일반적으로 interest point는 "cornerness" metric과 같이 어떤 함수의 local maximum을 의미한다.
 
