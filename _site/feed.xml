@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://shvtr159.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shvtr159.github.io/" rel="alternate" type="text/html" /><updated>2021-09-24T17:25:38+09:00</updated><id>https://shvtr159.github.io/feed.xml</id><title type="html">Study Blog</title><subtitle>for study</subtitle><author><name>KYG</name></author><entry><title type="html">머신러닝 시스템의 종류</title><link href="https://shvtr159.github.io/ml/" rel="alternate" type="text/html" title="머신러닝 시스템의 종류" /><published>2021-09-14T00:00:00+09:00</published><updated>2021-09-14T00:00:00+09:00</updated><id>https://shvtr159.github.io/ml</id><content type="html" xml:base="https://shvtr159.github.io/ml/">&lt;p&gt;핸즈온 머신러닝의 머신러닝 내용 일부를 정리.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://shvtr159.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shvtr159.github.io/" rel="alternate" type="text/html" /><updated>2021-09-24T17:35:45+09:00</updated><id>https://shvtr159.github.io/feed.xml</id><title type="html">Study Blog</title><subtitle>for study</subtitle><author><name>KYG</name></author><entry><title type="html">머신러닝 시스템의 종류</title><link href="https://shvtr159.github.io/ml/" rel="alternate" type="text/html" title="머신러닝 시스템의 종류" /><published>2021-09-14T00:00:00+09:00</published><updated>2021-09-14T00:00:00+09:00</updated><id>https://shvtr159.github.io/ml</id><content type="html" xml:base="https://shvtr159.github.io/ml/">&lt;p&gt;핸즈온 머신러닝의 머신러닝 내용 일부를 정리.&lt;/p&gt;
 &lt;h2 id=&quot;머신러닝-시스템의-종류&quot;&gt;머신러닝 시스템의 종류&lt;/h2&gt;
 &lt;p&gt;머신러닝 시스템은 다음과 같이 분류할 수 있지만 서로 배타적이지 않고 원하는 대로 연결 가능하다.&lt;/p&gt;
 &lt;ul&gt;
@@ -101,8 +101,9 @@
 
 &lt;p&gt;그래서 PointNet은 다음과 같이 집합의 transform된 element들에 대해 symmetric function을 적용하여 생성된 point set에 정의된 general 함수를 근사화하는 것이다.&lt;/p&gt;
 
-&lt;p&gt;\(f(\{x_1,...,x_n\})\approx g(h(x_1),...,h(x_n))\)
-$f\;:2^{\mathbb R^N}\rightarrow \mathbb R,\;h:{\mathbb R^N}\rightarrow {\mathbb R^K}$ 이며, symmetric 함수 $g:\underbrace{ {\mathbb R^K} \times \cdots \times {\mathbb R^K}}_ n \rightarrow {\mathbb R^N}$&lt;/p&gt;
+\[f(\{x_1,...,x_n\})\approx g(h(x_1),...,h(x_n))\]
+
+&lt;p&gt;$f\;:2^{\mathbb R^N}\rightarrow \mathbb R,\;h:{\mathbb R^N}\rightarrow {\mathbb R^K}$ $g:\underbrace{ {\mathbb R^K} \times \cdots \times {\mathbb R^K}}_ n \rightarrow {\mathbb R^N}$(symmetric 함수)&lt;/p&gt;
 
 &lt;p&gt;Basic 모듈은 매우 간단하다. $h$를 다층 퍼셉트론 network를 이용해서, $g$는 single 변수 함수와 max pooling 함수의 구성으로 approximate한다. $h$의 collection을 통해 우리는 집합의 다른 property들을 알기위해 많은 $f$를 학습할 수 있다.&lt;/p&gt;
 
@@ -118,9 +119,11 @@ $f\;:2^{\mathbb R^N}\rightarrow \mathbb R,\;h:{\mathbb R^N}\rightarrow {\mathbb 
 
 &lt;p&gt;자연스러운 해결 방법은 feature extraction 이전에 모든 input set을 canonical한 space에 정렬하는 것이다. PointNet에서의 input은 이러한 방법을 Jaderberg et al.&lt;sup&gt;&lt;a href=&quot;#footnote_5&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;에 비해 더 간단하게 이 목표를 달성하였다. 저자는 mini-network(Fig 2 T-net)에 의한 affine 변환 matrix를 예측하고 이를 input points의 coordiates에 바로 적용하였다. mini-network 자체는 큰 network와 비슷하고, point independent feature extraction과 maxpooling, FC layer의 기본 모듈로 구성된다.&lt;/p&gt;
 
-&lt;p&gt;그러나 featrue space의 transformation matrix는 spatial transform matrix보다 더 높은 차원으로 이루어져서 optimization의 난이도가 급격히 상승한다. 이를 위해 regularization term을 softmax training loss로 추가한다. 또, feature transformation matrix가 다음과 같은 직교 행렬에 가깝도록 제한한다.
-\(L_reg = \left \| I-AA^T \right \|^2_F\)
-$A$는 mini-network에 의해 예측된 feature alignment matrix이다. 직교 변환은 input의 정보를 잃지 않기 때문에 필요하다.&lt;/p&gt;
+&lt;p&gt;그러나 featrue space의 transformation matrix는 spatial transform matrix보다 더 높은 차원으로 이루어져서 optimization의 난이도가 급격히 상승한다. 이를 위해 regularization term을 softmax training loss로 추가한다. 또, feature transformation matrix가 다음과 같은 직교 행렬에 가깝도록 제한한다.&lt;/p&gt;
+
+\[L_{reg} = \left \| I-AA^T \right \|^2_F\]
+
+&lt;p&gt;$A$는 mini-network에 의해 예측된 feature alignment matrix이다. 직교 변환은 input의 정보를 잃지 않기 때문에 필요하다.&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;
 &lt;br /&gt;

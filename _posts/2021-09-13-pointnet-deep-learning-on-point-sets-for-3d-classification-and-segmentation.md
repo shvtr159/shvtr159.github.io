@@ -59,7 +59,8 @@ symmetric function은 입력 순서에 관계 없이 동일한 output을 내는 
 그래서 PointNet은 다음과 같이 집합의 transform된 element들에 대해 symmetric function을 적용하여 생성된 point set에 정의된 general 함수를 근사화하는 것이다.
 
 $$f(\{x_1,...,x_n\})\approx g(h(x_1),...,h(x_n))$$
-$f\;:2^{\mathbb R^N}\rightarrow \mathbb R,\;h:{\mathbb R^N}\rightarrow {\mathbb R^K}$ 이며, symmetric 함수 $g:\underbrace{ {\mathbb R^K} \times \cdots \times {\mathbb R^K}}_ n \rightarrow {\mathbb R^N}$
+
+$f\;:2^{\mathbb R^N}\rightarrow \mathbb R,\;h:{\mathbb R^N}\rightarrow {\mathbb R^K}$ $g:\underbrace{ {\mathbb R^K} \times \cdots \times {\mathbb R^K}}_ n \rightarrow {\mathbb R^N}$(symmetric 함수) 
 
 Basic 모듈은 매우 간단하다. $h$를 다층 퍼셉트론 network를 이용해서, $g$는 single 변수 함수와 max pooling 함수의 구성으로 approximate한다. $h$의 collection을 통해 우리는 집합의 다른 property들을 알기위해 많은 $f$를 학습할 수 있다.
 
@@ -76,7 +77,9 @@ point cloud가 rigid transformation 같은 특정한 geometric transformation �
 자연스러운 해결 방법은 feature extraction 이전에 모든 input set을 canonical한 space에 정렬하는 것이다. PointNet에서의 input은 이러한 방법을 Jaderberg et al.<sup>[5](#footnote_5)</sup>에 비해 더 간단하게 이 목표를 달성하였다. 저자는 mini-network(Fig 2 T-net)에 의한 affine 변환 matrix를 예측하고 이를 input points의 coordiates에 바로 적용하였다. mini-network 자체는 큰 network와 비슷하고, point independent feature extraction과 maxpooling, FC layer의 기본 모듈로 구성된다.
 
 그러나 featrue space의 transformation matrix는 spatial transform matrix보다 더 높은 차원으로 이루어져서 optimization의 난이도가 급격히 상승한다. 이를 위해 regularization term을 softmax training loss로 추가한다. 또, feature transformation matrix가 다음과 같은 직교 행렬에 가깝도록 제한한다.
-$$L_reg = \left \| I-AA^T \right \|^2_F$$
+
+$$L_{reg} = \left \| I-AA^T \right \|^2_F$$
+
 $A$는 mini-network에 의해 예측된 feature alignment matrix이다. 직교 변환은 input의 정보를 잃지 않기 때문에 필요하다.
 
 
