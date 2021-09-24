@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://shvtr159.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shvtr159.github.io/" rel="alternate" type="text/html" /><updated>2021-09-24T17:39:58+09:00</updated><id>https://shvtr159.github.io/feed.xml</id><title type="html">Study Blog</title><subtitle>for study</subtitle><author><name>KYG</name></author><entry><title type="html">머신러닝 시스템의 종류</title><link href="https://shvtr159.github.io/ml/" rel="alternate" type="text/html" title="머신러닝 시스템의 종류" /><published>2021-09-14T00:00:00+09:00</published><updated>2021-09-14T00:00:00+09:00</updated><id>https://shvtr159.github.io/ml</id><content type="html" xml:base="https://shvtr159.github.io/ml/">&lt;p&gt;핸즈온 머신러닝의 머신러닝 내용 일부를 정리.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://shvtr159.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shvtr159.github.io/" rel="alternate" type="text/html" /><updated>2021-09-24T18:17:34+09:00</updated><id>https://shvtr159.github.io/feed.xml</id><title type="html">Study Blog</title><subtitle>for study</subtitle><author><name>KYG</name></author><entry><title type="html">머신러닝 시스템의 종류</title><link href="https://shvtr159.github.io/ml/" rel="alternate" type="text/html" title="머신러닝 시스템의 종류" /><published>2021-09-14T00:00:00+09:00</published><updated>2021-09-14T00:00:00+09:00</updated><id>https://shvtr159.github.io/ml</id><content type="html" xml:base="https://shvtr159.github.io/ml/">&lt;p&gt;핸즈온 머신러닝의 머신러닝 내용 일부를 정리.&lt;/p&gt;
 &lt;h2 id=&quot;머신러닝-시스템의-종류&quot;&gt;머신러닝 시스템의 종류&lt;/h2&gt;
 &lt;p&gt;머신러닝 시스템은 다음과 같이 분류할 수 있지만 서로 배타적이지 않고 원하는 대로 연결 가능하다.&lt;/p&gt;
 &lt;ul&gt;
@@ -86,7 +86,7 @@
 &lt;h4 id=&quot;symmetry-function-for-unordered-input&quot;&gt;Symmetry Function for Unordered Input&lt;/h4&gt;
 &lt;p&gt;input permutation(순열)에 invariant한 model을 만들기 위해 다음 3가지 전략을 사용한다.&lt;/p&gt;
 &lt;ol&gt;
-  &lt;li&gt;입력 순서를 canonical order로 정렬한다.&lt;/li&gt;
+  &lt;li&gt;입력 순서를 canonical order로 정렬한다.(여기서 canonical order는 표준 형식을 따르는 정렬으로 특정 알고리즘을 지칭하지는 않는다)&lt;/li&gt;
   &lt;li&gt;input을 RNN을 training하기 위한 sequence로 취급하지만, 모든 종류의 순열을 이용해 training data를 augmentation 한다.&lt;/li&gt;
   &lt;li&gt;각 point에서의 정보를 aggregate&lt;sup&gt;&lt;a href=&quot;#footnote_4&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;하기 위해 간단한 symmetric function을 사용한다.&lt;/li&gt;
 &lt;/ol&gt;
@@ -103,7 +103,7 @@
 
 \[f(\{x_1,...,x_n\})\approx g(h(x_1),...,h(x_n))\]
 
-&lt;center&gt;$f\;:2^{\mathbb R^N}\rightarrow \mathbb R,\;h:{\mathbb R^N}\rightarrow {\mathbb R^K},\;g$ (symmetric 함수)$:\underbrace{ {\mathbb R^K} \times \cdots \times {\mathbb R^K}}_ n \rightarrow {\mathbb R^N}$ &lt;/center&gt;
+&lt;center&gt;$f\;:2^{\mathbb R^N}\rightarrow \mathbb R,\;h\;:{\mathbb R^N}\rightarrow {\mathbb R^K},\;g$ (symmetric 함수) $:\underbrace{ {\mathbb R^K} \times \cdots \times {\mathbb R^K}}_ n \rightarrow {\mathbb R^N}$ &lt;/center&gt;
 
 &lt;p&gt;Basic 모듈은 매우 간단하다. $h$를 다층 퍼셉트론 network를 이용해서, $g$는 single 변수 함수와 max pooling 함수의 구성으로 approximate한다. $h$의 collection을 통해 우리는 집합의 다른 property들을 알기위해 많은 $f$를 학습할 수 있다.&lt;/p&gt;
 
@@ -125,14 +125,20 @@
 
 &lt;p&gt;$A$는 mini-network에 의해 예측된 feature alignment matrix이다. 직교 변환은 input의 정보를 잃지 않기 때문에 필요하다.&lt;/p&gt;
 
+&lt;h3 id=&quot;43-theoretical-analysis&quot;&gt;4.3. Theoretical Analysis&lt;/h3&gt;
+&lt;h4 id=&quot;universal-approximation6&quot;&gt;Universal approximation&lt;sup&gt;&lt;a href=&quot;#footnote_6&quot;&gt;6&lt;/a&gt;&lt;/sup&gt;&lt;/h4&gt;
+
 &lt;p&gt;&lt;br /&gt;
-&lt;br /&gt;
-———
-&lt;a name=&quot;footnote_1&quot;&gt;1&lt;/a&gt;: 입력 벡터 요소의 순서와 상관 없이 같은 출력을 생성하는 것. MLP가 이에 해당하며 CNN, RNN은 이에 해당하지 않는다.&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a name=&quot;footnote_1&quot;&gt;1&lt;/a&gt;: 입력 벡터 요소의 순서와 상관 없이 같은 출력을 생성하는 것. MLP가 이에 해당하며 CNN, RNN은 이에 해당하지 않는다.&lt;br /&gt;
 &lt;a name=&quot;footnote_2&quot;&gt;2&lt;/a&gt;: rigid motion은 transformation을 하더라도 point들간의 distance와 방향은 그대로 유지되는 변환을 말한다. 여기에는 translation, rotation, reflection, glide reflection이 해당된다.&lt;br /&gt;
 &lt;a name=&quot;footnote_3&quot;&gt;3&lt;/a&gt;: distance를 정의하는 방법. 가장 간단한 예시로 Euclidean distance를 들 수 있다.&lt;br /&gt;
 &lt;a name=&quot;footnote_4&quot;&gt;4&lt;/a&gt;: ????&lt;br /&gt;
-&lt;a name=&quot;footnote_5&quot;&gt;5&lt;/a&gt;:  M. Jaderberg, K. Simonyan, A. Zisserman, et al. Spatial transformer networks. In NIPS 2015&lt;/p&gt;</content><author><name>KYG</name></author><category term="논문" /><summary type="html">Abstract 기존에는 point cloud의 irregular한 형식때문에 regular한 3D voxel grid 또는 collection of images로 바꿔 사용하곤 했지만 이것은 불필요하게 많은 data가 렌더링 되는 문제가 있다. 그래서 여기서는 point cloud를 바로 사용하며 input point들의 permutation invariance1를 잘 고려하는 neural network를 설계하였다. PointNet은 object detection, part segmentation, scene semantic parsing에 이르는 application들을 위한 통일된 구조를 제공한다. 또한, 이론적으로, network가 무엇을 학습했는지와 network가 왜 perturbation(noise와 유사)과 corruption에 robust한지 이해하기 위한 분석을 제공한다.</summary></entry><entry><title type="html">PU-GAN: A Point Cloud Upsampling Adversarial Network</title><link href="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pu-gan/" rel="alternate" type="text/html" title="PU-GAN: A Point Cloud Upsampling Adversarial Network" /><published>2021-09-10T00:00:00+09:00</published><updated>2021-09-10T00:00:00+09:00</updated><id>https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pu-gan</id><content type="html" xml:base="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pu-gan/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;a name=&quot;footnote_5&quot;&gt;5&lt;/a&gt;:  M. Jaderberg, K. Simonyan, A. Zisserman, et al. Spatial transformer networks. In NIPS 2015&lt;br /&gt;
+&lt;a name=&quot;footnote_6&quot;&gt;6&lt;/a&gt;: 1개의 히든 레이어를 가진 Neural Network를 이용해 어떠한 함수든 근사시킬 수 있다는 이론. 당연히 활성화 함수는 비선형 함수여야 한다&lt;/p&gt;</content><author><name>KYG</name></author><category term="논문" /><summary type="html">Abstract 기존에는 point cloud의 irregular한 형식때문에 regular한 3D voxel grid 또는 collection of images로 바꿔 사용하곤 했지만 이것은 불필요하게 많은 data가 렌더링 되는 문제가 있다. 그래서 여기서는 point cloud를 바로 사용하며 input point들의 permutation invariance1를 잘 고려하는 neural network를 설계하였다. PointNet은 object detection, part segmentation, scene semantic parsing에 이르는 application들을 위한 통일된 구조를 제공한다. 또한, 이론적으로, network가 무엇을 학습했는지와 network가 왜 perturbation(noise와 유사)과 corruption에 robust한지 이해하기 위한 분석을 제공한다.</summary></entry><entry><title type="html">PU-GAN: A Point Cloud Upsampling Adversarial Network</title><link href="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pu-gan/" rel="alternate" type="text/html" title="PU-GAN: A Point Cloud Upsampling Adversarial Network" /><published>2021-09-10T00:00:00+09:00</published><updated>2021-09-10T00:00:00+09:00</updated><id>https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pu-gan</id><content type="html" xml:base="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pu-gan/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;PU-Net, EC-Net, MPU 등의 network들은 학습을 통해 point cloud upsampling의 장점을 입증했다. 그러나 이 네트워크들은 sparse하고 non-uniform한 low-quality inputs로부터 좋은 결과를 얻지 못할 수 있다. 그래서 upsampling과 data amendment 능력을 결합한 PU-GAN을 제안한다. 주된 기여는 latent space에서 다양한 point 분포를 생성하도록 generator를 학습시키고, 이 point set에 대해 implicit하게 평하가는 데 도움이 되는 discriminator network이다. 그러나 generator와 discriminator간의 균형을 맞추고 낮은 수렴 경향을 피하기 어려운 문제가 있다. Thus, we first improve the point generation quality, or equivalently the feature expansion capability, of the generator, by constructing an up-down-up unit to expand point features by upsampling also their differences for self-correction.  또, feature integration quality를 향상시키기 위해 self-attention unit을 사용한다. 마지막으로, 결과의 distribution uniformity를 향상시키고 discriminator가 target distribution에서 더 많은 latent pattern을 학습하도록 하기 위해 aadversarial, uniform, reconstruction term을 사용해 end-to-end 로 network를 학습시키는 compound loss를 추가로 사용한다.&lt;/p&gt;
 &lt;h2 id=&quot;method&quot;&gt;Method&lt;/h2&gt;
 &lt;h3 id=&quot;31-overview&quot;&gt;3.1 Overview&lt;/h3&gt;

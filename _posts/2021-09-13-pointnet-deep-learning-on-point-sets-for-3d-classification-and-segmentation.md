@@ -44,7 +44,7 @@ Network의 input은 Euclidean space 상 point의 subset이다. 이는 다음 3�
  자세한 내용으로 PointNet은 다음 3가지 key module을 가진다.
 #### Symmetry Function for Unordered Input
 input permutation(순열)에 invariant한 model을 만들기 위해 다음 3가지 전략을 사용한다.
-1. 입력 순서를 canonical order로 정렬한다.
+1. 입력 순서를 canonical order로 정렬한다.(여기서 canonical order는 표준 형식을 따르는 정렬으로 특정 알고리즘을 지칭하지는 않는다) 
 2. input을 RNN을 training하기 위한 sequence로 취급하지만, 모든 종류의 순열을 이용해 training data를 augmentation 한다.
 3. 각 point에서의 정보를 aggregate<sup>[4](#footnote_4)</sup>하기 위해 간단한 symmetric function을 사용한다.
 
@@ -60,7 +60,7 @@ symmetric function은 입력 순서에 관계 없이 동일한 output을 내는 
 
 $$f(\{x_1,...,x_n\})\approx g(h(x_1),...,h(x_n))$$
 
-<center>$f\;:2^{\mathbb R^N}\rightarrow \mathbb R,\;h:{\mathbb R^N}\rightarrow {\mathbb R^K},\;g$ (symmetric 함수)$:\underbrace{ {\mathbb R^K} \times \cdots \times {\mathbb R^K}}_ n \rightarrow {\mathbb R^N}$ </center>
+<center>$f\;:2^{\mathbb R^N}\rightarrow \mathbb R,\;h\;:{\mathbb R^N}\rightarrow {\mathbb R^K},\;g$ (symmetric 함수) $:\underbrace{ {\mathbb R^K} \times \cdots \times {\mathbb R^K}}_ n \rightarrow {\mathbb R^N}$ </center>
 
 Basic 모듈은 매우 간단하다. $h$를 다층 퍼셉트론 network를 이용해서, $g$는 single 변수 함수와 max pooling 함수의 구성으로 approximate한다. $h$의 collection을 통해 우리는 집합의 다른 property들을 알기위해 많은 $f$를 학습할 수 있다.
 
@@ -82,13 +82,17 @@ $$L_{reg} = \left \| I-AA^T \right \|^2_F$$
 
 $A$는 mini-network에 의해 예측된 feature alignment matrix이다. 직교 변환은 input의 정보를 잃지 않기 때문에 필요하다.
 
-
+### 4.3. Theoretical Analysis
+#### Universal approximation<sup>[6](#footnote_6)</sup>
 
 <br>
 <br>
----------
+
+__ __ __ __ __ __ __
+
 <a name="footnote_1">1</a>: 입력 벡터 요소의 순서와 상관 없이 같은 출력을 생성하는 것. MLP가 이에 해당하며 CNN, RNN은 이에 해당하지 않는다.<br>
 <a name="footnote_2">2</a>: rigid motion은 transformation을 하더라도 point들간의 distance와 방향은 그대로 유지되는 변환을 말한다. 여기에는 translation, rotation, reflection, glide reflection이 해당된다.<br>
 <a name="footnote_3">3</a>: distance를 정의하는 방법. 가장 간단한 예시로 Euclidean distance를 들 수 있다.<br>
 <a name="footnote_4">4</a>: ????<br>
-<a name="footnote_5">5</a>:  M. Jaderberg, K. Simonyan, A. Zisserman, et al. Spatial transformer networks. In NIPS 2015
+<a name="footnote_5">5</a>:  M. Jaderberg, K. Simonyan, A. Zisserman, et al. Spatial transformer networks. In NIPS 2015<br>
+<a name="footnote_6">6</a>: 1개의 히든 레이어를 가진 Neural Network를 이용해 어떠한 함수든 근사시킬 수 있다는 이론. 당연히 활성화 함수는 비선형 함수여야 한다
