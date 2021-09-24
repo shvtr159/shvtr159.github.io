@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://shvtr159.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shvtr159.github.io/" rel="alternate" type="text/html" /><updated>2021-09-24T17:35:45+09:00</updated><id>https://shvtr159.github.io/feed.xml</id><title type="html">Study Blog</title><subtitle>for study</subtitle><author><name>KYG</name></author><entry><title type="html">머신러닝 시스템의 종류</title><link href="https://shvtr159.github.io/ml/" rel="alternate" type="text/html" title="머신러닝 시스템의 종류" /><published>2021-09-14T00:00:00+09:00</published><updated>2021-09-14T00:00:00+09:00</updated><id>https://shvtr159.github.io/ml</id><content type="html" xml:base="https://shvtr159.github.io/ml/">&lt;p&gt;핸즈온 머신러닝의 머신러닝 내용 일부를 정리.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://shvtr159.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shvtr159.github.io/" rel="alternate" type="text/html" /><updated>2021-09-24T17:39:58+09:00</updated><id>https://shvtr159.github.io/feed.xml</id><title type="html">Study Blog</title><subtitle>for study</subtitle><author><name>KYG</name></author><entry><title type="html">머신러닝 시스템의 종류</title><link href="https://shvtr159.github.io/ml/" rel="alternate" type="text/html" title="머신러닝 시스템의 종류" /><published>2021-09-14T00:00:00+09:00</published><updated>2021-09-14T00:00:00+09:00</updated><id>https://shvtr159.github.io/ml</id><content type="html" xml:base="https://shvtr159.github.io/ml/">&lt;p&gt;핸즈온 머신러닝의 머신러닝 내용 일부를 정리.&lt;/p&gt;
 &lt;h2 id=&quot;머신러닝-시스템의-종류&quot;&gt;머신러닝 시스템의 종류&lt;/h2&gt;
 &lt;p&gt;머신러닝 시스템은 다음과 같이 분류할 수 있지만 서로 배타적이지 않고 원하는 대로 연결 가능하다.&lt;/p&gt;
 &lt;ul&gt;
@@ -103,7 +103,7 @@
 
 \[f(\{x_1,...,x_n\})\approx g(h(x_1),...,h(x_n))\]
 
-&lt;p&gt;$f\;:2^{\mathbb R^N}\rightarrow \mathbb R,\;h:{\mathbb R^N}\rightarrow {\mathbb R^K}$ $g:\underbrace{ {\mathbb R^K} \times \cdots \times {\mathbb R^K}}_ n \rightarrow {\mathbb R^N}$(symmetric 함수)&lt;/p&gt;
+&lt;center&gt;$f\;:2^{\mathbb R^N}\rightarrow \mathbb R,\;h:{\mathbb R^N}\rightarrow {\mathbb R^K},\;g$ (symmetric 함수)$:\underbrace{ {\mathbb R^K} \times \cdots \times {\mathbb R^K}}_ n \rightarrow {\mathbb R^N}$ &lt;/center&gt;
 
 &lt;p&gt;Basic 모듈은 매우 간단하다. $h$를 다층 퍼셉트론 network를 이용해서, $g$는 single 변수 함수와 max pooling 함수의 구성으로 approximate한다. $h$의 collection을 통해 우리는 집합의 다른 property들을 알기위해 많은 $f$를 학습할 수 있다.&lt;/p&gt;
 
