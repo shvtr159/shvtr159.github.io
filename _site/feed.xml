@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://shvtr159.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shvtr159.github.io/" rel="alternate" type="text/html" /><updated>2021-09-24T18:17:34+09:00</updated><id>https://shvtr159.github.io/feed.xml</id><title type="html">Study Blog</title><subtitle>for study</subtitle><author><name>KYG</name></author><entry><title type="html">머신러닝 시스템의 종류</title><link href="https://shvtr159.github.io/ml/" rel="alternate" type="text/html" title="머신러닝 시스템의 종류" /><published>2021-09-14T00:00:00+09:00</published><updated>2021-09-14T00:00:00+09:00</updated><id>https://shvtr159.github.io/ml</id><content type="html" xml:base="https://shvtr159.github.io/ml/">&lt;p&gt;핸즈온 머신러닝의 머신러닝 내용 일부를 정리.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://shvtr159.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shvtr159.github.io/" rel="alternate" type="text/html" /><updated>2021-09-27T17:23:47+09:00</updated><id>https://shvtr159.github.io/feed.xml</id><title type="html">Study Blog</title><subtitle>for study</subtitle><author><name>KYG</name></author><entry><title type="html">머신러닝 시스템의 종류</title><link href="https://shvtr159.github.io/ml/" rel="alternate" type="text/html" title="머신러닝 시스템의 종류" /><published>2021-09-14T00:00:00+09:00</published><updated>2021-09-14T00:00:00+09:00</updated><id>https://shvtr159.github.io/ml</id><content type="html" xml:base="https://shvtr159.github.io/ml/">&lt;p&gt;핸즈온 머신러닝의 머신러닝 내용 일부를 정리.&lt;/p&gt;
 &lt;h2 id=&quot;머신러닝-시스템의-종류&quot;&gt;머신러닝 시스템의 종류&lt;/h2&gt;
 &lt;p&gt;머신러닝 시스템은 다음과 같이 분류할 수 있지만 서로 배타적이지 않고 원하는 대로 연결 가능하다.&lt;/p&gt;
 &lt;ul&gt;
@@ -84,10 +84,10 @@
 
 &lt;p&gt;자세한 내용으로 PointNet은 다음 3가지 key module을 가진다.&lt;/p&gt;
 &lt;h4 id=&quot;symmetry-function-for-unordered-input&quot;&gt;Symmetry Function for Unordered Input&lt;/h4&gt;
-&lt;p&gt;input permutation(순열)에 invariant한 model을 만들기 위해 다음 3가지 전략을 사용한다.&lt;/p&gt;
+&lt;p&gt;input 순서에 invariant한 model을 만들기 위해 다음 3가지 전략을 사용한다.&lt;/p&gt;
 &lt;ol&gt;
   &lt;li&gt;입력 순서를 canonical order로 정렬한다.(여기서 canonical order는 표준 형식을 따르는 정렬으로 특정 알고리즘을 지칭하지는 않는다)&lt;/li&gt;
-  &lt;li&gt;input을 RNN을 training하기 위한 sequence로 취급하지만, 모든 종류의 순열을 이용해 training data를 augmentation 한다.&lt;/li&gt;
+  &lt;li&gt;input을 RNN을 학습시키기 위한 sequence로 취급하지만, 모든 종류의 순열을 이용해 training data를 augmentation 한다.&lt;/li&gt;
   &lt;li&gt;각 point에서의 정보를 aggregate&lt;sup&gt;&lt;a href=&quot;#footnote_4&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;하기 위해 간단한 symmetric function을 사용한다.&lt;/li&gt;
 &lt;/ol&gt;
 
@@ -112,12 +112,12 @@
 &lt;h4 id=&quot;local-and-global-information-aggregation&quot;&gt;Local and Global Information Aggregation&lt;/h4&gt;
 &lt;p&gt;classification을 위한 shape global feature에 대해 SVM이나 다층 퍼셉트론 classifier는 쉽게 훈련시킬 수 있지만, point segmentation은 local과 global을 모두 필요로 하기 때문에 어려움이 있다. 이를 해결하기 위한 solution이 Fig 2에서 볼 수 있는 segmentation Network이다.&lt;/p&gt;
 
-&lt;p&gt;이 network는 global point cloud의 feature 벡터를 계산하고 이를 각 point feature에 concatenate 한 뒤 각 point 별 feature에 다시 제공한다. 그 다음 combine 된 point feature를 기반으로 새로운 각 point 별 feature를 추출한다. 이번에는 각 point 별 feature가 local 및 global 정보를 모두 인식한다.&lt;/p&gt;
+&lt;p&gt;이 network는 global point cloud의 feature 벡터를 계산하고 이를 각 point feature에 concatenate 한 뒤 각 point 별 feature에 다시 제공한다(Fig 1의 nx64에 global feature 1024를 모두 추가해준다). 그 다음 combine 된 point feature를 기반으로 새로운 각 point 별 feature를 추출한다. 이를 이용하면 각 point 별 feature가 local 및 global 정보를 모두 인식한다.&lt;/p&gt;
 
 &lt;h4 id=&quot;joint-alignment-network&quot;&gt;Joint Alignment Network&lt;/h4&gt;
 &lt;p&gt;point cloud가 rigid transformation 같은 특정한 geometric transformation 이 수행되는 경우 point cloud의 semantic labeling은 변하지 않아야 한다. 때문에 point set에 의해 학습된 것이 이러한 변환에 불변하기를 기대한다.&lt;/p&gt;
 
-&lt;p&gt;자연스러운 해결 방법은 feature extraction 이전에 모든 input set을 canonical한 space에 정렬하는 것이다. PointNet에서의 input은 이러한 방법을 Jaderberg et al.&lt;sup&gt;&lt;a href=&quot;#footnote_5&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;에 비해 더 간단하게 이 목표를 달성하였다. 저자는 mini-network(Fig 2 T-net)에 의한 affine 변환 matrix를 예측하고 이를 input points의 coordiates에 바로 적용하였다. mini-network 자체는 큰 network와 비슷하고, point independent feature extraction과 maxpooling, FC layer의 기본 모듈로 구성된다.&lt;/p&gt;
+&lt;p&gt;저자는 spatial transformer networks에서 motivate된  mini-network(Fig 2 T-net)를 추가하여 이를 해결하였다. 이 network는 affine 변환 matrix를 예측하고 이를 input points의 coordiates에 바로 적용하여 간단히 해결하였다. mini-network 자체는 큰 network와 비슷하고, point independent feature extraction과 maxpooling, FC layer의 기본 모듈로 구성된다.&lt;/p&gt;
 
 &lt;p&gt;그러나 featrue space의 transformation matrix는 spatial transform matrix보다 더 높은 차원으로 이루어져서 optimization의 난이도가 급격히 상승한다. 이를 위해 regularization term을 softmax training loss로 추가한다. 또, feature transformation matrix가 다음과 같은 직교 행렬에 가깝도록 제한한다.&lt;/p&gt;
 

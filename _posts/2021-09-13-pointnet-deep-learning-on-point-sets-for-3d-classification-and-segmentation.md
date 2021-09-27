@@ -43,9 +43,9 @@ Network의 input은 Euclidean space 상 point의 subset이다. 이는 다음 3�
  
  자세한 내용으로 PointNet은 다음 3가지 key module을 가진다.
 #### Symmetry Function for Unordered Input
-input permutation(순열)에 invariant한 model을 만들기 위해 다음 3가지 전략을 사용한다.
+input 순서에 invariant한 model을 만들기 위해 다음 3가지 전략을 사용한다.
 1. 입력 순서를 canonical order로 정렬한다.(여기서 canonical order는 표준 형식을 따르는 정렬으로 특정 알고리즘을 지칭하지는 않는다) 
-2. input을 RNN을 training하기 위한 sequence로 취급하지만, 모든 종류의 순열을 이용해 training data를 augmentation 한다.
+2. input을 RNN을 학습시키기 위한 sequence로 취급하지만, 모든 종류의 순열을 이용해 training data를 augmentation 한다.
 3. 각 point에서의 정보를 aggregate<sup>[4](#footnote_4)</sup>하기 위해 간단한 symmetric function을 사용한다.
 
 symmetric function은 입력 순서에 관계 없이 동일한 output을 내는 함수로 여기서는 n개의 vector를 입력으로 받는다. symmetric function의 예로는 +와 $\times$연산이 있다. 
@@ -67,14 +67,14 @@ Basic 모듈은 매우 간단하다. $h$를 다층 퍼셉트론 network를 이�
 이 모듈의 output은 input set의 global signature인 $\[f_1,\,...\,,f_K\]$ 벡터이다.
 
 #### Local and Global Information Aggregation
-classification을 위한 shape global feature에 대해 SVM이나 다층 퍼셉트론 classifier는 쉽게 훈련시킬 수 있지만, point segmentation은 local과 global을 모두 필요로 하기 때문에 어려움이 있다. 이를 해결하기 위한 solution이 Fig 2에서 볼 수 있는 segmentation Network이다. 
+classification을 위한 shape global feature에 대해 SVM이나 다층 퍼셉트론 classifier는 쉽게 훈련시킬 수 있지만, point segmentation은 local과 global을 모두 필요로 하기 때문에 어려움이 있다. 이를 해결하기 위한 solution이 Fig 2에서 볼 수 있는 segmentation Network이다.
 
-이 network는 global point cloud의 feature 벡터를 계산하고 이를 각 point feature에 concatenate 한 뒤 각 point 별 feature에 다시 제공한다. 그 다음 combine 된 point feature를 기반으로 새로운 각 point 별 feature를 추출한다. 이번에는 각 point 별 feature가 local 및 global 정보를 모두 인식한다.
+이 network는 global point cloud의 feature 벡터를 계산하고 이를 각 point feature에 concatenate 한 뒤 각 point 별 feature에 다시 제공한다(Fig 1의 nx64에 global feature 1024를 모두 추가해준다). 그 다음 combine 된 point feature를 기반으로 새로운 각 point 별 feature를 추출한다. 이를 이용하면 각 point 별 feature가 local 및 global 정보를 모두 인식한다.
 
 #### Joint Alignment Network
 point cloud가 rigid transformation 같은 특정한 geometric transformation 이 수행되는 경우 point cloud의 semantic labeling은 변하지 않아야 한다. 때문에 point set에 의해 학습된 것이 이러한 변환에 불변하기를 기대한다.
 
-자연스러운 해결 방법은 feature extraction 이전에 모든 input set을 canonical한 space에 정렬하는 것이다. PointNet에서의 input은 이러한 방법을 Jaderberg et al.<sup>[5](#footnote_5)</sup>에 비해 더 간단하게 이 목표를 달성하였다. 저자는 mini-network(Fig 2 T-net)에 의한 affine 변환 matrix를 예측하고 이를 input points의 coordiates에 바로 적용하였다. mini-network 자체는 큰 network와 비슷하고, point independent feature extraction과 maxpooling, FC layer의 기본 모듈로 구성된다.
+저자는 spatial transformer networks에서 motivate된  mini-network(Fig 2 T-net)를 추가하여 이를 해결하였다. 이 network는 affine 변환 matrix를 예측하고 이를 input points의 coordiates에 바로 적용하여 간단히 해결하였다. mini-network 자체는 큰 network와 비슷하고, point independent feature extraction과 maxpooling, FC layer의 기본 모듈로 구성된다.
 
 그러나 featrue space의 transformation matrix는 spatial transform matrix보다 더 높은 차원으로 이루어져서 optimization의 난이도가 급격히 상승한다. 이를 위해 regularization term을 softmax training loss로 추가한다. 또, feature transformation matrix가 다음과 같은 직교 행렬에 가깝도록 제한한다.
 
