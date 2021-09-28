@@ -124,4 +124,10 @@ var store = [{
         "tags": [],
         "url": "/ml/",
         "teaser": null
+      },{
+        "title": "PointNet++: Deep Hierarchical Feature Learning on\nPoint Sets in a Metric Space",
+        "excerpt":"PointNet++은 PointNet이 point가 존재하는 metric space에 의해 유도된 local structure를 활용하지 못해서 fine-grained1 패턴들을 잘 인식하지 못하고 복잡한 scene들을 일반화하는 능력이 떨어지는 문제를 해결하기 위해 제안되었다. PointNet++은 입력 point set의 nested partitioning에 PointNet을 recursive하게 적용하는 hierarchical 신경망이다. 이 네트워크는 metric space distance를 활용하여 contextual scale이 증가하는 local feature를 학습할 수...","categories": [],
+        "tags": [],
+        "url": "/pointnet-deep-hierarchical-feature-learning-on-point-sets-in-a-metric-space/",
+        "teaser": null
       }]

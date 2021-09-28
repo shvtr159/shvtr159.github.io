@@ -1,4 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://shvtr159.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shvtr159.github.io/" rel="alternate" type="text/html" /><updated>2021-09-27T17:23:47+09:00</updated><id>https://shvtr159.github.io/feed.xml</id><title type="html">Study Blog</title><subtitle>for study</subtitle><author><name>KYG</name></author><entry><title type="html">머신러닝 시스템의 종류</title><link href="https://shvtr159.github.io/ml/" rel="alternate" type="text/html" title="머신러닝 시스템의 종류" /><published>2021-09-14T00:00:00+09:00</published><updated>2021-09-14T00:00:00+09:00</updated><id>https://shvtr159.github.io/ml</id><content type="html" xml:base="https://shvtr159.github.io/ml/">&lt;p&gt;핸즈온 머신러닝의 머신러닝 내용 일부를 정리.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://shvtr159.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shvtr159.github.io/" rel="alternate" type="text/html" /><updated>2021-09-28T14:04:56+09:00</updated><id>https://shvtr159.github.io/feed.xml</id><title type="html">Study Blog</title><subtitle>for study</subtitle><author><name>KYG</name></author><entry><title type="html">PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space</title><link href="https://shvtr159.github.io/pointnet-deep-hierarchical-feature-learning-on-point-sets-in-a-metric-space/" rel="alternate" type="text/html" title="PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space" /><published>2021-09-27T00:00:00+09:00</published><updated>2021-09-27T00:00:00+09:00</updated><id>https://shvtr159.github.io/pointnet-deep-hierarchical-feature-learning-on-point-sets-in-a-metric-space</id><content type="html" xml:base="https://shvtr159.github.io/pointnet-deep-hierarchical-feature-learning-on-point-sets-in-a-metric-space/">&lt;p&gt;PointNet++은 PointNet이 point가 존재하는 metric space에 의해 유도된 local structure를 활용하지 못해서 fine-grained&lt;sup&gt;&lt;a href=&quot;#footnote_1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; 패턴들을 잘 인식하지 못하고 복잡한 scene들을 일반화하는 능력이 떨어지는 문제를 해결하기 위해 제안되었다. PointNet++은 입력 point set의 nested partitioning에 PointNet을 recursive하게 적용하는 hierarchical 신경망이다. 이 네트워크는 metric space distance를 활용하여 contextual scale이 증가하는 local feature를 학습할 수 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;1-introduction&quot;&gt;1. Introduction&lt;/h2&gt;
+&lt;p&gt;기존 PointNet의 아이디어는 각 point의 공간 encoding을 학습하고, 모든 개별 point feature들을 global 포인트 클라우드 signature와 aggregate하는 것이었다. 그러나 이런 구조는 metric에 의해 유도된 local structure를 활용하지 않는다. 그러나 convolutional architecture의 성공에 local structure를 활용하는 것이 중요한 요소라는 것이 증명되어왔다. CNN은 multi-resolution hierarchy를 따라 점점 더 큰 scale의 feature를 찾아낼 수 있다. CNN 구조 특성 상 낮은 level의 layer에서는 작은 receptive field를 가지고 높은 layer에서는 큰 receptive field를 가지기 때문이다. 이러한 hierarchy를 따라 local pattern들을 추상화하는 기능은 일반화에 더욱 유용하다.&lt;/p&gt;
+
+&lt;p&gt;해서, PointNet++이라는 hierarchical 신경망을 소개한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a name=&quot;footnote_1&quot;&gt;1&lt;/a&gt;: 세분화된 것을 의미하는 말로 여기서는 작은 패턴들을 의미한다. 반대말로 coarse-grained가 있다.&lt;br /&gt;&lt;/p&gt;</content><author><name>KYG</name></author><summary type="html">PointNet++은 PointNet이 point가 존재하는 metric space에 의해 유도된 local structure를 활용하지 못해서 fine-grained1 패턴들을 잘 인식하지 못하고 복잡한 scene들을 일반화하는 능력이 떨어지는 문제를 해결하기 위해 제안되었다. PointNet++은 입력 point set의 nested partitioning에 PointNet을 recursive하게 적용하는 hierarchical 신경망이다. 이 네트워크는 metric space distance를 활용하여 contextual scale이 증가하는 local feature를 학습할 수 있다.</summary></entry><entry><title type="html">머신러닝 시스템의 종류</title><link href="https://shvtr159.github.io/ml/" rel="alternate" type="text/html" title="머신러닝 시스템의 종류" /><published>2021-09-14T00:00:00+09:00</published><updated>2021-09-14T00:00:00+09:00</updated><id>https://shvtr159.github.io/ml</id><content type="html" xml:base="https://shvtr159.github.io/ml/">&lt;p&gt;핸즈온 머신러닝의 머신러닝 내용 일부를 정리.&lt;/p&gt;
 &lt;h2 id=&quot;머신러닝-시스템의-종류&quot;&gt;머신러닝 시스템의 종류&lt;/h2&gt;
 &lt;p&gt;머신러닝 시스템은 다음과 같이 분류할 수 있지만 서로 배타적이지 않고 원하는 대로 연결 가능하다.&lt;/p&gt;
 &lt;ul&gt;
@@ -62,7 +74,7 @@
 &lt;p&gt;&lt;strong&gt;Deep Learning on Unorderes Sets&lt;/strong&gt; 데이터 구조 관점에서, point cloud는 순서 없는 vector의 집합이다. 딥러닝에서 대부분의 작업은 sequence(음성 및 언어 처리), images와 volume(video 또는 3D data)와 같은 regular한  input에 초점을 맞추고 있지만, point set에 대해서는 잘 이루어지지 않았다.&lt;/p&gt;
 
 &lt;h2 id=&quot;3-problem-statement&quot;&gt;3. Problem Statement&lt;/h2&gt;
-&lt;p&gt;point cloud는 각 point $P_{i}$가 $(x, y, z)$좌표에 color, normal과 같은 추가적인 feature channels를 가지고, 이 point들이 모인 set을 ${P_i \mid i=1,…,n}$로 표현한다. 여기서는 point의 channel로 $(x,y,z)$ 좌표만을 사용한다.&lt;/p&gt;
+&lt;p&gt;point cloud는 각 point $P_{i}$가 $(x, y, z)$좌표에 color, normal과 같은 추가적인 feature channels를 가지고, 이 point들이 모인 set을 $\left { P_i \mid i=1,…,n\right }$로 표현한다. 여기서는 point의 channel로 $(x,y,z)$ 좌표만을 사용한다.&lt;/p&gt;
 
 &lt;p&gt;Object classification task에서, input point cloud는 shape에서 직접 sampling되거나, 장면 point cloud에서 사전에 segmentation된다. PointNet에서는 모든 $k$ 후보 classes에 대해 $k$개의 scores를 출력한다.&lt;/p&gt;
 
@@ -70,7 +82,7 @@
 
 &lt;h2 id=&quot;4-deep-learning-on-point-sets&quot;&gt;4. Deep Learning on Point Sets&lt;/h2&gt;
 &lt;h3 id=&quot;41-properties-of-point-sets-in-mathbb-rn&quot;&gt;4.1. Properties of Point Sets in $\mathbb R^n$&lt;/h3&gt;
-&lt;p&gt;Network의 input은 Euclidean space 상 point의 subset이다. 이는 다음 3가지 특징을 가지고 있다.&lt;/p&gt;
+&lt;p&gt;Network의 input은 Euclidean space 상 point의 subset이다. 이는 다음 3가지 특징을 가지고 있고 이 특징들을 해결하기 위해 4.2에서 3가지의 key module을 사용하였다.&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;Unordered.&lt;/strong&gt; 이미지의 pixel 배열이나 voxel 배열과 달리 point cloud는 특정한 순서가 없다. 다시 말해 네트워크가 N개의 3D point를 사용한다면 이 N개 point의 순서에 따라 결과가 달라지지 않아야 한다.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Interaction among points.&lt;/strong&gt; point들은 distance metric&lt;sup&gt;&lt;a href=&quot;#footnote_3&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;이 존재하는 공간에 있다. 즉, 이는 point들이 고립되어있지 않고 주변 point들과 의미 있는 subset을 형상한다는 것을 의미한다. 따라서, model은 주변 point에서 local 구조 및 local 구조 간의 combinatorial interaction을 확인할 수 있어야 한다. 간단히 이야기 하면 point들간의 거리 정보만을 통해 의미를 찾아야 한다.&lt;/li&gt;
@@ -80,20 +92,20 @@
 &lt;h3 id=&quot;42-pointnet-architecture&quot;&gt;4.2. PointNet Architecture&lt;/h3&gt;
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/133418360-97952ac2-feeb-4b00-8ead-d466066648ea.png&quot; alt=&quot;image&quot; /&gt;&lt;center&gt;&lt;span style=&quot;color:rgb(150, 150, 150)&quot;&gt;Figure 2. PointNet의 구조&lt;/span&gt;&lt;/center&gt;&lt;/p&gt;
 
-&lt;p&gt;classification network는 $n$개의 point를 input으로 받으며, 여기서는 $(x, y, z)$ 좌표만을 고려하여 $n\times 3$의 vector를 input으로 받는다. 사진의 구조는 classification network이지만 classification network와 segmentation network는 서로 구조의 많은 부분을 공유한다. PointNet은 다음 3가지 key module을 가진다. 이 input을 transformation 한 뒤  다시 feature tranformation 한 다음 max pooling을 통해 point feature를 aggregate한다. 최종 output은 $k$개의 class에 대한 각 classification score이다. 사진의 구조는 classification network이지만 classification network와 segmentation network는 서로 구조의 많은 부분을 공유한다. Batchnorm은 ReLU와 함께 모든 layer에 적용하고, dropout은 classification net의 마지막 mlp에만 적용한다.&lt;/p&gt;
+&lt;p&gt;classification network는 $n$개의 point를 input으로 받으며, 여기서는 $(x, y, z)$ 좌표만을 고려하여 $n\times 3$의 vector를 input으로 받는다. 이 input을 transformation 한 뒤  다시 feature tranformation 한 다음 max pooling을 통해 point feature를 aggregate한다. 최종 output은 $k$개의 class에 대한 각 classification score이다. 사진의 구조는 classification network이지만 classification network와 segmentation network는 서로 구조의 많은 부분을 공유한다. Batchnorm은 ReLU와 함께 모든 layer에 적용하고, dropout은 classification net의 마지막 mlp에만 적용한다.&lt;/p&gt;
 
 &lt;p&gt;자세한 내용으로 PointNet은 다음 3가지 key module을 가진다.&lt;/p&gt;
 &lt;h4 id=&quot;symmetry-function-for-unordered-input&quot;&gt;Symmetry Function for Unordered Input&lt;/h4&gt;
-&lt;p&gt;input 순서에 invariant한 model을 만들기 위해 다음 3가지 전략을 사용한다.&lt;/p&gt;
+&lt;p&gt;input 순서에 invariant한 model을 만들기 위한 전략으로는 다음 3가지가 있다.&lt;/p&gt;
 &lt;ol&gt;
   &lt;li&gt;입력 순서를 canonical order로 정렬한다.(여기서 canonical order는 표준 형식을 따르는 정렬으로 특정 알고리즘을 지칭하지는 않는다)&lt;/li&gt;
   &lt;li&gt;input을 RNN을 학습시키기 위한 sequence로 취급하지만, 모든 종류의 순열을 이용해 training data를 augmentation 한다.&lt;/li&gt;
   &lt;li&gt;각 point에서의 정보를 aggregate&lt;sup&gt;&lt;a href=&quot;#footnote_4&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;하기 위해 간단한 symmetric function을 사용한다.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;symmetric function은 입력 순서에 관계 없이 동일한 output을 내는 함수로 여기서는 n개의 vector를 입력으로 받는다. symmetric function의 예로는 +와 $\times$연산이 있다.&lt;/p&gt;
+&lt;p&gt;PointNet은 symmetric function을 사용한다. symmetric function은 입력 순서에 관계 없이 동일한 output을 내는 함수로 여기서는 n개의 vector를 입력으로 받는다. symmetric function의 예로는 +와 $\times$연산이 있다.&lt;/p&gt;
 
-&lt;p&gt;그러나 일반적으로 고차원 공간에서는 stable한 순서가 존재하지 않는다. 때문에 sorting으로는 ordering 문제가 완전히 해결되지 않고, 이 문제가 지속되기 때문에 network가 input에서 output으로 일관된 mapping을 학습하기 어렵다.&lt;/p&gt;
+&lt;p&gt;단순히 sorting하는것이 더 간단해 보이지만 일반적으로 고차원 공간에서는 stable한 순서가 존재하지 않는다. 때문에 sorting으로는 ordering 문제가 완전히 해결되지 않고, 이 문제가 지속되기 때문에 network가 input에서 output으로 일관된 mapping을 학습하기 어렵다.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/134469465-907b04b3-8421-43d5-bc75-785aa1552912.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;70%&quot; height=&quot;70%&quot; /&gt;&lt;center&gt;&lt;span style=&quot;color:rgb(150, 150, 150)&quot;&gt;순서 invariance를 달성하기 위한 3가지 접근 방법&lt;/span&gt;&lt;/center&gt;&lt;/p&gt;
 
@@ -117,7 +129,7 @@
 &lt;h4 id=&quot;joint-alignment-network&quot;&gt;Joint Alignment Network&lt;/h4&gt;
 &lt;p&gt;point cloud가 rigid transformation 같은 특정한 geometric transformation 이 수행되는 경우 point cloud의 semantic labeling은 변하지 않아야 한다. 때문에 point set에 의해 학습된 것이 이러한 변환에 불변하기를 기대한다.&lt;/p&gt;
 
-&lt;p&gt;저자는 spatial transformer networks에서 motivate된  mini-network(Fig 2 T-net)를 추가하여 이를 해결하였다. 이 network는 affine 변환 matrix를 예측하고 이를 input points의 coordiates에 바로 적용하여 간단히 해결하였다. mini-network 자체는 큰 network와 비슷하고, point independent feature extraction과 maxpooling, FC layer의 기본 모듈로 구성된다.&lt;/p&gt;
+&lt;p&gt;저자는 spatial transformer networks에서 motivate된  mini-network(Fig 2 T-net)를 추가하였다. 이 network는 affine 변환 matrix를 예측하고 이를 input points의 coordiates에 바로 적용하여 간단히 해결하였다. mini-network 자체는 큰 network와 비슷하고, point independent feature extraction과 maxpooling, FC layer의 기본 모듈로 구성된다.&lt;/p&gt;
 
 &lt;p&gt;그러나 featrue space의 transformation matrix는 spatial transform matrix보다 더 높은 차원으로 이루어져서 optimization의 난이도가 급격히 상승한다. 이를 위해 regularization term을 softmax training loss로 추가한다. 또, feature transformation matrix가 다음과 같은 직교 행렬에 가깝도록 제한한다.&lt;/p&gt;
 
@@ -707,91 +719,4 @@ $L_{o\;\mathrm{due\;to}\;i}(\omega_{i}, \omega_{o}) = BRDF(\omega_{i}, \omega_{o
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/116074937-55a03000-a6cd-11eb-95e5-26fb35b0597a.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;때문에 $\alpha$값이 100~200일 경우 보통 metal과 같은 표면이 되고,  $\alpha$값이 5~10일 경우 보통 플라스틱과 같은 표면을 나타내게 된다.&lt;/p&gt;</content><author><name>KYG</name></author><category term="Graphics" /><summary type="html">지금까지는 물체의 vertex, mesh 등을 만들어 물체의 특징과 형상을 나타내는 것에 대해 배웠다. 그러나 실체 물체를 볼 때 물체가 같은 색과 형상을 가지고 있더라도 광원의 위치에 따라 다른 색으로 보이게 된다.</summary></entry><entry><title type="html">[Computer Graphics #7] Meshing and Geometry 2</title><link href="https://shvtr159.github.io/graphics/computer-graphics-7-meshing-and-geometry-2/" rel="alternate" type="text/html" title="[Computer Graphics #7] Meshing and Geometry 2" /><published>2021-04-21T00:00:00+09:00</published><updated>2021-04-21T00:00:00+09:00</updated><id>https://shvtr159.github.io/graphics/computer-graphics-7-meshing-and-geometry-2</id><content type="html" xml:base="https://shvtr159.github.io/graphics/computer-graphics-7-meshing-and-geometry-2/">&lt;p&gt;Meshing and Geometry 1 에서는 기본적인 geometry를 위한 triangle을 만드는 것에 대해서 배워보았다. 이번 geometry2 에서는 post-processing을 해서라도 좀 더 다양한 shape를 만드는 방법에 대한 geometry를 알아본다.&lt;/p&gt;
-
-&lt;h2 id=&quot;points-to-curve&quot;&gt;Points to Curve&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/115556206-61fe4480-a2eb-11eb-8fa8-245eaaddc283.png&quot; alt=&quot;image&quot; title=&quot;https://slidetodoc.com/chapter-14-polynomial-interpolation-interpolation-extrapolation-interpolation-data/&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-&lt;center&gt;&lt;span style=&quot;color:rgb(150, 150, 150)&quot;&gt;regression &amp;amp; interpolation&lt;/span&gt;&lt;/center&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;우리가 vertex 위에 면을 붙이는 과정을&lt;strong&gt;regression&lt;/strong&gt; 또는 &lt;strong&gt;interpolation&lt;/strong&gt;에 해당하는 과정과 비교해서 이해할 수 있다.&lt;/p&gt;
-
-&lt;p&gt;일반적으로 regression의 경우 한정된 관측값을 이용해서 noise가 포함됐을 것을 가정하고 그 data들이 나타내는 모양이 어떤 모양에 가까울 것인지를 추론한다. 이 모양과 실제 관측값의 차이는 약간의 error로 간주할 수 있다.&lt;/p&gt;
-
-&lt;p&gt;interpolation은 주어진 점에 해당하는 값들이 정확하다고 가정하고 그 사이의 값들을 추정하여 data의 모양을 나타낸다. meshing을 할 때, vertex가 존재하고 그 vertex들 사이를 triangle로 채웠다. 이 채웠다는 말은 존재하지 않는 부분에 대해 면으로 메꾸도록 interpolation을 수행했다고 볼 수 있다.&lt;/p&gt;
-
-&lt;p&gt;그렇지만 model을 나타내기 위한 vertex는 수없이 많기 때문에 이 vertex들을 모두 만족시킬 수 있는 하나의 고차함수로 regression/interpolation하는 일은 거의 불가능에 가깝다. 그래서 우리는 적절한 형태를 나타낼 수 있도록 local 영역들을 따로따로 수행하며 적절한 face들을 만들어 낸다. 이를 &lt;strong&gt;Spline&lt;/strong&gt;한다고 한다.&lt;/p&gt;
-
-&lt;h3 id=&quot;spline&quot;&gt;Spline&lt;/h3&gt;
-&lt;p&gt;위에서 설명했듯이 spline은  lower-order 다항식을 일부 data만을 이용하여 생성하고 붙여나가는 piecewise한 방법으로 수행된다. spline의 장점은 (1) 진동을 최소화하고, (2) low-order 특성으로 인한 반올림 오차를 줄이고 (3) 더 나은 근사치를 제공한다. spline을 수행할 때는 data가 noisy한 경우 그 부분을 다 반영하다 보면 문제가 생기므로 이를 위한 적절한 local 영역을 찾아내는 것이 중요하다. 이 영역들을 찾아 따로따로 수행하고 연결한다.&lt;/p&gt;
-
-&lt;h4 id=&quot;b-spline-basis-spline&quot;&gt;B-spline (Basis-spline)&lt;/h4&gt;
-&lt;p&gt;spline 방법 중 하나로 control point를 사용하여 모양을 변화시킨다. B-spline에서 vertex들을 연결하는 선의 모양은 basis function에 의해 결정된다.&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;j차 i번째 B-spline basis function은 다음과 같이 재귀적으로 정의된다.&lt;/p&gt;
-
-\[N_{i,0}(u)=\left\{\begin{matrix}
-1 \quad(if\; u_{i}\leq u&amp;lt; u_{i+1})\\ 
-0 \quad(otherwise)
-\end{matrix}\right.\]
-
-\[N_{i,j}(u)=\frac{u-u_{i}}{u_{i+j}-u_{i}}N_{i,j-1}(u)+\frac{u_{i+j+1}-u}{u_{i+j+1}-u_{i+1}}N_{i+1,j-1}(u)\]
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/115740145-803a7200-a3c9-11eb-900f-0e1c6b5c761e.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이때, 0차를 convolution하여 1차를 만들고, 1차를 convolution하여 2차를 만드는 방식으로 차수가 높아질수록 더 smooth한 curve가 된다. 보통 2차나 3차를 이용하여 만든다.
-그러면 B-spline function은 다음과 같이 정의된다.&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;\(C(u) = \sum_{i=0}^{n}N_{i,p}(u)P_{i}\)&lt;/p&gt;
-  &lt;ul&gt;
-    &lt;li&gt;P는 2D/3D 상에서의 control point&lt;/li&gt;
-    &lt;li&gt;$n+1 = m - p$ 식을 통해 간격 m의 수와 차수 p에 기반해 얼마나 많은 control point가 필요한지 결정해 준다.&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;이제 위의 function을 이용해 curve를 만든다. B-spline에는 line 지나야 하는 vertex인 &lt;strong&gt;knot&lt;/strong&gt;와 지나지 않고 curve의 모양을 결정해주는 &lt;strong&gt;control point&lt;/strong&gt;가 있다. knot들을 n차 basis function을 이용하여 연결해 주는데 C0, C1 등을 고려하며 자연스럽게 연결할 수 있다. 그러나 그림과 같이 function은 symmetric하기 때문에 단순히 연결만 하게 된다면 부자연스러울 수 있다. 이때 control point를 이용하게 되는데 control point에 의해 knot 사이의 값들의 가중치가 달라지며 curve의 모양이 변하게 된다.&lt;/p&gt;
-
-&lt;h4 id=&quot;nurbs-non-uniform-rational-b-spline&quot;&gt;NURBS (Non-Uniform Rational B-Spline)&lt;/h4&gt;
-&lt;p&gt;B-spline에 weight가 추가되어 curve의 모양을 결정한다. NURBS curve는 다음과 같은 식으로 정의된다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;\(C(u) = \frac{\sum_{i=0}^{n}N_{i,p}(u)w_{i}P_{i}}{ \sum_{i=0}^{n}N_{i,p}(u)w_{i}}\)&lt;/p&gt;
-  &lt;ul&gt;
-    &lt;li&gt;N은 B-spline의 basis function, P는 control point, w는 P의 weight를 의미한다.&lt;/li&gt;
-    &lt;li&gt;w, 즉 control point의 가중치가 커지면 curve가 이 control point에 더 가까워지고, 작아지면 더 멀어진다.&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/115749596-3609be80-a3d2-11eb-9a82-1c32cd8a2032.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이 idea는 surface로 확장될 수 있고, 이 방식을 이용해 복잡한 천의 움직임 등을 vertex를 추가하거나 수정하지 않아도 자연스럽게 나타낼 수 있다.&lt;/p&gt;
-
-&lt;h2 id=&quot;implicit-surfaces&quot;&gt;Implicit Surfaces&lt;/h2&gt;
-&lt;p&gt;지금까지 surface에  triangle을 만들어 값을 채우는 것처럼 explicit하게 Surface를 정의했다. &lt;strong&gt;Implicit Surfaces는 모든 공간에 값이 존재하고, 값이 0인 부분을 surface, 안쪽은 음의 값, 바깥쪽은 양의 값으로 설정한다.&lt;/strong&gt; 이 방법은 object의 내부를 확인하기 쉽고, 액체처럼 object의 변화가 많은 object를 표현하기에 좋다.&lt;/p&gt;
-
-&lt;h3 id=&quot;constructive-solid-geometry-csg&quot;&gt;Constructive Solid Geometry (CSG)&lt;/h3&gt;
-&lt;p&gt;복잡한 모양을 표현할 때 모양이 규칙성을 가지고, 일정한 모양의 object들의 합, 차로 만들 수 있다면 기본 component를 이용해서 만들어 낸다. 복잡한 객체의 모양을 기본 component의 mesh의 합, 차, 교집합을 이용해 만들기 때문에 복잡한 객체의 triangle 등을 모두 가질 필요가 없다. 주로 자연의 객체가 아니라 사람이 만든 객체들을 표현하기에 좋다.
-&lt;a href=&quot;https://en.wikipedia.org/wiki/Constructive_solid_geometry&quot; class=&quot;align-center&quot;&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/115756390-204bc780-a3d9-11eb-973a-2ec172b98ff9.png&quot; alt=&quot;image&quot; title=&quot;https://en.wikipedia.org/wiki/Constructive_solid_geometry&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;위와 같이 Union, Difference, Intersection의 연산으로 생성되며 CSG object는 binary tree에 의해 표현되며 implicit surface에 쉽게 적용된다.&lt;/p&gt;
-
-&lt;h3 id=&quot;marching-cubes&quot;&gt;Marching Cubes&lt;/h3&gt;
-&lt;p&gt;Implicit Surface나 CSG로 생성된 model들은 최종적으로 explicit하게 나타내야 눈에 보이게 완성할 수 있다. 이때 사용하는 대표적인 방법이 Marching cube이다.&lt;/p&gt;
-
-&lt;p&gt;이 방법은 Cube가 이동하면서 값들을 scan하게 된다. 매 volume마다 값을 확인하는데 만약 &lt;strong&gt;cube 내에 +값과 -값이 공존할 경우 triangle을 생성한다.&lt;/strong&gt; 이때의 값은 cube의 꼭짓점에서의 값을 확인하게 되는데 한 꼭짓점에 연결된 다른 꼭짓점의 값의 부호가 다르다면 그 사이에 surface가 존재하는 것이므로  그 사이에 vertex를 찍고 연결하여 표면을 만든다. 이때 surface는 아래의 table과 같이 점의 위치에 따라 정해진 생성 방법에 따라 만들어진다.
-&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/115752845-7880ca80-a3d5-11eb-8392-084ca01b80aa.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-&lt;center&gt;&lt;span style=&quot;color:rgb(150, 150, 150)&quot;&gt;Look up table&lt;/span&gt;&lt;/center&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;이 방법은 다음 영상을 보면 쉽게 이해할 수 있다.
-&lt;a href=&quot;https://www.youtube.com/watch?v=kIfVICKtA1g&quot;&gt;https://www.youtube.com/watch?v=kIfVICKtA1g&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;3d-scanning&quot;&gt;3D Scanning&lt;/h2&gt;
-&lt;p&gt;복잡한 model을 만들기 위해서 하나하나 모두 만들어 내는 것은 어려운 일이다. 때문에 3D 객체를 scanning해서 model을 얻어내고, refine하여 생성하기도 한다. 다음과 같은 방법들로 좀 더 쉽게 복잡한 3D model들을 얻어낼 수 있다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Multiview Stereo&lt;/li&gt;
-  &lt;li&gt;Shape from silhouette&lt;/li&gt;
-  &lt;li&gt;Photometric stereo&lt;/li&gt;
-  &lt;li&gt;Kinect&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>KYG</name></author><category term="Graphics" /><summary type="html">Meshing and Geometry 1 에서는 기본적인 geometry를 위한 triangle을 만드는 것에 대해서 배워보았다. 이번 geometry2 에서는 post-processing을 해서라도 좀 더 다양한 shape를 만드는 방법에 대한 geometry를 알아본다.</summary></entry></feed>
+&lt;p&gt;때문에 $\alpha$값이 100~200일 경우 보통 metal과 같은 표면이 되고,  $\alpha$값이 5~10일 경우 보통 플라스틱과 같은 표면을 나타내게 된다.&lt;/p&gt;</content><author><name>KYG</name></author><category term="Graphics" /><summary type="html">지금까지는 물체의 vertex, mesh 등을 만들어 물체의 특징과 형상을 나타내는 것에 대해 배웠다. 그러나 실체 물체를 볼 때 물체가 같은 색과 형상을 가지고 있더라도 광원의 위치에 따라 다른 색으로 보이게 된다.</summary></entry></feed>

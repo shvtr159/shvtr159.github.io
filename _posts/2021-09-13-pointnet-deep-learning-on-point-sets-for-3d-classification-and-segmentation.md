@@ -23,7 +23,7 @@ categories:
 **Deep Learning on Unorderes Sets** 데이터 구조 관점에서, point cloud는 순서 없는 vector의 집합이다. 딥러닝에서 대부분의 작업은 sequence(음성 및 언어 처리), images와 volume(video 또는 3D data)와 같은 regular한  input에 초점을 맞추고 있지만, point set에 대해서는 잘 이루어지지 않았다.
 
 ## 3. Problem Statement
-point cloud는 각 point $P_{i}$가 $(x, y, z)$좌표에 color, normal과 같은 추가적인 feature channels를 가지고, 이 point들이 모인 set을 $\{P_i \mid i=1,...,n\}$로 표현한다. 여기서는 point의 channel로 $(x,y,z)$ 좌표만을 사용한다. 
+point cloud는 각 point $P_{i}$가 $(x, y, z)$좌표에 color, normal과 같은 추가적인 feature channels를 가지고, 이 point들이 모인 set을 $\left \{ P_i \mid i=1,...,n\right \}$로 표현한다. 여기서는 point의 channel로 $(x,y,z)$ 좌표만을 사용한다. 
 
 Object classification task에서, input point cloud는 shape에서 직접 sampling되거나, 장면 point cloud에서 사전에 segmentation된다. PointNet에서는 모든 $k$ 후보 classes에 대해 $k$개의 scores를 출력한다.
 
@@ -31,7 +31,7 @@ Semantic segmentation에서는 input은 부분 region segmentation을 위한 단
 
 ## 4. Deep Learning on Point Sets
 ### 4.1. Properties of Point Sets in $\mathbb R^n$
-Network의 input은 Euclidean space 상 point의 subset이다. 이는 다음 3가지 특징을 가지고 있다.
+Network의 input은 Euclidean space 상 point의 subset이다. 이는 다음 3가지 특징을 가지고 있고 이 특징들을 해결하기 위해 4.2에서 3가지의 key module을 사용하였다.
 - **Unordered.** 이미지의 pixel 배열이나 voxel 배열과 달리 point cloud는 특정한 순서가 없다. 다시 말해 네트워크가 N개의 3D point를 사용한다면 이 N개 point의 순서에 따라 결과가 달라지지 않아야 한다.
 - **Interaction among points.** point들은 distance metric<sup>[3](#footnote_3)</sup>이 존재하는 공간에 있다. 즉, 이는 point들이 고립되어있지 않고 주변 point들과 의미 있는 subset을 형상한다는 것을 의미한다. 따라서, model은 주변 point에서 local 구조 및 local 구조 간의 combinatorial interaction을 확인할 수 있어야 한다. 간단히 이야기 하면 point들간의 거리 정보만을 통해 의미를 찾아야 한다.
 -  **Invariance under transformations.**  geometric object로서 point cloud의 학습된 표현은 특정 transformation을 수행해도 불변해야 한다. 예를 들어 모든 포인트들을 회전하거나 이동시켜도 그 특성을 변하지 않아야 한다는 것이다.
@@ -39,18 +39,18 @@ Network의 input은 Euclidean space 상 point의 subset이다. 이는 다음 3�
 ### 4.2. PointNet Architecture
 ![image](https://user-images.githubusercontent.com/79836443/133418360-97952ac2-feeb-4b00-8ead-d466066648ea.png)<center><span style="color:rgb(150, 150, 150)">Figure 2. PointNet의 구조</span></center>
 
- classification network는 $n$개의 point를 input으로 받으며, 여기서는 $(x, y, z)$ 좌표만을 고려하여 $n\times 3$의 vector를 input으로 받는다. 사진의 구조는 classification network이지만 classification network와 segmentation network는 서로 구조의 많은 부분을 공유한다. PointNet은 다음 3가지 key module을 가진다. 이 input을 transformation 한 뒤  다시 feature tranformation 한 다음 max pooling을 통해 point feature를 aggregate한다. 최종 output은 $k$개의 class에 대한 각 classification score이다. 사진의 구조는 classification network이지만 classification network와 segmentation network는 서로 구조의 많은 부분을 공유한다. Batchnorm은 ReLU와 함께 모든 layer에 적용하고, dropout은 classification net의 마지막 mlp에만 적용한다.
+ classification network는 $n$개의 point를 input으로 받으며, 여기서는 $(x, y, z)$ 좌표만을 고려하여 $n\times 3$의 vector를 input으로 받는다. 이 input을 transformation 한 뒤  다시 feature tranformation 한 다음 max pooling을 통해 point feature를 aggregate한다. 최종 output은 $k$개의 class에 대한 각 classification score이다. 사진의 구조는 classification network이지만 classification network와 segmentation network는 서로 구조의 많은 부분을 공유한다. Batchnorm은 ReLU와 함께 모든 layer에 적용하고, dropout은 classification net의 마지막 mlp에만 적용한다.
  
  자세한 내용으로 PointNet은 다음 3가지 key module을 가진다.
 #### Symmetry Function for Unordered Input
-input 순서에 invariant한 model을 만들기 위해 다음 3가지 전략을 사용한다.
+input 순서에 invariant한 model을 만들기 위한 전략으로는 다음 3가지가 있다.
 1. 입력 순서를 canonical order로 정렬한다.(여기서 canonical order는 표준 형식을 따르는 정렬으로 특정 알고리즘을 지칭하지는 않는다) 
 2. input을 RNN을 학습시키기 위한 sequence로 취급하지만, 모든 종류의 순열을 이용해 training data를 augmentation 한다.
 3. 각 point에서의 정보를 aggregate<sup>[4](#footnote_4)</sup>하기 위해 간단한 symmetric function을 사용한다.
 
-symmetric function은 입력 순서에 관계 없이 동일한 output을 내는 함수로 여기서는 n개의 vector를 입력으로 받는다. symmetric function의 예로는 +와 $\times$연산이 있다. 
+PointNet은 symmetric function을 사용한다. symmetric function은 입력 순서에 관계 없이 동일한 output을 내는 함수로 여기서는 n개의 vector를 입력으로 받는다. symmetric function의 예로는 +와 $\times$연산이 있다. 
 
-그러나 일반적으로 고차원 공간에서는 stable한 순서가 존재하지 않는다. 때문에 sorting으로는 ordering 문제가 완전히 해결되지 않고, 이 문제가 지속되기 때문에 network가 input에서 output으로 일관된 mapping을 학습하기 어렵다.
+단순히 sorting하는것이 더 간단해 보이지만 일반적으로 고차원 공간에서는 stable한 순서가 존재하지 않는다. 때문에 sorting으로는 ordering 문제가 완전히 해결되지 않고, 이 문제가 지속되기 때문에 network가 input에서 output으로 일관된 mapping을 학습하기 어렵다.
 
 ![image](https://user-images.githubusercontent.com/79836443/134469465-907b04b3-8421-43d5-bc75-785aa1552912.png){:.align-center}{: width="70%" height="70%"}<center><span style="color:rgb(150, 150, 150)">순서 invariance를 달성하기 위한 3가지 접근 방법</span></center>
 
@@ -74,7 +74,7 @@ classification을 위한 shape global feature에 대해 SVM이나 다층 퍼셉�
 #### Joint Alignment Network
 point cloud가 rigid transformation 같은 특정한 geometric transformation 이 수행되는 경우 point cloud의 semantic labeling은 변하지 않아야 한다. 때문에 point set에 의해 학습된 것이 이러한 변환에 불변하기를 기대한다.
 
-저자는 spatial transformer networks에서 motivate된  mini-network(Fig 2 T-net)를 추가하여 이를 해결하였다. 이 network는 affine 변환 matrix를 예측하고 이를 input points의 coordiates에 바로 적용하여 간단히 해결하였다. mini-network 자체는 큰 network와 비슷하고, point independent feature extraction과 maxpooling, FC layer의 기본 모듈로 구성된다.
+저자는 spatial transformer networks에서 motivate된  mini-network(Fig 2 T-net)를 추가하였다. 이 network는 affine 변환 matrix를 예측하고 이를 input points의 coordiates에 바로 적용하여 간단히 해결하였다. mini-network 자체는 큰 network와 비슷하고, point independent feature extraction과 maxpooling, FC layer의 기본 모듈로 구성된다.
 
 그러나 featrue space의 transformation matrix는 spatial transform matrix보다 더 높은 차원으로 이루어져서 optimization의 난이도가 급격히 상승한다. 이를 위해 regularization term을 softmax training loss로 추가한다. 또, feature transformation matrix가 다음과 같은 직교 행렬에 가깝도록 제한한다.
 

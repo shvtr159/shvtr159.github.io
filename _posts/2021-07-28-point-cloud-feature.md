@@ -1,5 +1,6 @@
 ---
 title: 기타 정리
+categories: []
 ---
 
 ## CNN 연산
