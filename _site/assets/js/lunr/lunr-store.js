@@ -120,9 +120,9 @@ var store = [{
         "teaser": null
       },{
         "title": "머신러닝 시스템의 종류",
-        "excerpt":"핸즈온 머신러닝의 머신러닝 내용 일부를 정리. 머신러닝 시스템의 종류 머신러닝 시스템은 다음과 같이 분류할 수 있지만 서로 배타적이지 않고 원하는 대로 연결 가능하다. 훈련 지도 여부 : 지도 학습, 비지도 학습, 준지도 학습, 강화 학습 실시간 훈련 여부 : 온라인 학습, 배치 학습 훈련 지도 여부 지도 학습 (supervised learning)...","categories": [],
+        "excerpt":"핸즈온 머신러닝의 머신러닝 내용 일부를 정리. 머신러닝 시스템의 종류 머신러닝 시스템은 다음과 같이 분류할 수 있지만 서로 배타적이지 않고 원하는 대로 연결 가능하다. 훈련 지도 여부 : 지도 학습, 비지도 학습, 준지도 학습, 강화 학습 실시간 훈련 여부 : 온라인 학습, 배치 학습 훈련 지도 여부 지도 학습 (supervised learning)...","categories": ["ML"],
         "tags": [],
-        "url": "/ml/",
+        "url": "/ml/ml/",
         "teaser": null
       },{
         "title": "PointNet++: Deep Hierarchical Feature Learning on\nPoint Sets in a Metric Space",
