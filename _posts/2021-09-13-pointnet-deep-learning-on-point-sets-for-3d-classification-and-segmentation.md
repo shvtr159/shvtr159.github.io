@@ -23,7 +23,7 @@ categories:
 **Deep Learning on Unorderes Sets** 데이터 구조 관점에서, point cloud는 순서 없는 vector의 집합이다. 딥러닝에서 대부분의 작업은 sequence(음성 및 언어 처리), images와 volume(video 또는 3D data)와 같은 regular한  input에 초점을 맞추고 있지만, point set에 대해서는 잘 이루어지지 않았다.
 
 ## 3. Problem Statement
-point cloud는 각 point $P_{i}$가 $(x, y, z)$좌표에 color, normal과 같은 추가적인 feature channels를 가지고, 이 point들이 모인 set을 $\left \{ P_i \mid i=1,...,n\right \}$로 표현한다. 여기서는 point의 channel로 $(x,y,z)$ 좌표만을 사용한다. 
+point cloud는 각 point $P_{i}$가 $(x, y, z)$좌표에 color, normal과 같은 추가적인 feature channels를 가지고, 이 point들이 모인 set을 $\lbrace P_i \mid i=1,...,n \rbrace$로 표현한다. 여기서는 point의 channel로 $(x,y,z)$ 좌표만을 사용한다. 
 
 Object classification task에서, input point cloud는 shape에서 직접 sampling되거나, 장면 point cloud에서 사전에 segmentation된다. PointNet에서는 모든 $k$ 후보 classes에 대해 $k$개의 scores를 출력한다.
 

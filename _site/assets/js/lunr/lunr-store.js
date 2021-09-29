@@ -96,9 +96,9 @@ var store = [{
         "teaser": null
       },{
         "title": "기타 정리",
-        "excerpt":"CNN 연산 3차원의 합성곱 연산에서 3차원 데이터의 모양은 (채널, 높이, 너비) 또는 (높이, 너비, 채널)과 같은 순서로 쓴다. 필터도 마찬가지로 하여 합성곱의 출력은 다음과 같다. 위 이미지에서는 출력 데이터의 채널이 1인데 다수의 채널을 내보내기 위해서는 다음과 같이 여러개의 필터를 사용하면 필터 갯수만큼의 채널이 생성된다. bias는 다음과 같이 대응 채널의 원소에...","categories": [],
+        "excerpt":"CNN 연산 3차원의 합성곱 연산에서 3차원 데이터의 모양은 (채널, 높이, 너비) 또는 (높이, 너비, 채널)과 같은 순서로 쓴다. 필터도 마찬가지로 하여 합성곱의 출력은 다음과 같다. 위 이미지에서는 출력 데이터의 채널이 1인데 다수의 채널을 내보내기 위해서는 다음과 같이 여러개의 필터를 사용하면 필터 갯수만큼의 채널이 생성된다. bias는 다음과 같이 대응 채널의 원소에...","categories": ["ML"],
         "tags": [],
-        "url": "/point-cloud-feature/",
+        "url": "/ml/point-cloud-feature/",
         "teaser": null
       },{
         "title": "PU-Net: Point Cloud Upsampling Network",
@@ -126,8 +126,8 @@ var store = [{
         "teaser": null
       },{
         "title": "PointNet++: Deep Hierarchical Feature Learning on\nPoint Sets in a Metric Space",
-        "excerpt":"PointNet++은 PointNet이 point가 존재하는 metric space에 의해 유도된 local structure를 활용하지 못해서 fine-grained1 패턴들을 잘 인식하지 못하고 복잡한 scene들을 일반화하는 능력이 떨어지는 문제를 해결하기 위해 제안되었다. PointNet++은 입력 point set의 nested partitioning에 PointNet을 recursive하게 적용하는 hierarchical 신경망이다. 이 네트워크는 metric space distance를 활용하여 contextual scale이 증가하는 local feature를 학습할 수...","categories": [],
+        "excerpt":"PointNet++은 PointNet이 point가 존재하는 metric space에 의해 유도된 local structure를 활용하지 못해서 fine-grained1 패턴들을 잘 인식하지 못하고 복잡한 scene들을 일반화하는 능력이 떨어지는 문제를 해결하기 위해 제안되었다. PointNet++은 입력 point set의 nested partitioning에 PointNet을 recursive하게 적용하는 hierarchical 신경망이다. 이 네트워크는 metric space distance를 활용하여 contextual scale이 증가하는 local feature를 학습할 수...","categories": ["논문"],
         "tags": [],
-        "url": "/pointnet-deep-hierarchical-feature-learning-on-point-sets-in-a-metric-space/",
+        "url": "/%EB%85%BC%EB%AC%B8/pointnet-deep-hierarchical-feature-learning-on-point-sets-in-a-metric-space/",
         "teaser": null
       }]
