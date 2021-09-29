@@ -35,14 +35,25 @@ $\mathcal{X}=(M,d)$ 가 Euclidean space $\mathbb R^n$에서 상속된 discrete m
 <center><span style="color:rgb(150, 150, 150)">hierarchical feature learning 구조</span></center>
 
 ### 3.2 Hierarchical Point Set Feature Learning
-PointNet++의 hierarchical 구조는 여러개의 *set abstraction* level로 구성된다. 각 level에서는 points set이 처리되고 추상화되어 더 적은 수의 element를 가지는 새로운 set이 생성된다. set abstraction level은 다음 3가지 key layer로 구성된다.
-- *Sampling layer* : local region의 중심을 정의하는 input point들 중에서 points set을 선택한다.
--  *Grouping layer* : 중심 주위의 "neighboring" point들을 찾아 local region sets를 구성한다.
+PointNet++의 hierarchical 구조는 여러개의 *set abstraction* level로 구성된다. 각 level에서는 points set이 처리되고 추상화되어 더 적은 수의 element를 가지는 새로운 set이 생성된다. set abstraction level은 다음 3가지 key layer로 구성되며, 자세한 설명은 뒤에 다시 한다.
+- *Sampling layer* : local region의 centroid를찾는다.
+-  *Grouping layer* : centroid 주위의 "neighboring" point들을 찾아 local region sets를 구성한다.
 -  *PoinNet layer* : mini-PointNet을 사용해서 local region pattern들을 feature vector로 encoding 한다.
 
-이 뒤에 다시 한번 자세히 설명한다.  
-
 set abstraction level은  input으로 $N\times (d+C)$ ($N$ : point 개수, $d$ : coordinates dimension, $C$ : point feature dimension) matrix를 받고  output으로 $N'\times (d+C')$ ($N'$ : subsampling된 point 개수, $C'$ : local context를 요약한 feature vector dimensioin)  matrix를 출력한다. 
+
+#### Sampling layer
+input points $\lbrace x_{1}, x_{2}, ..., x_{n} \rbrace$가 주어질 때, iterative farthest poin sampling (FPS)을 사용하여 input의 부분집합 $\lbrace x_{i_{1}}, x_{i_{2}}, ..., x_{i_{m}} \rbrace$를 생성한다. FPS는 이전까지 sampling된 point들에서 가장 먼 point를 선택하는 방법이므로 $x_{i_{j}}$는 $\lbrace x_{i_{1}}, x_{i_{2}}, ..., x_{i_{j-1}} \rbrace$의 point들, 즉 이전까지 sampling된 point들에서 가장 먼 point이다. 이 방법은 random sampling과 비교했을때 더 우수한 결과를 얻을 수 있었다. 데이터 분포가 균일하지 않기 때문에 이러한 방식으로 데이터에 의존하여 receptive field를 생성한다.  
+
+#### Grouping layer
+이 layer는 input으로 $N\times (d+C)$ size의 point set와 $N'\times d$ size의 centriods set coordinates를 받는다. output은 $N'\times K\times (d+C)$ size의 point sets의 그룹들이다. 이 각 그룹은 local region에 대응되고 $K$는 centriod points의 neighborhood에 있는 point 개수이다. 여기서 $K$는 그룹에 따라 다르지만 다음의 PointNet layer가 point의 수를 flexible하게 고정된 길이의 local region feature vector로 변환해준다.
+
+ball query는 query point에서 radius 내에 있는 모든 point를 찾는다. 이 방법은 고정된 개수의 주위 point를 찾는 $K$ nearest neighbor (kNN)과 비교했을때, 영역의 크기가 고정되어있기 때문에 공간 전반에 걸쳐 local region feature가 더 generalize될 수 있다.
+
+#### PointNet layer
+input은$N'\times K\times (d+C)$의 크기를 가지는 $N'$개의 local region이다. output의 각 local region은 그 영역의 centriod 및 centroid의 주변을 encoding하는 local feature에 의해 추상화 된다. 그 크기는 $N'\times (d+C')$이다.
+
+local 영역에서 point의 좌표는 $x_i^{(j)} = x_i^{(j)} - \hat{x}^{(j)}$ ($i=1, ..., K, j=1, ..., d, \hat{x}$ : centroid의 좌표)에 의해  centriod과의 상대적인 좌표로 바꿔 사용한다. 이 상대적인 좌표를 이용해 local 영역에 있는 point간의 위치적 관계를 담을 수 있다.
 
 
 
