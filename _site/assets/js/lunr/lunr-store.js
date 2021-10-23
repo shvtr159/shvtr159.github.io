@@ -130,4 +130,16 @@ var store = [{
         "tags": [],
         "url": "/%EB%85%BC%EB%AC%B8/pointnet-deep-hierarchical-feature-learning-on-point-sets-in-a-metric-space/",
         "teaser": null
+      },{
+        "title": "[MLPR #1] Introduction",
+        "excerpt":"Notation $\\underline{ \\textbf{x}}$ : data 벡터 prototypes: $\\underline{y}_ m^{(k)}$ : class $S_ {k}$에 속한 m번째 prototype k = class index $m_k$ = $S_ {k}$에 있는 prototype들의 번호 $\\underline{y}_ m^{(k)}$, m = 1,2, … , $m_k$ 는 class $S_ {k}$의 모든 prototype로 정의 Classification 각각의 Class를 나누기 위해서는 Decision Rule이 결정되어야...","categories": ["MLPR"],
+        "tags": [],
+        "url": "/mlpr/mlpr-1-notation/",
+        "teaser": null
+      },{
+        "title": "[MLPR #] Statistical Cassification",
+        "excerpt":"Bayes Decision Theory : 모든 통계는 알고 있다고 가정한다(평균, 분산 등). Bayes Formula \\[P(S\\mid x)=\\frac{P(x\\mid S)P(S_k)}{P(x)}\\] $P(S\\mid x)$ : posterior probability (사후 확률) $P(x\\mid S)$ : likelihood (우도, 가능도) $P(S)$ : prior probability (사전 확률) $P(x)$ : Evidence Bayes Decision Rule for 최소 Error (2-class) \\[\\begin{matrix} p(S_1\\mid \\underline{x})&gt;p(S_2\\mid \\underline{x})\\rightarrow \\underline{x}\\in...","categories": ["MLPR"],
+        "tags": [],
+        "url": "/mlpr/mlpr-statistical-cassification/",
+        "teaser": null
       }]

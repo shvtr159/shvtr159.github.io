@@ -1,4 +1,46 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://shvtr159.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shvtr159.github.io/" rel="alternate" type="text/html" /><updated>2021-10-01T20:13:37+09:00</updated><id>https://shvtr159.github.io/feed.xml</id><title type="html">Study Blog</title><subtitle>for study</subtitle><author><name>KYG</name></author><entry><title type="html">PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space</title><link href="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pointnet-deep-hierarchical-feature-learning-on-point-sets-in-a-metric-space/" rel="alternate" type="text/html" title="PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space" /><published>2021-09-27T00:00:00+09:00</published><updated>2021-09-27T00:00:00+09:00</updated><id>https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pointnet-deep-hierarchical-feature-learning-on-point-sets-in-a-metric-space</id><content type="html" xml:base="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pointnet-deep-hierarchical-feature-learning-on-point-sets-in-a-metric-space/">&lt;p&gt;PointNet++은 PointNet이 point가 존재하는 metric space에 의해 유도된 local structure를 활용하지 못해서 fine-grained&lt;sup&gt;&lt;a href=&quot;#footnote_1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; 패턴들을 잘 인식하지 못하고 복잡한 scene들을 일반화하는 능력이 떨어지는 문제를 해결하기 위해 제안되었다. PointNet++은 입력 point set의 nested partitioning에 PointNet을 recursive하게 적용하는 hierarchical 신경망이다. 이 네트워크는 metric space distance를 활용하여 contextual scale이 증가하는 local feature를 학습할 수 있다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://shvtr159.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shvtr159.github.io/" rel="alternate" type="text/html" /><updated>2021-10-23T17:32:49+09:00</updated><id>https://shvtr159.github.io/feed.xml</id><title type="html">Study Blog</title><subtitle>for study</subtitle><author><name>KYG</name></author><entry><title type="html">[MLPR #] Statistical Cassification</title><link href="https://shvtr159.github.io/mlpr/mlpr-statistical-cassification/" rel="alternate" type="text/html" title="[MLPR #] Statistical Cassification" /><published>2021-10-23T00:00:00+09:00</published><updated>2021-10-23T00:00:00+09:00</updated><id>https://shvtr159.github.io/mlpr/mlpr-statistical-cassification</id><content type="html" xml:base="https://shvtr159.github.io/mlpr/mlpr-statistical-cassification/">&lt;p&gt;Bayes Decision Theory : 모든 통계는 알고 있다고 가정한다(평균, 분산 등).&lt;/p&gt;
+&lt;h2 id=&quot;bayes-formula&quot;&gt;Bayes Formula&lt;/h2&gt;
+
+\[P(S\mid x)=\frac{P(x\mid S)P(S_k)}{P(x)}\]
+
+&lt;ul&gt;
+  &lt;li&gt;$P(S\mid x)$ : posterior probability (사후 확률)&lt;/li&gt;
+  &lt;li&gt;$P(x\mid S)$ : likelihood (우도, 가능도)&lt;/li&gt;
+  &lt;li&gt;$P(S)$ : prior probability (사전 확률)&lt;/li&gt;
+  &lt;li&gt;$P(x)$ : Evidence&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;bayes-decision-rule-for-최소-error-2-class&quot;&gt;Bayes Decision Rule for 최소 Error (2-class)&lt;/h2&gt;
+
+\[\begin{matrix}
+p(S_1\mid \underline{x})&amp;gt;p(S_2\mid \underline{x})\rightarrow \underline{x}\in S_1 \\ \\
+p(S_1\mid \underline{x})&amp;lt;p(S_2\mid \underline{x})\rightarrow \underline{x}\in S_2
+\end{matrix}\]
+
+&lt;p&gt;즉, x는 두 class 중 확률이 더 높은 class에 속한다고 판단한다. 이를 Bayes Theorem을 이용하여 바꾸면&lt;/p&gt;
+
+\[\begin{matrix}
+p(\underline{x} \mid S_1)p(S_1)&amp;gt;p(\underline{x} \mid S_2)p(S_2) \rightarrow \underline{x}\in S_1 \\ \\
+p(\underline{x} \mid S_1)p(S_1)&amp;lt;p(\underline{x} \mid S_2)p(S_2) \rightarrow \underline{x}\in S_2
+\end{matrix}\]
+
+&lt;p&gt;으로 표현되고 다음과 같이 정리할 수 있다.&lt;/p&gt;</content><author><name>KYG</name></author><category term="MLPR" /><summary type="html">Bayes Decision Theory : 모든 통계는 알고 있다고 가정한다(평균, 분산 등). Bayes Formula</summary></entry><entry><title type="html">[MLPR #1] Introduction</title><link href="https://shvtr159.github.io/mlpr/mlpr-1-notation/" rel="alternate" type="text/html" title="[MLPR #1] Introduction" /><published>2021-10-20T00:00:00+09:00</published><updated>2021-10-20T00:00:00+09:00</updated><id>https://shvtr159.github.io/mlpr/mlpr-1-notation</id><content type="html" xml:base="https://shvtr159.github.io/mlpr/mlpr-1-notation/">&lt;h2 id=&quot;notation&quot;&gt;Notation&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;$\underline{ \textbf{x}}$ : data 벡터&lt;/li&gt;
+  &lt;li&gt;prototypes:
+    &lt;ul&gt;
+      &lt;li&gt;$\underline{y}_ m^{(k)}$ : class $S_ {k}$에 속한 m번째 prototype&lt;/li&gt;
+      &lt;li&gt;k = class index&lt;/li&gt;
+      &lt;li&gt;$m_k$ = $S_ {k}$에 있는 prototype들의 번호&lt;/li&gt;
+      &lt;li&gt;$\underline{y}_ m^{(k)}$, m = 1,2, … , $m_k$ 는  class $S_ {k}$의 모든 prototype로 정의&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;classification&quot;&gt;Classification&lt;/h2&gt;
+&lt;p&gt;각각의 Class를 나누기 위해서는 Decision Rule이 결정되어야 한다. 예를 들어 변수 값에 따라 분류 할 때, 값이 5.5 초과면 $S_ {1}$, 이하면 $S_ {2}$로 분류할 수 있다. 그러나 이러한 feature가 1개일때보다는 2개일때 더 정확한 분류를 할 수 있고, 더 많아질수록 더 정확히 분류할 수 있다. 이렇게 fature의 차원이 커짐에 따라 decision surface의 차원도 점, 선, 면 으로 점점 증가하게 된다.&lt;/p&gt;
+
+&lt;p&gt;이렇게 나눠진 많은 Class들 중 $\underline{ \textbf{x}}$ 가 어디에 속하는 지 알기 위해서는 해당 class와 $\underline{ \textbf{x}}$의 거리를 측정해야 한다.&lt;/p&gt;</content><author><name>KYG</name></author><category term="MLPR" /><summary type="html">Notation $\underline{ \textbf{x}}$ : data 벡터 prototypes: $\underline{y}_ m^{(k)}$ : class $S_ {k}$에 속한 m번째 prototype k = class index $m_k$ = $S_ {k}$에 있는 prototype들의 번호 $\underline{y}_ m^{(k)}$, m = 1,2, … , $m_k$ 는 class $S_ {k}$의 모든 prototype로 정의</summary></entry><entry><title type="html">PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space</title><link href="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pointnet-deep-hierarchical-feature-learning-on-point-sets-in-a-metric-space/" rel="alternate" type="text/html" title="PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space" /><published>2021-09-27T00:00:00+09:00</published><updated>2021-09-27T00:00:00+09:00</updated><id>https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pointnet-deep-hierarchical-feature-learning-on-point-sets-in-a-metric-space</id><content type="html" xml:base="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pointnet-deep-hierarchical-feature-learning-on-point-sets-in-a-metric-space/">&lt;p&gt;PointNet++은 PointNet이 point가 존재하는 metric space에 의해 유도된 local structure를 활용하지 못해서 fine-grained&lt;sup&gt;&lt;a href=&quot;#footnote_1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; 패턴들을 잘 인식하지 못하고 복잡한 scene들을 일반화하는 능력이 떨어지는 문제를 해결하기 위해 제안되었다. PointNet++은 입력 point set의 nested partitioning에 PointNet을 recursive하게 적용하는 hierarchical 신경망이다. 이 네트워크는 metric space distance를 활용하여 contextual scale이 증가하는 local feature를 학습할 수 있다.&lt;/p&gt;
 
 &lt;h2 id=&quot;1-introduction&quot;&gt;1. Introduction&lt;/h2&gt;
 &lt;p&gt;기존 PointNet의 아이디어는 각 point의 공간 encoding을 학습하고, 모든 개별 point feature들을 global 포인트 클라우드 signature와 aggregate하는 것이었다. 그러나 이런 구조는 metric에 의해 유도된 local structure를 활용하지 않는다. 그러나 convolutional architecture의 성공에 local structure를 활용하는 것이 중요한 요소라는 것이 증명되어왔다. CNN은 multi-resolution hierarchy를 따라 점점 더 큰 scale의 feature를 찾아낼 수 있다. CNN 구조 특성상 낮은 level의 layer에서는 작은 receptive field를 가지고 높은 layer에서는 큰 receptive field를 가지기 때문이다. 이러한 hierarchy를 따라 local pattern들을 추상화하는 기능은 일반화에 더욱더 유용하다.&lt;/p&gt;
@@ -561,240 +603,4 @@ x_{2}\\ z_{2}
 
 &lt;p&gt;이 ray tracing을 계산하기 위해 어떤 물체의 transmission, reflection term을 다음과 같은 형태로 저장한다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/118261195-30ddf200-b4ee-11eb-933d-c29952a7f73c.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;</content><author><name>KYG</name></author><category term="Graphics" /><summary type="html">vertex를 연결해서 polygon을 만들고 그 polygon 위에 색을 줄 때 물체의 표면이 가지는 특징을 BRDF로 표현할 수 있었다. 색이라는 것은 사실 표면과 light source와의 상호작용에 의해 결정되기 때문에 정의 가능한 light source 또한 알아보았다. 최종적으로 특정 위치에서 볼 때 실제적으로 rendering을 하기 위해 사용되는 shader를 알아본다.</summary></entry><entry><title type="html">[Computer Graphics #8-2] Optics &amp;amp; Lighting - Shaders</title><link href="https://shvtr159.github.io/graphics/computer-graphics-8-2-optics-lighting-shading-2/" rel="alternate" type="text/html" title="[Computer Graphics #8-2] Optics &amp;amp; Lighting - Shaders" /><published>2021-05-09T00:00:00+09:00</published><updated>2021-05-09T00:00:00+09:00</updated><id>https://shvtr159.github.io/graphics/computer-graphics-8-2-optics-lighting-shading-2</id><content type="html" xml:base="https://shvtr159.github.io/graphics/computer-graphics-8-2-optics-lighting-shading-2/">&lt;p&gt;Shading 1에서 shading을 위해 알아야 할 성질과 그 성질을 표현하는 함수 중 BRDF의 Phong model에 대해서 알아보았다. 이번에는 이어서 BRDF에서 사용하는 term에 대해 알아본다.&lt;/p&gt;
-
-&lt;p&gt;BRDF에서 사용하는 모든 parameter는 다음과 같이 표현된다.&lt;/p&gt;
-&lt;center&gt;$$\mathrm{BRDF}(\lambda, \omega_{i},\omega_{o}, u, v)$$&lt;/center&gt;
-&lt;ul&gt;
-  &lt;li&gt;$\lambda$ : 빛의 파장&lt;/li&gt;
-  &lt;li&gt;$ \omega_{i} = (\theta_{i}, \phi_{i})$ : 2D 입사광의 방향&lt;/li&gt;
-  &lt;li&gt;$ \omega_{o} = (\theta_{o}, \phi_{o})$ : 2D 반사광의 방향&lt;/li&gt;
-  &lt;li&gt;$(u,v)$ : 표면에서의 위치&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;그러나 파장은 R, G, B에 맞는 각각의 BRDF를 사용할 것이기 때문에 생략할 수 있다. 또, 같은 물질의 표면이 전부 완전히 같은 분자 배열을 나타내 같은 모습을 보이지 않지만, 사람들에게는 그 차이가 잘 보이지 않기 때문에 이는 하나로 생략할 수 있다. 그 결과 우리는 다음과 같이 단순화하게 된다.&lt;/p&gt;
-&lt;center&gt;$$\mathrm{BRDF}(\omega_{i},\omega_{o})$$&lt;/center&gt;
-
-&lt;p&gt;이제 $\omega_{i}$와 $\omega_{o}$를 잘 나타내기 위해서 이와 관련된 것에 대해 알아본다.&lt;/p&gt;
-
-&lt;h2 id=&quot;incoming-light&quot;&gt;Incoming Light&lt;/h2&gt;
-&lt;p&gt;만약 자동차의 3D model이 있다면, 가장 처음에 할 일은 이 차를 만들기 위해 vertex를 만들고 연결하여 triangle을 만드는 것이다. 이후에 model에 알맞은 색을 얹는다. 그 뒤에 빛이 반사되는 결과들을 표현하기 위해 light source를 추가한다. 그러나 여기까지 만으로는 현실의 차와 같을 수 없다. 자동차의 표면은 그 주위의 모습까지 반사되어 우리 눈에 들어오기 때문이다. 실제로도 현실에 하얀 물체가 있을 때 light source가 없는 부분에서도 그 주위에서 반사된 빛에 의해 다른 색을 띤다.&lt;/p&gt;
-
-&lt;p&gt;그러나 이처럼 다른 물체에서 반사되온 빛을 우리가 보기 위해서는 light source에서 온 빛의 반사 등 모든 것을 계산해야 하는데 이는 매우 힘들다. 그래서 대신 ambient light와 비슷한 방법을 사용한다. 현실 같은 모습을 보이기 위해서 이 차에 들어오는 빛이 어떤 light source, 즉 어떤 물체가 light source 역할을 하여 차량 model에 왔는지를 얻어내고자 하는 것이다. 즉, &lt;strong&gt;실제 light source는 생략하고 차량의 모습을 나타내기 위해 필요한 빛이 어떻게 들어오는지 Incoming light 만을 생각한다.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;이 Incoming Light를 얻는 여러 방법이 있지만, 일반적으로 Incoming Light를 저장하는 방법을 사용한다. 그 대표적인 방법은  light probe로 크기 등을 아는 완벽한 구 모양의 거울 재질 물체를 놓고 사진을 찍는 것이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/117568353-c5191500-b0fa-11eb-945f-9528fc702c7c.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이 방법을 사용하였을 때 특정 방향에서 반사되어 카메라에 보이는 빛은 구를 뚫고 들어가 구 가운데 point에 도달하게 될 빛이다. 즉 구의 위치에 따라 해당 위치로 들어오는 빛을 확인할 수 있다. 예를 들어 위의 구를 찍고 있는 모습은 해당 위치에서 구를 향해 빛이 들어간 뒤 그 빛이 반사되어 카메라로 들어와 보이게 되는 것이다. &lt;strong&gt;즉 지금 보이는 모습들은 모두 구의 입장에서 light source라는 것이다.&lt;/strong&gt; 예를 들어 만약 차에서 이를 나타낼 때는 차의 표면에 하늘의 위치에서 들어온 빛이면 그 하늘색의 light source에서 나온 빛을 차에 보내는 것이다. 최종적으로는 이런 방식으로 온 모든 빛이 Incoming Light가 된다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/117568542-c991fd80-b0fb-11eb-9fa2-823e44302fe9.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-&lt;center&gt;&lt;span style=&quot;color:rgb(150, 150, 150)&quot;&gt;Incoming Light를 model에 적용한 모습&lt;/span&gt;&lt;/center&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;이렇게 얻은 Incoming Light를 model에 적용하기 위해 light probe를 model을 감싸는 반구의 형태로 나타내면, model에 들어온 많은 빛들 중 model의 표면에 반사되어 camera에 오는 빛이 어떤 것이 되는지 계산 할 수 있다.&lt;/p&gt;
-
-&lt;h2 id=&quot;the-lighting-equation&quot;&gt;The Lighting Equation&lt;/h2&gt;
-&lt;p&gt;Rendering을 한다는 것은 보고 있는 pixel에서 camera로 들어오는 Light에 영향을 미치는 Light source를 모두 찾아내서 그 reflection 결과를 얻어내고 합치는 일이다. 때문에 나가는 빛은 들어오는 모든 빛들의 합이므로 $L_{o} = \sum_{i\in in}^{}L_{o\;\mathrm{due\;to}\;i}(\omega_{i}, \omega_{o})$로 표현되고, BRDF가 우리에게 $L_{o\;\mathrm{due\;to}\;i}(\omega_{i}, \omega_{o})$를 알려준다.&lt;/p&gt;
-
-&lt;p&gt;이 개념에서 좀 더 realistic하게 만들기 위한 방법으로, &lt;strong&gt;내가 보고 있는 것은 point보다는 surface의 작은 면적에서 반사되는 빛들의 합이라고 생각할 수 있다.&lt;/strong&gt; 면적으로 생각하지 않으면 빛의 밝기에 따른 interaction을 고려하기가 힘들기 때문이다. 들어오는 빛의 양이 많고 적음으로 밝기 같은것이 결정되는데 point는 물리적이지 못해서 이런 것을 결정할 수 없다. 때문에 우리가 보는 것은 다음 식과 같이 바뀌어 그 면적에 들어오는 빛들의 합이라고 할 수 있다.
-&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/117569080-d2380300-b0fe-11eb-9912-ef3443dcd656.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;solid-angle&quot;&gt;Solid Angle&lt;/h3&gt;
-&lt;p&gt;이제 빛을 3차원에서 계산해야 하기 때문에 3차원에서의 단위면적을 결정해야만 한다. radian을 3차원으로 확장해서 넓이가 $r^{2}$이 되는 원뿔의 range를 steradian이라고 한다. 3차원 원점을 중심으로 모든 방향으로 균일한 면적대비 빛을 계산할 수 있다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Solid Angle&lt;/strong&gt; : $\omega = \frac{A_{\mathrm{\,on\;spehere}}}{r^{2}}$, (구는 4$\pi$ steradian을 가진다) $A=4\pir^{2}$
-&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/117569423-8ede9400-b100-11eb-8979-4a06da09ca17.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;빛의-radiant-intensity&quot;&gt;빛의 Radiant Intensity&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;anisotropic&lt;/strong&gt; : light source를 둘러싸는 선을 그리면 빛은 무조건 선을 통과해서 나가야 한다. 그러면 이 빛들을 모두 합치면 light source의 크기와 같다. 때문에 특정 방향으로 나가는 빛만을 고려하고 싶으면 해당 영역에서만 integration을 수행하면 된다.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;center&gt;$$I(\omega)=\frac{d\Phi}{d\omega}$$&lt;/center&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;isotropic&lt;/strong&gt; : 빛이 모든 방향으로 균일하게 퍼져나가는 상태로, 이 빛은 전체 광량 중에서 면적을 차지하는 만큼의 비율을 통해 계산할 수 있다.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;center&gt;$$\Phi=\int_{\mathrm{sphere}}^{}Id\omega = 4\pi I$$&lt;/center&gt;
-&lt;p&gt;이때, $\Phi$는 빛의 total power이다.&lt;/p&gt;
-
-&lt;h3 id=&quot;표면에서의-irradiance&quot;&gt;표면에서의 Irradiance&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/117569756-33ada100-b102-11eb-9c15-7dac1ea3e547.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;왼쪽 그림과 같이 빛이 A라는 면적에 들어온다면 바닥 면은 7개의 빛과 상호작용 하지만, 수직하지 않고 각을 가진다면 들어오는 빛의 양이 줄어들게 된다. 이를 고려해야 특정 영역에 떨어지는 빛의 양을 계산할 수 있기 때문에 오른쪽 그림과 같이 고려해야 한다.&lt;/p&gt;
-
-&lt;h3 id=&quot;solid-angle-radiant-intensity-vs-area-irradiance&quot;&gt;Solid Angle (Radiant Intensity) vs Area (Irradiance)&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/117569883-b2a2d980-b102-11eb-97a5-f2b38e469ccb.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;어딘가 light source가 있을 때, cos값을 곱해줘서 들어오는 빛의 양을 조절해줘야 하고, light source와의 거리에 따라 빛의 세기가 점점 줄어들기 때문에 이를 고려해주기 위해 거리의 제곱에 비례해서 줄어들도록 나눠준다. 그러나 r 하나만으로 계산하게 되면 밝기의 변화 차이가 너무 크게 바뀌거나 하므로 $r^{2}$ 대신 $a+bd+cd^{2}$의 3개의 term을 가진 변수를 이용하기도 한다.&lt;/p&gt;
-&lt;center&gt;$$d\omega = \frac{dA\cos\theta}{r^{2}}$$&lt;/center&gt;
-
-&lt;p&gt;이때 둘 중 light source에서 나가는 빛의 angle을 고려하여 생각하는 것은 source의 성격을 좀 더 중요시하게 된다. 그러나 실제로 표현하고 approximation을 하기 위해서는 area에 들어오는 빛을 계산하는 것이 더 좋기 때문에 Area를 주로 고려하는 방법을 사용한다.&lt;/p&gt;
-
-&lt;p&gt;이제 Light Equation은 $L_{o\;\mathrm{due\;to}\;i}(\omega_{i}, \omega_{o}) = BRDF(\omega_{i}, \omega_{o})dE_{i}$ 에서 $dE = Ld\omega\cos\theta$에 의해
-$L_{o\;\mathrm{due\;to}\;i}(\omega_{i}, \omega_{o}) = BRDF(\omega_{i}, \omega_{o})L_{i}d\omega_{i}\cos\theta_{i}$로 표현할 수 있고, 최종적으로 모든 방향에서 들어오는 빛을 고려하여 다음과 같이 정리할 수 있다.&lt;/p&gt;
-&lt;center&gt;$$L_{o} = \int_{i\in in}BRDF(\omega_{i}, \omega_{o})L_{i}d\omega_{i}\cos\theta_{i}$$&lt;/center&gt;
-&lt;h3 id=&quot;point-lights&quot;&gt;Point lights&lt;/h3&gt;
-&lt;p&gt;지금 light equation은 기본적으로 point light를 사용하고 있다. 때문에 여러 개의 point light를 사용하면 그 sum으로 빛의 양을 계산한다. 그러나 &lt;strong&gt;원래 point light가 아니었던 것을 point light로 근사하면서 몇 가지 문제가 생긴다.&lt;/strong&gt; 일단 면적으로 표현하는 것보다는 광량이 줄어들고, point light 하나이다 보니 그림자가 완전히 검게 나타난다. 이런 상황에서는 ambient light가 정의되더라도 그림자와 그림자가 아닌 부분의 차이가 매우 크게 나타난다. 실제로는 그 경계가 모호하다. 때문에 point light를 쓰더라도 여러 개를 정의해서 사용해야 한다.&lt;/p&gt;
-
-&lt;h2 id=&quot;surface&quot;&gt;Surface&lt;/h2&gt;
-&lt;p&gt;BRDF는 물체의 반사 특성을 나타내는 만큼 Surface의 특징에 관한 term 또한 가지고 있다.&lt;/p&gt;
-&lt;h3 id=&quot;diffuse-materials&quot;&gt;Diffuse Materials&lt;/h3&gt;
-&lt;p&gt;이전에 보았듯이 Diffuse Material은 입사한 빛을 모든 방향으로 같은 양을 반사시킨다. 때문에 diffuse materials는 빛이 들어오는 각도만 중요하다. 그 이유는 들어오는 각도에 따라 광량이 달라지기 때문이고, diffuse materials는 빛이 항상 모든 방향으로 일정하게 나가기 때문이다. 이러한 이유로 diffuse materials일 경우 BRDF가 중요하지 않아 상수로 대체된다. 그래서 실제로 완벽한 diffuse materials는 없지만, 벽과 같은 비슷한 surface들은 다음과 같이 근사할 수 있다.&lt;/p&gt;
-&lt;center&gt;$$BRDF(\omega_{i}, \omega_{o}) = k_{d}&lt;/center&gt;
-&lt;center&gt;L_{o} = BRDF(\omega_{i}, \omega_{o})\hat{I}_{i}\cos\theta_{i} = k_{d}\hat{I}_{i}\cos\theta_{i}\qquad(=k_{d}\hat{I}_{i}\max(0,-\omega_{i}\cdot \hat{N})$$&lt;/center&gt;
-
-&lt;p&gt;diffuse material이라도 광원의 위치에 따라 specular 처럼 보일 수 있다. 그러나 이는 그림자가 져서 그런 것으로 들어온 빛의 위치 때문이지 물체의 특성이 아니다.&lt;/p&gt;
-
-&lt;h3 id=&quot;ambient-lighting&quot;&gt;Ambient Lighting&lt;/h3&gt;
-&lt;p&gt;BRDF에도 들어오고 diffuse되고 한 결과에 ambient light에 의해 반사되는 빛을 표현해주기 위한 term이 있다. 이는 사용될 빛에다 상수를 곱해서 표현된다. 이는 간단하게 $L_{o}=k_{a} \hat{I}_{i}$로 표현되며 k는 각  object에 대한 ambient reflectivity이다.&lt;/p&gt;
-
-&lt;p&gt;또한, R,G,B에 따라 다른 incoming ambient light를 사용하고 그에 따른 각각의 k도 존재하므로 다음과 같이 정리된다.&lt;/p&gt;
-&lt;center&gt;$$(L_{o,R},\,L_{o,G},\,L_{o,B})=(k_{a,R}\hat{I}_{i,R}, \,k_{a,G}\hat{I}_{i,G}, \,k_{a,B}\hat{I}_{i,B})$$&lt;/center&gt;
-
-&lt;p&gt;ambient light에 대해 이야기 했으므로 일반적인 Light Type을 다시 한번 정리해보자.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Ambient light&lt;/strong&gt; : 방향성이 없고 전체 균일하게 나타난다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Directional light&lt;/strong&gt; : daylight처럼 parallel하게 들어오는 light. 때문에 daylight는 point light만으로는 표현하기 힘들 수 있다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Point light&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Spoit light&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Area light&lt;/strong&gt; : point가 아닌 면적에서 나오는 빛으로 point를 모아서 표현하거나 한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;reflection-model&quot;&gt;Reflection model&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/117576610-8480c200-b121-11eb-82ff-3af21149f3e3.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;위에서 본 것처럼 중요한 term은 diffuse  term, 이와 반대되는 specular term, 그리고 ambient term이 있을 수 있다. 지금까지 설명한 것으로 볼 때, diffuse RGB, specular RGB, ambient RGB 이 9개의 종류의 빛이 camera로 들어오는 빛을 결정하는 요소가 된다. 이를 이용하면 좀 더 쉽게 BRDF를 결정할 수 있다.&lt;/p&gt;
-
-&lt;p&gt;이 요소들을 모아 &lt;strong&gt;Phong model&lt;/strong&gt;은 다음과 같이 쓸 수 있다.&lt;/p&gt;
-&lt;center&gt;$$I=k_{d}I_{d}\,\mathbf{l\cdot n}+k_{s}I_{s}\,(\mathbf{v\cdot r})^{\alpha}+k_{a}I_{a}$$&lt;/center&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/116072889-a6faf000-a6ca-11eb-9896-1332243a5284.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;결과적으로 나가는 빛은 각 term에 해당하는 coefficient를 곱하고 모두 더해주는 형태로 나타난다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;diffuse term&lt;/strong&gt;은 들어오는 빛(I)에만 영향을 받기 때문에 I, 그리고 들어오는 빛과의 각도를 알아야 하기 때문에 normal 방향(n)이 영향을 주고,&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;specular term&lt;/strong&gt;은 어디로 나가는지(r) 중요하고, 이 주로 나가는 r에서 어떻게 떨어진 곳에서 보는지(v)에 따라 결정해줘야 하기 때문에 이 둘이 중요하고,&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;ambient&lt;/strong&gt;는 전체적인 빛의 크기를 생각해주면 된다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/117576999-e261d980-b122-11eb-93f0-93d896521817.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;그래서 phong model은 이렇게 3가지 term을 모든 Light source에 대해서 더해주면 특정 시점에서의 빛을 계산해 줄 수 있다. 결국 BRDF는 이렇게 결정된다고 알 수 있다. 그 term들의 합으로 위의 그림과 같이 표현될 수 있다.&lt;/p&gt;</content><author><name>KYG</name></author><category term="Graphics" /><summary type="html">Shading 1에서 shading을 위해 알아야 할 성질과 그 성질을 표현하는 함수 중 BRDF의 Phong model에 대해서 알아보았다. 이번에는 이어서 BRDF에서 사용하는 term에 대해 알아본다.</summary></entry><entry><title type="html">[Computer Graphics #8-1] Optics &amp;amp; Lighting - Shading</title><link href="https://shvtr159.github.io/graphics/computer-graphics-8-optics-lighting/" rel="alternate" type="text/html" title="[Computer Graphics #8-1] Optics &amp;amp; Lighting - Shading" /><published>2021-04-25T00:00:00+09:00</published><updated>2021-04-25T00:00:00+09:00</updated><id>https://shvtr159.github.io/graphics/computer-graphics-8-optics-lighting</id><content type="html" xml:base="https://shvtr159.github.io/graphics/computer-graphics-8-optics-lighting/">&lt;p&gt;지금까지는 물체의 vertex, mesh 등을 만들어 물체의 특징과 형상을 나타내는 것에 대해 배웠다. 그러나 실체 물체를 볼 때 물체가 같은 색과 형상을 가지고 있더라도 광원의 위치에 따라 다른 색으로 보이게 된다.&lt;/p&gt;
-
-&lt;p&gt;또, 빛이 물체의 표면에 닿게 되면 반사되기도 하고 흡수되기도 한다. 같은 물체라도 광원의 위치에 따라 색이 달라지고 흰 광원에서 나온 빛에 의해서도 물체는 다른 색으로 보일 수 있다. 이렇게 물체에 따라 흡수량과 반사량 등등이 달라지고 이로 인해 물체의 모습이 달라진다.&lt;/p&gt;
-
-&lt;p&gt;이러한 것들 때문에 물체의 실제 형상에 맞도록 물체의 밝기 값을 변화시키는 일이 필요한데 이를 &lt;strong&gt;shading&lt;/strong&gt;이라고 한다. shading이 추가되면 물체의 색을 보고 광원의 위치, 물체의 재질을 추측하는 등 다양한 정보를 드러낼 수 있다.&lt;/p&gt;
-
-&lt;p&gt;shading을 하기 위해 필요한 고려사항으로는&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Light sources&lt;/li&gt;
-  &lt;li&gt;Material properties&lt;/li&gt;
-  &lt;li&gt;Location of viewer&lt;/li&gt;
-  &lt;li&gt;Surface orientation&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;등이 있다. shading을 실제와 같이 잘 나타내기 위해서는 어떻게 빛들이 동작하고 객체의 어떤 성질 때문에 어떤 형상이 나타나는지를 알아야 한다.&lt;/p&gt;
-&lt;h2 id=&quot;scattering&quot;&gt;Scattering&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/116068145-df97cb00-a6c4-11eb-9c08-a79405ce488a.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;광원에서 나온 빛이 만약 A에 닿고 반사되면 그 빛이 B로 가서 다시 반사될 수 있다. 즉 빛은 어떤 물체에 부딪혔을때  때문에 어떤 물체에서 반사되어 눈으로 들어온 빛은 광원에서 바로 반사돼온 빛이 아니라 여기저기 반사된 뒤 온 빛일 수도 있다. &lt;strong&gt;즉, 우리가 보고 있는 것은 수많은 Light path의 조합이다.&lt;/strong&gt; 그렇기 때문에 광원에서 반사되는 빛만을 확인한다면 실제 같지가 않다.&lt;/p&gt;
-
-&lt;p&gt;이렇게 빛이 쏘여졌을 때, 주변과 어떤 상호작용을 하고 카메라 쪽으로 모여지는지를 계산하기 위해서 &lt;strong&gt;Rendering Equation&lt;/strong&gt;을 사용한다. 그러나 실제와 같이 표현하기 위해서는 각 픽셀마다의 값들을 계산해야 하는데 이는 너무 많은 변수가 있어 계산 자체가 힘들다. 때문에 이런 모든 상황들이 반영되는 것은 불가능하므로 어떤 component를 넣었을 때 어떤 효과가 나는지 알고 있어야 좀 더 realistic하기 위해서는 어떤 것을 추가해야 하는지 알 수 있다.&lt;/p&gt;
-&lt;h3 id=&quot;global-effects&quot;&gt;Global Effects&lt;/h3&gt;
-&lt;p&gt;그 종류를 몇 가지 보자면, 어떤 scene을 보고 있을 때, 어떤 빛은 광원으로부터 직접 눈으로 들어오고, 또 어떤 빛은 물체에 반사되어 들어온다. 또 어떤 물체에 일부 빛은 흡수되거나 투명한 물체에 일부는 투과되고 일부의 빛만 반사되어 올 수 있다. 이러한 상황에서 광원이 쏘여지지 않은 부분은 그림자가 생긴다. 그런데 이때 &lt;strong&gt;그림자는 완벽한 black이 아니다.&lt;/strong&gt; 그 이유는 광원으로부터 직접 오는 빛은 없지만 &lt;strong&gt;다른 물체에 반사된 빛이 shadow부분에 닿고 거기서 또다시 반사된 빛이 눈에 들어오기 때문이다.&lt;/strong&gt; 이는 하나의 큰 광원만 존재하는 것이 아니라 &lt;strong&gt;밝기가 다른 다양한 광원으로부터 나온 빛이 눈에 들어오는 것&lt;/strong&gt;이라고 생각할 수 있다. 이 관점에서 보면 내 주변의 모든 물체들은 모두 광원이라고 볼 수 있다.&lt;/p&gt;
-
-&lt;p&gt;그러나 Rendering을 할 때, 이렇게 모든 상황을 다 표현하는 것이 realistic 하게 하는 데 가장 좋지만, 어렵기 때문에 적절히 approximate하는 것이 필요하다. 이런 것을 얼마만큼 해야 하는지가 중요하다.&lt;/p&gt;
-
-&lt;h2 id=&quot;light-sources&quot;&gt;Light Sources&lt;/h2&gt;
-&lt;p&gt;Light를 이해하기 위해 이에 대해 알아본다. 광원은 물체를 볼 수 있도록 하는 가장 기본적인 원천이다. 일반적으로 가장 많이 사용하는 광원은 daylight이다. 그리고 우리는 이러한 빛들을 묘사해야 한다. 그러면 광원을 표현하기 위해 어떻게 해야 하는가?&lt;/p&gt;
-
-&lt;p&gt;실제 Light는 volume을 차지하는데 이렇게 되면 volume을 차지하는 각 부분에서 모두 빛이 나오게 된다. 그러다 보면 너무 많은 곳에서 빛이 오는 것처럼 되니 계산하기에 매우 어려워진다.&lt;/p&gt;
-
-&lt;p&gt;때문에 광원을 실제와는 다르게 이상적인 광원을 설정한다. 이러한 Simple Light Source는 다음과 같다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Point source&lt;/strong&gt; : 광원이 volume을 차지하는 것이 아닌 하나의 point로 설정한다. Light가 오는 위치를 하나로 근사할 수 있어 물체로 오는 빛을 그 점에서 오는 하나의 직선으로 표현할 수 있다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Spotlight&lt;/strong&gt; : 한 점에서 퍼져나가서 특정 영역만 비추는 light source. point source는 모든 방향으로 빛이 퍼져나가지만, 이는 특정 범위 내로만 빛이 나간다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Ambient light&lt;/strong&gt; : 같은 양의 빛이 어디에나 존재하는 light source로 공간의 모든 부분에 light source가 존재한다. 전체적으로 어둡거나 밝은 분위기를 가져다주는 요건이다. multiple reflection을 모두 수행할 수 없기 때문에 reflection의 정도에 따른 변화를 표현해 줄 수 있도록 이를 전반적인 밝기로 근사시켰다. 실제로는 물론 존재하지 않는 가상의 light source이다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;how-light-works&quot;&gt;How Light Works&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/116069697-a6605a80-a6c6-11eb-935e-d3b813ec4d73.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;빛이 물체에 닿게 되면 대표적으로 다음 3가지가 일어난다&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Reflection (반사)&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Absorption (흡수)&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Transmission (투과)&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;물체에서 일어나는 투과, 반사와 같은 일들은 물체의 매우 중요한 특징이다. 그래서 이 정보들을 모델에 담기 위해서 &lt;strong&gt;distribution function&lt;/strong&gt;을 이용하여 그 관계를 표현한다. 이는 빛이 반사되거나 투과되는 분포가 어떤지를 마치 function처럼 표현한 것이다. 이 function을 이용해 어떤 function의 어떤 parameter인지를 설정하면 각 object의 특징들을 나타낼 수 있다.&lt;/p&gt;
-
-&lt;h3 id=&quot;distribution-function&quot;&gt;distribution function&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;BRDF&lt;/strong&gt; (Bidirectional Reflectance Distribution Function) : 모델의 반사에 대한 정보를 표현하는 function&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;BTDF&lt;/strong&gt; (Bidirectional Transmittance Distribution Function) : 모델의 투과에 대한 정보를 표현하는 function&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;BSSRDF&lt;/strong&gt; (Bidirectional Surface Scattering Reflectance Distribution Function) : 모델의 반사와 투과 모두를 표현하는 함수&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/116071009-423e9600-a6c8-11eb-9bf1-be314aed5a9d.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;70%&amp;quot;, height=&amp;quot;70%&quot; /&gt;&lt;/p&gt;
-&lt;center&gt;&lt;span style=&quot;color:rgb(150, 150, 150)&quot;&gt;BRDF vs BSSRDF&lt;/span&gt;&lt;/center&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;이처럼 같은 모양과 색을 가진 물체더라도 빛의 특성에 따라 전혀 다른 물체가 될 수 있다.&lt;/p&gt;
-
-&lt;h2 id=&quot;surface-types&quot;&gt;Surface Types&lt;/h2&gt;
-&lt;p&gt;이렇게 물체의 표면에 닿았을 때 일어나는 빛의 특성과 그 성격에 따라 realistic한 정도가 달라지기 때문에 surface에서는 어떤 일이 일어나는지에 대해 알아본다.&lt;/p&gt;
-
-&lt;p&gt;물체의 표면은 크게 Smooth한 표면과 rough한 표면이 있다. Smooth는 표면이 fine하고 flat하다. 그 예로는 종이, 모니터 등이 있다. Rough한 표면은 표면이 꺼끌꺼끌하고 모양이 복잡하다. 그 예로는 돌, 사포 등이 있다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/116072319-e07f2b80-a6c9-11eb-9638-ff6b8549a433.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;물체는 smooth한 surface일수록 들어온 빛이 한 방향으로 반사되고자 하는 경향이 강하고, rough한 surface일수록 모든 방향으로 반사되고자 하는 경향이 크다.&lt;/p&gt;
-
-&lt;h3 id=&quot;phong-model&quot;&gt;Phong Model&lt;/h3&gt;
-&lt;p&gt;이런 것들을 표현해주는 BRDF중에서 하나의 예가 Phong Model이다.  빛이 들어와서 퍼져나가는 성격을 설명해주는 가장 간단한 BRDF 모델로 다음 3개의 term을 가지고 있다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Diffuse : 얼마나 퍼트려주는지 (like rough)&lt;/li&gt;
-  &lt;li&gt;Specular : 얼마나 한쪽으로 모아서 반사되는지의 정도 (like smooth)&lt;/li&gt;
-  &lt;li&gt;Ambient : 위에 이야기했던 ambient와 비슷하게 전체적으로 밝고 어두운 정도를 조절&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;또, 이를 표현하기 위해 다음 4개의 vector를 이용한다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;To source : 빛이 어디에서 오는지 (I)&lt;/li&gt;
-  &lt;li&gt;To viewer : 반사각을 기준으로 어디에서 보는지 (v)&lt;/li&gt;
-  &lt;li&gt;Normal : 빛이 어느 방향으로 나갈지를 결정하기 위한 normal 방향 (n)과 반사각 (r)&lt;/li&gt;
-  &lt;li&gt;Perfect reflector&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/116072889-a6faf000-a6ca-11eb-9896-1332243a5284.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;만약 물체가 이상적인 반사를 하는 물체라면 이를 Ideal Reflector라고 하고 이 물체로 들어온 빛의 입사각과 반사각은 같다.&lt;/p&gt;
-
-&lt;h3 id=&quot;lambertian-surface&quot;&gt;Lambertian Surface&lt;/h3&gt;
-&lt;p&gt;거울과 같이 들어오는 빛을 한 방향으로 모두 반사시키는 이상적인 smooth surface와 반대로 이상적인 rough surface의 형태를 뜻한다. 완벽하게 빛이 퍼져나가기 때문에 어디서 빛이 들어오든 간에 모든 방향으로 같은 양을 반사한다. 때문에 이 물체는 아무리 돌리더라도 물체의 부분 간에 밝기 차이가 없이 동일하게 보인다.&lt;/p&gt;
-
-&lt;h3 id=&quot;specular-surface&quot;&gt;Specular Surface&lt;/h3&gt;
-&lt;p&gt;대부분의 표면은 이상적일 수 없다. 때문에 모두는 아니어도 한쪽 방향으로 많은 빛을 반사시키고자 하는 smooth surface의 경우 specular highlight를 가지게 되는데 이는 광원으로부터 들어온 빛들이 가장 많이 반사되는 방향에 camera가 위치하게 되면서 나타난다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/116073743-ca726a80-a6cb-11eb-89dd-834638265d54.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이러한 Specular Reflection을 모델링 하기 위해서 Phong model은 다음과 같은 term을 사용한다.&lt;/p&gt;
-
-\[I_{r}\sim k_{s}Icos^{\alpha}\phi\]
-
-&lt;ul&gt;
-  &lt;li&gt;$I_{r}$ : reflected intensity&lt;/li&gt;
-  &lt;li&gt;$k_{s}$ : absorption coefficient. 반사될 빛의 총량을 결정&lt;/li&gt;
-  &lt;li&gt;$I$ : incoming intensty : 들어온 빛의 세기&lt;/li&gt;
-  &lt;li&gt;$cos{\alpha}\phi$ : shininess coefficient. specular term 내부.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;이때,  shininess coefficient인 $cos^{\alpha}\phi$은 $\alpha$값이 커질수록 cos함수가 뾰족해지면서 specularity가 점점 심해진다. specularity가 점점 심해지면 빛이 한쪽 방향으로만 반사시키는 특성이 강해지게  된다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/116074937-55a03000-a6cd-11eb-95e5-26fb35b0597a.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;때문에 $\alpha$값이 100~200일 경우 보통 metal과 같은 표면이 되고,  $\alpha$값이 5~10일 경우 보통 플라스틱과 같은 표면을 나타내게 된다.&lt;/p&gt;</content><author><name>KYG</name></author><category term="Graphics" /><summary type="html">지금까지는 물체의 vertex, mesh 등을 만들어 물체의 특징과 형상을 나타내는 것에 대해 배웠다. 그러나 실체 물체를 볼 때 물체가 같은 색과 형상을 가지고 있더라도 광원의 위치에 따라 다른 색으로 보이게 된다.</summary></entry></feed>
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/118261195-30ddf200-b4ee-11eb-933d-c29952a7f73c.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;</content><author><name>KYG</name></author><category term="Graphics" /><summary type="html">vertex를 연결해서 polygon을 만들고 그 polygon 위에 색을 줄 때 물체의 표면이 가지는 특징을 BRDF로 표현할 수 있었다. 색이라는 것은 사실 표면과 light source와의 상호작용에 의해 결정되기 때문에 정의 가능한 light source 또한 알아보았다. 최종적으로 특정 위치에서 볼 때 실제적으로 rendering을 하기 위해 사용되는 shader를 알아본다.</summary></entry></feed>
