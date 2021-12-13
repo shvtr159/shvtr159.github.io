@@ -137,9 +137,15 @@ var store = [{
         "url": "/mlpr/mlpr-1-notation/",
         "teaser": null
       },{
-        "title": "[MLPR #] Statistical Cassification",
-        "excerpt":"Bayes Decision Theory : 모든 통계는 알고 있다고 가정한다(평균, 분산 등). Bayes Formula \\[P(S\\mid x)=\\frac{P(x\\mid S)P(S_k)}{P(x)}\\] $P(S\\mid x)$ : posterior probability (사후 확률) $P(x\\mid S)$ : likelihood (우도, 가능도) $P(S)$ : prior probability (사전 확률) $P(x)$ : Evidence Bayes Decision Rule for 최소 Error (2-class) \\[\\begin{matrix} p(S_1\\mid \\underline{x})&gt;p(S_2\\mid \\underline{x})\\rightarrow \\underline{x}\\in...","categories": ["MLPR"],
+        "title": "[MLPR #] Bayes Decision Classification",
+        "excerpt":"Bayes Decision Theory : 이 방식은 모든 확률 값들을 알고 있다고 가정한다(평균, 분산 등). Bayes Formula \\[P(S\\mid x)=\\frac{P(x\\mid S)P(S_k)}{P(x)}\\] $P(S\\mid x)$ : posterior probability (사후 확률) $P(x\\mid S)$ : likelihood (우도, 가능도) $P(S)$ : prior probability (사전 확률) $P(x)$ : Evidence Bayes Decision Rule for 최소 Error (2-class) \\[\\begin{matrix} p(S_1\\mid...","categories": ["MLPR"],
         "tags": [],
-        "url": "/mlpr/mlpr-statistical-cassification/",
+        "url": "/mlpr/mlpr-statistical-cassification1/",
+        "teaser": null
+      },{
+        "title": "[MLPR #] Bayes Classifiers",
+        "excerpt":"discriminant decision $g_i(\\underline{x})$를 이용하여 모든 $i \\neq j$에 대해 $g_i(\\underline{x})&gt;g_j(\\underline{x})$ 분류를 사용한다. 이를 probability term으로 표현하면   \\[g_i(\\underline{x})=p(S_i \\mid \\underline{x})\\]  \\[\\rightarrow \\; g_i(\\underline{x})=p(\\underline{x} \\mid S_i)P(S_i)\\]  \\[\\rightarrow \\; g_i(\\underline{x})=\\textup{ln}(p(\\underline{x} \\mid S_i))+\\textup{ln}(P(S_i))\\]  Normal Density  ","categories": ["MLPR"],
+        "tags": [],
+        "url": "/mlpr/mlpr-bayes-classifiers/",
         "teaser": null
       }]

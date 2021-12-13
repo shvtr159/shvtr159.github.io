@@ -1,3 +1,1 @@
-@echo bundle instsall : pass
-
-jekyll serve
+bundle exec jekyll serve

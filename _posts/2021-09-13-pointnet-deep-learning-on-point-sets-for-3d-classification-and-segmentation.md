@@ -3,6 +3,7 @@ title: 'PointNet: Deep Learning on Point Sets for 3D Classification and Segmenta
 use_math: true
 categories:
 - 논문
+toc: true
 ---
 
 ## Abstract

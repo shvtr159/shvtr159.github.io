@@ -1,4 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://shvtr159.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shvtr159.github.io/" rel="alternate" type="text/html" /><updated>2021-10-23T17:32:49+09:00</updated><id>https://shvtr159.github.io/feed.xml</id><title type="html">Study Blog</title><subtitle>for study</subtitle><author><name>KYG</name></author><entry><title type="html">[MLPR #] Statistical Cassification</title><link href="https://shvtr159.github.io/mlpr/mlpr-statistical-cassification/" rel="alternate" type="text/html" title="[MLPR #] Statistical Cassification" /><published>2021-10-23T00:00:00+09:00</published><updated>2021-10-23T00:00:00+09:00</updated><id>https://shvtr159.github.io/mlpr/mlpr-statistical-cassification</id><content type="html" xml:base="https://shvtr159.github.io/mlpr/mlpr-statistical-cassification/">&lt;p&gt;Bayes Decision Theory : 모든 통계는 알고 있다고 가정한다(평균, 분산 등).&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://shvtr159.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shvtr159.github.io/" rel="alternate" type="text/html" /><updated>2021-12-13T19:46:00+09:00</updated><id>https://shvtr159.github.io/feed.xml</id><title type="html">Study Blog</title><subtitle>for study</subtitle><author><name>KYG</name></author><entry><title type="html">[MLPR #] Bayes Classifiers</title><link href="https://shvtr159.github.io/mlpr/mlpr-bayes-classifiers/" rel="alternate" type="text/html" title="[MLPR #] Bayes Classifiers" /><published>2021-10-26T00:00:00+09:00</published><updated>2021-10-26T00:00:00+09:00</updated><id>https://shvtr159.github.io/mlpr/mlpr-bayes-classifiers</id><content type="html" xml:base="https://shvtr159.github.io/mlpr/mlpr-bayes-classifiers/">&lt;p&gt;discriminant decision $g_i(\underline{x})$를 이용하여 모든 $i \neq j$에 대해 $g_i(\underline{x})&amp;gt;g_j(\underline{x})$ 분류를 사용한다. 이를 probability term으로 표현하면&lt;/p&gt;
+
+\[g_i(\underline{x})=p(S_i \mid \underline{x})\]
+
+\[\rightarrow \; g_i(\underline{x})=p(\underline{x} \mid S_i)P(S_i)\]
+
+\[\rightarrow \; g_i(\underline{x})=\textup{ln}(p(\underline{x} \mid S_i))+\textup{ln}(P(S_i))\]
+
+&lt;h2 id=&quot;normal-density&quot;&gt;Normal Density&lt;/h2&gt;</content><author><name>KYG</name></author><category term="MLPR" /><summary type="html">discriminant decision $g_i(\underline{x})$를 이용하여 모든 $i \neq j$에 대해 $g_i(\underline{x})&amp;gt;g_j(\underline{x})$ 분류를 사용한다. 이를 probability term으로 표현하면</summary></entry><entry><title type="html">[MLPR #] Bayes Decision Classification</title><link href="https://shvtr159.github.io/mlpr/mlpr-statistical-cassification1/" rel="alternate" type="text/html" title="[MLPR #] Bayes Decision Classification" /><published>2021-10-23T00:00:00+09:00</published><updated>2021-10-23T00:00:00+09:00</updated><id>https://shvtr159.github.io/mlpr/mlpr-statistical-cassification1</id><content type="html" xml:base="https://shvtr159.github.io/mlpr/mlpr-statistical-cassification1/">&lt;p&gt;Bayes Decision Theory : 이 방식은 모든 확률 값들을 알고 있다고 가정한다(평균, 분산 등).&lt;/p&gt;
 &lt;h2 id=&quot;bayes-formula&quot;&gt;Bayes Formula&lt;/h2&gt;
 
 \[P(S\mid x)=\frac{P(x\mid S)P(S_k)}{P(x)}\]
@@ -19,12 +27,119 @@ p(S_1\mid \underline{x})&amp;lt;p(S_2\mid \underline{x})\rightarrow \underline{x
 
 &lt;p&gt;즉, x는 두 class 중 확률이 더 높은 class에 속한다고 판단한다. 이를 Bayes Theorem을 이용하여 바꾸면&lt;/p&gt;
 
+&lt;h3 id=&quot;decision-rule&quot;&gt;Decision Rule&lt;/h3&gt;
+
 \[\begin{matrix}
 p(\underline{x} \mid S_1)p(S_1)&amp;gt;p(\underline{x} \mid S_2)p(S_2) \rightarrow \underline{x}\in S_1 \\ \\
 p(\underline{x} \mid S_1)p(S_1)&amp;lt;p(\underline{x} \mid S_2)p(S_2) \rightarrow \underline{x}\in S_2
 \end{matrix}\]
 
-&lt;p&gt;으로 표현되고 다음과 같이 정리할 수 있다.&lt;/p&gt;</content><author><name>KYG</name></author><category term="MLPR" /><summary type="html">Bayes Decision Theory : 모든 통계는 알고 있다고 가정한다(평균, 분산 등). Bayes Formula</summary></entry><entry><title type="html">[MLPR #1] Introduction</title><link href="https://shvtr159.github.io/mlpr/mlpr-1-notation/" rel="alternate" type="text/html" title="[MLPR #1] Introduction" /><published>2021-10-20T00:00:00+09:00</published><updated>2021-10-20T00:00:00+09:00</updated><id>https://shvtr159.github.io/mlpr/mlpr-1-notation</id><content type="html" xml:base="https://shvtr159.github.io/mlpr/mlpr-1-notation/">&lt;h2 id=&quot;notation&quot;&gt;Notation&lt;/h2&gt;
+&lt;p&gt;으로 표현되고 다음과 같이 다시 정리할 수 있다.&lt;/p&gt;
+
+\[\frac{p(\underline{x} \mid S_1)}{p(\underline{x} \mid S_2)}\quad\begin{matrix}
+\underline{x}\in S_1\\ 
+&amp;gt;\\ 
+&amp;lt;\\ 
+\underline{x}\in S_2
+\end{matrix}\quad \frac{P(S_1)}{P(S_2)}\]
+
+&lt;p&gt;이 때, $l(x) = \frac{p(\underline{x} \mid S_1)}{p(\underline{x} \mid S_2)}$를 likelihood ratio(우도 비), $\frac{P(S_1)}{P(S_2)} = T$를 threshold value 라고 한다.&lt;/p&gt;
+
+&lt;p&gt;위 정리된 식은 Log를 취해 *를 +로 바꿔 cost를 크게 줄일 수 있고, 다음과 같이 변경된다.&lt;/p&gt;
+
+\[h(\underline{x})=-\textup{ln}(l(\underline{x}))=\textup{ln}(p(\underline{x} \mid S_2))-\textup{ln}(p(\underline{x} \mid S_1))&amp;lt;\textup{ln}(\frac{P(S_1)}{P(S_2)})\quad \Rightarrow \; \underline{x}\in S_1\]
+
+&lt;h3 id=&quot;probability-of-error&quot;&gt;Probability of Error&lt;/h3&gt;
+&lt;p&gt;이는 error region을 integrate 하는 형식으로 구해진다. 2 class의 경우&lt;/p&gt;
+
+\[P_e=p(S_1)\int_{\Gamma_2}p(\underline{x} \mid S_1)dx+p(S_2)\int_{\Gamma_1}p(\underline{x} \mid S_2)dx\]
+
+&lt;p&gt;이며 다중 class의 경우 $P_e=1-P(correct)$ 으로 알기 쉽게 표현할 수 있다. 이때, $P(correct)$ 은 $\sum_{i=1}^{K}\int_{\Gamma_i}p(\underline{x} \mid S_i)P(S_i)d\underline{x}$ 이다.&lt;/p&gt;
+&lt;h2 id=&quot;bayes-decision-rule-for-최소-risk-2-class&quot;&gt;Bayes Decision Rule for 최소 Risk (2-class)&lt;/h2&gt;
+&lt;p&gt;Bayes minimun error를 일반화 한다. $C(S_k \mid S_j)$를 $\underline{x}$가 $S_j$인데 $S_k$로 판별했을 때의 cost라고 하자. 그리고 이는 간단히 $C_{kj}=C(S_k \mid S_j)$로 표기한다(책에서는 $C_{kj}$ 대신 $\lambda_{kj}$로 표현하였다). 일반적으로 틀렸을 때 초래되는 손실은 맞을 때보다 더 크므로 $C_{21}&amp;gt;C_{11}$, $C_{12}&amp;gt;C_{22}$이다. 이를 한번에 matrix로 다음과 같이 표기한다.&lt;/p&gt;
+
+\[\underline{C}=\begin{bmatrix}
+C_{11} &amp;amp; C_{12}\\ 
+C_{21} &amp;amp; C_{22}
+\end{bmatrix}\]
+
+&lt;p&gt;이때, 조건부 평균 risk (conditional avarage loss or risk) $R(S_k \mid \underline{x})$이고 2 class 에서 이 식은 모든 class의 값을 합한&lt;/p&gt;
+
+\[\begin{matrix}
+R(S_1 \mid \underline{x})=C(S_1 \mid S_1)P(S_1 \mid \underline{x})+C(S_1 \mid S_2)P(S_2 \mid \underline{x})\\ 
+R(S_2 \mid \underline{x})=C(S_2 \mid S_1)P(S_1 \mid \underline{x})+C(S_2 \mid S_2)P(S_2 \mid \underline{x})
+\end{matrix}\]
+
+&lt;p&gt;이며, Decision cule은 total expected risk를 최소화 하기위한 action으로 다음과 같다.&lt;/p&gt;
+
+\[R=\int_{\Gamma_1}R(S_1 \mid \underline{x})p(x)d\underline{x}+\int_{\Gamma_2}R(S_2 \mid \underline{x})p(x)d\underline{x}\]
+
+&lt;p&gt;여기서 R을 최소화하기 위해 각 $\underline{x}$에 대한 $R(S_k \mid \underline{x})$이 최소화되는 영역으로 선택한다(Risk는 작을수록 좋으므로).&lt;/p&gt;
+
+\[\begin{matrix}
+R(S_1 \mid \underline{x}) &amp;lt; R(S_2 \mid \underline{x}) \rightarrow S_1 \\ 
+R(S_1 \mid \underline{x}) &amp;gt; R(S_2 \mid \underline{x}) \rightarrow S_2 
+\end{matrix}\]
+
+&lt;h3 id=&quot;decision-rule-minimum-risk-classifier&quot;&gt;Decision Rule (Minimum Risk Classifier)&lt;/h3&gt;
+
+\[R(S_1 \mid \underline{x}) \; \begin{matrix}
+S_1\\ 
+&amp;lt;\\ 
+&amp;gt;\\ 
+S_2
+\end{matrix}\; R(S_2 \mid \underline{x})\]
+
+&lt;p&gt;이를 다시 이전의 $C$를 이용한 식으로 바꾸면&lt;/p&gt;
+
+\[C_{11}P(S_1 \mid \underline{x})+C_{12}P(S_2 \mid \underline{x}) \quad \begin{matrix}
+&amp;lt;\\ 
+&amp;gt;
+\end{matrix}\; C_{21}P(S_1 \mid \underline{x})+C_{22}P(S_2 \mid \underline{x})\]
+
+&lt;p&gt;이고, 같은 $P$끼리 정리하여 묶어낸 뒤 $P(S_k\mid x)=\frac{P(S_k)P(x\mid S_k)}{P(x)}$ 로 바꿔 쓴 뒤, likelihood ratio가 나타나도록 정리하면 최종적으로 다음 식이 된다.&lt;/p&gt;
+
+\[l(\underline{x})=\frac{p(\underline{x} \mid S_1)}{p(\underline{x} \mid S_2)}\quad \begin{matrix}
+&amp;gt;\\ 
+&amp;lt;\\ 
+\end{matrix}\quad \frac{(C_{12}-C_{22})P(S_2)}{(C_{21}-C_{11})P(S_1)}\]
+
+&lt;p&gt;이때, 만약 $C_{11}=0, C_{12}=1, C_{21}=1,C_{22}=0$ 이면 다음과 같은 형태의 &lt;strong&gt;Bayes minimum error rule&lt;/strong&gt;이 된다.&lt;/p&gt;
+
+\[l(\underline{x})=\frac{p(\underline{x} \mid S_1)}{p(\underline{x} \mid S_2)}\; \begin{matrix}
+&amp;gt;\\ 
+&amp;lt;\\ 
+\end{matrix}\; \frac{P(S_2)}{P(S_1)}\]
+
+&lt;h2 id=&quot;bayes-minimum-error-and-minimum-risk-다중-class&quot;&gt;Bayes Minimum Error and Minimum Risk (다중 class)&lt;/h2&gt;
+&lt;h3 id=&quot;bayes-minimum-error--multiple-classes&quot;&gt;Bayes Minimum Error – Multiple Classes&lt;/h3&gt;
+&lt;p&gt;모든 $i \neq j$에 대해 $P(S_i \mid \underline{x} )&amp;gt;P(S_j \mid \underline{x})$ 이면 $\underline{x}\in S_i$ 이다. 다시 변경하면, 모든 $i \neq j$에 대해 $p(\underline{x} \mid S_i)p(S_i)&amp;gt;p(\underline{x} \mid S_j)p(S_j)$ 이면 $\underline{x}\in S_i$ 이다. Discriminant function은 다음과 같다.&lt;/p&gt;
+
+\[g_i(\underline{x})=p(\underline{x} \mid S_i)p(S_i)\]
+
+&lt;h3 id=&quot;bayes-minimum-risk--multiple-classes&quot;&gt;Bayes Minimum Risk – Multiple Classes&lt;/h3&gt;
+&lt;p&gt;$R(S_k \mid \underline{x})=\sum_{i=1}^{K}C_{ki}P(S_i\mid \underline{x})$를 conditional loss로 변경하면 $R(S_k \mid \underline{x})=\sum_{i=1}^{K}C_{ki}P(\underline{x} \mid S_i)P(S_i)$ 이다. 만약, 모든 $i \neq j$에 대해 $R_c(S_i \mid \underline{x})&amp;lt;R_c(S_j \mid \underline{x})$ 이면 $\underline{x}\in S_i$ 이다. Discriminant function은 다음과 같다.&lt;/p&gt;
+
+\[g_k(\underline{x})=-R_c(S_k \mid \underline{x})\]
+
+&lt;p&gt;’$-$’를 곱해주는 이유는 위의 표현처럼 $g_i(\underline{x})&amp;gt;g_j(\underline{x})$ 를 유지하기 위해서 이다.&lt;/p&gt;
+
+&lt;p&gt;$R_c$ 식은 다음과 같이 행렬식의 곱 형태로 나타낼 수 있고 이 경우 2가지 special case를 확인하기에 편리하다.&lt;/p&gt;
+
+\[R_c(S_k \mid \underline{x})=\begin{bmatrix}
+C_{11} &amp;amp; C_{12} &amp;amp; \cdots\\ 
+C_{21}&amp;amp; \ddots  &amp;amp; \\ 
+\cdots  &amp;amp;  &amp;amp; C_{kk}
+\end{bmatrix}\begin{bmatrix}
+p(\underline{x} \mid S_1)P(S_1)\\ 
+p(\underline{x} \mid S_2)P(S_2)\\ 
+\cdots
+\end{bmatrix}\]
+
+&lt;ol&gt;
+  &lt;li&gt;special case 1 : Symmetric 0-1 cost function&lt;/li&gt;
+  &lt;li&gt;special case 2 : Diagonal Cost Function&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>KYG</name></author><category term="MLPR" /><summary type="html">Bayes Decision Theory : 이 방식은 모든 확률 값들을 알고 있다고 가정한다(평균, 분산 등). Bayes Formula</summary></entry><entry><title type="html">[MLPR #1] Introduction</title><link href="https://shvtr159.github.io/mlpr/mlpr-1-notation/" rel="alternate" type="text/html" title="[MLPR #1] Introduction" /><published>2021-10-20T00:00:00+09:00</published><updated>2021-10-20T00:00:00+09:00</updated><id>https://shvtr159.github.io/mlpr/mlpr-1-notation</id><content type="html" xml:base="https://shvtr159.github.io/mlpr/mlpr-1-notation/">&lt;h2 id=&quot;notation&quot;&gt;Notation&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;$\underline{ \textbf{x}}$ : data 벡터&lt;/li&gt;
   &lt;li&gt;prototypes:
@@ -82,20 +197,20 @@ p(\underline{x} \mid S_1)p(S_1)&amp;lt;p(\underline{x} \mid S_2)p(S_2) \rightarr
 &lt;p&gt;set abstraction level은  input으로 $N\times (d+C)$ ($N$ : point 개수, $d$ : coordinates dimension, $C$ : point feature dimension) matrix를 받고  output으로 $N’\times (d+C’)$ ($N’$ : subsampling된 point 개수, $C’$ : local context를 요약한 feature vector dimensioin)  matrix를 출력한다.&lt;/p&gt;
 
 &lt;h4 id=&quot;sampling-layer&quot;&gt;Sampling layer&lt;/h4&gt;
-&lt;p&gt;input points $\lbrace x_{1}, x_{2}, …, x_{n} \rbrace$가 주어질 때, iterative farthest poin sampling (FPS)을 사용하여 input의 부분집합 $\lbrace x_{i_{1}}, x_{i_{2}}, …, x_{i_{m}} \rbrace$를 생성한다. FPS는 이전까지 sampling된 point들에서 가장 먼 point를 선택하는 방법이므로 $x_{i_{j}}$는 $\lbrace x_{i_{1}}, x_{i_{2}}, …, x_{i_{j-1}} \rbrace$의 point들, 즉 이전까지 sampling된 point들에서 가장 먼 point이다. 이 방법은 random sampling과 비교했을 때 더 우수한 결과를 얻을 수 있었다. 데이터 분포가 균일하지 않기 때문에 이러한 방식으로 데이터에 의존하여 receptive field를 생성한다.&lt;/p&gt;
+&lt;p&gt;input points $\lbrace x_{1}, x_{2}, …, x_{n} \rbrace$가 주어질 때, iterative farthest poin sampling (FPS)을 사용하여 input의 부분집합 $\lbrace x_{i_{1}}, x_{i_{2}}, …, x_{i_{m}} \rbrace$를 생성한다. FPS는 이전까지 sampling된 point들에서 가장 먼 point를 선택하는 방법으로 $x_{i_{j}}$는 $\lbrace x_{i_{1}}, x_{i_{2}}, …, x_{i_{j-1}} \rbrace$의 point들, 즉 이전까지 sampling된 point들에서 가장 먼 point이다. 이 방법은 random sampling과 비교했을 때 더 우수한 결과를 얻을 수 있었다. 데이터 분포가 균일하지 않기 때문에 이러한 방식으로 데이터에 의존하여 receptive field를 생성한다.&lt;/p&gt;
 
 &lt;h4 id=&quot;grouping-layer&quot;&gt;Grouping layer&lt;/h4&gt;
-&lt;p&gt;이 layer는 input으로 $N\times (d+C)$ size의 point set과 $N’\times d$ size의 centriods set coordinates를 받는다. output은 $N’\times K\times (d+C)$ size의 point sets의 그룹들이다. 이 각 그룹은 local region에 대응되고 $K$는 centriod points의 neighborhood에 있는 point 개수이다. 여기서 $K$는 그룹에 따라 다르지만, 다음의 PointNet layer가 point의 수를 flexible하게 고정된 길이의 local region feature vector로 변환해준다.&lt;/p&gt;
+&lt;p&gt;Grouping layer는 $N\times (d+C)$ 크기의 point set과 $N’\times d$ 크기의 centriods set를 input으로 받아 grouping을 수행한다. output은 $N’\times K\times (d+C)$ 의 point set 그룹들이다. 이 각 그룹은 local region이고, $K$는 centriod points의 neighborhood point 개수(local region에 속하는 point 개수)이다. 여기서는 ball query를 이용해 $K$가 그룹에 따라 다르지만, 다음의 PointNet layer가 point의 수를 flexible하게 고정된 길이의 local region feature vector로 변환해준다.&lt;/p&gt;
 
-&lt;p&gt;ball query는 query point에서 radius 내에 있는 모든 point를 찾는다. 이 방법은 고정된 개수의 주위 point를 찾는 $K$ nearest neighbor (kNN)과 비교했을 때, 영역의 크기가 고정되어있기 때문에 공간 전반에 걸쳐 local region feature가 더 generalize될 수 있다.&lt;/p&gt;
+&lt;p&gt;ball query는 query point에서 radius 내에 있는 모든 point를 찾는다. 이 방법은 고정된 개수의 주위 point를 찾는 $K$ nearest neighbor (kNN)과 비교했을 때, 영역의 크기가 고정되어있기 때문에 공간 전반에 걸쳐 local region feature가 더 일반화될 수 있다.&lt;/p&gt;
 
 &lt;h4 id=&quot;pointnet-layer&quot;&gt;PointNet layer&lt;/h4&gt;
-&lt;p&gt;input은$N’\times K\times (d+C)$의 크기를 가지는 $N’$개의 local region이다. output의 각 local region은 그 영역의 centriod 및 centroid의 주변을 encoding 하는 local feature에 의해 추상화된다. 그 크기는 $N’\times (d+C’)$이다.&lt;/p&gt;
+&lt;p&gt;input은Grouping layer에서 나온 $N’\times K\times (d+C)$의 크기를 가지는 $N’$개의 local region이다. output의 각 local region은 그 영역의 centriod와 centroid의 주변을 encoding 하는 local feature에 의해 추상화된다. 그 크기는 $N’\times (d+C’)$이다.&lt;/p&gt;
 
-&lt;p&gt;local 영역에서 point의 좌표는 $x_i^{(j)} = x_i^{(j)} - \hat{x}^{(j)}$ ($i=1, …, K, j=1, …, d, \hat{x}$ : centroid의 좌표)에 의해  centriod과의 상대적인 좌표로 바꿔 사용한다. 이 상대적인 좌표를 이용해 local 영역에 있는 point간의 위치적 관계를 담을 수 있다.&lt;/p&gt;
+&lt;p&gt;local 영역에서 point의 좌표는 $x_i^{(j)} = x_i^{(j)} - \hat{x}^{(j)}$ ($i=1, …, K, j=1, …, d, \hat{x}$ : centroid의 좌표)을 이용해  centriod과의 상대적인 좌표로 바꿔 사용한다. 이 상대적인 좌표를 이용해 local 영역에 있는 point간의 위치적 관계를 담을 수 있다.&lt;/p&gt;
 
 &lt;h3 id=&quot;33-robust-feature-learning-under-non-uniform-sampling-density&quot;&gt;3.3 Robust Feature Learning under Non-Uniform Sampling Density&lt;/h3&gt;
-&lt;p&gt;Point set은 대부분 일정하지 않은 밀도로 분포되어 있다. density한 밀도 분포를 가진 point cloud로 학습된 네트워크는 sparse한 point cloud로 generalize 하기 어렵고 그 반대도 마찬가지이다. 때문에 이상적으로는 dense하게 얻어진 영역에서 작은 디테일을 확인하고 싶지만, sparse한 영역에서 이를 수행하면 제대로 된 local pattern을 얻을 수 없다. 이러한 경우 더 큰 scale에서 pattern을 확인해야 하는데 이를 위해 input sampling density가 달라질 때, 서로 다른 scale의 영역에서 얻어진 featture를 결합하는 방법을 학습하는 density adaptive PointNet layer를 제안하였다. 이 PointNet layer를 이용한 hierarchical network를 PointNet++이라고 이름 지었다.&lt;/p&gt;
+&lt;p&gt;Point set은 대부분 일정하지 않은 밀도로 분포되어 있다. density한 밀도 분포를 가진 point cloud로 학습된 네트워크는 sparse한 point cloud로 generalize 하기 어렵고 그 반대도 마찬가지이다. 때문에 dense하게 얻어진 영역에서 확대하며 작은 디테일을 확인하고 싶지만, sparse한 영역에서 이를 수행하면 제대로 된 local pattern을 얻을 수 없다. 이러한 경우 더 큰 scale에서 pattern을 확인해야 하는데 이를 위해 input sampling density가 달라질 때, 서로 다른 scale의 영역에서 얻어진 featture를 결합하는 방법을 학습하는 density adaptive PointNet layer를 제안하였다. 이 PointNet layer를 이용한 hierarchical network를 PointNet++이라고 이름 지었다.&lt;/p&gt;
 
 &lt;p&gt;3.2절에서 각각의 abstraction level은 하나의 scale에서 feature extraction과 grouping을 수행하였다. PointNet++은 각 abstraction level은 다양한 scale의 local pattern을 추출하고 이를 local point 밀도에 따라 지능적으로 결합한다. local 영역을 그룹화하고 서로 다른 scale에서 얻어진 feature를 결합하기 위해 다음 2가지의 density adaptive layer를 제안하였다.&lt;/p&gt;
 
@@ -542,65 +657,4 @@ x_{2}\\ z_{2}
 
 &lt;p&gt;이를 해결하기 위해 vertex 복잡도에 맞게 작은 vertex에서도 사용할만 한 작은 size의 이미지를  각각 만들어준 뒤 그 이미지를 사용한다. 이 때, 한 방향으로만 작아지는 것은 MIP map, x, y 모든 방향으로 작아지는 것을 가지고 있는것을 RIP map 이라고 한다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/119966937-c7c6a600-bfe6-11eb-8bf3-3dceb22dfa69.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;75%&quot; height=&quot;75%&quot; /&gt;&lt;/p&gt;</content><author><name>KYG</name></author><category term="Graphics" /><summary type="html">실제로 모델을 만들 때는 vertex의 색으로 칠하는 것으로는 완벽하지 않다. 때문에 이에 맞는 texture를 모델에 입히는 과정이 필요하다. 각 geometry의 surface에 일치하는 real object의 부분의 polygon을 입혀준다.</summary></entry><entry><title type="html">[Computer Graphics #9] Shaders 2</title><link href="https://shvtr159.github.io/graphics/computer-graphics-9-shader2/" rel="alternate" type="text/html" title="[Computer Graphics #9] Shaders 2" /><published>2021-05-11T00:00:00+09:00</published><updated>2021-05-11T00:00:00+09:00</updated><id>https://shvtr159.github.io/graphics/computer-graphics-9-shader2</id><content type="html" xml:base="https://shvtr159.github.io/graphics/computer-graphics-9-shader2/">&lt;p&gt;vertex를 연결해서 polygon을 만들고 그 polygon 위에 색을 줄 때 물체의 표면이 가지는 특징을 BRDF로 표현할 수 있었다. 색이라는 것은 사실 표면과 light source와의 상호작용에 의해 결정되기 때문에 정의 가능한 light source 또한 알아보았다. 최종적으로 특정 위치에서 볼 때 실제적으로 rendering을 하기 위해 사용되는 shader를 알아본다.&lt;/p&gt;
-
-&lt;h2 id=&quot;polygonal-shading&quot;&gt;Polygonal Shading&lt;/h2&gt;
-&lt;p&gt;실제 우리 눈에 보이는 모델은 vertex 사이를 채운  polygon의 집합으로 볼 수 있다. 때문에 이 polygon을 어떤 색으로 채우는지가 실질적으로 해야 할 일이다. 그래서 polygonal shading은 polygon에 어떤 색을 할당하는지에 대한 기법이라고 할 수 있다. polygonal shading의 대표적인 3가지 방법을 알아본다.&lt;/p&gt;
-
-&lt;h3 id=&quot;1-flat-shading&quot;&gt;1. Flat shading&lt;/h3&gt;
-&lt;p&gt;하나의 polygon 내에서 face가 완벽히 flat하고 빛이 들어오는 방향과 보는 방향 모두 동일하다고 가장한다. 한 방향으로 들어온 빛을 한 방향으로 나가는 빛으로 BRDF를 계산한다. 결국 polygon 하나에 shading 계산은 한 번만 수행하면 된다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/118248546-5d3e4200-b4df-11eb-8112-63cb8ea71499.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Flat shading 결과는 이미지 첫 번째와 같이 나타난다. 계산이 간단한 만큼 결과가 간단하고 이에 따른 2가지 문제를 확인할 수 있다.&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;Lateral inhibition : 가운데 그림처럼 색의 값이 극단적으로 반대가 될 때, 그림에서 보이듯이 사이사이에 약간의 회색이 보이게 된다. 사람의 눈 안에서 검은색과 흰색의 밝기 값을 보았을 때 sensing에 서로 영향을 미치기 때문에 나타나는 문제이다.&lt;/li&gt;
-  &lt;li&gt;Mach band : 밝기 값이 달라질 때, 그 밝기값이  달라지는 부분에서 다른 부분과의 대비로 인해 원래의 색보다 더 밝은색으로 보이게 된다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;좀 더 현실적으로 만들기 위해서는 normal을 다양하게 해야만 한다. 이를 위해 vertex간의 normal을 interpolation하여 polygon 위에 다양한 normal을 사용하고자 한다. 그러나 실제로 vertex 자체는 normal을 가질 수 없으므로 주위 polygon을 이용해 vertex의 normal을 결정한다.&lt;/p&gt;
-
-&lt;h3 id=&quot;2-gouraud-shading&quot;&gt;2. Gouraud Shading&lt;/h3&gt;
-&lt;p&gt;이렇게 주위의 face normal을 이용하는 방법을 gouraud shading이라고 한다. 해당 vertex를 포함하는 face들의 normal을 평균하여 vertex의 normal을 계산한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/118255339-1d7b5880-b4e7-11eb-8206-92f6af7add9a.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이렇게 하면 각 vertex마다 normal을 가지게 되는데 이제 face의 각 vertex의 normal에 가중치를 주고 interpolation하여  polygon 안에 다양한 새로운 normal들을 만든다. 즉 vertex normal로 계산된 color 값을 interpolation 하며 smooth하게 채워 넣는다. 이렇게 하면 주위에 vertex normal 수만큼 계산을 수행해야 하므로 flat shading보다 계산량이 늘어나게 된다.&lt;/p&gt;
-
-&lt;h3 id=&quot;3-phong-shading&quot;&gt;3. Phong Shading&lt;/h3&gt;
-&lt;p&gt;Gouraud shading과 같이 vertex의 normal을 구한다. 그러나 Phong Shading은 이 verex의 normal을 이용해 face에 normal 자체를 interpolation으로 채워 넣어 그 normal을 이용해 color값을 계산하여 채워 넣는다. 이는 하나의 face를 가상의 여러 face로 나눈 과를 낸다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/118257471-a1cedb00-b4e9-11eb-8066-9f177d56bf49.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;계산량은 새롭게 채워 넣은 normal 개수만큼 수행하게 되므로 훨씬 늘어난다.&lt;/p&gt;
-
-&lt;h2 id=&quot;global-rendering&quot;&gt;Global Rendering&lt;/h2&gt;
-&lt;p&gt;필요한 것들을 정의해줬으므로 이제 rendering할 준비가 됐다. 그러나  local lighting, global lighting을 또 고려해줘야 한다. global lighting은 물체에서의 반사 등을 모두 고려해주는 것으로 대부분 global lighting을 사용하고 local rendering은 거의 사용하지 않는다. global rendering을 할 때, 물체가 이동하거나 시점이 변화하기 때문에 어떤 부분에 어떤 빛의 interaction이 일어나는지를 찾아야 한다. 이런 일을 하기 위해서는 다음 effect들을 모두 판단해야만 한다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;shadow : 이 surface를 계산할 때, 어떤 light source는 보이고, 어떤 light source는 보이지 않는지를 판단해야 한다.&lt;/li&gt;
-  &lt;li&gt;refractions : 굴절. 물체가 투명도가 있을 수도 있으므로 고려해야 한다.&lt;/li&gt;
-  &lt;li&gt;Inter-object reflections&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;이를 위해 우리는 &lt;strong&gt;Ray tracing&lt;/strong&gt;, 즉 빛을 쫒아가는 작업을 수행해야 한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/118259038-97154580-b4eb-11eb-8870-ed047cf71ca7.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;그림과 같이 우리가 보았을 때 어떤 픽셀에 어떤 값이 들어오는가를 알아야 이미지를 만들 수 있다. 이 픽셀을 채우기 위해 픽셀 방향의 어떤 물체가 어떤 빛과 interaction 하는지를 알아내고자 한다. 알아내기 위해 우리는 그 방향으로 빛을 쏘는 &lt;strong&gt;Ray casting&lt;/strong&gt;을 수행한다. 이 빛으로 어떤 light source에서 반사된 빛이 오고, 어떤 light source는 가려져서 필요하지 않는지 등을 알 수 있다.&lt;/p&gt;
-
-&lt;p&gt;이러한  가려지고, 가려지지 않는 부분을 계산하기 위해 $S_{L}$이라는 shadow term이 추가되어 다음과 같이 나타난다.  $S_{i}$는 빛이 가려지면 0, 이외의 경우는 1의 값을 가진다.&lt;/p&gt;
-&lt;center&gt;$$I=I_{E}+K_{A}I_{A}+\sum_{L}(K_{D}(N\cdot L)+K_{S}(V\cdot R)^{n})S_{L}I_{L}$$&lt;/center&gt;
-
-&lt;p&gt;그러나 우리는 더 실제적으로 만들기 위해 이 뿐만 아니라 multiple reflection과 투명도로 인해 생기는 부분도 계산해줘야 한다. 이를 위한 다른 데서 reflection되 온 빛, 투명하기 때문에 투과되어 온 빛을 계산하는 term들을 추가해준다.&lt;/p&gt;
-&lt;center&gt;$$I=I_{E}+K_{A}I_{A}+\sum_{L}(K_{D}(N\cdot L)+K_{S}(V\cdot R)^{n})S_{L}I_{L}+K_{S}I_{R}+K_{T}I_{T}$$&lt;/center&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;$K_{S}I_{R}$ : Radiance for mirror reflection ray. 반사되어온 빛을 위한 term&lt;/li&gt;
-  &lt;li&gt;$K_{T}I_{T}$ : Radiance for refraction ray. 어느 정도의 투명도를 거쳐 굴절되어 오는 빛을 위한 term.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;$K$는 coefficient. $K_{T}$는 transparency coefficient로 $K_{T}$가 1이면 완전 투명, 0이면 전혀 투명하지 않은 것으로 0~1값으로 투명도를 나타낸다.&lt;/p&gt;
-
-&lt;p&gt;이 ray tracing을 계산하기 위해 어떤 물체의 transmission, reflection term을 다음과 같은 형태로 저장한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/118261195-30ddf200-b4ee-11eb-933d-c29952a7f73c.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;</content><author><name>KYG</name></author><category term="Graphics" /><summary type="html">vertex를 연결해서 polygon을 만들고 그 polygon 위에 색을 줄 때 물체의 표면이 가지는 특징을 BRDF로 표현할 수 있었다. 색이라는 것은 사실 표면과 light source와의 상호작용에 의해 결정되기 때문에 정의 가능한 light source 또한 알아보았다. 최종적으로 특정 위치에서 볼 때 실제적으로 rendering을 하기 위해 사용되는 shader를 알아본다.</summary></entry></feed>
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/119966937-c7c6a600-bfe6-11eb-8bf3-3dceb22dfa69.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;75%&quot; height=&quot;75%&quot; /&gt;&lt;/p&gt;</content><author><name>KYG</name></author><category term="Graphics" /><summary type="html">실제로 모델을 만들 때는 vertex의 색으로 칠하는 것으로는 완벽하지 않다. 때문에 이에 맞는 texture를 모델에 입히는 과정이 필요하다. 각 geometry의 surface에 일치하는 real object의 부분의 polygon을 입혀준다.</summary></entry></feed>
