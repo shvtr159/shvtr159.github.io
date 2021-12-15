@@ -1,4 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://shvtr159.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shvtr159.github.io/" rel="alternate" type="text/html" /><updated>2021-12-15T20:09:34+09:00</updated><id>https://shvtr159.github.io/feed.xml</id><title type="html">Study Blog</title><subtitle>for study</subtitle><author><name>KYG</name></author><entry><title type="html">[MLPR #] Parameter Estimation</title><link href="https://shvtr159.github.io/mlpr/mlpr-parameter-estimation/" rel="alternate" type="text/html" title="[MLPR #] Parameter Estimation" /><published>2021-12-15T00:00:00+09:00</published><updated>2021-12-15T00:00:00+09:00</updated><id>https://shvtr159.github.io/mlpr/mlpr-parameter-estimation</id><content type="html" xml:base="https://shvtr159.github.io/mlpr/mlpr-parameter-estimation/">&lt;p&gt;이전까지는 모든 statistics과 probability(prior probabiliteis, class-conditional densities(likelihood) 등)를 알 때 Bayes Classifier를 이용해 data가 어디에 속하는지 분류할 수 있었다. 그러나 이렇게 모든 statistics를 아는 상황은 드물기 때문에 data로부터 이를 추정해야만 한다. priori를 모른다고 가정할 때 다음 두 technique를 이용하여 $p(x\mid S_{i})$를 추정할 수 있다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://shvtr159.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shvtr159.github.io/" rel="alternate" type="text/html" /><updated>2021-12-16T02:34:01+09:00</updated><id>https://shvtr159.github.io/feed.xml</id><title type="html">Study Blog</title><subtitle>for study</subtitle><author><name>KYG</name></author><entry><title type="html">[MLPR #] Unsupervised Classification 1 (미완)</title><link href="https://shvtr159.github.io/mlpr/mlpr-unsupervised-classification-1/" rel="alternate" type="text/html" title="[MLPR #] Unsupervised Classification 1 (미완)" /><published>2021-12-16T00:00:00+09:00</published><updated>2021-12-16T00:00:00+09:00</updated><id>https://shvtr159.github.io/mlpr/mlpr-unsupervised-classification-1</id><content type="html" xml:base="https://shvtr159.github.io/mlpr/mlpr-unsupervised-classification-1/">&lt;p&gt;16에 전체 목차
+chain method of clustering&lt;/p&gt;</content><author><name>KYG</name></author><category term="MLPR" /><summary type="html">16에 전체 목차 chain method of clustering</summary></entry><entry><title type="html">[MLPR #] Nonparameteric Estimation 1 (미완)</title><link href="https://shvtr159.github.io/mlpr/mlpr-nonparametric-estimation/" rel="alternate" type="text/html" title="[MLPR #] Nonparameteric Estimation 1 (미완)" /><published>2021-12-15T00:00:00+09:00</published><updated>2021-12-15T00:00:00+09:00</updated><id>https://shvtr159.github.io/mlpr/mlpr-nonparametric-estimation</id><content type="html" xml:base="https://shvtr159.github.io/mlpr/mlpr-nonparametric-estimation/">&lt;p&gt;이전까지 확률을 이용해 density function을 추정했다면 Nonparameteric Technique는 math form 없이 density를 추정한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;h2 id=&quot;estimation-procedure&quot;&gt;Estimation Procedure&lt;/h2&gt;
+&lt;p&gt;$x$의 density를 추정하기 위한 절차를 알아보자&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;영역 $R_1, R_2, …$을 생성한다.&lt;/li&gt;
+  &lt;li&gt;이때 영역 $R_j$는 j개의 sample들로 구성된다. ??&lt;/li&gt;
+  &lt;li&gt;$R_j$의 크기를 $V_j$라고 한다&lt;/li&gt;
+  &lt;li&gt;$R_j$에 속해있는 sample들의 개수를 $k_j$라고 한다&lt;/li&gt;
+  &lt;li&gt;$p(x)$의 j번째 추정은 $p_j(x)=[k_j/j]/V_j$이다. $p_j(x)$는 다음과 같은 경우에 $p(x)$에 수렴한다.&lt;br /&gt;
+ (1) $\lim_{j\to\infty}V_j=0$&lt;br /&gt;
+ (2) $\lim_{j\to\infty}k_j=\infty$&lt;br /&gt;
+ (3) $\lim_{j\to\infty}k_j/j=0$&lt;br /&gt;
+위 조건을 만족하는 방법 두가지&lt;/li&gt;
+  &lt;li&gt;영역의 크기를 축소시켜가는것. $V_j=1/\sqrt{j}$ (Parzen window)&lt;/li&gt;
+  &lt;li&gt;$k_j=\sqrt{j}$로 설정하여 $x$ 주변 $k_j$개의 sample을 포함할때까지 크기를 증가시키는 것. (nearest neighbor)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;two-popular-techniques&quot;&gt;Two Popular Techniques&lt;/h2&gt;
+&lt;h3 id=&quot;1-parzen-window-estimation&quot;&gt;1) Parzen Window Estimation&lt;/h3&gt;
+&lt;p&gt;window function은 $\Delta(\underline{u})=\Delta(\underline{x}-\underline{x}_ i)$로 정의한다($\underline{x}_ i$가 중심이 된다).&lt;/p&gt;
+
+&lt;h3 id=&quot;2-k-nearest-neighbor&quot;&gt;2) K Nearest Neighbor&lt;/h3&gt;</content><author><name>KYG</name></author><category term="MLPR" /><summary type="html">이전까지 확률을 이용해 density function을 추정했다면 Nonparameteric Technique는 math form 없이 density를 추정한다.</summary></entry><entry><title type="html">[MLPR #] Parameter Estimation 2 (미완)</title><link href="https://shvtr159.github.io/mlpr/mlpr-parameter-estimation-2/" rel="alternate" type="text/html" title="[MLPR #] Parameter Estimation 2 (미완)" /><published>2021-12-15T00:00:00+09:00</published><updated>2021-12-15T00:00:00+09:00</updated><id>https://shvtr159.github.io/mlpr/mlpr-parameter-estimation%202</id><content type="html" xml:base="https://shvtr159.github.io/mlpr/mlpr-parameter-estimation-2/">&lt;p&gt;Parameter Estimation 1에서 추정 방법중 Maximum likelihood에 대해 알아보았다. 2에서는 나머지 한가지 방법인 Maximum a Posterior (MAP) estimation에 대해서 알아본다.
+MLPR 11~13&lt;/p&gt;</content><author><name>KYG</name></author><category term="MLPR" /><summary type="html">Parameter Estimation 1에서 추정 방법중 Maximum likelihood에 대해 알아보았다. 2에서는 나머지 한가지 방법인 Maximum a Posterior (MAP) estimation에 대해서 알아본다. MLPR 11~13</summary></entry><entry><title type="html">[MLPR #] Parameter Estimation 1 (미완)</title><link href="https://shvtr159.github.io/mlpr/mlpr-parameter-estimation/" rel="alternate" type="text/html" title="[MLPR #] Parameter Estimation 1 (미완)" /><published>2021-12-14T00:00:00+09:00</published><updated>2021-12-14T00:00:00+09:00</updated><id>https://shvtr159.github.io/mlpr/mlpr-parameter-estimation</id><content type="html" xml:base="https://shvtr159.github.io/mlpr/mlpr-parameter-estimation/">&lt;p&gt;이전까지는 모든 statistics과 probability(prior probabiliteis, class-conditional densities(likelihood) 등)를 알 때 Bayes Classifier를 이용해 data가 어디에 속하는지 분류할 수 있었다. 그러나 이렇게 모든 statistics를 아는 상황은 드물기 때문에 data로부터 이를 추정해야만 한다. priori를 모른다고 가정할 때 다음 두 technique를 이용하여 $p(x\mid S_{i})$를 추정할 수 있다.&lt;/p&gt;
 &lt;ol&gt;
   &lt;li&gt;&lt;strong&gt;Parametric&lt;/strong&gt; : $p(x\mid S_{i})$의 form을 알거나, 안다고 가정할 때 함수의 parameter를 추정한다. 예를 들어$p(x\mid S_{i})=N(x,m_i,\Sigma_i)$인 Gaussian 함수라고 할 때, training sample로부터 $m_i,\Sigma_i$를 추정하는 것이다. 이 방법에는 &lt;strong&gt;Maximum likelyhood estimation(최대 우도 추정)&lt;/strong&gt; 과 &lt;strong&gt;Maximum a Posterior (MAP) estimation(최대 사후 확률 추정)&lt;/strong&gt; (Bayesian estimation)이 있다.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Nonparametric&lt;/strong&gt; : density에 대한 정보도 없이 data만 있을때로 data로부터 density function을 추정한다.&lt;/li&gt;
@@ -423,170 +449,4 @@ p(\underline{x} \mid S_2)P(S_2)\\
 &lt;a name=&quot;footnote_3&quot;&gt;3&lt;/a&gt;: distance를 정의하는 방법. 가장 간단한 예시로 Euclidean distance를 들 수 있다.&lt;br /&gt;
 &lt;a name=&quot;footnote_4&quot;&gt;4&lt;/a&gt;: ????&lt;br /&gt;
 &lt;a name=&quot;footnote_5&quot;&gt;5&lt;/a&gt;:  M. Jaderberg, K. Simonyan, A. Zisserman, et al. Spatial transformer networks. In NIPS 2015&lt;br /&gt;
-&lt;a name=&quot;footnote_6&quot;&gt;6&lt;/a&gt;: 1개의 히든 레이어를 가진 Neural Network를 이용해 어떠한 함수든 근사시킬 수 있다는 이론. 당연히 활성화 함수는 비선형 함수여야 한다&lt;/p&gt;</content><author><name>KYG</name></author><category term="논문" /><summary type="html">Abstract 기존에는 point cloud의 irregular한 형식때문에 regular한 3D voxel grid 또는 collection of images로 바꿔 사용하곤 했지만 이것은 불필요하게 많은 data가 렌더링 되는 문제가 있다. 그래서 여기서는 point cloud를 바로 사용하며 input point들의 permutation invariance1를 잘 고려하는 neural network를 설계하였다. PointNet은 object detection, part segmentation, scene semantic parsing에 이르는 application들을 위한 통일된 구조를 제공한다. 또한, 이론적으로, network가 무엇을 학습했는지와 network가 왜 perturbation(noise와 유사)과 corruption에 robust한지 이해하기 위한 분석을 제공한다.</summary></entry><entry><title type="html">PU-GAN: A Point Cloud Upsampling Adversarial Network</title><link href="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pu-gan/" rel="alternate" type="text/html" title="PU-GAN: A Point Cloud Upsampling Adversarial Network" /><published>2021-09-10T00:00:00+09:00</published><updated>2021-09-10T00:00:00+09:00</updated><id>https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pu-gan</id><content type="html" xml:base="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pu-gan/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;PU-Net, EC-Net, MPU 등의 network들은 학습을 통해 point cloud upsampling의 장점을 입증했다. 그러나 이 네트워크들은 sparse하고 non-uniform한 low-quality inputs로부터 좋은 결과를 얻지 못할 수 있다. 그래서 upsampling과 data amendment 능력을 결합한 PU-GAN을 제안한다. 주된 기여는 latent space에서 다양한 point 분포를 생성하도록 generator를 학습시키고, 이 point set에 대해 implicit하게 평하가는 데 도움이 되는 discriminator network이다. 그러나 generator와 discriminator간의 균형을 맞추고 낮은 수렴 경향을 피하기 어려운 문제가 있다. Thus, we first improve the point generation quality, or equivalently the feature expansion capability, of the generator, by constructing an up-down-up unit to expand point features by upsampling also their differences for self-correction.  또, feature integration quality를 향상시키기 위해 self-attention unit을 사용한다. 마지막으로, 결과의 distribution uniformity를 향상시키고 discriminator가 target distribution에서 더 많은 latent pattern을 학습하도록 하기 위해 aadversarial, uniform, reconstruction term을 사용해 end-to-end 로 network를 학습시키는 compound loss를 추가로 사용한다.&lt;/p&gt;
-&lt;h2 id=&quot;method&quot;&gt;Method&lt;/h2&gt;
-&lt;h3 id=&quot;31-overview&quot;&gt;3.1 Overview&lt;/h3&gt;
-&lt;p&gt;point 수가 $N$개인 순서 없는 sparse point set $\mathcal{P}={  p_{i}  }_ {i=1}^{N}$가 주어지면, $rN$개의 point를 가지는 dense point set  $\mathcal{Q}= {  q_{i} }_ {i=1}^{rN}$을 생성하는 것을 목표로 한다. 이때, $r$은 upsampling rate이다. $\mathcal{Q}$가 반드시 $\mathcal{P}$의 superset(상위집합)은 아니지만, 출력 $\mathcal{Q}$가 다음 2가지 조건을 만족하기를 원한다.&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;$\mathcal{Q}$는 $\mathcal{P}$와 latent target object의 같은 underlying geometry를 설명해야 하고, 때문에 $\mathcal{Q}$의 point들은 target object의 표면에 있어야 한다.&lt;/li&gt;
-  &lt;li&gt;sparse하고 non-uniform한 input $\mathcal{P}$에 대해서도 $\mathcal{Q}$의 point들은 target object 표면에 uniformly-distribute하게 분포되어야 한다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/133037097-4dc912bb-f9d2-4a0f-83a0-40b3776db7f4.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;위 PU-GAN의 전체적인 네트워크 구조를 보면, generator는 sparse input $\mathcal{P}$로부터 dense output $\mathcal{Q}$를 생성하고, discriminator는 fake로 생성된 것을 찾는것을 목표로 한다.&lt;/p&gt;
-
-&lt;h3 id=&quot;32-network-architecture&quot;&gt;3.2 Network Architecture&lt;/h3&gt;
-&lt;h4 id=&quot;321--generator&quot;&gt;3.2.1  Generator&lt;/h4&gt;
-&lt;p&gt;Figure 2에서 보이듯이, generator는 3개의 component를 가지고있다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;The feature extraction component&lt;/strong&gt; $N\times d$ ($d$ : Input point 속성의 차원 수. $i.e.$, 좌표, 색상, normal 등) 의 input $\mathcal{P}$로부터 feature $\mathbf{F}$를 추출하기 위해 가장 간단한 3D coordinates인것만을 고려하여 $d=3$의 case에 focusing하고, [Patch-based progressive 3D point set upsampling, CVPR2019]의 feature extraction 방법을 채택하여 서로 다른  layer들에 걸쳐 feature들을 통합하기 위해 dense connection이 도입됐다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;The feature expansion component&lt;/strong&gt; $\mathbf{F}$를 확장하여 확장된 feature $\mathbf{F_{up}}$을 생성한다. 여기서는 generator가 더 다양한 point distribution을 생성할 수 있도록 $\mathbf{F_{up}}$의 feature variation을 강화시키기 위해 &lt;em&gt;up-down-up expansion unit&lt;/em&gt; (Figure2의 위쪽)을 설계한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;The point set generation component&lt;/strong&gt; 먼저, multilayer perceptrons (MLPs) 세트를 통해 $\mathbf{F_{up}}$에서 3D coordiante 세트를 regression한다. feature expansion process가 여전히 local하기 때문에 $\mathbf{F_{up}}$의 feature (또는 latent space의 point들)이 input에 가깝다. 때문에 서로 멀리 떨어진 $rN$ points만을 남기기 위해 network에 farthest sampling setp을 포함한다. 이를 위해 $\mathbf{F}$에서 $\mathbf{F_{up}}$으로 확장할 때, $\mathbf{F_{up}}$에 $(r+2)N$ features를 생성한다.이 전략은 global perspective에서 point set 의 distribution uniformity를 강화한다.&lt;/p&gt;
-
-&lt;h4 id=&quot;322-discriminator&quot;&gt;3.2.2 Discriminator&lt;/h4&gt;
-&lt;p&gt;Discriminator의 목표는 generator에서 생성된 $rN$ points의 set을 구분하는 것이다. 이를 위해 처음에는 global feature를 추출하기 위해 [PCN: Point completion network, 3DV2018]의 basic network 구조를 이용한다. feature learning을 개선하기 위해  feature concatenation 한 뒤 self-attention unit을 추가한다. 이는 basic MLPs와 비교하여 feature integration을 개선하고 subsequent feature extraction 기능을 개선할 수 있다. 다음으로 global feature를 생성하기 위해 MLPs set와  max pooling를 적용하고 FC layer set를 통해 최종 confidence value를 regression한다. 이 값이 1에 가까울수록 높은 신뢰도의 target distribution에서 온 가능성이 있다고 예측한다.&lt;/p&gt;
-
-&lt;h3 id=&quot;33-up-down-up-expansion-unit&quot;&gt;3.3 UP-down-up Expansion Unit&lt;/h3&gt;
-
-&lt;p&gt;기존 PU-Net, EC-Net, MPU 등의 network들은 학습을 통해 point cloud upsampling의 장점을 입증했다. 그러나 이 네트워크들은 sparse하고 non-uniform한 low-quality inputs로부터 좋은 결과를 얻지 못할 수 있다.
-그래서 기존의 point cloud를 deep learning을 사용해서 처리하는 방식과 GAN 기반의 3D shape processing 방식을 결합하여 upsampling을 수행하도록 하였다. 기존 GAN을 이용한 processing은 3D volume 방식이었고 point cloud를 사용한 것은 reconstruction에 가까워 upsampling은 최소로 수행하였다.&lt;/p&gt;</content><author><name>KYG</name></author><category term="논문" /><summary type="html">Introduction PU-Net, EC-Net, MPU 등의 network들은 학습을 통해 point cloud upsampling의 장점을 입증했다. 그러나 이 네트워크들은 sparse하고 non-uniform한 low-quality inputs로부터 좋은 결과를 얻지 못할 수 있다. 그래서 upsampling과 data amendment 능력을 결합한 PU-GAN을 제안한다. 주된 기여는 latent space에서 다양한 point 분포를 생성하도록 generator를 학습시키고, 이 point set에 대해 implicit하게 평하가는 데 도움이 되는 discriminator network이다. 그러나 generator와 discriminator간의 균형을 맞추고 낮은 수렴 경향을 피하기 어려운 문제가 있다. Thus, we first improve the point generation quality, or equivalently the feature expansion capability, of the generator, by constructing an up-down-up unit to expand point features by upsampling also their differences for self-correction. 또, feature integration quality를 향상시키기 위해 self-attention unit을 사용한다. 마지막으로, 결과의 distribution uniformity를 향상시키고 discriminator가 target distribution에서 더 많은 latent pattern을 학습하도록 하기 위해 aadversarial, uniform, reconstruction term을 사용해 end-to-end 로 network를 학습시키는 compound loss를 추가로 사용한다. Method 3.1 Overview point 수가 $N$개인 순서 없는 sparse point set $\mathcal{P}={ p_{i} }_ {i=1}^{N}$가 주어지면, $rN$개의 point를 가지는 dense point set $\mathcal{Q}= { q_{i} }_ {i=1}^{rN}$을 생성하는 것을 목표로 한다. 이때, $r$은 upsampling rate이다. $\mathcal{Q}$가 반드시 $\mathcal{P}$의 superset(상위집합)은 아니지만, 출력 $\mathcal{Q}$가 다음 2가지 조건을 만족하기를 원한다. $\mathcal{Q}$는 $\mathcal{P}$와 latent target object의 같은 underlying geometry를 설명해야 하고, 때문에 $\mathcal{Q}$의 point들은 target object의 표면에 있어야 한다. sparse하고 non-uniform한 input $\mathcal{P}$에 대해서도 $\mathcal{Q}$의 point들은 target object 표면에 uniformly-distribute하게 분포되어야 한다.</summary></entry><entry><title type="html">PU-Net: Point Cloud Upsampling Network</title><link href="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pu-net-review/" rel="alternate" type="text/html" title="PU-Net: Point Cloud Upsampling Network" /><published>2021-09-09T00:00:00+09:00</published><updated>2021-09-09T00:00:00+09:00</updated><id>https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pu-net-review</id><content type="html" xml:base="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pu-net-review/">&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;/h2&gt;
-&lt;p&gt;Key point : point당 multi-level feature들을 학습하고 multi-branch convolution unit을 통해 feature space에 implicit하게 point set을 확장한다. 이후 확장된 feature는 multitude of feature들로 분할한 뒤 upsampling된 point set로 재구성한다. 이 Network는 patch-level에서 적용되고, upsampling된 point들이 surface에 균일한 분포로 underlying할 수 있도록 하는 joint loss function을 가진다. some baseline 방법들과 optimization-based 방법들과 성능을 비교한다.&lt;/p&gt;
-
-&lt;h2 id=&quot;1-introduction&quot;&gt;1. Introduction&lt;/h2&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;span style=&quot;color:rgb(150, 150, 150)&quot;&gt;Recently, pioneering works [29, 30, 18] began to explore the possibility of reasoning point clouds by means of deep networks for understanding geometry and recognizing 3D structures. In these works, the deep networks directly extract features from the raw 3D point coordinates without using traditional features, e.g., normal and curvature.&lt;/span&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;최근, pioneering work들이 geometry를 이해하고, 3D structure를 recognize하기 위한 deep 네트워크를 통해 point cloud의 reasoning 가능성을 explore하기 시작했다. 이러한 연구들에서 deep network는 raw 3D point coordinate로부터 normal과 curvature 같은 traditional feature들 없이 바로 feature들을 추출하였다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;span style=&quot;color:rgb(150, 150, 150)&quot;&gt;First, unlike the image space, which is represented by a regular grid, point clouds do not have any spatial order and regular structure. Second, the generated points should describe the underlying geometry of a latent target object, meaning that they should roughly lie on the target object surface. Third, the generated points should be informative and should not clutter together. Having said that, the generated output point set should be more uniform on the target object surface. Thus, simple interpolation between input points cannot produce satisfactory results.&lt;/span&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Image S.R과 달라야하는 이유 : 1. Regular grid로 표현되는 image와 달린 point cloud는 spatial 순서와 regular한 구조를 전혀 가지지 않는다. 2. 생성된 point cloud는 잠재적인 대상 object의 underlying geometry를 설명해야만 하며, 이는 대상 object의 표면에 rough하게 위치해야 한다는 것을 의미한다. 3. 생성된 point들은 정보를 제공해야 하고 서로 clutter?? 해서는 안 된다. 따라서, 생성된 output point set은 target object 표면에 균일하게 있어야 하므로 단순히 input point들을 interpolation 하는 것은 만족스러운 결과를 얻을 수 없다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;span style=&quot;color:rgb(150, 150, 150)&quot;&gt;Our network, namely PU-Net, learns geometry semantics of point-based patches from 3D models, and applies the learned knowledge to upsample a given point cloud. It should be noted that unlike previous network-based methods designed for 3D point sets [29, 30, 18], the number of input and output points in our network are not the same.&lt;/span&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;PU-Net은 3D model로부터 point 기반 patch의 geometry적 semantics를 학습하고 이 지식을 주어진 point cloud를 upsampling하는데 적용한다. 이전 network-based 방법(pioneering works)과 달리, PU-Net의 input과 output point의 수는 같지 않다는 점을 유의해야 한다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;span style=&quot;color:rgb(150, 150, 150)&quot;&gt;We formulate two metrics, distribution uniformity and distance deviation from underlying surfaces, to quantitatively evaluate the upsampled point set, and test our method using variety of synthetic and real-scanned data.&lt;/span&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Upsampling된 point set을 정량적으로 평가하고 다양한 실제, 합성 data를 이용해 방법을 test하기 위해 Distribution uniformity와 underlying surfaces로부터의 거리 편차라는 두 개의 metrics를 formulate했다.&lt;/p&gt;
-
-&lt;h3 id=&quot;related-work&quot;&gt;Related work&lt;/h3&gt;
-&lt;h4 id=&quot;optimization-based-methods&quot;&gt;optimization-based methods&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Alexa et al.&lt;/strong&gt; : local 탄젠트 space의 Voronoi 다이어그램의 vertex 들을 interpolation 한 point를 이용해 point set을 upsampleing한다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Lipman et al.&lt;/strong&gt; : L1 median에 기초한 point resampling과 surface reconstruction을 위한 Locally Optimal Projection(LOP)을 제시.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Huang et al.&lt;/strong&gt; : point set density 문제를 해결하기 위한 개선된 LOP 제시.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;좋은 결과를 보여주었지만, underlying surface가 smooth하다는 강한 가정을 하였기 때문에 방법의 범위가 제한된다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Wu et al.&lt;/strong&gt; : 일관성 있는 하나의 step으로 consolidation(통합)과 completion을 합치는 deep points 표현 방법을 제안한다. 그러나 global smoothness를 강제하지 않아 큰 noise에 취약하다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;이 방법들은 data-driven 방법이 아니므로 priors(머신러닝이 아닌 방법. 이미 주어진 지식을 바탕으로 알고리즘 이용 등)에 크게 의존한다.&lt;/p&gt;
-
-&lt;h4 id=&quot;deep-learning-based-methods&quot;&gt;deep-learning-based methods&lt;/h4&gt;
-&lt;p&gt;대부분 기존의 work들은 point cloud를 volumetric grid도, geometric graph와 같은 다른 3D 표현으로 변환하여 처리한다. Qi et al. 은 처음으로 point cloud classification, segmentation을 위한 딥러닝 network를 제안했다. 다양한 방법이 있지만, To the best of our knowledge, upsampling에 초점을 둔 것은 없었다.&lt;/p&gt;
-
-&lt;h2 id=&quot;2-network-architecture&quot;&gt;2. Network Architecture&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/132798267-c60cfc2d-e67d-48b7-8113-cd495d5ea480.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;90%&quot; height=&quot;90%&quot; /&gt;&lt;/p&gt;
-&lt;center&gt;&lt;span style=&quot;color:rgb(150, 150, 150)&quot;&gt;The architecture of PU-Net&lt;/span&gt;&lt;/center&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;span style=&quot;color:rgb(150, 150, 150)&quot;&gt;Given a 3D point cloud with point coordinates in nonuniform distributions, our network aims to output a denser point cloud that follows the underlying surface of the target object while being uniform in distribution.&lt;/span&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;불균일한 분포의 point coordinate를 가진 3D point cloud가 주어진 경우, 분포가 균일하면서도 object의 underlying surface를 따라가는 높은 밀도의 point cloud를 출력하는 것을 목표로 한다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;span style=&quot;color:rgb(150, 150, 150)&quot;&gt;Our network architecture (see Fig. 1) has four components: patch extraction, point feature embedding, feature expansion, and coordinate reconstruction.&lt;/span&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Network Architecture는 4개의 component를 가진다.&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;Patch-Extraction&lt;/strong&gt; : prior 3D model들의 집합으로부터 다양한 scale과 distribution에서 point의 patch를 추출한다. – fig1과 같이 다양한 patch를 추출한다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Point Feature Embedding&lt;/strong&gt; : 계층적 feature learning과 multi-level feature aggregation(집계)을 통해 raw 3D coordinate를 feature space로 mapping한다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Feature Expansion&lt;/strong&gt; : feature의 개수를 증가시킨다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Coordinate Reconstruction&lt;/strong&gt; : F.C layer series를 통해 output point cloud의 3D coordinate를 reconstruction한다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;21-patch-extraction&quot;&gt;2.1 Patch Extraction&lt;/h3&gt;
-&lt;p&gt;Training을 위한 prior information으로 다양한 모양의 3D object들을 수집한다. 기본적으로 network가 upsampling 하기 위해서는 object로부터 local geometry pattern들을 학습해야 한다. 이것이 patch 기반 접근법을 선택한 motive이다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;span style=&quot;color:rgb(150, 150, 150)&quot;&gt;In detail, we randomly select M points on the surface of these objects. From each selected point, we grow a surface patch on the object, such that any point on the patch is within a certain geodesic distance (d) from the selected point over the surface. Then, we use Poisson disk sampling to randomly generate N_hat points on each patch as the referenced ground truth point distribution on the patch. In our upsampling task, both local and global context contribute to a smooth and uniform output. Hence, we set d with varying sizes, so that we can extract patches of points on the prior objects with varying scale and density.&lt;/span&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Detail. object의 surface에서 random하게 $M$개의 point를 선택한다. 각각 선택된 point의 object 표면에서의 patch는, patch 내의 모든 점이 선택된 point로부터 certain geodesic distance $(d)$ 내에 있도록 생성한다. 그리고 나서 ground truth의 patch 내 point 분포를 기준으로 하여 Poisson disk sampling을 이용해 각 patch에 $\hat{N}$개의 point를 생성한다. 이 Upsampling task에서 local 및 global context 모두 output이 smooth하고 uniform하도록 기여한다. 우리는 $d$를 다양한 크기로 설정하여 prior object에서 다양한 scale과 density로 point들의 patches를 추출할 수 있도록 하였다.&lt;/p&gt;
-
-&lt;h3 id=&quot;22-point-feature-embedding&quot;&gt;2.2	Point Feature Embedding&lt;/h3&gt;
-&lt;p&gt;patch로부터 Local 및 global geometry context를 학습하기 위해 다음 두 feature learning 전략을 사용하였으며, 그 이점들로 서로 보완한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Hierarchical feature learning.&lt;/strong&gt; PointNet++의 계층적 feature 학습 메커니즘을 네트워크의 가장 frontal한 부분으로 채택한다. 계층적 feature 학습을 채택하기 위해 각 level에서 상대적으로 작은 grouping 반경을 사용한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Multi-level feature aggregation&lt;/strong&gt; network의 lower layer일수록 더 작은 local feature에 대응되고 그 반대도 마찬가지이다. 더 좋은 upsampling 결과를 위해 여기서는 서로 다른 level의 feature들을 optimal 하게 종합해야 한다.  몇몇 기존의 연구들은 cascaded multi-level feature 종합을 위해 skip-connection을 사용하였지만 이러한 top-down propagation 방식은 upsampling 문제에는 효율적이지 않았다. 그래서 여기서는  서로 다른 level의 feature들을 직접 결합하고, network가 각 level의 중요성을 배울 수 있도록 하였다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;span style=&quot;color:rgb(150, 150, 150)&quot;&gt;Since the input point set on each patch (see point feature embedding in Fig. 1) is subsampled gradually in hierarchical feature extraction, we concatenate the point features from each level by first restoring the features of all original points from the downsampled point features by the interpolation method in PointNet++&lt;/span&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;각 patch에 설정된 input point는 hierarchical feature extraction에서 점진적으로 subsampling 되므로 PointNet++의 interpolation 방법에 의해 downsampling된 모든 original point들의 feature를 처음으로 복원하여 각 level에서 point feature들을 concatenate한다. 특히 level $\ell$에 있는 interpolated된 point $x$의 feature는 다음 식에 의해 계산된다 :&lt;/p&gt;
-
-\[f^{(\ell)}(x)=\frac{\sum_{i=1}^{3}w_{i}(x)f^{(\ell)}(x_{i})}{\sum_{i=1}^{3}w_{i}(x)}\]
-
-&lt;p&gt;$w$는 inverse distance weight인 $w_{i}(x) = 1/d(x,x_{i})$으로 정의되고, $x_{1}, x_{2}, x_{3}$는 level $\ell$에서 $x$에서 가장 가까운 3개의 point이다. 이후 1X1 convolution을 이용해 서로 다른 level의 interpolated feature를 동일한 차원 $C$로 축소한다. 최종적으로 각 level의 feature들을 embedded point feature $f$로 concatenate 한다.&lt;/p&gt;
-&lt;h3 id=&quot;23-feature-expansion&quot;&gt;2.3	Feature Expansion&lt;/h3&gt;
-&lt;p&gt;Point Feature Embedding 이후 feture space에서 feature의 수를 증가시킨다. &lt;em&gt;point&lt;/em&gt;와 &lt;em&gt;feature&lt;/em&gt;은 서로 &lt;em&gt;interchangeable&lt;/em&gt;하기 때문에  이는 point의 수를 증가시키는 것과 같다. $f$의 차원이 $N\times \tilde{C}$일 때, $N$은 input point의 수이고, $\tilde{C}$는 concatenate된 embedded feature의 feature dimension이다.
-feture expansion으로 $rN\times \tilde{C_{2}}$의 차원으로 feature ${f}’$을 출력한다. &lt;br /&gt;
-여기서 $r$은 upsampling rate이고, $\tilde{C_{2}}$는 새로운 feature dimension이다.
- 이미지와의 다른 특성으로 인해 sub-pixel convolution layer 기반의 효과적인 feature expansion을 제안한다. 이는 다음과 같이 표현된다 :&lt;/p&gt;
-
-\[{f}&apos;=\mathcal{RS}(\;[\,C_{1}^{2}(C_{1}^{1}(f)),\,...\,, C_{r}^{2}(C_{r}^{1}(f))\,]\;)\]
-
-&lt;p&gt;$C_{i}^{1}(\cdot), C_{i}^{2}(\cdot)$는 두 set의 분리된 1X1 convolution이고, $\mathcal{RS}(\cdot)$는 $N\times r\tilde{C_{2}}$에서 $rN\times \tilde{C_{2}}$로  reshape 하는 operation이다.&lt;/p&gt;
-
-&lt;p&gt;각 set의 첫 번째 convolution $C_{i}^{1}(\cdot)$로 생성된 feature set $r$은 높은 correlation을 가지고, 이로 인해 최종적으로 reconstructed된 3D point들이 서로 너무 가깝게 위치한다. 따라서 각 feature set에 대해 또 다른 convolution(별개의 weight를 가진)을 추가한다. 이렇게 $r$개의 feature sets에 대해 $r$개의 서로 다른 convolution이 학습되도록 network를 훈련시키므로, 새로운 feature들이 더 다양한 정보를 포함할 수 있어 correlation을 줄일 수 있다. 이 feature expansion 작업은 그림과 같이 $r$개의 feature set들을 각각 분리된 convolution을 적용하여 구현될 수 있고, 계산적으로 효율적인 그룹화된 convolution을 통해 구현될 수 있다.&lt;/p&gt;
-&lt;h3 id=&quot;24-cordiante-reconstruction&quot;&gt;2.4 Cordiante Reconstruction&lt;/h3&gt;
-&lt;p&gt;여기서는 $rN\times \tilde{C_{2}}$로 확장된 feature로부터 output point들의  3D coordinate를 재구성한다. 특히, 각 point의 feature를 FC layer들을 통과시켜 3D coordinate를 regression한다. 그 결과 최종적으로  upsampling된 $rN\times 3$의  point 좌표를 출력한다.&lt;/p&gt;
-
-&lt;p&gt;처음으로 제안된 입력과 출력이 모두 3D 좌표의 point set인 end-to-end point set upsampling network. 기존에는 related work 부분.
-object로부터 local geometry pattern을 학습하기 위해 계층적으로 학습하며 작은 local feature와 큰 local feature들을 다양하게 학습한다. 이후 feature space에서 feature의 수를 증가시켜 upsampling을 수행한다.&lt;/p&gt;</content><author><name>KYG</name></author><category term="논문" /><summary type="html">Abstract Key point : point당 multi-level feature들을 학습하고 multi-branch convolution unit을 통해 feature space에 implicit하게 point set을 확장한다. 이후 확장된 feature는 multitude of feature들로 분할한 뒤 upsampling된 point set로 재구성한다. 이 Network는 patch-level에서 적용되고, upsampling된 point들이 surface에 균일한 분포로 underlying할 수 있도록 하는 joint loss function을 가진다. some baseline 방법들과 optimization-based 방법들과 성능을 비교한다.</summary></entry><entry><title type="html">기타 정리</title><link href="https://shvtr159.github.io/ml/point-cloud-feature/" rel="alternate" type="text/html" title="기타 정리" /><published>2021-07-28T00:00:00+09:00</published><updated>2021-07-28T00:00:00+09:00</updated><id>https://shvtr159.github.io/ml/point-cloud-feature</id><content type="html" xml:base="https://shvtr159.github.io/ml/point-cloud-feature/">&lt;h2 id=&quot;cnn-연산&quot;&gt;CNN 연산&lt;/h2&gt;
-&lt;p&gt;3차원의 합성곱 연산에서 3차원 데이터의 모양은 (채널, 높이, 너비) 또는 (높이, 너비, 채널)과 같은 순서로 쓴다.  필터도 마찬가지로 하여 합성곱의 출력은 다음과 같다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/133269875-502f2f87-f493-4330-8d20-6b21beb26478.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;위 이미지에서는 출력 데이터의 채널이 1인데 다수의 채널을 내보내기 위해서는 다음과 같이 여러개의 필터를 사용하면 &lt;strong&gt;필터 갯수만큼의 채널이 생성&lt;/strong&gt;된다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/133270157-b3de61c8-f1fb-4b53-b282-0300cbaaaa14.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;bias는 다음과 같이 대응 채널의 원소에 모두 더해지므로 차원에는 변화가 없다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/133270362-c61205c2-c459-44fe-927d-8147ed63041c.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;배치-처리&quot;&gt;배치 처리&lt;/h3&gt;
-&lt;p&gt;배치 처리를 지원하기 위해 데이터의 차원을 하나 늘려 4차원 데이터로 저장한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/133270577-6679a8ce-ffe9-4819-832d-76f87c564e01.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이렇게 되면 신경망에 4차원 데이터가 하나 흐를 때마다 데이터 N개에 대한 합성곱 연산이 이루어진다. 즉 N회 분의 처리를 한번에 수행한다.&lt;/p&gt;
-&lt;h2 id=&quot;feature-detector-vs-feature-descriptor&quot;&gt;feature detector vs feature descriptor&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;featrue detector&lt;/strong&gt; : interest point (key point, salient point) detector는 어떤 criterion에 따라 point를 선택하는 알고리즘이다. 일반적으로 interest point는 “cornerness” metric과 같이 어떤 함수의 local maximum을 의미한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;feature descriptor&lt;/strong&gt; : descriptor는 interest point의 주변 image patch를 설명하는 value의 vector이다. 이는 raw pixel value처럼 단순하거나, gradient orientation의 히스토그램처럼 복잡할 수 있다.&lt;/p&gt;
-
-&lt;p&gt;일반적으로 interest point와 해당 descriptor를 합쳐서 &lt;strong&gt;local feature&lt;/strong&gt;라고 한다. local feature는 registration, 3D reconstruction, object detection/recognition 등에 사용된다.&lt;/p&gt;
-
-&lt;p&gt;즉, Harris, Min Eigen, FAST 등은 interest point detector, 자세히는 corner detector라고 할 수 있다. SIFT는 detector와 descriptor 둘 다 포함하는데, detector는 DoG를 base로 blob-like 구조의 중심을 detect하고,  gradient orientation의 히스토그램을 base로 descriptor의 역할을 수행한다.&lt;/p&gt;</content><author><name>KYG</name></author><category term="ML" /><summary type="html">CNN 연산 3차원의 합성곱 연산에서 3차원 데이터의 모양은 (채널, 높이, 너비) 또는 (높이, 너비, 채널)과 같은 순서로 쓴다. 필터도 마찬가지로 하여 합성곱의 출력은 다음과 같다.</summary></entry></feed>
+&lt;a name=&quot;footnote_6&quot;&gt;6&lt;/a&gt;: 1개의 히든 레이어를 가진 Neural Network를 이용해 어떠한 함수든 근사시킬 수 있다는 이론. 당연히 활성화 함수는 비선형 함수여야 한다&lt;/p&gt;</content><author><name>KYG</name></author><category term="논문" /><summary type="html">Abstract 기존에는 point cloud의 irregular한 형식때문에 regular한 3D voxel grid 또는 collection of images로 바꿔 사용하곤 했지만 이것은 불필요하게 많은 data가 렌더링 되는 문제가 있다. 그래서 여기서는 point cloud를 바로 사용하며 input point들의 permutation invariance1를 잘 고려하는 neural network를 설계하였다. PointNet은 object detection, part segmentation, scene semantic parsing에 이르는 application들을 위한 통일된 구조를 제공한다. 또한, 이론적으로, network가 무엇을 학습했는지와 network가 왜 perturbation(noise와 유사)과 corruption에 robust한지 이해하기 위한 분석을 제공한다.</summary></entry></feed>

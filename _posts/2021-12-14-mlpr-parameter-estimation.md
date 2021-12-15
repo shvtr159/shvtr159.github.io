@@ -1,5 +1,5 @@
 ---
-title: "[MLPR #] Parameter Estimation"
+title: "[MLPR #] Parameter Estimation 1 (미완)"
 categories:
 - MLPR
 use_math: true
