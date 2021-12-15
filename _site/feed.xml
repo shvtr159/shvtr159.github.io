@@ -1,4 +1,42 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://shvtr159.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shvtr159.github.io/" rel="alternate" type="text/html" /><updated>2021-12-13T19:46:00+09:00</updated><id>https://shvtr159.github.io/feed.xml</id><title type="html">Study Blog</title><subtitle>for study</subtitle><author><name>KYG</name></author><entry><title type="html">[MLPR #] Bayes Classifiers</title><link href="https://shvtr159.github.io/mlpr/mlpr-bayes-classifiers/" rel="alternate" type="text/html" title="[MLPR #] Bayes Classifiers" /><published>2021-10-26T00:00:00+09:00</published><updated>2021-10-26T00:00:00+09:00</updated><id>https://shvtr159.github.io/mlpr/mlpr-bayes-classifiers</id><content type="html" xml:base="https://shvtr159.github.io/mlpr/mlpr-bayes-classifiers/">&lt;p&gt;discriminant decision $g_i(\underline{x})$를 이용하여 모든 $i \neq j$에 대해 $g_i(\underline{x})&amp;gt;g_j(\underline{x})$ 분류를 사용한다. 이를 probability term으로 표현하면&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://shvtr159.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shvtr159.github.io/" rel="alternate" type="text/html" /><updated>2021-12-15T20:09:34+09:00</updated><id>https://shvtr159.github.io/feed.xml</id><title type="html">Study Blog</title><subtitle>for study</subtitle><author><name>KYG</name></author><entry><title type="html">[MLPR #] Parameter Estimation</title><link href="https://shvtr159.github.io/mlpr/mlpr-parameter-estimation/" rel="alternate" type="text/html" title="[MLPR #] Parameter Estimation" /><published>2021-12-15T00:00:00+09:00</published><updated>2021-12-15T00:00:00+09:00</updated><id>https://shvtr159.github.io/mlpr/mlpr-parameter-estimation</id><content type="html" xml:base="https://shvtr159.github.io/mlpr/mlpr-parameter-estimation/">&lt;p&gt;이전까지는 모든 statistics과 probability(prior probabiliteis, class-conditional densities(likelihood) 등)를 알 때 Bayes Classifier를 이용해 data가 어디에 속하는지 분류할 수 있었다. 그러나 이렇게 모든 statistics를 아는 상황은 드물기 때문에 data로부터 이를 추정해야만 한다. priori를 모른다고 가정할 때 다음 두 technique를 이용하여 $p(x\mid S_{i})$를 추정할 수 있다.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Parametric&lt;/strong&gt; : $p(x\mid S_{i})$의 form을 알거나, 안다고 가정할 때 함수의 parameter를 추정한다. 예를 들어$p(x\mid S_{i})=N(x,m_i,\Sigma_i)$인 Gaussian 함수라고 할 때, training sample로부터 $m_i,\Sigma_i$를 추정하는 것이다. 이 방법에는 &lt;strong&gt;Maximum likelyhood estimation(최대 우도 추정)&lt;/strong&gt; 과 &lt;strong&gt;Maximum a Posterior (MAP) estimation(최대 사후 확률 추정)&lt;/strong&gt; (Bayesian estimation)이 있다.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Nonparametric&lt;/strong&gt; : density에 대한 정보도 없이 data만 있을때로 data로부터 density function을 추정한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;ML과 Bayesian의 주된 차이점은 ML는 paramter가 확실히 정해져 있지만 우리가 모르고 있다는 관점이고, bayesian은 parameter 자체를 random variable로 본다. bayesian learning은 parameter의 true value와 가까울수록 peak값에 가까워지므로 추가적인 sample이 들어오면 더 좋은 posteriori density로 update할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/146154164-1aed9de4-b178-421d-849e-d147df19da1a.png&quot; alt=&quot;image&quot; width=&quot;40%&quot; height=&quot;40%&quot; /&gt;
+&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/146154305-28796a2e-df6c-429c-9c83-3ed53da102f3.png&quot; alt=&quot;image&quot; width=&quot;55%&quot; height=&quot;55%&quot; /&gt;&lt;center&gt;&lt;span style=&quot;color:rgb(150, 150, 150)&quot;&gt;Left: ML. true에 가까울수록 높다. / Right: MAP. sample이 많아질수록 peak에 가까워진다.&lt;/span&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;해당 방법들에 대해 알아보기 전에 추정에 대해 간단히 알아본다.&lt;/p&gt;
+
+&lt;p&gt;먼저 $\underline{\theta }$를 고정돼있지만 우리가 지금 모르는 parameter들의 vector라고 하자(ex. 평균 or 분산). 그리고 $\hat{\underline{\theta }}$은 $\underline{\theta }$의 추정값이라고 한다. $\underline{\theta }$는 결정되어있고, $\hat{\underline{\theta }}$는 random하다.&lt;/p&gt;
+
+&lt;p&gt;또, $x_1, x_2, …$를 우리가 추정할 density로부터 추출한 random sample vector라고 한다. 각각의 $x_i$들은 iid(independent, identically, distributed)하다고 가정한다.&lt;/p&gt;
+
+&lt;p&gt;이제 $\underline{z}=[x_1, x_2, … , x_J]$라 하면, $\hat{\underline{\theta }}=G(x_1, x_2, … , x_J)=G(\underline{z})=\hat{\underline{\theta }}(z)$으로 어떤한 process $G$를 수행하여 랜덤한 추정값을 얻게 되는 것이다.&lt;/p&gt;
+
+&lt;h3 id=&quot;좋은-추정값의-특성&quot;&gt;좋은 추정값의 특성&lt;/h3&gt;
+&lt;h4 id=&quot;1-unbiased-estimate&quot;&gt;1. Unbiased estimate&lt;/h4&gt;
+&lt;p&gt;가장 중요한 성질. 기대값 $E(\hat{\theta})=\theta$이면 이를 unbiased estimate라고 한다. 표본 평균은 unbiased estimate이나 표본 분산은 biased estimate 이다.&lt;/p&gt;
+
+&lt;h4 id=&quot;2-consistent-estimate&quot;&gt;2. Consistent estimate&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/146173297-87140ccb-0add-4190-b829-e5e1c7e5e974.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;
+표본의 크기가 커질수록 추정값이 실제 값 $\underline{\theta}$에 가까워지는 성질.&lt;/p&gt;
+
+&lt;h4 id=&quot;3-efficient-estimate&quot;&gt;3. Efficient estimate&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/146173820-90aed70d-1f20-41f9-9bab-e8f935a54d68.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;
+추정값의 분산이 작게 나타나는 성질으로 추정값의 분산이 작을수록 더  efficient하다고 할 수 있다.&lt;sup&gt;&lt;a href=&quot;#footnote_1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;4-sufficient-estimate&quot;&gt;4. Sufficient estimate&lt;/h4&gt;
+&lt;p&gt;추정값이 $\underline{\theta}$에 대해 많은 정보를 포함하는지에 대한 성질.&lt;/p&gt;
+
+&lt;h2 id=&quot;maximum-likelihood&quot;&gt;Maximum-Likelihood&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a name=&quot;footnote_1&quot;&gt;1&lt;/a&gt;: 이미지 출처 : 정보통신기술용어해설 http://www.ktword.co.kr/test/view/view.php?m_temp1=458&lt;br /&gt;&lt;/p&gt;</content><author><name>KYG</name></author><category term="MLPR" /><summary type="html">이전까지는 모든 statistics과 probability(prior probabiliteis, class-conditional densities(likelihood) 등)를 알 때 Bayes Classifier를 이용해 data가 어디에 속하는지 분류할 수 있었다. 그러나 이렇게 모든 statistics를 아는 상황은 드물기 때문에 data로부터 이를 추정해야만 한다. priori를 모른다고 가정할 때 다음 두 technique를 이용하여 $p(x\mid S_{i})$를 추정할 수 있다. Parametric : $p(x\mid S_{i})$의 form을 알거나, 안다고 가정할 때 함수의 parameter를 추정한다. 예를 들어$p(x\mid S_{i})=N(x,m_i,\Sigma_i)$인 Gaussian 함수라고 할 때, training sample로부터 $m_i,\Sigma_i$를 추정하는 것이다. 이 방법에는 Maximum likelyhood estimation(최대 우도 추정) 과 Maximum a Posterior (MAP) estimation(최대 사후 확률 추정) (Bayesian estimation)이 있다. Nonparametric : density에 대한 정보도 없이 data만 있을때로 data로부터 density function을 추정한다.</summary></entry><entry><title type="html">[MLPR #] Bayes Classifiers</title><link href="https://shvtr159.github.io/mlpr/mlpr-bayes-classifiers/" rel="alternate" type="text/html" title="[MLPR #] Bayes Classifiers" /><published>2021-10-26T00:00:00+09:00</published><updated>2021-10-26T00:00:00+09:00</updated><id>https://shvtr159.github.io/mlpr/mlpr-bayes-classifiers</id><content type="html" xml:base="https://shvtr159.github.io/mlpr/mlpr-bayes-classifiers/">&lt;p&gt;discriminant decision $g_i(\underline{x})$를 이용하여 모든 $i \neq j$에 대해 $g_i(\underline{x})&amp;gt;g_j(\underline{x})$ 분류를 사용한다. 이를 probability term으로 표현하면&lt;/p&gt;
 
 \[g_i(\underline{x})=p(S_i \mid \underline{x})\]
 
@@ -551,110 +589,4 @@ object로부터 local geometry pattern을 학습하기 위해 계층적으로 �
 
 &lt;p&gt;일반적으로 interest point와 해당 descriptor를 합쳐서 &lt;strong&gt;local feature&lt;/strong&gt;라고 한다. local feature는 registration, 3D reconstruction, object detection/recognition 등에 사용된다.&lt;/p&gt;
 
-&lt;p&gt;즉, Harris, Min Eigen, FAST 등은 interest point detector, 자세히는 corner detector라고 할 수 있다. SIFT는 detector와 descriptor 둘 다 포함하는데, detector는 DoG를 base로 blob-like 구조의 중심을 detect하고,  gradient orientation의 히스토그램을 base로 descriptor의 역할을 수행한다.&lt;/p&gt;</content><author><name>KYG</name></author><category term="ML" /><summary type="html">CNN 연산 3차원의 합성곱 연산에서 3차원 데이터의 모양은 (채널, 높이, 너비) 또는 (높이, 너비, 채널)과 같은 순서로 쓴다. 필터도 마찬가지로 하여 합성곱의 출력은 다음과 같다.</summary></entry><entry><title type="html">[Computer Graphics #10] Texture Mapping</title><link href="https://shvtr159.github.io/graphics/computer-graphics-10-texture-mapping/" rel="alternate" type="text/html" title="[Computer Graphics #10] Texture Mapping" /><published>2021-05-28T00:00:00+09:00</published><updated>2021-05-28T00:00:00+09:00</updated><id>https://shvtr159.github.io/graphics/computer-graphics-10-texture-mapping</id><content type="html" xml:base="https://shvtr159.github.io/graphics/computer-graphics-10-texture-mapping/">&lt;p&gt;실제로 모델을 만들 때는 vertex의 색으로 칠하는 것으로는 완벽하지 않다. 때문에 이에 맞는 texture를 모델에 입히는 과정이 필요하다. 각  geometry의 surface에 일치하는 real object의 부분의 polygon을 입혀준다.&lt;/p&gt;
-
-&lt;h2 id=&quot;mapping&quot;&gt;Mapping&lt;/h2&gt;
-&lt;p&gt;이때 다음과 같은 u, v의 Texture Coordinates를 사용한다. 
-&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/119942715-2121db80-bfcd-11eb-8167-b3d306bc2f19.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;80%&quot; height=&quot;80%&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;weight를 이용해 model에서 vertex 위치를  interpolation 하면 model의 좌표에서 이미지의 좌표값이 나오므로 해당 이미지 좌표의 color값을 사용하면 된다. 이 interpolation을 수행하기 위해  위와 같이 내부의 값을 사용한다. 각 꼭짓점의 weight를 가지는데 이 weight는 반대편의 삼각형의 넓이에 의해 결정된다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/119943119-9097cb00-bfcd-11eb-9751-1d9ea40e622d.png&quot; alt=&quot;image&quot; width=&quot;45%&quot; height=&quot;45%&quot; /&gt; &lt;img src=&quot;https://user-images.githubusercontent.com/79836443/119943181-a5745e80-bfcd-11eb-812e-b644afe0f334.png&quot; alt=&quot;image&quot; width=&quot;45%&quot; height=&quot;45%&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;그러나 이미지 자체도 continuois하지 않기 때문에 u,v의 값이 보통 픽셀 사이로  떨어진다. 그럼 다시 이미지값에서도 interpolation을 수행하여 그 값을 계산한다. 이때는 &lt;strong&gt;pixel의 RGB color을 bilinear interpolation&lt;/strong&gt;하여 값을 알아낸다.&lt;/p&gt;
-
-&lt;h2 id=&quot;screen-space-vs-world-space&quot;&gt;Screen Space vs. World Space&lt;/h2&gt;
-&lt;p&gt;그러나 실제로 우리는 3D space 상에 존재하는 triangle이 2D인 screen에 projection된 모습을 보게 된다. 때문에 우리가 원하는 아래와 같이 실제 보고 싶은 모습과 달라진다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/119944686-8971bc80-bfcf-11eb-92f0-b972bf24e5a5.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;75%&quot; height=&quot;75%&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;그 이유는 아래 triangle’s edge 부분이 3D상에서 실제 triangle의 상태인데, projection된 상태에서 interpolation하고 texture mapping을 수행했기 때문에 실제 triangle과는 달라지기 때문이다. 아래 사진을 보면 triangle’s Edge 부분의 선들(vertex간의 거리)은 모두 같은 길이를 가지고 있다. 그러나 projectino된 결과를 보면 그 관계가 유지되지 않는다. 그러면 Triangle에서 직접 수행하면 될 것 같지만 이는 3차원 공간에서 해야 하므로 쉽지 않다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/119945406-5f6cca00-bfd0-11eb-9659-a3ec4d60bd9e.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;75%&quot; height=&quot;75%&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이는 어떻게 projection이 되는지 관계를 알면 back projection을 수행하여 더 좋게 만들 수 있다.&lt;/p&gt;
-
-&lt;h3 id=&quot;solution&quot;&gt;Solution&lt;/h3&gt;
-&lt;h4 id=&quot;1-mesh-refinement&quot;&gt;1. Mesh Refinement&lt;/h4&gt;
-&lt;p&gt;그렇다면 triangle을 나눠서 수를 늘리고, 개수를 늘리면 더 좋아지지 않을까. 하는 생각으로 늘려보았다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/119946977-2c2b3a80-bfd2-11eb-96e8-f73eded537f3.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;75%&quot; height=&quot;75%&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;그 결과 처음보다는 좀 더 나아진 것 같지만 여전히 문제가 발생하고 있다. 또한, plat한 평면에 대해서는 triangle의 수를 늘리는 것은 더 좋지 않다.&lt;/p&gt;
-&lt;h4 id=&quot;2-screen-space-barycentric-interpolation&quot;&gt;2. Screen Space Barycentric Interpolation&lt;/h4&gt;
-&lt;p&gt;그래서 결국 힘들더라도 back projection을 수행한다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;world coordinate의 각 끝 point(위 projection 이미지에서 v1, v2)의 x, y, z에서 일단 x, z축을 다음과 같이 본다.&lt;/li&gt;
-&lt;/ul&gt;
-
-\[p^{w}_{1}=\begin{pmatrix}
-x_{1}\\ z_{1}
-\end{pmatrix}\qquad
-p^{w}_{2}=\begin{pmatrix}
-x_{2}\\ z_{2}
-\end{pmatrix}\]
-
-&lt;ul&gt;
-  &lt;li&gt;이 point를 screen으로 projection한다. 이 projection으로 $V_{1},V_{2}$가 $p_{1},p_{2}$로 projection 된다.&lt;/li&gt;
-&lt;/ul&gt;
-
-\[p_{1}=\frac{hx_{1}}{z_{1}}\qquad
-p_{2}=\frac{hx_{2}}{z_{2}}\qquad(1)\]
-
-&lt;ul&gt;
-  &lt;li&gt;world coordiante에서의 point는 다음과 같이 나타난다.&lt;/li&gt;
-&lt;/ul&gt;
-
-\[p^{w}=(1-s)\begin{pmatrix}
-x_{1}\\ z_{1}
-\end{pmatrix}+s\begin{pmatrix}
-x_{2}\\ z_{2}
-\end{pmatrix}\qquad\]
-
-&lt;ul&gt;
-  &lt;li&gt;이 $p^{w}(s)$를 screen space로 projection한 것의 위치는 다음과 같이나타난다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;center&gt;$$SCREE\_\,SPACE(p^{w}(s))) =h\frac{(1-s)x_{1}+sx_{2}}{(1-s)z_{1}+sz_{2}}\qquad(2)$$&lt;/center&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;이제 식 (1)과 (2)의 관계를 나타내면 다음과 같이 나타나는데 h는 고정된 값이므로 t와 s의 관계를 알아내면 된다.&lt;/li&gt;
-&lt;/ul&gt;
-
-\[(1-t)\frac{hx_{1}}{z_{1}}+t\frac{hx_{2}}{z_{2}}=h\frac{(1-s)x_{1}+sx_{2}}{(1-s)z_{1}+sz_{2}}\]
-
-&lt;ul&gt;
-  &lt;li&gt;이를 정리하여 s와 t가 다음과 같은 관계를 가지는것을 찾을 수 있다. 즉 실제 world s에서 이런 coordinate를 알고 싶다면 screen에서 이 t를 사용하면 된다. 이 t는 $z_{1}$과 $z_{2}$에 의해 결정된다. 이 식에 $z_{1}$ $z_{2}$을 넣고 s를 계산해 낸다. 이것이 world와 screen에서 사용할 weight값을 계산한 것이다.&lt;/li&gt;
-&lt;/ul&gt;
-
-\[s=\frac{tz_{1}}{z_{2}+t(z_{1}-z_{2})}\]
-
-&lt;ul&gt;
-  &lt;li&gt;이것은 point에서 수행한 것이므로 이제 triangle에서 수행할 때는 다음과 같이 weight가 2개로 나타난다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/119958859-66023e00-bfde-11eb-980c-7e0f39b5602c.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;75%&quot; height=&quot;75%&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;proxy--objects&quot;&gt;Proxy  Objects&lt;/h3&gt;
-&lt;p&gt;그러나 model이 복잡해지면 해당 위치에 어떤 이미지를 넣어야 하는지 하나하나 직접 할 수가 없다. 때문에 이렇게 복잡하게 하지 않아도 되는(예를 들면 반복되는 패턴)이라면 적절히 approximation하여 할당할 수 있다.&lt;/p&gt;
-
-&lt;h4 id=&quot;step-1&quot;&gt;Step 1.&lt;/h4&gt;
-&lt;p&gt;이를 위해 coordinate를 적당히 simplify한다. 예를 들면 각 면마다 모두 matrix를 계산하기에는 복잡하므로 원통, 직육면체 등 간단한 모습으로 생각하고 어떻게 projection하는지 나타내고 씌운다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/119965589-64884400-bfe5-11eb-8560-a41517ead7aa.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;75%&quot; height=&quot;75%&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;step-2&quot;&gt;Step 2.&lt;/h4&gt;
-&lt;p&gt;그러나 실제로는 원통이 아니므로 실제 model의 surface에 mapping을 해야한다. 이 때는 model이 간단하다면 (a)와 같이, 좀 더 복잡하면 model의 surface normal 방향의 값을(b), overlab이 없다면 (c)와 같은 방법으로 수행할 수 있다&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/119965893-b7fa9200-bfe5-11eb-841d-44f550299819.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;75%&quot; height=&quot;75%&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;aliasing&quot;&gt;Aliasing&lt;/h2&gt;
-&lt;p&gt;texture를 할당하고 난 후 나타날수 있는 가장 큰 문제점중 하나로, 내 texture가 가진 복잡도와 실제 vertex의 복잡도가 부합하지 않을 때 나타난다. 예를들어 이미지는 매우 복잡한데 vertex가 그에 미치지 못하면 원하지 않는 패턴이 생기게 된다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/119966169-00b24b00-bfe6-11eb-96eb-2f7d1064418d.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;75%&quot; height=&quot;75%&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;예를 들어 체스판 무늬에 경우로 보면 vertex가 많지 않다면 검정색 vertex 이후 vertex의 위치가  흰색에 위치하지 못하고 다음검정색 이미지 좌표에 위치해 다시 검정이 나오는 것처럼 듬성듬성 잘못된 값을 가져오게 된다.&lt;/p&gt;
-
-&lt;p&gt;이를 해결하기 위해 vertex 복잡도에 맞게 작은 vertex에서도 사용할만 한 작은 size의 이미지를  각각 만들어준 뒤 그 이미지를 사용한다. 이 때, 한 방향으로만 작아지는 것은 MIP map, x, y 모든 방향으로 작아지는 것을 가지고 있는것을 RIP map 이라고 한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/119966937-c7c6a600-bfe6-11eb-8bf3-3dceb22dfa69.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;75%&quot; height=&quot;75%&quot; /&gt;&lt;/p&gt;</content><author><name>KYG</name></author><category term="Graphics" /><summary type="html">실제로 모델을 만들 때는 vertex의 색으로 칠하는 것으로는 완벽하지 않다. 때문에 이에 맞는 texture를 모델에 입히는 과정이 필요하다. 각 geometry의 surface에 일치하는 real object의 부분의 polygon을 입혀준다.</summary></entry></feed>
+&lt;p&gt;즉, Harris, Min Eigen, FAST 등은 interest point detector, 자세히는 corner detector라고 할 수 있다. SIFT는 detector와 descriptor 둘 다 포함하는데, detector는 DoG를 base로 blob-like 구조의 중심을 detect하고,  gradient orientation의 히스토그램을 base로 descriptor의 역할을 수행한다.&lt;/p&gt;</content><author><name>KYG</name></author><category term="ML" /><summary type="html">CNN 연산 3차원의 합성곱 연산에서 3차원 데이터의 모양은 (채널, 높이, 너비) 또는 (높이, 너비, 채널)과 같은 순서로 쓴다. 필터도 마찬가지로 하여 합성곱의 출력은 다음과 같다.</summary></entry></feed>

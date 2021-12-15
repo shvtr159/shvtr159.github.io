@@ -148,4 +148,10 @@ var store = [{
         "tags": [],
         "url": "/mlpr/mlpr-bayes-classifiers/",
         "teaser": null
+      },{
+        "title": "[MLPR #] Parameter Estimation",
+        "excerpt":"이전까지는 모든 statistics과 probability(prior probabiliteis, class-conditional densities(likelihood) 등)를 알 때 Bayes Classifier를 이용해 data가 어디에 속하는지 분류할 수 있었다. 그러나 이렇게 모든 statistics를 아는 상황은 드물기 때문에 data로부터 이를 추정해야만 한다. priori를 모른다고 가정할 때 다음 두 technique를 이용하여 $p(x\\mid S_{i})$를 추정할 수 있다. Parametric : $p(x\\mid S_{i})$의 form을 알거나,...","categories": ["MLPR"],
+        "tags": [],
+        "url": "/mlpr/mlpr-parameter-estimation/",
+        "teaser": null
       }]
