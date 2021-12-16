@@ -168,7 +168,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[MLPR #] Unsupervised Classification 1 (미완)",
-        "excerpt":"16에 전체 목차 chain method of clustering  ","categories": ["MLPR"],
+        "excerpt":"Supervised 에서는 data에 label도 있고 전체 class의 갯수를 알 수 있기때문에 data로부터 그 분포를 추정할 수 있었다. unsupervised classification은 이러한 정보가 없을 때 data를 구분하는 방법이다. Unknown targets를 분류하는 방법에는 다양한 방법이 있는데 다음과 같은 방법이 있다. Criterion function 방법 : Sum of squared error, Min. variance, Scatter matrices, Optimization...","categories": ["MLPR"],
         "tags": [],
         "url": "/mlpr/mlpr-unsupervised-classification-1/",
         "teaser": null
