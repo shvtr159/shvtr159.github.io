@@ -1,10 +1,9 @@
 ---
-title: "[MLPR #] Unsupervised Classification 1 (미완)"
+title: "[MLPR #] Unsupervised Classification 1 (fisher)"
 categories:
 - MLPR
 use_math: true
 toc: true
-toc_sticky: false
 ---
 
 Supervised 에서는 data에 label도 있고 전체 class의 갯수를 알 수 있기때문에 data로부터 그 분포를 추정할 수 있었다. unsupervised classification은 이러한 정보가 없을 때 data를 구분하는 방법이다. 
@@ -14,9 +13,9 @@ Unknown targets를 분류하는 방법에는 다양한 방법이 있는데 다�
 3. Unmixing 방법 : Gaussian mixture, PCA, ICA
 
 앞으로 다음 순서로 진행하며 unsupervised classification 방법에 대해 알아본다.
-- Similarity and Similarity Measures
-- Chain Method of Clustering
-- Clustering Criterion Functions
+- **Similarity and Similarity Measures**
+- **Chain Method of Clustering**
+- **Clustering Criterion Functions**
 - Iterative Optimization
 - Clustering procedure – basic min. squared error
 - K-means Clustering
@@ -34,9 +33,9 @@ Unknown targets를 분류하는 방법에는 다양한 방법이 있는데 다�
 클러스터링 결과를 Euclidean distance를 이용하여 측정하게 된다면 feature space에서의 translationis이나 rotation과 같은 변환에는 결과에 차이가 없지만, 일반적으로 scaling과 같은 선형 변환에 따라 결과가 변형되기 때문에 조심해야한다.
 
 다른 similarity  측정 방법
-- Angular Similarity<br>
+- **Angular Similarity**<br>
 nonmetric similarity function으로 $S(x_i,x_j)=x_i^Tx_j/\left \|x_i  \right \|\left \|x_j \right \|$ (normalized 내적, $x_i$와 $x_j$사이 각의 코사인 값). 두 vector 사이의 각이 의미가 있을때 유용하다.
-- Binary Similarity<br>
+- **Binary Similarity**<br>
 $S(x_i,x_j)=x_i^Tx_i+x_j^Tx_j-x_i^Tx_j$로 계산된다. $x_i^Tx_j$는 공통으로 나타나는 feature의 개수로 결국 $S$는공통으로 나타내는 feature의 비율이다.
 
 ## Chain Method of Clustering
@@ -74,3 +73,24 @@ $\bar{s}_ i$의 다른 방법으로는  $\left \| x_j-x_l \right \|^2$ 대신 $s
 Scatter matrix로부터 sample의 scattering을 측정한다. 여기에 사용되는 mean vector와 scatter matrix에는 다음이 있다.
 
 ![image](https://user-images.githubusercontent.com/79836443/146324824-0ddcbd07-8698-4076-9c66-836647f71f62.png){: width="90%" height="90%"}{:.align-center}
+
+전체 scatter matrix$S_T$는 within-cluster(클러스터 내) scatter matrix$S_W$와 Between-cluster(클러스터 간) scatter matrix$S_B$의 합으로 이루어진다. Scatter의 양에 관해 더 정확하게 하기위해 scatter matrix의 크기의 Scalar 측정을 필요로 한다. 이 측정에는 3가지 기준이 있다.
+
+- **Trace 기준**<br>
+대략적으로 trace는 좌표 방향들에서 분산들의 합의 비례하기 대문에 scattering 반경의 제곱을 측정한다.
+
+$$Tr\{S_W\}=\sum^K_{i=1}{Tr\{S_i\}}=\sum^K_{i=1}\sum_{x_j\in z_i}{\left \| x_j-m_i \right \|^2}$$
+
+$$Tr\{S_B\}=\sum^K_{i=1}J_i{\left \| m_i-m \right \|^2}$$
+
+- **Determinant 기준**<br>
+Determinant는 main axis들의 방향에서 분산들의 곱에 비례하므로, scattering volume의 제곱을 측정한다.
+
+$$J_d=\left |S_W\right |=\sum^K_{i=1}{\left |S_i\right |}$$
+
+- **Invariant 기준 (불변적 기준)**<br>
+$\lambda_n$는 $S_W^{-1}S_B$의 n번째 eigenvalue이고 이는 lineartransformation에 불변하다.
+
+$$J_f=Tr\{S_W^{-1}S_B\}=\sum^N_{n=1}{\lambda_n}$$
+
+## Fisher's Linear Discriminent

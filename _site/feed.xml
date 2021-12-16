@@ -1,4 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://shvtr159.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shvtr159.github.io/" rel="alternate" type="text/html" /><updated>2021-12-16T16:34:58+09:00</updated><id>https://shvtr159.github.io/feed.xml</id><title type="html">Study Blog</title><subtitle>for study</subtitle><author><name>KYG</name></author><entry><title type="html">[MLPR #] Unsupervised Classification 1 (미완)</title><link href="https://shvtr159.github.io/mlpr/mlpr-unsupervised-classification-1/" rel="alternate" type="text/html" title="[MLPR #] Unsupervised Classification 1 (미완)" /><published>2021-12-16T00:00:00+09:00</published><updated>2021-12-16T00:00:00+09:00</updated><id>https://shvtr159.github.io/mlpr/mlpr-unsupervised-classification-1</id><content type="html" xml:base="https://shvtr159.github.io/mlpr/mlpr-unsupervised-classification-1/">&lt;p&gt;Supervised 에서는 data에 label도 있고 전체 class의 갯수를 알 수 있기때문에 data로부터 그 분포를 추정할 수 있었다. unsupervised classification은 이러한 정보가 없을 때 data를 구분하는 방법이다. 
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://shvtr159.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shvtr159.github.io/" rel="alternate" type="text/html" /><updated>2021-12-16T17:43:54+09:00</updated><id>https://shvtr159.github.io/feed.xml</id><title type="html">Study Blog</title><subtitle>for study</subtitle><author><name>KYG</name></author><entry><title type="html">[MLPR #] Unsupervised Classification 2 (미완)</title><link href="https://shvtr159.github.io/mlpr/mlpr-unsupervised-classification-2/" rel="alternate" type="text/html" title="[MLPR #] Unsupervised Classification 2 (미완)" /><published>2021-12-05T00:00:00+09:00</published><updated>2021-12-05T00:00:00+09:00</updated><id>https://shvtr159.github.io/mlpr/mlpr-unsupervised-classification-2</id><content type="html" xml:base="https://shvtr159.github.io/mlpr/mlpr-unsupervised-classification-2/">&lt;ul&gt;
+  &lt;li&gt;Similarity and Similarity Measures&lt;/li&gt;
+  &lt;li&gt;Chain Method of Clustering&lt;/li&gt;
+  &lt;li&gt;Clustering Criterion Functions&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Iterative Optimization&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Clustering procedure – basic min. squared error&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;K-means Clustering&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Hierarchical Clustering&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Mixture Densities: Gaussian Mixtures&lt;/li&gt;
+  &lt;li&gt;Component Analysis: PCA, ICA&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;iterative-optimization&quot;&gt;Iterative Optimization&lt;/h2&gt;</content><author><name>KYG</name></author><category term="MLPR" /><summary type="html">Similarity and Similarity Measures Chain Method of Clustering Clustering Criterion Functions Iterative Optimization Clustering procedure – basic min. squared error K-means Clustering Hierarchical Clustering Mixture Densities: Gaussian Mixtures Component Analysis: PCA, ICA</summary></entry><entry><title type="html">[MLPR #] Unsupervised Classification 1 (fisher)</title><link href="https://shvtr159.github.io/mlpr/mlpr-unsupervised-classification-1/" rel="alternate" type="text/html" title="[MLPR #] Unsupervised Classification 1 (fisher)" /><published>2021-12-04T00:00:00+09:00</published><updated>2021-12-04T00:00:00+09:00</updated><id>https://shvtr159.github.io/mlpr/mlpr-unsupervised-classification-1</id><content type="html" xml:base="https://shvtr159.github.io/mlpr/mlpr-unsupervised-classification-1/">&lt;p&gt;Supervised 에서는 data에 label도 있고 전체 class의 갯수를 알 수 있기때문에 data로부터 그 분포를 추정할 수 있었다. unsupervised classification은 이러한 정보가 없을 때 data를 구분하는 방법이다. 
 Unknown targets를 분류하는 방법에는 다양한 방법이 있는데 다음과 같은 방법이 있다.&lt;/p&gt;
 &lt;ol&gt;
   &lt;li&gt;Criterion function 방법 : Sum of squared error, Min. variance, Scatter matrices, Optimization problem&lt;/li&gt;
@@ -8,9 +20,9 @@ Unknown targets를 분류하는 방법에는 다양한 방법이 있는데 다�
 
 &lt;p&gt;앞으로 다음 순서로 진행하며 unsupervised classification 방법에 대해 알아본다.&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;Similarity and Similarity Measures&lt;/li&gt;
-  &lt;li&gt;Chain Method of Clustering&lt;/li&gt;
-  &lt;li&gt;Clustering Criterion Functions&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Similarity and Similarity Measures&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Chain Method of Clustering&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Clustering Criterion Functions&lt;/strong&gt;&lt;/li&gt;
   &lt;li&gt;Iterative Optimization&lt;/li&gt;
   &lt;li&gt;Clustering procedure – basic min. squared error&lt;/li&gt;
   &lt;li&gt;K-means Clustering&lt;/li&gt;
@@ -32,9 +44,9 @@ Unknown targets를 분류하는 방법에는 다양한 방법이 있는데 다�
 
 &lt;p&gt;다른 similarity  측정 방법&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;Angular Similarity&lt;br /&gt;
+  &lt;li&gt;&lt;strong&gt;Angular Similarity&lt;/strong&gt;&lt;br /&gt;
 nonmetric similarity function으로 $S(x_i,x_j)=x_i^Tx_j/\left |x_i  \right |\left |x_j \right |$ (normalized 내적, $x_i$와 $x_j$사이 각의 코사인 값). 두 vector 사이의 각이 의미가 있을때 유용하다.&lt;/li&gt;
-  &lt;li&gt;Binary Similarity&lt;br /&gt;
+  &lt;li&gt;&lt;strong&gt;Binary Similarity&lt;/strong&gt;&lt;br /&gt;
 $S(x_i,x_j)=x_i^Tx_i+x_j^Tx_j-x_i^Tx_j$로 계산된다. $x_i^Tx_j$는 공통으로 나타나는 feature의 개수로 결국 $S$는공통으로 나타내는 feature의 비율이다.&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -74,7 +86,34 @@ $S(x_i,x_j)=x_i^Tx_i+x_j^Tx_j-x_i^Tx_j$로 계산된다. $x_i^Tx_j$는 공통으
 &lt;h3 id=&quot;3-scattering-criteria&quot;&gt;3. Scattering Criteria&lt;/h3&gt;
 &lt;p&gt;Scatter matrix로부터 sample의 scattering을 측정한다. 여기에 사용되는 mean vector와 scatter matrix에는 다음이 있다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/146324824-0ddcbd07-8698-4076-9c66-836647f71f62.png&quot; alt=&quot;image&quot; width=&quot;90%&quot; height=&quot;90%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;</content><author><name>KYG</name></author><category term="MLPR" /><summary type="html">Supervised 에서는 data에 label도 있고 전체 class의 갯수를 알 수 있기때문에 data로부터 그 분포를 추정할 수 있었다. unsupervised classification은 이러한 정보가 없을 때 data를 구분하는 방법이다. Unknown targets를 분류하는 방법에는 다양한 방법이 있는데 다음과 같은 방법이 있다. Criterion function 방법 : Sum of squared error, Min. variance, Scatter matrices, Optimization problem Heuristic 방법 : Chain, Hierarchical, Min. spanning tree Unmixing 방법 : Gaussian mixture, PCA, ICA</summary></entry><entry><title type="html">[MLPR #] Nonparameteric Estimation 1 (미완)</title><link href="https://shvtr159.github.io/mlpr/mlpr-nonparametric-estimation/" rel="alternate" type="text/html" title="[MLPR #] Nonparameteric Estimation 1 (미완)" /><published>2021-12-15T00:00:00+09:00</published><updated>2021-12-15T00:00:00+09:00</updated><id>https://shvtr159.github.io/mlpr/mlpr-nonparametric-estimation</id><content type="html" xml:base="https://shvtr159.github.io/mlpr/mlpr-nonparametric-estimation/">&lt;p&gt;이전까지 확률을 이용해 density function을 추정했다면 Nonparameteric Technique는 math form 없이 density를 추정한다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/146324824-0ddcbd07-8698-4076-9c66-836647f71f62.png&quot; alt=&quot;image&quot; width=&quot;90%&quot; height=&quot;90%&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;전체 scatter matrix$S_T$는 within-cluster(클러스터 내) scatter matrix$S_W$와 Between-cluster(클러스터 간) scatter matrix$S_B$의 합으로 이루어진다. Scatter의 양에 관해 더 정확하게 하기위해 scatter matrix의 크기의 Scalar 측정을 필요로 한다. 이 측정에는 3가지 기준이 있다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Trace 기준&lt;/strong&gt;&lt;br /&gt;
+대략적으로 trace는 좌표 방향들에서 분산들의 합의 비례하기 대문에 scattering 반경의 제곱을 측정한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+\[Tr\{S_W\}=\sum^K_{i=1}{Tr\{S_i\}}=\sum^K_{i=1}\sum_{x_j\in z_i}{\left \| x_j-m_i \right \|^2}\]
+
+\[Tr\{S_B\}=\sum^K_{i=1}J_i{\left \| m_i-m \right \|^2}\]
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Determinant 기준&lt;/strong&gt;&lt;br /&gt;
+Determinant는 main axis들의 방향에서 분산들의 곱에 비례하므로, scattering volume의 제곱을 측정한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+\[J_d=\left |S_W\right |=\sum^K_{i=1}{\left |S_i\right |}\]
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Invariant 기준 (불변적 기준)&lt;/strong&gt;&lt;br /&gt;
+$\lambda_n$는 $S_W^{-1}S_B$의 n번째 eigenvalue이고 이는 lineartransformation에 불변하다.&lt;/li&gt;
+&lt;/ul&gt;
+
+\[J_f=Tr\{S_W^{-1}S_B\}=\sum^N_{n=1}{\lambda_n}\]
+
+&lt;h2 id=&quot;fishers-linear-discriminent&quot;&gt;Fisher’s Linear Discriminent&lt;/h2&gt;</content><author><name>KYG</name></author><category term="MLPR" /><summary type="html">Supervised 에서는 data에 label도 있고 전체 class의 갯수를 알 수 있기때문에 data로부터 그 분포를 추정할 수 있었다. unsupervised classification은 이러한 정보가 없을 때 data를 구분하는 방법이다. Unknown targets를 분류하는 방법에는 다양한 방법이 있는데 다음과 같은 방법이 있다. Criterion function 방법 : Sum of squared error, Min. variance, Scatter matrices, Optimization problem Heuristic 방법 : Chain, Hierarchical, Min. spanning tree Unmixing 방법 : Gaussian mixture, PCA, ICA</summary></entry><entry><title type="html">[MLPR #] Nonparameteric Estimation 1 (미완)</title><link href="https://shvtr159.github.io/mlpr/mlpr-nonparametric-estimation/" rel="alternate" type="text/html" title="[MLPR #] Nonparameteric Estimation 1 (미완)" /><published>2021-12-03T00:00:00+09:00</published><updated>2021-12-03T00:00:00+09:00</updated><id>https://shvtr159.github.io/mlpr/mlpr-nonparametric-estimation</id><content type="html" xml:base="https://shvtr159.github.io/mlpr/mlpr-nonparametric-estimation/">&lt;p&gt;이전까지 확률을 이용해 density function을 추정했다면 Nonparameteric Technique는 math form 없이 density를 추정한다.&lt;/p&gt;
 
 &lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
@@ -98,8 +137,8 @@ $S(x_i,x_j)=x_i^Tx_i+x_j^Tx_j-x_i^Tx_j$로 계산된다. $x_i^Tx_j$는 공통으
 &lt;h3 id=&quot;1-parzen-window-estimation&quot;&gt;1) Parzen Window Estimation&lt;/h3&gt;
 &lt;p&gt;window function은 $\Delta(\underline{u})=\Delta(\underline{x}-\underline{x}_ i)$로 정의한다($\underline{x}_ i$가 중심이 된다).&lt;/p&gt;
 
-&lt;h3 id=&quot;2-k-nearest-neighbor&quot;&gt;2) K Nearest Neighbor&lt;/h3&gt;</content><author><name>KYG</name></author><category term="MLPR" /><summary type="html">이전까지 확률을 이용해 density function을 추정했다면 Nonparameteric Technique는 math form 없이 density를 추정한다.</summary></entry><entry><title type="html">[MLPR #] Parameter Estimation 2 (미완)</title><link href="https://shvtr159.github.io/mlpr/mlpr-parameter-estimation-2/" rel="alternate" type="text/html" title="[MLPR #] Parameter Estimation 2 (미완)" /><published>2021-12-15T00:00:00+09:00</published><updated>2021-12-15T00:00:00+09:00</updated><id>https://shvtr159.github.io/mlpr/mlpr-parameter-estimation%202</id><content type="html" xml:base="https://shvtr159.github.io/mlpr/mlpr-parameter-estimation-2/">&lt;p&gt;Parameter Estimation 1에서 추정 방법중 Maximum likelihood에 대해 알아보았다. 2에서는 나머지 한가지 방법인 Maximum a Posterior (MAP) estimation에 대해서 알아본다.
-MLPR 11~13&lt;/p&gt;</content><author><name>KYG</name></author><category term="MLPR" /><summary type="html">Parameter Estimation 1에서 추정 방법중 Maximum likelihood에 대해 알아보았다. 2에서는 나머지 한가지 방법인 Maximum a Posterior (MAP) estimation에 대해서 알아본다. MLPR 11~13</summary></entry><entry><title type="html">[MLPR #] Parameter Estimation 1 (미완)</title><link href="https://shvtr159.github.io/mlpr/mlpr-parameter-estimation/" rel="alternate" type="text/html" title="[MLPR #] Parameter Estimation 1 (미완)" /><published>2021-12-14T00:00:00+09:00</published><updated>2021-12-14T00:00:00+09:00</updated><id>https://shvtr159.github.io/mlpr/mlpr-parameter-estimation</id><content type="html" xml:base="https://shvtr159.github.io/mlpr/mlpr-parameter-estimation/">&lt;p&gt;이전까지는 모든 statistics과 probability(prior probabiliteis, class-conditional densities(likelihood) 등)를 알 때 Bayes Classifier를 이용해 data가 어디에 속하는지 분류할 수 있었다. 그러나 이렇게 모든 statistics를 아는 상황은 드물기 때문에 data로부터 이를 추정해야만 한다. priori를 모른다고 가정할 때 다음 두 technique를 이용하여 $p(x\mid S_{i})$를 추정할 수 있다.&lt;/p&gt;
+&lt;h3 id=&quot;2-k-nearest-neighbor&quot;&gt;2) K Nearest Neighbor&lt;/h3&gt;</content><author><name>KYG</name></author><category term="MLPR" /><summary type="html">이전까지 확률을 이용해 density function을 추정했다면 Nonparameteric Technique는 math form 없이 density를 추정한다.</summary></entry><entry><title type="html">[MLPR #] Parameter Estimation 2 (미완)</title><link href="https://shvtr159.github.io/mlpr/mlpr-parameter-estimation-2/" rel="alternate" type="text/html" title="[MLPR #] Parameter Estimation 2 (미완)" /><published>2021-12-02T00:00:00+09:00</published><updated>2021-12-02T00:00:00+09:00</updated><id>https://shvtr159.github.io/mlpr/mlpr-parameter-estimation%202</id><content type="html" xml:base="https://shvtr159.github.io/mlpr/mlpr-parameter-estimation-2/">&lt;p&gt;Parameter Estimation 1에서 추정 방법중 Maximum likelihood에 대해 알아보았다. 2에서는 나머지 한가지 방법인 Maximum a Posterior (MAP) estimation에 대해서 알아본다.
+MLPR 11~13&lt;/p&gt;</content><author><name>KYG</name></author><category term="MLPR" /><summary type="html">Parameter Estimation 1에서 추정 방법중 Maximum likelihood에 대해 알아보았다. 2에서는 나머지 한가지 방법인 Maximum a Posterior (MAP) estimation에 대해서 알아본다. MLPR 11~13</summary></entry><entry><title type="html">[MLPR #] Parameter Estimation 1 (미완)</title><link href="https://shvtr159.github.io/mlpr/mlpr-parameter-estimation/" rel="alternate" type="text/html" title="[MLPR #] Parameter Estimation 1 (미완)" /><published>2021-12-01T00:00:00+09:00</published><updated>2021-12-01T00:00:00+09:00</updated><id>https://shvtr159.github.io/mlpr/mlpr-parameter-estimation</id><content type="html" xml:base="https://shvtr159.github.io/mlpr/mlpr-parameter-estimation/">&lt;p&gt;이전까지는 모든 statistics과 probability(prior probabiliteis, class-conditional densities(likelihood) 등)를 알 때 Bayes Classifier를 이용해 data가 어디에 속하는지 분류할 수 있었다. 그러나 이렇게 모든 statistics를 아는 상황은 드물기 때문에 data로부터 이를 추정해야만 한다. priori를 모른다고 가정할 때 다음 두 technique를 이용하여 $p(x\mid S_{i})$를 추정할 수 있다.&lt;/p&gt;
 &lt;ol&gt;
   &lt;li&gt;&lt;strong&gt;Parametric&lt;/strong&gt; : $p(x\mid S_{i})$의 form을 알거나, 안다고 가정할 때 함수의 parameter를 추정한다. 예를 들어$p(x\mid S_{i})=N(x,m_i,\Sigma_i)$인 Gaussian 함수라고 할 때, training sample로부터 $m_i,\Sigma_i$를 추정하는 것이다. 이 방법에는 &lt;strong&gt;Maximum likelyhood estimation(최대 우도 추정)&lt;/strong&gt; 과 &lt;strong&gt;Maximum a Posterior (MAP) estimation(최대 사후 확률 추정)&lt;/strong&gt; (Bayesian estimation)이 있다.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Nonparametric&lt;/strong&gt; : density에 대한 정보도 없이 data만 있을때로 data로부터 density function을 추정한다.&lt;/li&gt;
@@ -428,100 +467,4 @@ p(\underline{x} \mid S_2)P(S_2)\\
 &lt;p&gt;시스템이 가용한 데이터를 모두 사용해 훈련한다. 즉 먼저 시스템을 훈련시키고 더 이상의 학습 없이 제품 시스템에 적용한다. 오프라인 학습(offline learning)이라고 한다. 이는 컴퓨팅 자원이 많이 필요하다는 점을 고려해야 한다.&lt;/p&gt;
 
 &lt;h4 id=&quot;온라인-학습-online-learning&quot;&gt;온라인 학습 (online learning)&lt;/h4&gt;
-&lt;p&gt;데이터를 순차적으로 한 개씩 또는 미니배치(mini-batch) 단위로 훈련한다. 매 학습 단계가 빠르고 비용이 적게 들어 데이터가 도착하는 즉시 학습할 수 있다. 그러나 나쁜 데이터가 주입되었을 때 시스템 성능이 점진적으로 감소하기 때문에 모니터링이 필요하다.&lt;/p&gt;</content><author><name>KYG</name></author><category term="ML" /><summary type="html">핸즈온 머신러닝의 머신러닝 내용 일부를 정리. 머신러닝 시스템의 종류 머신러닝 시스템은 다음과 같이 분류할 수 있지만 서로 배타적이지 않고 원하는 대로 연결 가능하다. 훈련 지도 여부 : 지도 학습, 비지도 학습, 준지도 학습, 강화 학습 실시간 훈련 여부 : 온라인 학습, 배치 학습</summary></entry><entry><title type="html">PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation</title><link href="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pointnet-deep-learning-on-point-sets-for-3d-classification-and-segmentation/" rel="alternate" type="text/html" title="PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation" /><published>2021-09-13T00:00:00+09:00</published><updated>2021-09-13T00:00:00+09:00</updated><id>https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pointnet-deep-learning-on-point-sets-for-3d-classification-and-segmentation</id><content type="html" xml:base="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pointnet-deep-learning-on-point-sets-for-3d-classification-and-segmentation/">&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;/h2&gt;
-&lt;p&gt;기존에는 point cloud의 irregular한 형식때문에  regular한 3D voxel grid 또는 collection of images로 바꿔 사용하곤 했지만 이것은 불필요하게 많은 data가 렌더링 되는 문제가 있다. 그래서 여기서는 point cloud를 바로 사용하며 input point들의 permutation invariance&lt;sup&gt;&lt;a href=&quot;#footnote_1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;를 잘 고려하는 neural network를 설계하였다. PointNet은 object detection, part segmentation, scene semantic parsing에 이르는 application들을 위한 통일된 구조를 제공한다. 또한, 이론적으로, network가 무엇을 학습했는지와 network가 왜 perturbation(noise와 유사)과 corruption에 robust한지 이해하기 위한 분석을 제공한다.&lt;/p&gt;
-
-&lt;h2 id=&quot;1-introduction&quot;&gt;1. Introduction&lt;/h2&gt;
-&lt;p&gt;기존에는 point cloud의 irregular한 형식 때문에 대부분이 deep net architecture에 넣기 전  regular한 3D voxel grid 또는 collection of images (e.g, views)로 변형하곤 했다. 그러나 이것은 불필요하게 많은 data가 렌더링 되는 문제가 있다. 그래서 point cloud를 직접 사용하도록 하였다. 이를 위해서는 permutation invariance 한 성질로 인해 net computation에서 특정 대칭화가 필요하고, rigid motion&lt;sup&gt;&lt;a href=&quot;#footnote_2&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;에 invariance하다는 사실을 고려해야 한다.&lt;/p&gt;
-
-&lt;h2 id=&quot;2-related-work&quot;&gt;2. Related work&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Point Cloud Fetures&lt;/strong&gt; 기존 point cloud feature는  대부분 특정 task를 위해 handcrafted 되었다. 이는 일반적으로 intrinsic 또는 extrinsic하게 분류되는 특정 transformation에 대해 invariant하게 설계된다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Deep Learning on 3D Data&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;em&gt;Volumetric CNNs&lt;/em&gt; : voxelized shape에 적용되는 network이지만 data sparsity과 계산 비용때문에 resolution이  제한된다.&lt;/li&gt;
-  &lt;li&gt;&lt;em&gt;Multiview CNNs&lt;/em&gt; : 3D point cloud나 shape를 2D 이미지로 렌더링한 다음 2D conv net를 이용해 분류. 그러나 scene understanding이나 3D task(point classification, shape completion 등)로 확장하는 것이 어렵다.&lt;/li&gt;
-  &lt;li&gt;&lt;em&gt;Spectral CNNs&lt;/em&gt; : mesh에 적용하는 방법. 그러나 유기물과 같은 manifold mesh에 제약을 받고 가구와 같은 non-isometric 모양으로 어떻게 확장하는지 명확하지 않다.&lt;/li&gt;
-  &lt;li&gt;&lt;em&gt;Feature-based DNNs&lt;/em&gt; : traditional shape features를 추출하여 3D data를 vector로 변환한 뒤 FC net를 이용해 shape를 분류한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Deep Learning on Unorderes Sets&lt;/strong&gt; 데이터 구조 관점에서, point cloud는 순서 없는 vector의 집합이다. 딥러닝에서 대부분의 작업은 sequence(음성 및 언어 처리), images와 volume(video 또는 3D data)와 같은 regular한  input에 초점을 맞추고 있지만, point set에 대해서는 잘 이루어지지 않았다.&lt;/p&gt;
-
-&lt;h2 id=&quot;3-problem-statement&quot;&gt;3. Problem Statement&lt;/h2&gt;
-&lt;p&gt;point cloud는 각 point $P_{i}$가 $(x, y, z)$좌표에 color, normal과 같은 추가적인 feature channels를 가지고, 이 point들이 모인 set을 $\lbrace P_i \mid i=1,…,n \rbrace$로 표현한다. 여기서는 point의 channel로 $(x,y,z)$ 좌표만을 사용한다.&lt;/p&gt;
-
-&lt;p&gt;Object classification task에서, input point cloud는 shape에서 직접 sampling되거나, 장면 point cloud에서 사전에 segmentation된다. PointNet에서는 모든 $k$ 후보 classes에 대해 $k$개의 scores를 출력한다.&lt;/p&gt;
-
-&lt;p&gt;Semantic segmentation에서는 input은 부분 region segmentation을 위한 단일 object이거나 object region segmentation 3D scene의 sub-volume일 수 있다. PointNet에서는 각 $n$개의 point 및 $m$개의 semantic subcategory에 대해 $n\times m$개의 score를 출력한다.&lt;/p&gt;
-
-&lt;h2 id=&quot;4-deep-learning-on-point-sets&quot;&gt;4. Deep Learning on Point Sets&lt;/h2&gt;
-&lt;h3 id=&quot;41-properties-of-point-sets-in-mathbb-rn&quot;&gt;4.1. Properties of Point Sets in $\mathbb R^n$&lt;/h3&gt;
-&lt;p&gt;Network의 input은 Euclidean space 상 point의 subset이다. 이는 다음 3가지 특징을 가지고 있고 이 특징들을 해결하기 위해 4.2에서 3가지의 key module을 사용하였다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Unordered.&lt;/strong&gt; 이미지의 pixel 배열이나 voxel 배열과 달리 point cloud는 특정한 순서가 없다. 다시 말해 네트워크가 N개의 3D point를 사용한다면 이 N개 point의 순서에 따라 결과가 달라지지 않아야 한다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Interaction among points.&lt;/strong&gt; point들은 distance metric&lt;sup&gt;&lt;a href=&quot;#footnote_3&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;이 존재하는 공간에 있다. 즉, 이는 point들이 고립되어있지 않고 주변 point들과 의미 있는 subset을 형상한다는 것을 의미한다. 따라서, model은 주변 point에서 local 구조 및 local 구조 간의 combinatorial interaction을 확인할 수 있어야 한다. 간단히 이야기 하면 point들간의 거리 정보만을 통해 의미를 찾아야 한다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Invariance under transformations.&lt;/strong&gt;  geometric object로서 point cloud의 학습된 표현은 특정 transformation을 수행해도 불변해야 한다. 예를 들어 모든 포인트들을 회전하거나 이동시켜도 그 특성을 변하지 않아야 한다는 것이다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;42-pointnet-architecture&quot;&gt;4.2. PointNet Architecture&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/133418360-97952ac2-feeb-4b00-8ead-d466066648ea.png&quot; alt=&quot;image&quot; /&gt;&lt;center&gt;&lt;span style=&quot;color:rgb(150, 150, 150)&quot;&gt;Figure 2. PointNet의 구조&lt;/span&gt;&lt;/center&gt;&lt;/p&gt;
-
-&lt;p&gt;classification network는 $n$개의 point를 input으로 받으며, 여기서는 $(x, y, z)$ 좌표만을 고려하여 $n\times 3$의 vector를 input으로 받는다. 이 input을 transformation 한 뒤  다시 feature tranformation 한 다음 max pooling을 통해 point feature를 aggregate한다. 최종 output은 $k$개의 class에 대한 각 classification score이다. 사진의 구조는 classification network이지만 classification network와 segmentation network는 서로 구조의 많은 부분을 공유한다. Batchnorm은 ReLU와 함께 모든 layer에 적용하고, dropout은 classification net의 마지막 mlp에만 적용한다.&lt;/p&gt;
-
-&lt;p&gt;자세한 내용으로 PointNet은 다음 3가지 key module을 가진다.&lt;/p&gt;
-&lt;h4 id=&quot;symmetry-function-for-unordered-input&quot;&gt;Symmetry Function for Unordered Input&lt;/h4&gt;
-&lt;p&gt;input 순서에 invariant한 model을 만들기 위한 전략으로는 다음 3가지가 있다.&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;입력 순서를 canonical order로 정렬한다.(여기서 canonical order는 표준 형식을 따르는 정렬으로 특정 알고리즘을 지칭하지는 않는다)&lt;/li&gt;
-  &lt;li&gt;input을 RNN을 학습시키기 위한 sequence로 취급하지만, 모든 종류의 순열을 이용해 training data를 augmentation 한다.&lt;/li&gt;
-  &lt;li&gt;각 point에서의 정보를 aggregate&lt;sup&gt;&lt;a href=&quot;#footnote_4&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;하기 위해 간단한 symmetric function을 사용한다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;PointNet은 symmetric function을 사용한다. symmetric function은 입력 순서에 관계 없이 동일한 output을 내는 함수로 여기서는 n개의 vector를 입력으로 받는다. symmetric function의 예로는 +와 $\times$연산이 있다.&lt;/p&gt;
-
-&lt;p&gt;단순히 sorting하는것이 더 간단해 보이지만 일반적으로 고차원 공간에서는 stable한 순서가 존재하지 않는다. 때문에 sorting으로는 ordering 문제가 완전히 해결되지 않고, 이 문제가 지속되기 때문에 network가 input에서 output으로 일관된 mapping을 학습하기 어렵다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/134469465-907b04b3-8421-43d5-bc75-785aa1552912.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;70%&quot; height=&quot;70%&quot; /&gt;&lt;center&gt;&lt;span style=&quot;color:rgb(150, 150, 150)&quot;&gt;순서 invariance를 달성하기 위한 3가지 접근 방법&lt;/span&gt;&lt;/center&gt;&lt;/p&gt;
-
-&lt;p&gt;위 이미지에서 볼 수 있듯이 point를 정렬하지 않고 바로 처리하는 것보다 정렬한 뒤 MLP에 직접 적용하는 것이 좀 더 낫지만 여전히 성능은 좋지 않다. 또, RNN을 이용한 방법 또한 제안한 방법만큼 좋은 성능을 보여주지 못했다.&lt;/p&gt;
-
-&lt;p&gt;그래서 PointNet은 다음과 같이 집합의 transform된 element들에 대해 symmetric function을 적용하여 생성된 point set에 정의된 general 함수를 근사화하는 것이다.&lt;/p&gt;
-
-\[f(\{x_1,...,x_n\})\approx g(h(x_1),...,h(x_n))\]
-
-&lt;center&gt;$f\;:2^{\mathbb R^N}\rightarrow \mathbb R,\;h\;:{\mathbb R^N}\rightarrow {\mathbb R^K},\;g$ (symmetric 함수) $:\underbrace{ {\mathbb R^K} \times \cdots \times {\mathbb R^K}}_ n \rightarrow {\mathbb R^N}$ &lt;/center&gt;
-
-&lt;p&gt;Basic 모듈은 매우 간단하다. $h$를 다층 퍼셉트론 network를 이용해서, $g$는 single 변수 함수와 max pooling 함수의 구성으로 approximate한다. $h$의 collection을 통해 우리는 집합의 다른 property들을 알기위해 많은 $f$를 학습할 수 있다.&lt;/p&gt;
-
-&lt;p&gt;이 모듈의 output은 input set의 global signature인 $[f_1,\,…\,,f_K]$ 벡터이다.&lt;/p&gt;
-
-&lt;h4 id=&quot;local-and-global-information-aggregation&quot;&gt;Local and Global Information Aggregation&lt;/h4&gt;
-&lt;p&gt;classification을 위한 shape global feature에 대해 SVM이나 다층 퍼셉트론 classifier는 쉽게 훈련시킬 수 있지만, point segmentation은 local과 global을 모두 필요로 하기 때문에 어려움이 있다. 이를 해결하기 위한 solution이 Fig 2에서 볼 수 있는 segmentation Network이다.&lt;/p&gt;
-
-&lt;p&gt;이 network는 global point cloud의 feature 벡터를 계산하고 이를 각 point feature에 concatenate 한 뒤 각 point 별 feature에 다시 제공한다(Fig 1의 nx64에 global feature 1024를 모두 추가해준다). 그 다음 combine 된 point feature를 기반으로 새로운 각 point 별 feature를 추출한다. 이를 이용하면 각 point 별 feature가 local 및 global 정보를 모두 인식한다.&lt;/p&gt;
-
-&lt;h4 id=&quot;joint-alignment-network&quot;&gt;Joint Alignment Network&lt;/h4&gt;
-&lt;p&gt;point cloud가 rigid transformation 같은 특정한 geometric transformation 이 수행되는 경우 point cloud의 semantic labeling은 변하지 않아야 한다. 때문에 point set에 의해 학습된 것이 이러한 변환에 불변하기를 기대한다.&lt;/p&gt;
-
-&lt;p&gt;저자는 spatial transformer networks에서 motivate된  mini-network(Fig 2 T-net)를 추가하였다. 이 network는 affine 변환 matrix를 예측하고 이를 input points의 coordiates에 바로 적용하여 간단히 해결하였다. mini-network 자체는 큰 network와 비슷하고, point independent feature extraction과 maxpooling, FC layer의 기본 모듈로 구성된다.&lt;/p&gt;
-
-&lt;p&gt;그러나 featrue space의 transformation matrix는 spatial transform matrix보다 더 높은 차원으로 이루어져서 optimization의 난이도가 급격히 상승한다. 이를 위해 regularization term을 softmax training loss로 추가한다. 또, feature transformation matrix가 다음과 같은 직교 행렬에 가깝도록 제한한다.&lt;/p&gt;
-
-\[L_{reg} = \left \| I-AA^T \right \|^2_F\]
-
-&lt;p&gt;$A$는 mini-network에 의해 예측된 feature alignment matrix이다. 직교 변환은 input의 정보를 잃지 않기 때문에 필요하다.&lt;/p&gt;
-
-&lt;h3 id=&quot;43-theoretical-analysis&quot;&gt;4.3. Theoretical Analysis&lt;/h3&gt;
-&lt;h4 id=&quot;universal-approximation6&quot;&gt;Universal approximation&lt;sup&gt;&lt;a href=&quot;#footnote_6&quot;&gt;6&lt;/a&gt;&lt;/sup&gt;&lt;/h4&gt;
-
-&lt;p&gt;&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;a name=&quot;footnote_1&quot;&gt;1&lt;/a&gt;: 입력 벡터 요소의 순서와 상관 없이 같은 출력을 생성하는 것. MLP가 이에 해당하며 CNN, RNN은 이에 해당하지 않는다.&lt;br /&gt;
-&lt;a name=&quot;footnote_2&quot;&gt;2&lt;/a&gt;: rigid motion은 transformation을 하더라도 point들간의 distance와 방향은 그대로 유지되는 변환을 말한다. 여기에는 translation, rotation, reflection, glide reflection이 해당된다.&lt;br /&gt;
-&lt;a name=&quot;footnote_3&quot;&gt;3&lt;/a&gt;: distance를 정의하는 방법. 가장 간단한 예시로 Euclidean distance를 들 수 있다.&lt;br /&gt;
-&lt;a name=&quot;footnote_4&quot;&gt;4&lt;/a&gt;: ????&lt;br /&gt;
-&lt;a name=&quot;footnote_5&quot;&gt;5&lt;/a&gt;:  M. Jaderberg, K. Simonyan, A. Zisserman, et al. Spatial transformer networks. In NIPS 2015&lt;br /&gt;
-&lt;a name=&quot;footnote_6&quot;&gt;6&lt;/a&gt;: 1개의 히든 레이어를 가진 Neural Network를 이용해 어떠한 함수든 근사시킬 수 있다는 이론. 당연히 활성화 함수는 비선형 함수여야 한다&lt;/p&gt;</content><author><name>KYG</name></author><category term="논문" /><summary type="html">Abstract 기존에는 point cloud의 irregular한 형식때문에 regular한 3D voxel grid 또는 collection of images로 바꿔 사용하곤 했지만 이것은 불필요하게 많은 data가 렌더링 되는 문제가 있다. 그래서 여기서는 point cloud를 바로 사용하며 input point들의 permutation invariance1를 잘 고려하는 neural network를 설계하였다. PointNet은 object detection, part segmentation, scene semantic parsing에 이르는 application들을 위한 통일된 구조를 제공한다. 또한, 이론적으로, network가 무엇을 학습했는지와 network가 왜 perturbation(noise와 유사)과 corruption에 robust한지 이해하기 위한 분석을 제공한다.</summary></entry></feed>
+&lt;p&gt;데이터를 순차적으로 한 개씩 또는 미니배치(mini-batch) 단위로 훈련한다. 매 학습 단계가 빠르고 비용이 적게 들어 데이터가 도착하는 즉시 학습할 수 있다. 그러나 나쁜 데이터가 주입되었을 때 시스템 성능이 점진적으로 감소하기 때문에 모니터링이 필요하다.&lt;/p&gt;</content><author><name>KYG</name></author><category term="ML" /><summary type="html">핸즈온 머신러닝의 머신러닝 내용 일부를 정리. 머신러닝 시스템의 종류 머신러닝 시스템은 다음과 같이 분류할 수 있지만 서로 배타적이지 않고 원하는 대로 연결 가능하다. 훈련 지도 여부 : 지도 학습, 비지도 학습, 준지도 학습, 강화 학습 실시간 훈련 여부 : 온라인 학습, 배치 학습</summary></entry></feed>

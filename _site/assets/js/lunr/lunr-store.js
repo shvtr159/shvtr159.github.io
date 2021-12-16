@@ -155,21 +155,27 @@ var store = [{
         "url": "/mlpr/mlpr-parameter-estimation/",
         "teaser": null
       },{
-        "title": "[MLPR #] Nonparameteric Estimation 1 (미완)",
-        "excerpt":"이전까지 확률을 이용해 density function을 추정했다면 Nonparameteric Technique는 math form 없이 density를 추정한다. Introduction Estimation Procedure $x$의 density를 추정하기 위한 절차를 알아보자 영역 $R_1, R_2, …$을 생성한다. 이때 영역 $R_j$는 j개의 sample들로 구성된다. ?? $R_j$의 크기를 $V_j$라고 한다 $R_j$에 속해있는 sample들의 개수를 $k_j$라고 한다 $p(x)$의 j번째 추정은 $p_j(x)=[k_j/j]/V_j$이다. $p_j(x)$는 다음과...","categories": ["MLPR"],
-        "tags": [],
-        "url": "/mlpr/mlpr-nonparametric-estimation/",
-        "teaser": null
-      },{
         "title": "[MLPR #] Parameter Estimation 2 (미완)",
         "excerpt":"Parameter Estimation 1에서 추정 방법중 Maximum likelihood에 대해 알아보았다. 2에서는 나머지 한가지 방법인 Maximum a Posterior (MAP) estimation에 대해서 알아본다. MLPR 11~13  ","categories": ["MLPR"],
         "tags": [],
         "url": "/mlpr/mlpr-parameter-estimation-2/",
         "teaser": null
       },{
-        "title": "[MLPR #] Unsupervised Classification 1 (미완)",
+        "title": "[MLPR #] Nonparameteric Estimation 1 (미완)",
+        "excerpt":"이전까지 확률을 이용해 density function을 추정했다면 Nonparameteric Technique는 math form 없이 density를 추정한다. Introduction Estimation Procedure $x$의 density를 추정하기 위한 절차를 알아보자 영역 $R_1, R_2, …$을 생성한다. 이때 영역 $R_j$는 j개의 sample들로 구성된다. ?? $R_j$의 크기를 $V_j$라고 한다 $R_j$에 속해있는 sample들의 개수를 $k_j$라고 한다 $p(x)$의 j번째 추정은 $p_j(x)=[k_j/j]/V_j$이다. $p_j(x)$는 다음과...","categories": ["MLPR"],
+        "tags": [],
+        "url": "/mlpr/mlpr-nonparametric-estimation/",
+        "teaser": null
+      },{
+        "title": "[MLPR #] Unsupervised Classification 1 (fisher)",
         "excerpt":"Supervised 에서는 data에 label도 있고 전체 class의 갯수를 알 수 있기때문에 data로부터 그 분포를 추정할 수 있었다. unsupervised classification은 이러한 정보가 없을 때 data를 구분하는 방법이다. Unknown targets를 분류하는 방법에는 다양한 방법이 있는데 다음과 같은 방법이 있다. Criterion function 방법 : Sum of squared error, Min. variance, Scatter matrices, Optimization...","categories": ["MLPR"],
         "tags": [],
         "url": "/mlpr/mlpr-unsupervised-classification-1/",
+        "teaser": null
+      },{
+        "title": "[MLPR #] Unsupervised Classification 2 (미완)",
+        "excerpt":"   Similarity and Similarity Measures   Chain Method of Clustering   Clustering Criterion Functions   Iterative Optimization   Clustering procedure – basic min. squared error   K-means Clustering   Hierarchical Clustering   Mixture Densities: Gaussian Mixtures   Component Analysis: PCA, ICA   Iterative Optimization  ","categories": ["MLPR"],
+        "tags": [],
+        "url": "/mlpr/mlpr-unsupervised-classification-2/",
         "teaser": null
       }]
