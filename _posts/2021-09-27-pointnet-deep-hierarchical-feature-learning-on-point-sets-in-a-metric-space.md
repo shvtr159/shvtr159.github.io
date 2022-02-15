@@ -1,6 +1,6 @@
 ---
 title: |-
-  PointNet++: Deep Hierarchical Feature Learning on
+  [논문 리뷰] PointNet++: Deep Hierarchical Feature Learning on
   Point Sets in a Metric Space
 use_math: true
 categories:
@@ -44,7 +44,7 @@ PointNet++의 hierarchical 구조는 여러 개의 *set abstraction* level로 �
 set abstraction level은  input으로 $N\times (d+C)$ ($N$ : point 개수, $d$ : coordinates dimension, $C$ : point feature dimension) matrix를 받고  output으로 $N'\times (d+C')$ ($N'$ : subsampling된 point 개수, $C'$ : local context를 요약한 feature vector dimensioin)  matrix를 출력한다. 
 
 #### Sampling layer
-input points $\lbrace x_{1}, x_{2}, ..., x_{n} \rbrace$가 주어질 때, iterative farthest poin sampling (FPS)을 사용하여 input의 부분집합 $\lbrace x_{i_{1}}, x_{i_{2}}, ..., x_{i_{m}} \rbrace$를 생성한다. FPS는 이전까지 sampling된 point들에서 가장 먼 point를 선택하는 방법으로 $x_{i_{j}}$는 $\lbrace x_{i_{1}}, x_{i_{2}}, ..., x_{i_{j-1}} \rbrace$의 point들, 즉 이전까지 sampling된 point들에서 가장 먼 point이다. 이 방법은 random sampling과 비교했을 때 더 우수한 결과를 얻을 수 있었다. 데이터 분포가 균일하지 않기 때문에 이러한 방식으로 데이터에 의존하여 receptive field를 생성한다.  
+input points $\lbrace x_{1}, x_{2}, ..., x_{n} \rbrace$가 주어질 때, iterative farthest point sampling (FPS)을 사용하여 input의 부분집합 $\lbrace x_{i_{1}}, x_{i_{2}}, ..., x_{i_{m}} \rbrace$를 생성한다. FPS는 이전까지 sampling된 point들에서 가장 멀리 있는 point를 선택하는 방법으로 이때 $x_{i_{j}}$는 $\lbrace x_{i_{1}}, x_{i_{2}}, ..., x_{i_{j-1}} \rbrace$의 point들, 즉 이전까지 sampling된 point들에서 가장 먼 point가 된다. 이렇게 선택된 $N'$개의 centroid와 그 좌표값($N'\times d$)을 Grouping layer의 input으로 사용한다. 이 방법은 random sampling과 비교했을 때 더 우수한 결과를 얻을 수 있었고, point cloud는 데이터 분포가 균일하지 않기 때문에 이러한 방식으로 데이터에 의존하여 receptive field를 생성한다.
 
 #### Grouping layer
 Grouping layer는 $N\times (d+C)$ 크기의 point set과 $N'\times d$ 크기의 centriods set를 input으로 받아 grouping을 수행한다. output은 $N'\times K\times (d+C)$ 의 point set 그룹들이다. 이 각 그룹은 local region이고, $K$는 centriod points의 neighborhood point 개수(local region에 속하는 point 개수)이다. 여기서는 ball query를 이용해 $K$가 그룹에 따라 다르지만, 다음의 PointNet layer가 point의 수를 flexible하게 고정된 길이의 local region feature vector로 변환해준다.

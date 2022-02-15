@@ -1,5 +1,5 @@
 ---
-title: 'PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation'
+title: "[논문 리뷰] PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation"
 use_math: true
 categories:
 - 논문

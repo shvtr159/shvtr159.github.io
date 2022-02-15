@@ -95,7 +95,7 @@ var store = [{
         "url": "/graphics/computer-graphics-10-texture-mapping/",
         "teaser": null
       },{
-        "title": "기타 정리",
+        "title": "CNN 기타 정리",
         "excerpt":"CNN 연산 3차원의 합성곱 연산에서 3차원 데이터의 모양은 (채널, 높이, 너비) 또는 (높이, 너비, 채널)과 같은 순서로 쓴다. 필터도 마찬가지로 하여 합성곱의 출력은 다음과 같다. 위 이미지에서는 출력 데이터의 채널이 1인데 다수의 채널을 내보내기 위해서는 다음과 같이 여러개의 필터를 사용하면 필터 갯수만큼의 채널이 생성된다. bias는 다음과 같이 대응 채널의 원소에...","categories": ["ML"],
         "tags": [],
         "url": "/ml/point-cloud-feature/",
@@ -113,7 +113,7 @@ var store = [{
         "url": "/%EB%85%BC%EB%AC%B8/pu-gan/",
         "teaser": null
       },{
-        "title": "PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation",
+        "title": "[논문 리뷰] PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation",
         "excerpt":"Abstract 기존에는 point cloud의 irregular한 형식때문에 regular한 3D voxel grid 또는 collection of images로 바꿔 사용하곤 했지만 이것은 불필요하게 많은 data가 렌더링 되는 문제가 있다. 그래서 여기서는 point cloud를 바로 사용하며 input point들의 permutation invariance1를 잘 고려하는 neural network를 설계하였다. PointNet은 object detection, part segmentation, scene semantic parsing에 이르는 application들을...","categories": ["논문"],
         "tags": [],
         "url": "/%EB%85%BC%EB%AC%B8/pointnet-deep-learning-on-point-sets-for-3d-classification-and-segmentation/",
@@ -125,7 +125,7 @@ var store = [{
         "url": "/ml/ml/",
         "teaser": null
       },{
-        "title": "PointNet++: Deep Hierarchical Feature Learning on\nPoint Sets in a Metric Space",
+        "title": "[논문 리뷰] PointNet++: Deep Hierarchical Feature Learning on\nPoint Sets in a Metric Space",
         "excerpt":"PointNet++은 PointNet이 point가 존재하는 metric space에 의해 유도된 local structure를 활용하지 못해서 fine-grained1 패턴들을 잘 인식하지 못하고 복잡한 scene들을 일반화하는 능력이 떨어지는 문제를 해결하기 위해 제안되었다. PointNet++은 입력 point set의 nested partitioning에 PointNet을 recursive하게 적용하는 hierarchical 신경망이다. 이 네트워크는 metric space distance를 활용하여 contextual scale이 증가하는 local feature를 학습할 수...","categories": ["논문"],
         "tags": [],
         "url": "/%EB%85%BC%EB%AC%B8/pointnet-deep-hierarchical-feature-learning-on-point-sets-in-a-metric-space/",
@@ -177,5 +177,17 @@ var store = [{
         "excerpt":"   Similarity and Similarity Measures   Chain Method of Clustering   Clustering Criterion Functions   Iterative Optimization   Clustering procedure – basic min. squared error   K-means Clustering   Hierarchical Clustering   Mixture Densities: Gaussian Mixtures   Component Analysis: PCA, ICA   Iterative Optimization  ","categories": ["MLPR"],
         "tags": [],
         "url": "/mlpr/mlpr-unsupervised-classification-2/",
+        "teaser": null
+      },{
+        "title": "[논문 리뷰] Deep Learning for 3D Point Clouds: A Survey",
+        "excerpt":"본 survey는 IEEE TPAMI에 게재된 것으로 2020년 까지 Point cloud를 사용하는 Deep Learning에 대해 정리하였다.1 다음과 같이 크게 3개의 task에 대해 설명하지만 이 글에서는 Segmentation을 제외한 2가지 task에 대해 정리한다. Background Evaluation Metrics 각 task를 평가하기 위해 다양한 방법이 사용된다. 주로 사용되는 방법은 다음과 같다. 3D shape classification : Overall...","categories": ["논문"],
+        "tags": [],
+        "url": "/%EB%85%BC%EB%AC%B8/deep-learning-for-3d-point-clouds-a-survey/",
+        "teaser": null
+      },{
+        "title": "[논문 리뷰] Self-Supervised Pillar Motion Learning for Autonomous Driving",
+        "excerpt":"본 논문은 CVPR 2021에 게재된 논문으로 CVPR 2019에 게재된 PointPillars라는 논문의 아이디어를 기반으로 Self-Supervised learning을 수행하였다. BEV로 표현하는 방법의 장점을 이용하기 위해 raw point cloud를 pillar로 organize한다. 이후 각각의 pillar 속도인 pillar motion을 예측한다. 이때, LiDAR의 sparse scan 특성 상 data가 조밀하지 않아 camera image로부터 얻어진 optical flow를 함께 사용한다....","categories": ["논문"],
+        "tags": [],
+        "url": "/%EB%85%BC%EB%AC%B8/self-supervised-pillar-motion-learning-for-autonomous-driving/",
         "teaser": null
       }]
