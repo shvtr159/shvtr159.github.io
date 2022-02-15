@@ -1,5 +1,5 @@
 ---
-title: 기타 정리
+title: CNN 기타 정리
 categories:
 - ML
 ---
@@ -23,6 +23,18 @@ bias는 다음과 같이 대응 채널의 원소에 모두 더해지므로 차�
 ![image](https://user-images.githubusercontent.com/79836443/133270577-6679a8ce-ffe9-4819-832d-76f87c564e01.png)
 
 이렇게 되면 신경망에 4차원 데이터가 하나 흐를 때마다 데이터 N개에 대한 합성곱 연산이 이루어진다. 즉 N회 분의 처리를 한번에 수행한다.
+
+### 차원 계산 공식
+$W_1\times H_1\times D_1$이 input으로 들어올 때 차원을 결정하는데 4개의 하이퍼 parameter가 관여한다.
+1. $K$ : filter의 개수
+2. $F$ : filter의 크기
+3. $S$ : stride
+4. $P$ : zero padding의 크기
+
+Conv layer을 거쳐 나온 $W_2\times H_2\times D_2$는 다음과 같이 계산된다.
+- $W_2= $(W_1-F+2P)/S+1$ 
+- $H_2= $(H_1-F+2P)/S+1$(width와 height는 똑같이 계산된다)
+- $D_2= $K$(filter의 수와 동일)
 ## feature detector vs feature descriptor
 **featrue detector** : interest point (key point, salient point) detector는 어떤 criterion에 따라 point를 선택하는 알고리즘이다. 일반적으로 interest point는 "cornerness" metric과 같이 어떤 함수의 local maximum을 의미한다.
 

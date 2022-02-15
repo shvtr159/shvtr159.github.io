@@ -95,7 +95,7 @@ var store = [{
         "url": "/graphics/computer-graphics-10-texture-mapping/",
         "teaser": null
       },{
-        "title": "기타 정리",
+        "title": "CNN 기타 정리",
         "excerpt":"CNN 연산 3차원의 합성곱 연산에서 3차원 데이터의 모양은 (채널, 높이, 너비) 또는 (높이, 너비, 채널)과 같은 순서로 쓴다. 필터도 마찬가지로 하여 합성곱의 출력은 다음과 같다. 위 이미지에서는 출력 데이터의 채널이 1인데 다수의 채널을 내보내기 위해서는 다음과 같이 여러개의 필터를 사용하면 필터 갯수만큼의 채널이 생성된다. bias는 다음과 같이 대응 채널의 원소에...","categories": ["ML"],
         "tags": [],
         "url": "/ml/point-cloud-feature/",
