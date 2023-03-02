@@ -1,4 +1,96 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://shvtr159.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shvtr159.github.io/" rel="alternate" type="text/html" /><updated>2023-03-02T22:41:38+09:00</updated><id>https://shvtr159.github.io/feed.xml</id><title type="html">Study Blog</title><subtitle>for study</subtitle><author><name>KYG</name></author><entry><title type="html">[MLPR #] Unsupervised Classification 1 (fisher)</title><link href="https://shvtr159.github.io/mlpr/mlpr-unsupervised-classification-1/" rel="alternate" type="text/html" title="[MLPR #] Unsupervised Classification 1 (fisher)" /><published>2021-12-04T00:00:00+09:00</published><updated>2021-12-04T00:00:00+09:00</updated><id>https://shvtr159.github.io/mlpr/mlpr-unsupervised-classification-1</id><content type="html" xml:base="https://shvtr159.github.io/mlpr/mlpr-unsupervised-classification-1/">&lt;p&gt;Supervised 에서는 data에 label도 있고 전체 class의 갯수를 알 수 있기때문에 data로부터 그 분포를 추정할 수 있었다. unsupervised classification은 이러한 정보가 없을 때 data를 구분하는 방법이다. 
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://shvtr159.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shvtr159.github.io/" rel="alternate" type="text/html" /><updated>2023-03-02T22:45:00+09:00</updated><id>https://shvtr159.github.io/feed.xml</id><title type="html">Study Blog</title><subtitle>for study</subtitle><author><name>KYG</name></author><entry><title type="html">[논문 리뷰] Self-Supervised Pillar Motion Learning for Autonomous Driving</title><link href="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/self-supervised-pillar-motion-learning-for-autonomous-driving/" rel="alternate" type="text/html" title="[논문 리뷰] Self-Supervised Pillar Motion Learning for Autonomous Driving" /><published>2022-01-12T00:00:00+09:00</published><updated>2022-01-12T00:00:00+09:00</updated><id>https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/self-supervised-pillar-motion-learning-for-autonomous-driving</id><content type="html" xml:base="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/self-supervised-pillar-motion-learning-for-autonomous-driving/">&lt;p&gt;본 논문은 CVPR 2021에 게재된 논문으로  CVPR 2019에 게재된 PointPillars라는 논문의 아이디어를 기반으로 Self-Supervised learning을 수행하였다. BEV로 표현하는 방법의 장점을 이용하기 위해 raw point cloud를 pillar로 organize한다. 이후 각각의 pillar 속도인 pillar motion을 예측한다. 이때, LiDAR의 sparse scan 특성 상 data가 조밀하지 않아 camera image로부터 얻어진 optical flow를 함께 사용한다.  이 구조는 다음과 같은 상호작용을 하며 학습한다.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Point cloud는 optical flow에서 ego-motion을 제외하는데 도움을 준다.&lt;/li&gt;
+  &lt;li&gt;Image motion은 pillar motion을 학습하는데 auxiliary(보조) regularization를 제공한다.&lt;/li&gt;
+  &lt;li&gt;back-project된 optical flow에 의해 생성된 probabilistic motion masking은 point cloud에서 구조적 일관성을 유지하도록 한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;자세한 내용은 이 논문에서 설정한 Loss들을 확인해보면 알수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/149094364-1b9ab86b-f4f0-4043-aa93-62bdae0e09bf.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+&lt;center&gt;&lt;span style=&quot;color:rgb(150, 150, 150)&quot;&gt;pillar motion estimation을 위해 제안된 self-supervised learning framework의 schematic overview&lt;/span&gt;&lt;/center&gt;
+&lt;h2 id=&quot;method&quot;&gt;Method&lt;/h2&gt;
+&lt;h3 id=&quot;problem-formulation&quot;&gt;Problem Formulation&lt;/h3&gt;
+&lt;p&gt;시간 $t$에서의 point cloud와 paired camera images를 $\mathcal{P}_ t = {\lbrace P_ i^t \rbrace}^{N_t}_ {i=1}$, $\mathcal{I}_ t = {\lbrace P_ i^t \rbrace}^{N_c}_ {i=1}$로 나타낸다($P_ i^t$ : point, $N_t$ : received point의 수, $I_ i^t$ : image, $N_c$ : 차에 장착된 camera의 수).&lt;/p&gt;
+
+&lt;p&gt;다시 $\mathcal{P}_ t$는 겹치지 않는 pillar ${\lbrace \rho_ i^t \rbrace}^{N_p}_ {i=1}$로 이산화(discretized)된다($\rho_ i^t$ : pillar index, $N_p$ : pillar의 수). Pillar motion field는 $\mathcal{M}_ t = {\lbrace M_ i^t \rbrace}^{N_p}_ {i=1}$로 나타내면 다음 time에서의 각 pillar 위치는 다음과 같이 표현할 수 있다 : $\rho_ i^{
+\sim t+1}=M_ i^t(\rho_i^t),\;M_ i^t\in\mathbb{R}^2$.&lt;/p&gt;
+
+&lt;h3 id=&quot;lidar--based-structural-consistency&quot;&gt;LiDAR  based Structural Consistency&lt;/h3&gt;
+&lt;p&gt;위에서 정의한 pillar motion $\mathcal{M}_ t$에 따라 각 pillar $\rho_i^t$의 motion vector $M_i^t$를 pillar 내 모든 point에 할당하여 point 별 motion을 얻을 수 있고, 수직 방향의 motion은 0으로 설정한다. 이렇게 point 별 motion을 얻으면 origin point cloud $\mathcal{P}_ t$로부터 다음 timestamp의 예상 point cloud인 $\widetilde{\mathcal{P}}_ {t+1}$를 얻을 수 있다.&lt;/p&gt;
+
+&lt;p&gt;이 transformed point cloud $\widetilde{\mathcal{P}}_ {t+1}$와 실제 point cloud $\mathcal{P}_ {t+1}$간의 structural consistency를 pillar motion learning을 위한 free supervision으로 사용한다. 이를 나타내는 Loss는 다음과 같이 표현된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/149133556-f71835ac-7fe7-4757-8f62-dad0b7bc3ed5.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;70%&quot; height=&quot;70%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;간단히 이야기하면, tramsform된 point들과 실제 point들 간에 한 point에서 가장 가까운 point와의 거리를 Loss로 사용한다고 할 수 있다. 그러나 LiDAR로 얻는 point cloud의 특성 상 $t$에서 얻은 point가 정확히 이동하여 $t+1$에 똑같이 존재할 수 없다. 때문에 이것만 사용하면 noise의 영향이 매우 크다.&lt;/p&gt;
+
+&lt;h3 id=&quot;cross-sensor-motion-regularization&quot;&gt;Cross-Sensor Motion Regularization&lt;/h3&gt;
+&lt;p&gt;LiDAR의 data가 sparse한것에 비해 카메라 image는 point cloud보다 dense하고 구분하기 쉬운 외관을 얻을 수 있다. 이 장점을 활용하기 위해 image도 같이 사용한다. 그 방법은 pillar motion을 projection하여 얻은 scene flow와 image로부터 얻은 optical flow를 비교하는 것이다.&lt;/p&gt;
+
+&lt;p&gt;그러나 optical flow는 ego-motion, 즉 자기 자신이 움직이는것 때문에 관측하려는 물체의 실제 motion이 달라지게 된다. 때문에$I^t$와 $I^{t+1}$로 계산되는 $F^t$의 $(u,v)$픽셀에서의 optical flow는 다음과 같이 나타난다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/149141628-e5ce6a96-162d-4d41-bdfc-d4e66b7d103f.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;60%&quot; height=&quot;60%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;여기서, $I^t$와 관련된 point cloud $\mathcal{P}_ t$의 point $P^t_i$를 projection 했을 때 camera image에서의 위치는 다음과 같이 나타낼 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/149275347-bb378ace-973a-4922-91ea-3264c15c9e40.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;45%&quot; height=&quot;45%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;$K$는 camera intrinsic parameter이고, $T_{L\to C}$는 LiDAR와 camera간의 상대적 pose이다. 이를 이용하면 ego-motion에 의해 유도된 optical flow를 다음과 같이 계산할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/149141290-141ad651-3805-4ca8-98b1-59b7103c91a7.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;75%&quot; height=&quot;75%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이때 $T_{t \to t+1}$은 ego-vehicle의 pose 변화로, ego-vehicle의 움직이 포함된 optical flow에서 이를 고려하지 않은 optical flow를 빼줌으로써 순수하게 ego-vehicle의 motion만 계산하는 것이다. (2)번 식과 (4)번식을 합치면 순수한 $F_{obj}^t$만을 얻을 수 있다. 유의해야할 것은 정확한 $F_{ego}^t$를 계산하기 위해 projected point와 대응되는 pixel에서만 $F_{obj}^t$를 계산한다.&lt;/p&gt;
+
+&lt;p&gt;이제 pillar 별 motion vector $M^t_i$를 3번 식을 이용해 대응되는 image로 projection하면 projected optical flow인 $\widetilde{\mathcal{P}}^t(u_i,v_i)$를 얻을 수 있다. 이렇게 얻어진 2가지 optical flow의 차이를 다음과 같은 식으로 표현하고, Loss로 사용한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/149146801-fc942fd6-fbbb-4e5b-8487-d47da4288e82.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;70%&quot; height=&quot;70%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이 loss는 이전의 structural consistency를 보조하고, sparse한 point cloud의 ambiguity를 완화한다. optical flow estimation과 관련하여, 전체 framework를 통합하여 self-supervised learning을 수행할 수 있도록 unsupervised 방법&lt;sup&gt;&lt;a href=&quot;#footnote_1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;을 사용해 model을 training 할 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;probabilistic-motion-masking&quot;&gt;Probabilistic Motion Masking&lt;/h3&gt;
+&lt;p&gt;ego-motion을 제외하고 남은 object motion에서 멈춰있는 물체가 noise로 인해 움직이는것으로 인식되어 똑같이 weight를 가지게 되면 제대로 된 motion을 예측하기 어렵다. 때문에 여기서는 다음 식과 같은 확률적 motion masking을 이용해 해당 object가 static할 확률을 계산하여 weight를 조절할 수 있도록 하였다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/149274288-d8078642-1a3d-4b3e-9a3c-1e197ca4ec90.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;65%&quot; height=&quot;65%&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;optimization&quot;&gt;Optimization&lt;/h3&gt;
+&lt;p&gt;optical flow 추정을 위한 spatical smoothness constraint와 유사하게 pillar motion learning에서도 유사한 local smoothness loss를 사용한다. spatical smoothness constraint란 인접한 pixel은 일반적으로 기준 pixel과 유사한 움직임을 가질것이라는 것에서 비롯된 제한이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/149275784-111c8736-9b13-442f-9d72-c909cf1fdb38.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;75%&quot; height=&quot;75%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;$\mathcal{M}^x_t$와 $\mathcal{M}^y_t$는 예측한 pillar motion field $\mathcal{M}_ t$의 $x, y$ 성분이고, $\bigtriangledown_x, \bigtriangledown_y$는 $x, y$방향의 기울기이다. 이 Loss는 동일한 물체에 속한 pillar가 유사한 움직임을 가지도록 하는데 도움을 준다.&lt;/p&gt;
+
+&lt;h3 id=&quot;total-loss&quot;&gt;Total Loss&lt;/h3&gt;
+&lt;p&gt;total loss는 위에서 나온 3개의 loss term의 weighted sum으로 계산한다. $\lambda$는 balancing coefficient이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/149296453-b4ff3f48-0adc-4d7a-b451-c8e4c2f5f41d.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;75%&quot; height=&quot;75%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;a name=&quot;footnote_1&quot;&gt;1&lt;/a&gt;: Yang Wang, Yi Yang, Zhenheng Yang, Liang Zhao, Peng Wang, and Wei Xu. Occlusion aware unsupervised learning of optical flow. In CVPR, 2018.&lt;/p&gt;</content><author><name>KYG</name></author><category term="논문" /><summary type="html">본 논문은 CVPR 2021에 게재된 논문으로 CVPR 2019에 게재된 PointPillars라는 논문의 아이디어를 기반으로 Self-Supervised learning을 수행하였다. BEV로 표현하는 방법의 장점을 이용하기 위해 raw point cloud를 pillar로 organize한다. 이후 각각의 pillar 속도인 pillar motion을 예측한다. 이때, LiDAR의 sparse scan 특성 상 data가 조밀하지 않아 camera image로부터 얻어진 optical flow를 함께 사용한다. 이 구조는 다음과 같은 상호작용을 하며 학습한다. Point cloud는 optical flow에서 ego-motion을 제외하는데 도움을 준다. Image motion은 pillar motion을 학습하는데 auxiliary(보조) regularization를 제공한다. back-project된 optical flow에 의해 생성된 probabilistic motion masking은 point cloud에서 구조적 일관성을 유지하도록 한다.</summary></entry><entry><title type="html">[논문 리뷰] Deep Learning for 3D Point Clouds: A Survey</title><link href="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/deep-learning-for-3d-point-clouds-a-survey/" rel="alternate" type="text/html" title="[논문 리뷰] Deep Learning for 3D Point Clouds: A Survey" /><published>2021-12-30T00:00:00+09:00</published><updated>2021-12-30T00:00:00+09:00</updated><id>https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/deep-learning-for-3d-point-clouds-a-survey</id><content type="html" xml:base="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/deep-learning-for-3d-point-clouds-a-survey/">&lt;p&gt;본 survey는 IEEE TPAMI에 게재된 것으로 2020년 까지 Point cloud를 사용하는 Deep Learning에 대해 정리하였다.&lt;sup&gt;&lt;a href=&quot;#footnote_1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; 다음과 같이 크게 3개의 task에 대해 설명하지만 이 글에서는 Segmentation을 제외한 2가지 task에 대해 정리한다.&lt;/p&gt;
+&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+&lt;h3 id=&quot;evaluation-metrics&quot;&gt;Evaluation Metrics&lt;/h3&gt;
+&lt;p&gt;각 task를 평가하기 위해 다양한 방법이 사용된다. 주로 사용되는 방법은 다음과 같다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;3D shape classification&lt;/strong&gt; : Overall Accuracy(OA), mean class accuracy(mAcc). OA는 모든 etst instances에 대한 평균 accuracy이고, mAcc는 모든 shape classes의 평균 accuracy를 의미한다.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;3D object detection&lt;/strong&gt; : Average Precision(AP). precision-recall curve의 아래 면적으로 계산.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;3D single object tracker&lt;/strong&gt; : Precision, Success&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;3D multi object tracker&lt;/strong&gt; : Average Multi-Object Tracking Accuracy(AMOTA), Average Multi-Object Tracking Precision(AMOTP)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;3D point cloud segmentation&lt;/strong&gt; : OA, mean Intersection over Union(mIoU), mean class Accuracy(mAcc), mean Average Precision(mAP).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;3d-shape-classification&quot;&gt;3D Shape Classification&lt;/h2&gt;
+&lt;h3 id=&quot;1-multi-view-based-methods&quot;&gt;1. Multi-view based Methods&lt;/h3&gt;
+&lt;p&gt;이 방법은 먼저 3D shape를 다양한 view로 projection을 하고 각 view에서의 feature를 추출한다. 그리고 이 feature들을 fu&lt;/p&gt;
+&lt;h2 id=&quot;3d-object-detection-and-tracking&quot;&gt;3D Object Detection and Tracking&lt;/h2&gt;
+&lt;h3 id=&quot;3d-object-detection&quot;&gt;3D Object Detection&lt;/h3&gt;
+&lt;h3 id=&quot;3d-object-tracking&quot;&gt;3D Object Tracking&lt;/h3&gt;
+&lt;p&gt;첫 frame에서 object의 위치가 주어지면, 연속되는 frame에서 이 object의 state를 추정하고 위치를 찾는다. Point cloud는 풍부한 geometric 정보를 사용할 수 있기 때문에 image 기반의 tracking에서 겪던 occlusion이나 조명 및 scale 변화같은 단점을 극복할 수 있다. image 기반 tracking에서 Siamese network를 성공적으로 사용한것이 기반해서 SC3D는 shape completion regularization을 사용하는 3D Siamese network를 제안하였다. 여기서는 먼저 Kalman filter를 사용해서 후보를 생성하고, shape regularization을 사용하여 model과 후보들을 encoding 하였다. 그리고 다음 frame에서 tracking 하는 object의 위치를 찾기 위해 cosine similarity를 사용한다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a name=&quot;footnote_1&quot;&gt;1&lt;/a&gt;: &lt;a href=&quot;https://ieeexplore.ieee.org/abstract/document/9127813&quot;&gt;Y. Guo, H. Wang, Q. Hu, H. Liu, L. Liu and M. Bennamoun, “Deep Learning for 3D Point Clouds: A Survey,” in IEEE Transactions on Pattern Analysis and Machine Intelligence, vol. 43, no. 12, pp. 4338-4364, 1 Dec. 2021, doi: 10.1109/TPAMI.2020.3005434.&lt;/a&gt;&lt;br /&gt;&lt;/p&gt;</content><author><name>KYG</name></author><category term="논문" /><summary type="html">본 survey는 IEEE TPAMI에 게재된 것으로 2020년 까지 Point cloud를 사용하는 Deep Learning에 대해 정리하였다.1 다음과 같이 크게 3개의 task에 대해 설명하지만 이 글에서는 Segmentation을 제외한 2가지 task에 대해 정리한다. Background Evaluation Metrics 각 task를 평가하기 위해 다양한 방법이 사용된다. 주로 사용되는 방법은 다음과 같다. 3D shape classification : Overall Accuracy(OA), mean class accuracy(mAcc). OA는 모든 etst instances에 대한 평균 accuracy이고, mAcc는 모든 shape classes의 평균 accuracy를 의미한다. 3D object detection : Average Precision(AP). precision-recall curve의 아래 면적으로 계산. 3D single object tracker : Precision, Success 3D multi object tracker : Average Multi-Object Tracking Accuracy(AMOTA), Average Multi-Object Tracking Precision(AMOTP) 3D point cloud segmentation : OA, mean Intersection over Union(mIoU), mean class Accuracy(mAcc), mean Average Precision(mAP).</summary></entry><entry><title type="html">[MLPR #] Unsupervised Classification 1 (fisher)</title><link href="https://shvtr159.github.io/mlpr/mlpr-unsupervised-classification-1/" rel="alternate" type="text/html" title="[MLPR #] Unsupervised Classification 1 (fisher)" /><published>2021-12-04T00:00:00+09:00</published><updated>2021-12-04T00:00:00+09:00</updated><id>https://shvtr159.github.io/mlpr/mlpr-unsupervised-classification-1</id><content type="html" xml:base="https://shvtr159.github.io/mlpr/mlpr-unsupervised-classification-1/">&lt;p&gt;Supervised 에서는 data에 label도 있고 전체 class의 갯수를 알 수 있기때문에 data로부터 그 분포를 추정할 수 있었다. unsupervised classification은 이러한 정보가 없을 때 data를 구분하는 방법이다. 
 Unknown targets를 분류하는 방법에는 다양한 방법이 있는데 다음과 같은 방법이 있다.&lt;/p&gt;
 &lt;ol&gt;
   &lt;li&gt;Criterion function 방법 : Sum of squared error, Min. variance, Scatter matrices, Optimization problem&lt;/li&gt;
@@ -250,7 +342,7 @@ p(\underline{x} \mid S_2)P(S_2)\\
 &lt;h2 id=&quot;classification&quot;&gt;Classification&lt;/h2&gt;
 &lt;p&gt;각각의 Class를 나누기 위해서는 Decision Rule이 결정되어야 한다. 예를 들어 변수 값에 따라 분류 할 때, 값이 5.5 초과면 $S_ {1}$, 이하면 $S_ {2}$로 분류할 수 있다. 그러나 이러한 feature가 1개일때보다는 2개일때 더 정확한 분류를 할 수 있고, 더 많아질수록 더 정확히 분류할 수 있다. 이렇게 fature의 차원이 커짐에 따라 decision surface의 차원도 점, 선, 면 으로 점점 증가하게 된다.&lt;/p&gt;
 
-&lt;p&gt;이렇게 나눠진 많은 Class들 중 $\underline{ \textbf{x}}$ 가 어디에 속하는 지 알기 위해서는 해당 class와 $\underline{ \textbf{x}}$의 거리를 측정해야 한다.&lt;/p&gt;</content><author><name>KYG</name></author><category term="MLPR" /><summary type="html">Notation $\underline{ \textbf{x}}$ : data 벡터 prototypes: $\underline{y}_ m^{(k)}$ : class $S_ {k}$에 속한 m번째 prototype k = class index $m_k$ = $S_ {k}$에 있는 prototype들의 번호 $\underline{y}_ m^{(k)}$, m = 1,2, … , $m_k$ 는 class $S_ {k}$의 모든 prototype로 정의</summary></entry><entry><title type="html">PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space</title><link href="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pointnet-deep-hierarchical-feature-learning-on-point-sets-in-a-metric-space/" rel="alternate" type="text/html" title="PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space" /><published>2021-09-27T00:00:00+09:00</published><updated>2021-09-27T00:00:00+09:00</updated><id>https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pointnet-deep-hierarchical-feature-learning-on-point-sets-in-a-metric-space</id><content type="html" xml:base="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pointnet-deep-hierarchical-feature-learning-on-point-sets-in-a-metric-space/">&lt;p&gt;PointNet++은 PointNet이 point가 존재하는 metric space에 의해 유도된 local structure를 활용하지 못해서 fine-grained&lt;sup&gt;&lt;a href=&quot;#footnote_1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; 패턴들을 잘 인식하지 못하고 복잡한 scene들을 일반화하는 능력이 떨어지는 문제를 해결하기 위해 제안되었다. PointNet++은 입력 point set의 nested partitioning에 PointNet을 recursive하게 적용하는 hierarchical 신경망이다. 이 네트워크는 metric space distance를 활용하여 contextual scale이 증가하는 local feature를 학습할 수 있다.&lt;/p&gt;
+&lt;p&gt;이렇게 나눠진 많은 Class들 중 $\underline{ \textbf{x}}$ 가 어디에 속하는 지 알기 위해서는 해당 class와 $\underline{ \textbf{x}}$의 거리를 측정해야 한다.&lt;/p&gt;</content><author><name>KYG</name></author><category term="MLPR" /><summary type="html">Notation $\underline{ \textbf{x}}$ : data 벡터 prototypes: $\underline{y}_ m^{(k)}$ : class $S_ {k}$에 속한 m번째 prototype k = class index $m_k$ = $S_ {k}$에 있는 prototype들의 번호 $\underline{y}_ m^{(k)}$, m = 1,2, … , $m_k$ 는 class $S_ {k}$의 모든 prototype로 정의</summary></entry><entry><title type="html">[논문 리뷰] PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space</title><link href="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pointnet-deep-hierarchical-feature-learning-on-point-sets-in-a-metric-space/" rel="alternate" type="text/html" title="[논문 리뷰] PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space" /><published>2021-09-27T00:00:00+09:00</published><updated>2021-09-27T00:00:00+09:00</updated><id>https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pointnet-deep-hierarchical-feature-learning-on-point-sets-in-a-metric-space</id><content type="html" xml:base="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pointnet-deep-hierarchical-feature-learning-on-point-sets-in-a-metric-space/">&lt;p&gt;PointNet++은 PointNet이 point가 존재하는 metric space에 의해 유도된 local structure를 활용하지 못해서 fine-grained&lt;sup&gt;&lt;a href=&quot;#footnote_1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; 패턴들을 잘 인식하지 못하고 복잡한 scene들을 일반화하는 능력이 떨어지는 문제를 해결하기 위해 제안되었다. PointNet++은 입력 point set의 nested partitioning에 PointNet을 recursive하게 적용하는 hierarchical 신경망이다. 이 네트워크는 metric space distance를 활용하여 contextual scale이 증가하는 local feature를 학습할 수 있다.&lt;/p&gt;
 
 &lt;h2 id=&quot;1-introduction&quot;&gt;1. Introduction&lt;/h2&gt;
 &lt;p&gt;기존 PointNet의 아이디어는 각 point의 공간 encoding을 학습하고, 모든 개별 point feature들을 global 포인트 클라우드 signature와 aggregate하는 것이었다. 그러나 이런 구조는 metric에 의해 유도된 local structure를 활용하지 않는다. 그러나 convolutional architecture의 성공에 local structure를 활용하는 것이 중요한 요소라는 것이 증명되어왔다. CNN은 multi-resolution hierarchy를 따라 점점 더 큰 scale의 feature를 찾아낼 수 있다. CNN 구조 특성상 낮은 level의 layer에서는 작은 receptive field를 가지고 높은 layer에서는 큰 receptive field를 가지기 때문이다. 이러한 hierarchy를 따라 local pattern들을 추상화하는 기능은 일반화에 더욱더 유용하다.&lt;/p&gt;
@@ -292,7 +384,7 @@ p(\underline{x} \mid S_2)P(S_2)\\
 &lt;p&gt;set abstraction level은  input으로 $N\times (d+C)$ ($N$ : point 개수, $d$ : coordinates dimension, $C$ : point feature dimension) matrix를 받고  output으로 $N’\times (d+C’)$ ($N’$ : subsampling된 point 개수, $C’$ : local context를 요약한 feature vector dimensioin)  matrix를 출력한다.&lt;/p&gt;
 
 &lt;h4 id=&quot;sampling-layer&quot;&gt;Sampling layer&lt;/h4&gt;
-&lt;p&gt;input points $\lbrace x_{1}, x_{2}, …, x_{n} \rbrace$가 주어질 때, iterative farthest poin sampling (FPS)을 사용하여 input의 부분집합 $\lbrace x_{i_{1}}, x_{i_{2}}, …, x_{i_{m}} \rbrace$를 생성한다. FPS는 이전까지 sampling된 point들에서 가장 먼 point를 선택하는 방법으로 $x_{i_{j}}$는 $\lbrace x_{i_{1}}, x_{i_{2}}, …, x_{i_{j-1}} \rbrace$의 point들, 즉 이전까지 sampling된 point들에서 가장 먼 point이다. 이 방법은 random sampling과 비교했을 때 더 우수한 결과를 얻을 수 있었다. 데이터 분포가 균일하지 않기 때문에 이러한 방식으로 데이터에 의존하여 receptive field를 생성한다.&lt;/p&gt;
+&lt;p&gt;input points $\lbrace x_{1}, x_{2}, …, x_{n} \rbrace$가 주어질 때, iterative farthest point sampling (FPS)을 사용하여 input의 부분집합 $\lbrace x_{i_{1}}, x_{i_{2}}, …, x_{i_{m}} \rbrace$를 생성한다. FPS는 이전까지 sampling된 point들에서 가장 멀리 있는 point를 선택하는 방법으로 이때 $x_{i_{j}}$는 $\lbrace x_{i_{1}}, x_{i_{2}}, …, x_{i_{j-1}} \rbrace$의 point들, 즉 이전까지 sampling된 point들에서 가장 먼 point가 된다. 이렇게 선택된 $N’$개의 centroid와 그 좌표값($N’\times d$)을 Grouping layer의 input으로 사용한다. 이 방법은 random sampling과 비교했을 때 더 우수한 결과를 얻을 수 있었고, point cloud는 데이터 분포가 균일하지 않기 때문에 이러한 방식으로 데이터에 의존하여 receptive field를 생성한다.&lt;/p&gt;
 
 &lt;h4 id=&quot;grouping-layer&quot;&gt;Grouping layer&lt;/h4&gt;
 &lt;p&gt;Grouping layer는 $N\times (d+C)$ 크기의 point set과 $N’\times d$ 크기의 centriods set를 input으로 받아 grouping을 수행한다. output은 $N’\times K\times (d+C)$ 의 point set 그룹들이다. 이 각 그룹은 local region이고, $K$는 centriod points의 neighborhood point 개수(local region에 속하는 point 개수)이다. 여기서는 ball query를 이용해 $K$가 그룹에 따라 다르지만, 다음의 PointNet layer가 point의 수를 flexible하게 고정된 길이의 local region feature vector로 변환해준다.&lt;/p&gt;
@@ -384,7 +476,7 @@ p(\underline{x} \mid S_2)P(S_2)\\
 &lt;p&gt;시스템이 가용한 데이터를 모두 사용해 훈련한다. 즉 먼저 시스템을 훈련시키고 더 이상의 학습 없이 제품 시스템에 적용한다. 오프라인 학습(offline learning)이라고 한다. 이는 컴퓨팅 자원이 많이 필요하다는 점을 고려해야 한다.&lt;/p&gt;
 
 &lt;h4 id=&quot;온라인-학습-online-learning&quot;&gt;온라인 학습 (online learning)&lt;/h4&gt;
-&lt;p&gt;데이터를 순차적으로 한 개씩 또는 미니배치(mini-batch) 단위로 훈련한다. 매 학습 단계가 빠르고 비용이 적게 들어 데이터가 도착하는 즉시 학습할 수 있다. 그러나 나쁜 데이터가 주입되었을 때 시스템 성능이 점진적으로 감소하기 때문에 모니터링이 필요하다.&lt;/p&gt;</content><author><name>KYG</name></author><category term="ML" /><summary type="html">핸즈온 머신러닝의 머신러닝 내용 일부를 정리. 머신러닝 시스템의 종류 머신러닝 시스템은 다음과 같이 분류할 수 있지만 서로 배타적이지 않고 원하는 대로 연결 가능하다. 훈련 지도 여부 : 지도 학습, 비지도 학습, 준지도 학습, 강화 학습 실시간 훈련 여부 : 온라인 학습, 배치 학습</summary></entry><entry><title type="html">PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation</title><link href="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pointnet-deep-learning-on-point-sets-for-3d-classification-and-segmentation/" rel="alternate" type="text/html" title="PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation" /><published>2021-09-13T00:00:00+09:00</published><updated>2021-09-13T00:00:00+09:00</updated><id>https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pointnet-deep-learning-on-point-sets-for-3d-classification-and-segmentation</id><content type="html" xml:base="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pointnet-deep-learning-on-point-sets-for-3d-classification-and-segmentation/">&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;/h2&gt;
+&lt;p&gt;데이터를 순차적으로 한 개씩 또는 미니배치(mini-batch) 단위로 훈련한다. 매 학습 단계가 빠르고 비용이 적게 들어 데이터가 도착하는 즉시 학습할 수 있다. 그러나 나쁜 데이터가 주입되었을 때 시스템 성능이 점진적으로 감소하기 때문에 모니터링이 필요하다.&lt;/p&gt;</content><author><name>KYG</name></author><category term="ML" /><summary type="html">핸즈온 머신러닝의 머신러닝 내용 일부를 정리. 머신러닝 시스템의 종류 머신러닝 시스템은 다음과 같이 분류할 수 있지만 서로 배타적이지 않고 원하는 대로 연결 가능하다. 훈련 지도 여부 : 지도 학습, 비지도 학습, 준지도 학습, 강화 학습 실시간 훈련 여부 : 온라인 학습, 배치 학습</summary></entry><entry><title type="html">[논문 리뷰] PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation</title><link href="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pointnet-deep-learning-on-point-sets-for-3d-classification-and-segmentation/" rel="alternate" type="text/html" title="[논문 리뷰] PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation" /><published>2021-09-13T00:00:00+09:00</published><updated>2021-09-13T00:00:00+09:00</updated><id>https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pointnet-deep-learning-on-point-sets-for-3d-classification-and-segmentation</id><content type="html" xml:base="https://shvtr159.github.io/%EB%85%BC%EB%AC%B8/pointnet-deep-learning-on-point-sets-for-3d-classification-and-segmentation/">&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;/h2&gt;
 &lt;p&gt;기존에는 point cloud의 irregular한 형식때문에  regular한 3D voxel grid 또는 collection of images로 바꿔 사용하곤 했지만 이것은 불필요하게 많은 data가 렌더링 되는 문제가 있다. 그래서 여기서는 point cloud를 바로 사용하며 input point들의 permutation invariance&lt;sup&gt;&lt;a href=&quot;#footnote_1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;를 잘 고려하는 neural network를 설계하였다. PointNet은 object detection, part segmentation, scene semantic parsing에 이르는 application들을 위한 통일된 구조를 제공한다. 또한, 이론적으로, network가 무엇을 학습했는지와 network가 왜 perturbation(noise와 유사)과 corruption에 robust한지 이해하기 위한 분석을 제공한다.&lt;/p&gt;
 
 &lt;h2 id=&quot;1-introduction&quot;&gt;1. Introduction&lt;/h2&gt;
@@ -620,153 +712,4 @@ feture expansion으로 $rN\times \tilde{C_{2}}$의 차원으로 feature ${f}’$
 &lt;p&gt;여기서는 $rN\times \tilde{C_{2}}$로 확장된 feature로부터 output point들의  3D coordinate를 재구성한다. 특히, 각 point의 feature를 FC layer들을 통과시켜 3D coordinate를 regression한다. 그 결과 최종적으로  upsampling된 $rN\times 3$의  point 좌표를 출력한다.&lt;/p&gt;
 
 &lt;p&gt;처음으로 제안된 입력과 출력이 모두 3D 좌표의 point set인 end-to-end point set upsampling network. 기존에는 related work 부분.
-object로부터 local geometry pattern을 학습하기 위해 계층적으로 학습하며 작은 local feature와 큰 local feature들을 다양하게 학습한다. 이후 feature space에서 feature의 수를 증가시켜 upsampling을 수행한다.&lt;/p&gt;</content><author><name>KYG</name></author><category term="논문" /><summary type="html">Abstract Key point : point당 multi-level feature들을 학습하고 multi-branch convolution unit을 통해 feature space에 implicit하게 point set을 확장한다. 이후 확장된 feature는 multitude of feature들로 분할한 뒤 upsampling된 point set로 재구성한다. 이 Network는 patch-level에서 적용되고, upsampling된 point들이 surface에 균일한 분포로 underlying할 수 있도록 하는 joint loss function을 가진다. some baseline 방법들과 optimization-based 방법들과 성능을 비교한다.</summary></entry><entry><title type="html">CNN 기타 정리</title><link href="https://shvtr159.github.io/ml/point-cloud-feature/" rel="alternate" type="text/html" title="CNN 기타 정리" /><published>2021-07-28T00:00:00+09:00</published><updated>2021-07-28T00:00:00+09:00</updated><id>https://shvtr159.github.io/ml/point-cloud-feature</id><content type="html" xml:base="https://shvtr159.github.io/ml/point-cloud-feature/">&lt;h2 id=&quot;cnn-연산&quot;&gt;CNN 연산&lt;/h2&gt;
-&lt;p&gt;3차원의 합성곱 연산에서 3차원 데이터의 모양은 (채널, 높이, 너비) 또는 (높이, 너비, 채널)과 같은 순서로 쓴다.  필터도 마찬가지로 하여 합성곱의 출력은 다음과 같다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/133269875-502f2f87-f493-4330-8d20-6b21beb26478.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;위 이미지에서는 출력 데이터의 채널이 1인데 다수의 채널을 내보내기 위해서는 다음과 같이 여러개의 필터를 사용하면 &lt;strong&gt;필터 갯수만큼의 채널이 생성&lt;/strong&gt;된다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/133270157-b3de61c8-f1fb-4b53-b282-0300cbaaaa14.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;bias는 다음과 같이 대응 채널의 원소에 모두 더해지므로 차원에는 변화가 없다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/133270362-c61205c2-c459-44fe-927d-8147ed63041c.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;배치-처리&quot;&gt;배치 처리&lt;/h3&gt;
-&lt;p&gt;배치 처리를 지원하기 위해 데이터의 차원을 하나 늘려 4차원 데이터로 저장한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/133270577-6679a8ce-ffe9-4819-832d-76f87c564e01.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이렇게 되면 신경망에 4차원 데이터가 하나 흐를 때마다 데이터 N개에 대한 합성곱 연산이 이루어진다. 즉 N회 분의 처리를 한번에 수행한다.&lt;/p&gt;
-
-&lt;h3 id=&quot;차원-계산-공식&quot;&gt;차원 계산 공식&lt;/h3&gt;
-&lt;p&gt;$W_1\times H_1\times D_1$이 input으로 들어올 때 차원을 결정하는데 4개의 하이퍼 parameter가 관여한다.&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;$K$ : filter의 개수&lt;/li&gt;
-  &lt;li&gt;$F$ : filter의 크기&lt;/li&gt;
-  &lt;li&gt;$S$ : stride&lt;/li&gt;
-  &lt;li&gt;$P$ : zero padding의 크기&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Conv layer을 거쳐 나온 $W_2\times H_2\times D_2$는 다음과 같이 계산된다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;$W_2= $(W_1-F+2P)/S+1$&lt;/li&gt;
-  &lt;li&gt;$H_2= $(H_1-F+2P)/S+1$(width와 height는 똑같이 계산된다)&lt;/li&gt;
-  &lt;li&gt;$D_2= $K$(filter의 수와 동일)
-    &lt;h2 id=&quot;feature-detector-vs-feature-descriptor&quot;&gt;feature detector vs feature descriptor&lt;/h2&gt;
-    &lt;p&gt;&lt;strong&gt;featrue detector&lt;/strong&gt; : interest point (key point, salient point) detector는 어떤 criterion에 따라 point를 선택하는 알고리즘이다. 일반적으로 interest point는 “cornerness” metric과 같이 어떤 함수의 local maximum을 의미한다.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;feature descriptor&lt;/strong&gt; : descriptor는 interest point의 주변 image patch를 설명하는 value의 vector이다. 이는 raw pixel value처럼 단순하거나, gradient orientation의 히스토그램처럼 복잡할 수 있다.&lt;/p&gt;
-
-&lt;p&gt;일반적으로 interest point와 해당 descriptor를 합쳐서 &lt;strong&gt;local feature&lt;/strong&gt;라고 한다. local feature는 registration, 3D reconstruction, object detection/recognition 등에 사용된다.&lt;/p&gt;
-
-&lt;p&gt;즉, Harris, Min Eigen, FAST 등은 interest point detector, 자세히는 corner detector라고 할 수 있다. SIFT는 detector와 descriptor 둘 다 포함하는데, detector는 DoG를 base로 blob-like 구조의 중심을 detect하고,  gradient orientation의 히스토그램을 base로 descriptor의 역할을 수행한다.&lt;/p&gt;</content><author><name>KYG</name></author><category term="ML" /><summary type="html">CNN 연산 3차원의 합성곱 연산에서 3차원 데이터의 모양은 (채널, 높이, 너비) 또는 (높이, 너비, 채널)과 같은 순서로 쓴다. 필터도 마찬가지로 하여 합성곱의 출력은 다음과 같다.</summary></entry><entry><title type="html">[Computer Graphics #10] Texture Mapping</title><link href="https://shvtr159.github.io/graphics/computer-graphics-10-texture-mapping/" rel="alternate" type="text/html" title="[Computer Graphics #10] Texture Mapping" /><published>2021-05-28T00:00:00+09:00</published><updated>2021-05-28T00:00:00+09:00</updated><id>https://shvtr159.github.io/graphics/computer-graphics-10-texture-mapping</id><content type="html" xml:base="https://shvtr159.github.io/graphics/computer-graphics-10-texture-mapping/">&lt;p&gt;실제로 모델을 만들 때는 vertex의 색으로 칠하는 것으로는 완벽하지 않다. 때문에 이에 맞는 texture를 모델에 입히는 과정이 필요하다. 각  geometry의 surface에 일치하는 real object의 부분의 polygon을 입혀준다.&lt;/p&gt;
-
-&lt;h2 id=&quot;mapping&quot;&gt;Mapping&lt;/h2&gt;
-&lt;p&gt;이때 다음과 같은 u, v의 Texture Coordinates를 사용한다. 
-&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/119942715-2121db80-bfcd-11eb-8167-b3d306bc2f19.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;80%&quot; height=&quot;80%&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;weight를 이용해 model에서 vertex 위치를  interpolation 하면 model의 좌표에서 이미지의 좌표값이 나오므로 해당 이미지 좌표의 color값을 사용하면 된다. 이 interpolation을 수행하기 위해  위와 같이 내부의 값을 사용한다. 각 꼭짓점의 weight를 가지는데 이 weight는 반대편의 삼각형의 넓이에 의해 결정된다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/119943119-9097cb00-bfcd-11eb-9751-1d9ea40e622d.png&quot; alt=&quot;image&quot; width=&quot;45%&quot; height=&quot;45%&quot; /&gt; &lt;img src=&quot;https://user-images.githubusercontent.com/79836443/119943181-a5745e80-bfcd-11eb-812e-b644afe0f334.png&quot; alt=&quot;image&quot; width=&quot;45%&quot; height=&quot;45%&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;그러나 이미지 자체도 continuois하지 않기 때문에 u,v의 값이 보통 픽셀 사이로  떨어진다. 그럼 다시 이미지값에서도 interpolation을 수행하여 그 값을 계산한다. 이때는 &lt;strong&gt;pixel의 RGB color을 bilinear interpolation&lt;/strong&gt;하여 값을 알아낸다.&lt;/p&gt;
-
-&lt;h2 id=&quot;screen-space-vs-world-space&quot;&gt;Screen Space vs. World Space&lt;/h2&gt;
-&lt;p&gt;그러나 실제로 우리는 3D space 상에 존재하는 triangle이 2D인 screen에 projection된 모습을 보게 된다. 때문에 우리가 원하는 아래와 같이 실제 보고 싶은 모습과 달라진다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/119944686-8971bc80-bfcf-11eb-92f0-b972bf24e5a5.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;75%&quot; height=&quot;75%&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;그 이유는 아래 triangle’s edge 부분이 3D상에서 실제 triangle의 상태인데, projection된 상태에서 interpolation하고 texture mapping을 수행했기 때문에 실제 triangle과는 달라지기 때문이다. 아래 사진을 보면 triangle’s Edge 부분의 선들(vertex간의 거리)은 모두 같은 길이를 가지고 있다. 그러나 projectino된 결과를 보면 그 관계가 유지되지 않는다. 그러면 Triangle에서 직접 수행하면 될 것 같지만 이는 3차원 공간에서 해야 하므로 쉽지 않다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/119945406-5f6cca00-bfd0-11eb-9659-a3ec4d60bd9e.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;75%&quot; height=&quot;75%&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이는 어떻게 projection이 되는지 관계를 알면 back projection을 수행하여 더 좋게 만들 수 있다.&lt;/p&gt;
-
-&lt;h3 id=&quot;solution&quot;&gt;Solution&lt;/h3&gt;
-&lt;h4 id=&quot;1-mesh-refinement&quot;&gt;1. Mesh Refinement&lt;/h4&gt;
-&lt;p&gt;그렇다면 triangle을 나눠서 수를 늘리고, 개수를 늘리면 더 좋아지지 않을까. 하는 생각으로 늘려보았다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/119946977-2c2b3a80-bfd2-11eb-96e8-f73eded537f3.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;75%&quot; height=&quot;75%&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;그 결과 처음보다는 좀 더 나아진 것 같지만 여전히 문제가 발생하고 있다. 또한, plat한 평면에 대해서는 triangle의 수를 늘리는 것은 더 좋지 않다.&lt;/p&gt;
-&lt;h4 id=&quot;2-screen-space-barycentric-interpolation&quot;&gt;2. Screen Space Barycentric Interpolation&lt;/h4&gt;
-&lt;p&gt;그래서 결국 힘들더라도 back projection을 수행한다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;world coordinate의 각 끝 point(위 projection 이미지에서 v1, v2)의 x, y, z에서 일단 x, z축을 다음과 같이 본다.&lt;/li&gt;
-&lt;/ul&gt;
-
-\[p^{w}_{1}=\begin{pmatrix}
-x_{1}\\ z_{1}
-\end{pmatrix}\qquad
-p^{w}_{2}=\begin{pmatrix}
-x_{2}\\ z_{2}
-\end{pmatrix}\]
-
-&lt;ul&gt;
-  &lt;li&gt;이 point를 screen으로 projection한다. 이 projection으로 $V_{1},V_{2}$가 $p_{1},p_{2}$로 projection 된다.&lt;/li&gt;
-&lt;/ul&gt;
-
-\[p_{1}=\frac{hx_{1}}{z_{1}}\qquad
-p_{2}=\frac{hx_{2}}{z_{2}}\qquad(1)\]
-
-&lt;ul&gt;
-  &lt;li&gt;world coordiante에서의 point는 다음과 같이 나타난다.&lt;/li&gt;
-&lt;/ul&gt;
-
-\[p^{w}=(1-s)\begin{pmatrix}
-x_{1}\\ z_{1}
-\end{pmatrix}+s\begin{pmatrix}
-x_{2}\\ z_{2}
-\end{pmatrix}\qquad\]
-
-&lt;ul&gt;
-  &lt;li&gt;이 $p^{w}(s)$를 screen space로 projection한 것의 위치는 다음과 같이나타난다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;center&gt;$$SCREE\_\,SPACE(p^{w}(s))) =h\frac{(1-s)x_{1}+sx_{2}}{(1-s)z_{1}+sz_{2}}\qquad(2)$$&lt;/center&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;이제 식 (1)과 (2)의 관계를 나타내면 다음과 같이 나타나는데 h는 고정된 값이므로 t와 s의 관계를 알아내면 된다.&lt;/li&gt;
-&lt;/ul&gt;
-
-\[(1-t)\frac{hx_{1}}{z_{1}}+t\frac{hx_{2}}{z_{2}}=h\frac{(1-s)x_{1}+sx_{2}}{(1-s)z_{1}+sz_{2}}\]
-
-&lt;ul&gt;
-  &lt;li&gt;이를 정리하여 s와 t가 다음과 같은 관계를 가지는것을 찾을 수 있다. 즉 실제 world s에서 이런 coordinate를 알고 싶다면 screen에서 이 t를 사용하면 된다. 이 t는 $z_{1}$과 $z_{2}$에 의해 결정된다. 이 식에 $z_{1}$ $z_{2}$을 넣고 s를 계산해 낸다. 이것이 world와 screen에서 사용할 weight값을 계산한 것이다.&lt;/li&gt;
-&lt;/ul&gt;
-
-\[s=\frac{tz_{1}}{z_{2}+t(z_{1}-z_{2})}\]
-
-&lt;ul&gt;
-  &lt;li&gt;이것은 point에서 수행한 것이므로 이제 triangle에서 수행할 때는 다음과 같이 weight가 2개로 나타난다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/119958859-66023e00-bfde-11eb-980c-7e0f39b5602c.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;75%&quot; height=&quot;75%&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;proxy--objects&quot;&gt;Proxy  Objects&lt;/h3&gt;
-&lt;p&gt;그러나 model이 복잡해지면 해당 위치에 어떤 이미지를 넣어야 하는지 하나하나 직접 할 수가 없다. 때문에 이렇게 복잡하게 하지 않아도 되는(예를 들면 반복되는 패턴)이라면 적절히 approximation하여 할당할 수 있다.&lt;/p&gt;
-
-&lt;h4 id=&quot;step-1&quot;&gt;Step 1.&lt;/h4&gt;
-&lt;p&gt;이를 위해 coordinate를 적당히 simplify한다. 예를 들면 각 면마다 모두 matrix를 계산하기에는 복잡하므로 원통, 직육면체 등 간단한 모습으로 생각하고 어떻게 projection하는지 나타내고 씌운다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/119965589-64884400-bfe5-11eb-8560-a41517ead7aa.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;75%&quot; height=&quot;75%&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;step-2&quot;&gt;Step 2.&lt;/h4&gt;
-&lt;p&gt;그러나 실제로는 원통이 아니므로 실제 model의 surface에 mapping을 해야한다. 이 때는 model이 간단하다면 (a)와 같이, 좀 더 복잡하면 model의 surface normal 방향의 값을(b), overlab이 없다면 (c)와 같은 방법으로 수행할 수 있다&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/119965893-b7fa9200-bfe5-11eb-841d-44f550299819.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;75%&quot; height=&quot;75%&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;aliasing&quot;&gt;Aliasing&lt;/h2&gt;
-&lt;p&gt;texture를 할당하고 난 후 나타날수 있는 가장 큰 문제점중 하나로, 내 texture가 가진 복잡도와 실제 vertex의 복잡도가 부합하지 않을 때 나타난다. 예를들어 이미지는 매우 복잡한데 vertex가 그에 미치지 못하면 원하지 않는 패턴이 생기게 된다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/119966169-00b24b00-bfe6-11eb-96eb-2f7d1064418d.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;75%&quot; height=&quot;75%&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;예를 들어 체스판 무늬에 경우로 보면 vertex가 많지 않다면 검정색 vertex 이후 vertex의 위치가  흰색에 위치하지 못하고 다음검정색 이미지 좌표에 위치해 다시 검정이 나오는 것처럼 듬성듬성 잘못된 값을 가져오게 된다.&lt;/p&gt;
-
-&lt;p&gt;이를 해결하기 위해 vertex 복잡도에 맞게 작은 vertex에서도 사용할만 한 작은 size의 이미지를  각각 만들어준 뒤 그 이미지를 사용한다. 이 때, 한 방향으로만 작아지는 것은 MIP map, x, y 모든 방향으로 작아지는 것을 가지고 있는것을 RIP map 이라고 한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/79836443/119966937-c7c6a600-bfe6-11eb-8bf3-3dceb22dfa69.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; width=&quot;75%&quot; height=&quot;75%&quot; /&gt;&lt;/p&gt;</content><author><name>KYG</name></author><category term="Graphics" /><summary type="html">실제로 모델을 만들 때는 vertex의 색으로 칠하는 것으로는 완벽하지 않다. 때문에 이에 맞는 texture를 모델에 입히는 과정이 필요하다. 각 geometry의 surface에 일치하는 real object의 부분의 polygon을 입혀준다.</summary></entry></feed>
+object로부터 local geometry pattern을 학습하기 위해 계층적으로 학습하며 작은 local feature와 큰 local feature들을 다양하게 학습한다. 이후 feature space에서 feature의 수를 증가시켜 upsampling을 수행한다.&lt;/p&gt;</content><author><name>KYG</name></author><category term="논문" /><summary type="html">Abstract Key point : point당 multi-level feature들을 학습하고 multi-branch convolution unit을 통해 feature space에 implicit하게 point set을 확장한다. 이후 확장된 feature는 multitude of feature들로 분할한 뒤 upsampling된 point set로 재구성한다. 이 Network는 patch-level에서 적용되고, upsampling된 point들이 surface에 균일한 분포로 underlying할 수 있도록 하는 joint loss function을 가진다. some baseline 방법들과 optimization-based 방법들과 성능을 비교한다.</summary></entry></feed>
