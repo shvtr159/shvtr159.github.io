@@ -143,32 +143,8 @@ var store = [{
         "url": "/mlpr/mlpr-statistical-cassification1/",
         "teaser": null
       },{
-        "title": "[MLPR #] Bayes Classifiers",
-        "excerpt":"discriminant decision $g_i(\\underline{x})$를 이용하여 모든 $i \\neq j$에 대해 $g_i(\\underline{x})&gt;g_j(\\underline{x})$ 분류를 사용한다. 이를 probability term으로 표현하면   \\[g_i(\\underline{x})=p(S_i \\mid \\underline{x})\\]  \\[\\rightarrow \\; g_i(\\underline{x})=p(\\underline{x} \\mid S_i)P(S_i)\\]  \\[\\rightarrow \\; g_i(\\underline{x})=\\textup{ln}(p(\\underline{x} \\mid S_i))+\\textup{ln}(P(S_i))\\]  Normal Density  ","categories": ["MLPR"],
-        "tags": [],
-        "url": "/mlpr/mlpr-bayes-classifiers/",
-        "teaser": null
-      },{
-        "title": "[MLPR #] Parameter Estimation 1 (미완)",
-        "excerpt":"이전까지는 모든 statistics과 probability(prior probabiliteis, class-conditional densities(likelihood) 등)를 알 때 Bayes Classifier를 이용해 data가 어디에 속하는지 분류할 수 있었다. 그러나 이렇게 모든 statistics를 아는 상황은 드물기 때문에 data로부터 이를 추정해야만 한다. priori를 모른다고 가정할 때 다음 두 technique를 이용하여 $p(x\\mid S_{i})$를 추정할 수 있다. Parametric : $p(x\\mid S_{i})$의 form을 알거나,...","categories": ["MLPR"],
-        "tags": [],
-        "url": "/mlpr/mlpr-parameter-estimation/",
-        "teaser": null
-      },{
-        "title": "[MLPR #] Nonparameteric Estimation 1 (미완)",
-        "excerpt":"이전까지 확률을 이용해 density function을 추정했다면 Nonparameteric Technique는 math form 없이 density를 추정한다. Introduction Estimation Procedure $x$의 density를 추정하기 위한 절차를 알아보자 영역 $R_1, R_2, …$을 생성한다. 이때 영역 $R_j$는 j개의 sample들로 구성된다. ?? $R_j$의 크기를 $V_j$라고 한다 $R_j$에 속해있는 sample들의 개수를 $k_j$라고 한다 $p(x)$의 j번째 추정은 $p_j(x)=[k_j/j]/V_j$이다. $p_j(x)$는 다음과...","categories": ["MLPR"],
-        "tags": [],
-        "url": "/mlpr/mlpr-nonparametric-estimation/",
-        "teaser": null
-      },{
-        "title": "[MLPR #] Parameter Estimation 2 (미완)",
-        "excerpt":"Parameter Estimation 1에서 추정 방법중 Maximum likelihood에 대해 알아보았다. 2에서는 나머지 한가지 방법인 Maximum a Posterior (MAP) estimation에 대해서 알아본다. MLPR 11~13  ","categories": ["MLPR"],
-        "tags": [],
-        "url": "/mlpr/mlpr-parameter-estimation-2/",
-        "teaser": null
-      },{
-        "title": "[MLPR #] Unsupervised Classification 1 (미완)",
-        "excerpt":"16에 전체 목차 chain method of clustering  ","categories": ["MLPR"],
+        "title": "[MLPR #] Unsupervised Classification 1 (fisher)",
+        "excerpt":"Supervised 에서는 data에 label도 있고 전체 class의 갯수를 알 수 있기때문에 data로부터 그 분포를 추정할 수 있었다. unsupervised classification은 이러한 정보가 없을 때 data를 구분하는 방법이다. Unknown targets를 분류하는 방법에는 다양한 방법이 있는데 다음과 같은 방법이 있다. Criterion function 방법 : Sum of squared error, Min. variance, Scatter matrices, Optimization...","categories": ["MLPR"],
         "tags": [],
         "url": "/mlpr/mlpr-unsupervised-classification-1/",
         "teaser": null
